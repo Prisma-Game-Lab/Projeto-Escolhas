@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176, y: -45.55591}
+  m_AnchoredPosition: {x: 176, y: -45.555664}
   m_SizeDelta: {x: 176.59662, y: 57.660645}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &60148097
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 86306780}
   - component: {fileID: 86306779}
   m_Layer: 5
-  m_Name: Stats
+  m_Name: Stats Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,12 +466,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 222201751}
-        m_TargetAssemblyTypeName: NavigationHandler, Assembly-CSharp
-        m_MethodName: SetActiveStats
-        m_Mode: 1
+        m_TargetAssemblyTypeName: NavigationBar, Assembly-CSharp
+        m_MethodName: SetActiveCanvas
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2011346671}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -766,7 +766,7 @@ GameObject:
   - component: {fileID: 222201747}
   - component: {fileID: 222201751}
   m_Layer: 5
-  m_Name: Navigation
+  m_Name: Navigation Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -871,9 +871,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   home: {fileID: 1158289436}
-  training: {fileID: 1601916902}
-  stats: {fileID: 2011346671}
-  message: {fileID: 1761306620}
 --- !u!1 &268648651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1530,7 @@ GameObject:
   - component: {fileID: 1274916575}
   - component: {fileID: 1274916574}
   m_Layer: 5
-  m_Name: Message
+  m_Name: Message Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1604,12 +1601,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 222201751}
-        m_TargetAssemblyTypeName: NavigationHandler, Assembly-CSharp
-        m_MethodName: SetActiveMessage
-        m_Mode: 1
+        m_TargetAssemblyTypeName: NavigationBar, Assembly-CSharp
+        m_MethodName: SetActiveCanvas
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1761306620}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1666,7 +1663,7 @@ GameObject:
   - component: {fileID: 1290375822}
   - component: {fileID: 1290375821}
   m_Layer: 5
-  m_Name: Home
+  m_Name: Home Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1737,12 +1734,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 222201751}
-        m_TargetAssemblyTypeName: NavigationHandler, Assembly-CSharp
-        m_MethodName: SetActiveHome
-        m_Mode: 1
+        m_TargetAssemblyTypeName: NavigationBar, Assembly-CSharp
+        m_MethodName: SetActiveCanvas
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1158289436}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2149,7 +2146,7 @@ GameObject:
   - component: {fileID: 1964421451}
   - component: {fileID: 1964421450}
   m_Layer: 5
-  m_Name: Training
+  m_Name: Training Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2220,12 +2217,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 222201751}
-        m_TargetAssemblyTypeName: NavigationHandler, Assembly-CSharp
-        m_MethodName: SetActiveTraining
-        m_Mode: 1
+        m_TargetAssemblyTypeName: NavigationBar, Assembly-CSharp
+        m_MethodName: SetActiveCanvas
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1601916902}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2457,7 +2454,7 @@ GameObject:
   - component: {fileID: 2111614545}
   - component: {fileID: 2111614544}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2528,7 +2525,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 222201751}
-        m_TargetAssemblyTypeName: NavigationHandler, Assembly-CSharp
+        m_TargetAssemblyTypeName: NavigationBar, Assembly-CSharp
         m_MethodName: GoToMenu
         m_Mode: 1
         m_Arguments:

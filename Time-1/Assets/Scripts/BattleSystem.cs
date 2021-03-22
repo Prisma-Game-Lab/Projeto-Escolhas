@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System;
 
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUN, ATTACK, HEAL }
 
 public class BattleSystem : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class BattleSystem : MonoBehaviour
 	Unit playerUnit;
 	Unit enemyUnit;
 
-	public Text dialogueText;
+	public TextMeshProUGUI dialogueText;
 
 	public BattleHUD playerHUD;
 	public BattleHUD enemyHUD;
@@ -52,9 +54,10 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator PlayerAttack()
 	{
+		state = BattleState.ATTACK;
 		bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
 
-		enemyHUD.SetHP(enemyUnit.currentHP);
+		enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit.maxHP);
 		dialogueText.text = "The attack is successful!";
 
 		yield return new WaitForSeconds(2f);
@@ -78,7 +81,7 @@ public class BattleSystem : MonoBehaviour
 
 		bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
 
-		playerHUD.SetHP(playerUnit.currentHP);
+		playerHUD.SetHP(playerUnit.currentHP, playerUnit.maxHP);
 
 		yield return new WaitForSeconds(1f);
 
@@ -112,9 +115,10 @@ public class BattleSystem : MonoBehaviour
 
 	IEnumerator PlayerHeal()
 	{
+		state = BattleState.HEAL;
 		playerUnit.Heal(5);
 
-		playerHUD.SetHP(playerUnit.currentHP);
+		playerHUD.SetHP(playerUnit.currentHP, playerUnit.maxHP);
 		dialogueText.text = "You feel renewed strength!";
 
 		yield return new WaitForSeconds(2f);
@@ -131,12 +135,27 @@ public class BattleSystem : MonoBehaviour
 		StartCoroutine(PlayerAttack());
 	}
 
-	public void OnHealButton()
+    public void OnHealButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+
+        StartCoroutine(PlayerHeal());
+    }
+	public void OnRunButton()
 	{
 		if (state != BattleState.PLAYERTURN)
 			return;
 
-		StartCoroutine(PlayerHeal());
+		StartCoroutine(PlayerRun());
 	}
 
+    IEnumerator PlayerRun()
+    {
+		state = BattleState.RUN;
+        dialogueText.text = "You ran from the battle!";
+		//alguma animacao
+		yield return new WaitForSeconds(2f);
+		//sai do combate
+	}
 }

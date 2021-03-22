@@ -1,26 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BattleHUD : MonoBehaviour
 {
 
-	public Text nameText;
-	public Text levelText;
-	public Slider hpSlider;
+	public TextMeshProUGUI nameText;
+	public TextMeshProUGUI levelText;
+	public Image hpGreenBar;
 
 	public void SetHUD(Unit unit)
 	{
 		nameText.text = unit.unitName;
 		levelText.text = "Lvl " + unit.unitLevel;
-		hpSlider.maxValue = unit.maxHP;
-		hpSlider.value = unit.currentHP;
+		hpGreenBar.fillAmount = (float)unit.currentHP/unit.maxHP;
 	}
 
-	public void SetHP(int hp)
+	public void SetHP(int hp, int maxHP)
 	{
-		hpSlider.value = hp;
+		hpGreenBar.fillAmount = (float)hp /maxHP;
 	}
 
 }

@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be85719ffa984e4caf26feef06bc77d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_camera: {fileID: 1982851393}
+  mainCamera: {fileID: 1982851393}
   brush: {fileID: 6227431900248306270}
 --- !u!4 &1027001211
 Transform:

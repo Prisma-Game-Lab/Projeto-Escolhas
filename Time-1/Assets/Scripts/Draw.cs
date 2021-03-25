@@ -33,8 +33,13 @@ public class Draw : MonoBehaviour
                 }
             }
             */
-            float r = OneDollar.Resample(pointsList, 64);
-            Debug.Log(r);
+            List<List<float>> r = OneDollar.Resample(pointsList, 64);
+            Debug.Log(r.Count);
+            foreach (var sublist in r) {
+                foreach (var obj in sublist) {
+                    Debug.Log(obj);
+                }
+            }
             pointsList.Clear();
         }
         else {

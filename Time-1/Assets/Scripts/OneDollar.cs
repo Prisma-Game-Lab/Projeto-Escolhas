@@ -2,21 +2,40 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using static System.Math;
+using System.IO;
+using SimpleJSON;
 
 public class OneDollar
 {
     public static List<List<float>> Result(List<List<float>> points) {
-
         List<List<float>> result = Resample(points, 64);
-
         List<List<float>> result2 = RotateToZero(result);
-
-        List<List<float>> result3 = ScaleToSquare(result2, 64);
-        
+        List<List<float>> result3 = ScaleToSquare(result2, 256.0f);
         List<List<float>> result4 = TranslateToOrigin(result3);
+        //CreateTemplates(result4, "square");
+        Recognize(result4);
 
         return result4;
+    }
 
+    public static void CreateTemplates(List<List<float>> step3, string name) {
+        string path = @"C:\Users\tatir\OneDrive\Documentos\Test.txt";
+        using (StreamWriter sw = File.CreateText(path)) {
+            sw.WriteLine("{");
+            sw.Write(name);
+            sw.WriteLine("[");
+            for (int i = 0; i < step3.Count; i++) {
+                sw.WriteLine("{");
+                sw.Write("x: ");
+                sw.Write(step3[i][0]);
+                sw.WriteLine(";");
+                sw.Write("y: ");
+                sw.WriteLine(step3[i][1]);
+                sw.WriteLine("};");
+            }
+            sw.WriteLine("]");
+            sw.WriteLine("}");
+        }
     }
 
     //Step 1
@@ -136,5 +155,36 @@ public class OneDollar
         return newPoints;
     }
     
+    //Step 4
+    public static void Recognize(List<List<float>> points) {
+        //float b = float.PositiveInfinity;
+        List<List<float>> template = new List<List<float>>();
+        string path = @"C:\Users\tatir\OneDrive\Documentos\Templates.json";
+        string jsonString = File.ReadAllText (path); 
+        JSONNode data = JSON.Parse(jsonString);
+        foreach(JSONNode record in data["square"])
+        {
+            Debug.Log ("x: " + record["x"].Value + "y: " + record["y"].Value);
+        }
 
+        /*
+        using (StreamReader sw = new StreamReader(path)) {
+            string line;
+            while ((line = sw.ReadLine()) != null) {
+                if (line.Contains("y")) {
+                    Debug.Log(line.IndexOf(":"));
+                    line = line.Substring(line.IndexOf(":"), line.IndexOf(",")); 
+                    Debug.Log(line);
+                }
+                if (line.Contains("x")) {
+                    //Debug.Log(line.Substring(3, line.LastIndexOf(",")));
+                }
+            }
+        }
+        */
+        //foreach (var template in templates) {
+
+        //}
+    }
+    
 }

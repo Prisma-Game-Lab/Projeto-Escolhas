@@ -33,12 +33,14 @@ public class Draw : MonoBehaviour
                 }
             }
             */
-            List<List<float>> r = OneDollar.Result(pointsList);
-            Debug.Log(r.Count);
-            foreach (var sublist in r) {
-                foreach (var obj in sublist) {
-                    Debug.Log(obj);
-                }
+            if (pointsList.Count >= 2) {
+                List<List<float>> r = OneDollar.Result(pointsList);
+                //Debug.Log(r.Count);
+                //foreach (var sublist in r) {
+                    //foreach (var obj in sublist) {
+                        //Debug.Log(obj);
+                    //}
+                //}
             }
             pointsList.Clear();
         }
@@ -73,5 +75,4 @@ public class Draw : MonoBehaviour
             pointsList.Add(new List<float>{lastPos.x, lastPos.y});
         }
     }
-
 }

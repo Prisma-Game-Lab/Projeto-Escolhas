@@ -10,9 +10,12 @@ public class OneDollar
         List<List<float>> result = Resample(points, 64);
 
         List<List<float>> result2 = RotateToZero(result);
-        
 
-        return result2;
+        List<List<float>> result3 = ScaleToSquare(result2, 64);
+        
+        List<List<float>> result4 = TranslateToOrigin(result3);
+
+        return result4;
 
     }
 
@@ -67,7 +70,7 @@ public class OneDollar
         float cos = (float)Cos(theta);
         float sin = (float)Sin(theta);
         foreach (var point in points) {
-            float qx = (point[0]-centroid[0]) * cos - (point[1]-centroid[1]) * sin+ centroid[0];
+            float qx = (point[0]-centroid[0]) * cos - (point[1]-centroid[1]) * sin + centroid[0];
             float qy = (point[0]-centroid[0]) * sin - (point[1]-centroid[1]) * cos + centroid[1];
             newPoints.Add(new List<float>{qx, qy});
         }
@@ -85,6 +88,52 @@ public class OneDollar
         centroid[0] = centroid[0] / points.Count;
         centroid[1] = centroid[1] / points.Count;
         return centroid;
+    }
+
+    //Step 3
+    public static List<List<float>> ScaleToSquare(List<List<float>> points, float size) {
+        List<List<float>> B = BoundingBox(points);
+        List<List<float>> newPoints = new List<List<float>>();
+        float width = Abs(B[1][0]-B[0][0]);
+        float height = Abs(B[1][1]-B[0][1]);
+        foreach (var point in points) {
+            float qx = point[0] * (size/width);
+            float qy = point[1] * (size/height);
+            newPoints.Add(new List<float>{qx, qy});
+        }
+        return newPoints;
+    }
+
+    public static List<List<float>> BoundingBox(List<List<float>> points) {
+        List<List<float>> B = new List<List<float>>();
+        float minx = points[0][0];
+        float miny = points[0][1];
+        float maxx = minx;
+        float maxy = miny;
+        for (int i = 1; i < points.Count; i++) {
+            if(points[i][0] < minx)
+                minx = points[i][0];
+            if(points[i][1] < miny)
+                miny = points[i][1];
+            if(points[i][0] > maxx)
+                maxx = points[i][0];
+            if(points[i][1] > maxy)
+                maxy = points[i][1];
+        }
+        B.Add(new List<float>{minx, miny});
+        B.Add(new List<float>{maxx, maxy});
+        return B;
+    }
+
+    public static List<List<float>> TranslateToOrigin(List<List<float>> points) {
+        List<float> centroid = Centroid(points);
+        List<List<float>> newPoints = new List<List<float>>();
+        foreach (var point in points) {
+            float qx = point[0] - centroid[0];
+            float qy = point[1] - centroid[1];
+            newPoints.Add(new List<float>{qx, qy});
+        }
+        return newPoints;
     }
     
 

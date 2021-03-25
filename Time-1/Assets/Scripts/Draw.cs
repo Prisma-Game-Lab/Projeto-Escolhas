@@ -33,7 +33,7 @@ public class Draw : MonoBehaviour
                 }
             }
             */
-            List<List<float>> r = OneDollar.Resample(pointsList, 64);
+            List<List<float>> r = OneDollar.Result(pointsList);
             Debug.Log(r.Count);
             foreach (var sublist in r) {
                 foreach (var obj in sublist) {

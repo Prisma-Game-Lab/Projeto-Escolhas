@@ -26,11 +26,16 @@ public class Draw : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0)) {
             currentLineRenderer.positionCount = 0;
+            /*
             foreach (var sublist in pointsList) {
                 foreach (var obj in sublist) {
                     Debug.Log(obj);
                 }
             }
+            */
+            float r = OneDollar.Resample(pointsList, 64);
+            Debug.Log(r);
+            pointsList.Clear();
         }
         else {
             currentLineRenderer = null;
@@ -42,7 +47,7 @@ public class Draw : MonoBehaviour
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
 
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-
+  
         currentLineRenderer.SetPosition(0, mousePos);
         currentLineRenderer.SetPosition(1, mousePos);
 
@@ -60,7 +65,6 @@ public class Draw : MonoBehaviour
         {
             AddAPoint(mousePos);
             lastPos = mousePos;
-            Debug.Log(lastPos);
             pointsList.Add(new List<float>{lastPos.x, lastPos.y});
         }
     }

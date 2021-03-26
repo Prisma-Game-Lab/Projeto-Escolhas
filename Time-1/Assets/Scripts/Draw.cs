@@ -38,7 +38,7 @@ public class Draw : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0)) {
             currentLineRenderer.positionCount = 0;
             if (pointsList.Count >= 2) {
-                bool d = OneDollar.Result(pointsList, "star");
+                bool d = OneDollar.Result(pointsList, "caret");
                 Debug.Log(d);
                 if (d) {
                     text.text = "Correto";

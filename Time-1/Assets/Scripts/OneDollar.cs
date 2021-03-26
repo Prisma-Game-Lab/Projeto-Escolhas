@@ -7,15 +7,16 @@ using SimpleJSON;
 
 public class OneDollar
 {
-    public static List<List<float>> Result(List<List<float>> points) {
-        List<List<float>> result = Resample(points, 64);
+    public static bool Result(List<List<float>> points, string name) {
+        List<List<float>> result = Resample(points, 16);
         List<List<float>> result2 = RotateToZero(result);
         List<List<float>> result3 = ScaleToSquare(result2, 256.0f);
         List<List<float>> result4 = TranslateToOrigin(result3);
         //CreateTemplates(result4, "square");
-        Recognize(result4);
-
-        return result4;
+        float d = Recognize(result4, name);
+        if (d < 0.35f)
+            return true;
+        return false;
     }
 
     public static void CreateTemplates(List<List<float>> step3, string name) {
@@ -43,20 +44,29 @@ public class OneDollar
         float I = PathLength(points)/(n-1);
         float D = 0;
         List<List<float>> newPoints = new List<List<float>>();
+        float previousx = points[0][0];
+        float previousy = points[0][1];
         newPoints.Add(points[0]);
         for (int i = 1; i < points.Count; i++) {
             float d = Distance(points[i-1], points[i]);
             if ((D+d) >= I) {
                 float qx = points[i-1][0] + (((I-D)/d) * (points[i][0] - points[i-1][0]));
                 float qy = points[i-1][1] + (((I-D)/d) * (points[i][1] - points[i-1][1]));
+                previousx = qx;
+                previousy = qy;
                 newPoints.Add(new List<float>{qx, qy});
                 points.Insert(i, new List<float>{qx, qy});
                 D = 0;
             }
             else {
                 D += d;
+                previousx = points[i][0];
+                previousy = points[i][1];
             }
         }
+        if (newPoints.Count == n-1) {
+			    newPoints.Add(new List<float>{previousx, previousy});
+		}
         return newPoints;
     }
 
@@ -79,7 +89,7 @@ public class OneDollar
     public static List<List<float>> RotateToZero(List<List<float>> points) {
         List<float> centroid = Centroid(points);
         float theta = (float)Atan2(centroid[1]-points[0][1], centroid[0]-points[0][0]);
-        List<List<float>> newPoints = RotateBy(points, -theta);
+        List<List<float>> newPoints = RotateBy(points, -theta * Mathf.Deg2Rad);
         return newPoints;
     }
 
@@ -156,35 +166,97 @@ public class OneDollar
     }
     
     //Step 4
-    public static void Recognize(List<List<float>> points) {
-        //float b = float.PositiveInfinity;
-        List<List<float>> template = new List<List<float>>();
-        string path = @"C:\Users\tatir\OneDrive\Documentos\Templates.json";
-        string jsonString = File.ReadAllText (path); 
+    public static float Recognize(List<List<float>> points, string name) {
+        float b = float.PositiveInfinity;
+        float theta = 45.0f* Mathf.Deg2Rad;
+        float thetad = 2.0f* Mathf.Deg2Rad;
+        float size = 256.0f;
+        List<List<float>> templates = new List<List<float>>();
+        string path = Application.dataPath + "/Gestures/Templates.json";
+        string jsonString = File.ReadAllText(path); 
         JSONNode data = JSON.Parse(jsonString);
-        foreach(JSONNode record in data["square"])
-        {
-            Debug.Log ("x: " + record["x"].Value + "y: " + record["y"].Value);
+        foreach(JSONNode p in data[name]) {
+            templates.Add(new List<float>{p["x"].AsFloat, p["y"].AsFloat});
         }
+        List<float> r = Vectorize(points);
+        List<float> t = Vectorize(templates);
 
-        /*
-        using (StreamReader sw = new StreamReader(path)) {
-            string line;
-            while ((line = sw.ReadLine()) != null) {
-                if (line.Contains("y")) {
-                    Debug.Log(line.IndexOf(":"));
-                    line = line.Substring(line.IndexOf(":"), line.IndexOf(",")); 
-                    Debug.Log(line);
-                }
-                if (line.Contains("x")) {
-                    //Debug.Log(line.Substring(3, line.LastIndexOf(",")));
-                }
+        float dist = OptimalCosineDistance(r, t);
+
+        float d = DistanceAtBestAngle(points, templates, -theta, theta, thetad);
+        //b = 0;
+        //if (dist > b) {
+            //b = dist;
+        //}
+
+        float score = (float)(1.0f-(b/(0.5f*Sqrt(Pow(size,2) + Pow(size,2)))));
+        return dist;
+    }
+
+    public static float OptimalCosineDistance(List<float> v1, List<float> v2) {
+        float a = 0;
+        float b = 0;
+        for (int i = 0; i < v1.Count; i+= 2) {
+            a += (v1[i] * v2[i]) + (v1[i+1] * v2[i+1]);
+            b += (v1[i] * v2[i+1]) - (v1[i+1] * v2[i]);
+        }
+        float angle = (float)Atan(b / a);
+        float result = (float)Acos((a * Cos(angle)) + (b * Sin(angle)));
+		return result;
+    }
+
+    public static List<float> Vectorize(List<List<float>> points) {
+        float sum = 0;
+        List<float> v = new List<float>();
+        foreach (var point in points) {
+            v.Add(point[0]);
+            v.Add(point[1]);
+            sum += (point[0] * point[0]) + (point[1] * point[1]);
+        }
+        float magnitude = (float)Sqrt(sum);
+        for (int i = 0; i < v.Count; i++) {
+            v[i] = v[i]/magnitude;
+        }
+        return v;
+    }
+
+    public static float DistanceAtBestAngle(List<List<float>> points, List<List<float>> T, float thetaa, float thetab, float thetad) {
+        float phi = (float)((-1.0f + (float)Sqrt(5.0f))*0.5);
+        float x1 = phi*thetaa + (1 - phi)*thetab;
+        float f1 = DistanceAtAngle(points, T, x1 * Mathf.Deg2Rad);
+        float x2 = (1 - phi)*thetaa + phi*thetab;
+        float f2 = DistanceAtAngle(points, T, x2 * Mathf.Deg2Rad);
+        while (Abs(thetab-thetaa) > thetad) {
+            if (f1 < f2) {
+                thetab = x2;
+                x2 = x1;
+                f2 = f1;
+                x1 = phi*thetaa + (1-phi)*thetab;
+                f1 = DistanceAtAngle(points, T, x1 * Mathf.Deg2Rad);
+            }
+            else {
+                thetaa = x1;
+                x1 = x2;
+                f1 = f2;
+                x2 = (1-phi)*thetaa + phi*thetab;
+                f2 = DistanceAtAngle(points, T, x2 * Mathf.Deg2Rad);
             }
         }
-        */
-        //foreach (var template in templates) {
+        return Min(f1, f2);
+    }
 
-        //}
+    public static float DistanceAtAngle(List<List<float>> points, List<List<float>> T, float theta) {
+        List<List<float>> newPoints = RotateBy(points, theta);
+        float d = PathDistance(newPoints, T);
+        return d;
+    }
+
+    public static float PathDistance(List<List<float>> A, List<List<float>> B) {
+        float d = 0;
+        for (int i = 0; i < A.Count; i++) {
+            d += Distance(A[i], B[i]);
+        }
+        return d/A.Count;
     }
     
 }

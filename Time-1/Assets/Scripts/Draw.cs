@@ -13,6 +13,15 @@ public class Draw : MonoBehaviour
 
     List<List<float>> pointsList = new List<List<float>>();
 
+    List<string> names = new List<string>();
+
+    //Text text = 
+
+    void Start() {
+        names.Add("caret");
+        names.Add("star");
+    }
+
     private void Update() {
         Drawing();
     }
@@ -26,22 +35,12 @@ public class Draw : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0)) {
             currentLineRenderer.positionCount = 0;
-            /*
-            foreach (var sublist in pointsList) {
-                foreach (var obj in sublist) {
-                    Debug.Log(obj);
-                }
-            }
-            */
             if (pointsList.Count >= 2) {
-                List<List<float>> r = OneDollar.Result(pointsList);
-                //Debug.Log(r.Count);
-                //foreach (var sublist in r) {
-                    //foreach (var obj in sublist) {
-                        //Debug.Log(obj);
-                    //}
-                //}
+                int r = Random.Range(0, names.Count);
+                bool d = OneDollar.Result(pointsList, names[r]);
+                Debug.Log(d);
             }
+            currentLineRenderer = null;
             pointsList.Clear();
         }
         else {

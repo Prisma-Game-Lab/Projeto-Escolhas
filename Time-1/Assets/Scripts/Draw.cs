@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Draw : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Draw : MonoBehaviour
 
     List<string> names = new List<string>();
 
-    //Text text = 
+    public Text text;
 
     void Start() {
         names.Add("caret");
@@ -27,6 +28,7 @@ public class Draw : MonoBehaviour
     }
 
     void Drawing() {
+        
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
             CreateBrush();
         }
@@ -36,9 +38,14 @@ public class Draw : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0)) {
             currentLineRenderer.positionCount = 0;
             if (pointsList.Count >= 2) {
-                int r = Random.Range(0, names.Count);
-                bool d = OneDollar.Result(pointsList, names[r]);
+                bool d = OneDollar.Result(pointsList, "star");
                 Debug.Log(d);
+                if (d) {
+                    text.text = "Correto";
+                }
+                else {
+                    text.text = "Errado";
+                }
             }
             currentLineRenderer = null;
             pointsList.Clear();

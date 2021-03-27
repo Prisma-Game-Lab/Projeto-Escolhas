@@ -28,7 +28,6 @@ public class Draw : MonoBehaviour
     }
 
     void Drawing() {
-        
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
             CreateBrush();
         }

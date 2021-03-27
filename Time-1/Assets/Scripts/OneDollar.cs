@@ -19,6 +19,7 @@ public class OneDollar
         return false;
     }
 
+    //Essa função só serve para criar templates
     public static void CreateTemplates(List<List<float>> step3, string name) {
         string path = @"C:\Users\tatir\OneDrive\Documentos\Test.txt";
         using (StreamWriter sw = File.CreateText(path)) {
@@ -167,12 +168,9 @@ public class OneDollar
     
     //Step 4
     public static float Recognize(List<List<float>> points, string name) {
-        float b = float.PositiveInfinity;
-        float theta = 45.0f* Mathf.Deg2Rad;
-        float thetad = 2.0f* Mathf.Deg2Rad;
-        float size = 256.0f;
         List<List<float>> templates = new List<List<float>>();
-        string path = Application.dataPath + "/Gestures/Templates.json";
+        //string path = Application.dataPath + "/Gestures/Templates.json";
+        string path = "Assets/Gestures/Templates.json";
         string jsonString = File.ReadAllText(path); 
         JSONNode data = JSON.Parse(jsonString);
         foreach(JSONNode p in data[name]) {
@@ -180,16 +178,7 @@ public class OneDollar
         }
         List<float> r = Vectorize(points);
         List<float> t = Vectorize(templates);
-
         float dist = OptimalCosineDistance(r, t);
-
-        float d = DistanceAtBestAngle(points, templates, -theta, theta, thetad);
-        //b = 0;
-        //if (dist > b) {
-            //b = dist;
-        //}
-
-        float score = (float)(1.0f-(b/(0.5f*Sqrt(Pow(size,2) + Pow(size,2)))));
         return dist;
     }
 
@@ -219,44 +208,4 @@ public class OneDollar
         }
         return v;
     }
-
-    public static float DistanceAtBestAngle(List<List<float>> points, List<List<float>> T, float thetaa, float thetab, float thetad) {
-        float phi = (float)((-1.0f + (float)Sqrt(5.0f))*0.5);
-        float x1 = phi*thetaa + (1 - phi)*thetab;
-        float f1 = DistanceAtAngle(points, T, x1 * Mathf.Deg2Rad);
-        float x2 = (1 - phi)*thetaa + phi*thetab;
-        float f2 = DistanceAtAngle(points, T, x2 * Mathf.Deg2Rad);
-        while (Abs(thetab-thetaa) > thetad) {
-            if (f1 < f2) {
-                thetab = x2;
-                x2 = x1;
-                f2 = f1;
-                x1 = phi*thetaa + (1-phi)*thetab;
-                f1 = DistanceAtAngle(points, T, x1 * Mathf.Deg2Rad);
-            }
-            else {
-                thetaa = x1;
-                x1 = x2;
-                f1 = f2;
-                x2 = (1-phi)*thetaa + phi*thetab;
-                f2 = DistanceAtAngle(points, T, x2 * Mathf.Deg2Rad);
-            }
-        }
-        return Min(f1, f2);
-    }
-
-    public static float DistanceAtAngle(List<List<float>> points, List<List<float>> T, float theta) {
-        List<List<float>> newPoints = RotateBy(points, theta);
-        float d = PathDistance(newPoints, T);
-        return d;
-    }
-
-    public static float PathDistance(List<List<float>> A, List<List<float>> B) {
-        float d = 0;
-        for (int i = 0; i < A.Count; i++) {
-            d += Distance(A[i], B[i]);
-        }
-        return d/A.Count;
-    }
-    
 }

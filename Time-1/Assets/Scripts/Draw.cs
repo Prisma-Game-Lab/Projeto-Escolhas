@@ -28,6 +28,8 @@ public class Draw : MonoBehaviour
     }
 
     void Drawing() {
+        //int r = Random.Range(0, names.Count);
+        //text.text = names[r];
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
             CreateBrush();
         }
@@ -37,14 +39,14 @@ public class Draw : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0)) {
             currentLineRenderer.positionCount = 0;
             if (pointsList.Count >= 2) {
-                bool d = OneDollar.Result(pointsList, "caret");
+                bool d = OneDollar.Result(pointsList, "caret", 0.35f);
                 Debug.Log(d);
-                if (d) {
-                    text.text = "Correto";
-                }
-                else {
-                    text.text = "Errado";
-                }
+                //if (d) {
+                    //text.text = "Correto";
+                //}
+                //else {
+                    //text.text = "Errado";
+                //}
             }
             currentLineRenderer = null;
             pointsList.Clear();
@@ -57,12 +59,9 @@ public class Draw : MonoBehaviour
     void CreateBrush() {
         GameObject brushInstance = Instantiate(brush);
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
-
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-  
         currentLineRenderer.SetPosition(0, mousePos);
         currentLineRenderer.SetPosition(1, mousePos);
-
     }
 
     void AddAPoint(Vector2 pointPos) {
@@ -73,8 +72,7 @@ public class Draw : MonoBehaviour
 
     void PointToMousePos() {
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        if (lastPos != mousePos) 
-        {
+        if (lastPos != mousePos) {
             AddAPoint(mousePos);
             lastPos = mousePos;
             pointsList.Add(new List<float>{lastPos.x, lastPos.y});

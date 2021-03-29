@@ -7,14 +7,14 @@ using SimpleJSON;
 
 public class OneDollar
 {
-    public static bool Result(List<List<float>> points, string name) {
+    public static bool Result(List<List<float>> points, string name, float maxDist) {
         List<List<float>> result = Resample(points, 16);
         List<List<float>> result2 = RotateToZero(result);
         List<List<float>> result3 = ScaleToSquare(result2, 256.0f);
         List<List<float>> result4 = TranslateToOrigin(result3);
         //CreateTemplates(result4, "square");
         float d = Recognize(result4, name);
-        if (d < 0.35f)
+        if (d < maxDist)
             return true;
         return false;
     }
@@ -42,9 +42,9 @@ public class OneDollar
 
     //Step 1
     public static List<List<float>> Resample(List<List<float>> points, int n) {
+        List<List<float>> newPoints = new List<List<float>>();
         float I = PathLength(points)/(n-1);
         float D = 0;
-        List<List<float>> newPoints = new List<List<float>>();
         float previousx = points[0][0];
         float previousy = points[0][1];
         newPoints.Add(points[0]);

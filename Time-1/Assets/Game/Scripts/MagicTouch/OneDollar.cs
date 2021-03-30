@@ -170,8 +170,10 @@ public class OneDollar
     public static float Recognize(List<List<float>> points, string name) {
         List<List<float>> templates = new List<List<float>>();
         //string path = Application.dataPath + "/Gestures/Templates.json";
-        string path = "Assets/etc/Gestures/Templates.json";
-        string jsonString = File.ReadAllText(path); 
+        TextAsset file = Resources.Load<TextAsset>("Gestures/Templates");
+        //string path = "Assets/etc/Gestures/Templates.json";
+        string jsonString = file.ToString();
+        //string jsonString = File.ReadAllText(path); 
         JSONNode data = JSON.Parse(jsonString);
         foreach(JSONNode p in data[name]) {
             templates.Add(new List<float>{p["x"].AsFloat, p["y"].AsFloat});

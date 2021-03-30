@@ -40,13 +40,12 @@ public class Draw : MonoBehaviour
             currentLineRenderer.positionCount = 0;
             if (pointsList.Count >= 2) {
                 bool d = OneDollar.Result(pointsList, "caret", 0.35f);
-                Debug.Log(d);
-                //if (d) {
-                    //text.text = "Correto";
-                //}
-                //else {
-                    //text.text = "Errado";
-                //}
+                if (d) {
+                    text.text = "Correto";
+                }
+                else {
+                    text.text = "Errado";
+                }
             }
             currentLineRenderer = null;
             pointsList.Clear();

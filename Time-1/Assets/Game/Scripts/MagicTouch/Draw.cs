@@ -18,6 +18,10 @@ public class Draw : MonoBehaviour
 
     public Text text;
 
+    private Dictionary<List<string>,Texture2D> _templates = new Dictionary<List<string>,Texture2D>();
+
+    //{{[caret1, caret2], img},{}}
+
     void Start() {
         names.Add("caret");
         names.Add("star");

@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1144,24 +1144,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9184332088057737796, guid: 842f03b9c19381248899d9a26dc279f6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184332088057737796, guid: 842f03b9c19381248899d9a26dc279f6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9184332088057737796, guid: 842f03b9c19381248899d9a26dc279f6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9184332088057737796, guid: 842f03b9c19381248899d9a26dc279f6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9184332088057737796, guid: 842f03b9c19381248899d9a26dc279f6, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9184332088057737796, guid: 842f03b9c19381248899d9a26dc279f6, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184332088057737796, guid: 842f03b9c19381248899d9a26dc279f6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184332088057737796, guid: 842f03b9c19381248899d9a26dc279f6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184332088057737796, guid: 842f03b9c19381248899d9a26dc279f6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9184332088057737796, guid: 842f03b9c19381248899d9a26dc279f6, type: 3}
       propertyPath: m_Parameters.colorGradient.m_Mode

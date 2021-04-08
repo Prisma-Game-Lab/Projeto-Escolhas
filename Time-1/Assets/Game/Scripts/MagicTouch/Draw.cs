@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Draw : MonoBehaviour
 {
@@ -18,7 +19,11 @@ public class Draw : MonoBehaviour
 
     public Text text;
 
+    public TextMeshProUGUI time;
+
     private Dictionary<List<string>,Texture2D> _templates = new Dictionary<List<string>,Texture2D>();
+
+    bool newDrawing = true;
 
     //{{[caret1, caret2], img},{}}
 
@@ -27,8 +32,16 @@ public class Draw : MonoBehaviour
         names.Add("star");
     }
 
+    public void Minigame() {
+        if (time.text.Contains("00:00"))
+            newDrawing = false;
+    }
+
     private void Update() {
-        Drawing();
+        if (time.text.Contains("00:00")) 
+            newDrawing = false;
+        if (newDrawing)
+            Drawing();
     }
 
     void Drawing() {

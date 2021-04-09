@@ -8,8 +8,8 @@ public class Pause : MonoBehaviour
 
     public GameObject pauseMenu;
 
-    public void PauseResume () {
-        if (isPaused) {
+    public void PauseResume() {
+        if (!isPaused) {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
             isPaused = true;

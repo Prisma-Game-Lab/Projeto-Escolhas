@@ -84,11 +84,8 @@ public class Draw : MonoBehaviour
         int rndTemplate = Random.Range(0,4);
         List<string> template = templates[rndTemplate].names;
         _nameDrawing.Add(template);
-        Debug.Log(rnd2);
         _storeString[rnd2][0] = templates[rndTemplate].names[0];
         _storeString[rnd2][1] = templates[rndTemplate].names[1];
-        //_storeString.Insert(rnd2, template);
-        Debug.Log("nome da imagem"); Debug.Log(templates[rndTemplate].names[0]);
         img[rnd2].GetComponent<Image>().sprite = templates[rndTemplate].image;
         if (aux.Count > 0) {
             j = Random.Range(0,aux.Count);
@@ -123,7 +120,6 @@ public class Draw : MonoBehaviour
                         bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.35f);
                         bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.35f);
                         if (result1 || result2) {
-                            text.text = "Correto";
                             Debug.Log("true");
                             img[i].GetComponent<Image>().sprite = null;
                             _storeString[i][0] = "0";
@@ -137,7 +133,7 @@ public class Draw : MonoBehaviour
                     }
                 } 
                 if (i == 4) {
-                    Debug.Log("false");
+                    //Debug.Log("false");
                     //_sort = true;
                 }
             }

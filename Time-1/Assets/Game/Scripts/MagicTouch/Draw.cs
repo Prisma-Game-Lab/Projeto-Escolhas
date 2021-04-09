@@ -44,20 +44,18 @@ public class Draw : MonoBehaviour
 
     public List<GameObject> img = new List<GameObject>();
 
+    int rnd;
+
+    int n = 1;
+
     void Start() {
         _y3 = squareImg3.gameObject.transform.position.y;
-        /*
-        _pointsImg.Add(squareImg1.gameObject.transform.position);
-        _pointsImg.Add(squareImg2.gameObject.transform.position);
-        _pointsImg.Add(squareImg3.gameObject.transform.position);
-        _pointsImg.Add(squareImg4.gameObject.transform.position);
-        */
         img.Add(squareImg1);
         img.Add(squareImg2);
         img.Add(squareImg3);
         img.Add(squareImg4);
         squarePos = _y3 - _y3/2;
-        sortDrawing(1);
+        sortDrawing(n);
     }
 
     public void Minigame() {
@@ -65,13 +63,22 @@ public class Draw : MonoBehaviour
     }
 
     private void sortDrawing(int n) {
-        int rnd = Random.Range(0,3);
-        _nameDrawing.Add(new List<string>{"v_left", "v_right"});
-        img[rnd].GetComponent<Image>().sprite = templates[3].image;
-        img[rnd].SetActive(true);
+        rnd = Random.Range(0,4);
+        for (int i = 0; i < n; i++) {
+            int rndTemplate = Random.Range(0,4);
+            List<string> template = templates[rndTemplate].names;
+            _nameDrawing.Add(template);
+            img[rnd].GetComponent<Image>().sprite = templates[rndTemplate].image;
+        }
+        _sort = false;
     }
 
     private void Update() {
+        if (_sort) {
+            n = Random.Range(1,5);
+            n = 1;
+            sortDrawing(n);
+        }
         if (!time.text.Contains("00:00"))
             Drawing();
     }
@@ -86,10 +93,18 @@ public class Draw : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0) && hasDrawn) {
             currentLineRenderer.positionCount = 0;
             if (pointsList.Count >= 2) {
-                bool result1 = OneDollar.Result(pointsList, _nameDrawing[0][0], 0.35f);
-                bool result2 = OneDollar.Result(pointsList, _nameDrawing[0][1], 0.35f);
-                if (result1 || result2) 
+                bool result1 = false;
+                bool result2 = false;
+                for (int i = 0; i < n; i++) {
+                    result1 = OneDollar.Result(pointsList, _nameDrawing[0][0], 0.35f);
+                    result2 = OneDollar.Result(pointsList, _nameDrawing[0][1], 0.35f);
+                }
+                if (result1 || result2) {
                     text.text = "Correto";
+                    img[rnd].GetComponent<Image>().sprite = null;
+                    _sort = true;
+                    _nameDrawing.Clear();
+                }
                 else 
                     text.text = "Errado";
             }

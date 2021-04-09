@@ -42,13 +42,15 @@ public class Draw : MonoBehaviour
 
     private float _y1, _y2, _y3, _y4;
 
-    public List<GameObject> img = new List<GameObject>();
+    List<GameObject> img = new List<GameObject>();
 
     List<int> rnd = new List<int>();
 
     private List<List<string>> _storeString = new List<List<string>>();
 
     int n = 1;
+
+    List<int> aux = new List<int>();
 
     void Start() {
         _y3 = squareImg3.gameObject.transform.position.y;
@@ -57,40 +59,51 @@ public class Draw : MonoBehaviour
         img.Add(squareImg3);
         img.Add(squareImg4);
         squarePos = _y3 - _y3/2;
-        sortDrawing(n);
+        _storeString.Add(new List<string>{"0", "0"});
+        _storeString.Add(new List<string>{"0", "0"});
+        _storeString.Add(new List<string>{"0", "0"});
+        _storeString.Add(new List<string>{"0", "0"});
+        aux.Add(0);
+        aux.Add(1);
+        aux.Add(2);
+        aux.Add(3);
+        sortDrawing();
     }
 
     public void Minigame() {
 
     }
 
-    private void sortDrawing(int n) {
+    private void sortDrawing() {
         _sort = false;
-        List<int> aux = new List<int>();
-        aux.Add(0);
-        aux.Add(1);
-        aux.Add(2);
-        aux.Add(3);
-        int rnd2 = Random.Range(0,4);
+        int rnd2 = Random.Range(0,aux.Count);
         int j = rnd2;
-        for (int i = 0; i < n; i++) {
-            rnd.Add(rnd2);
-            aux.RemoveAt(j);
-            int rndTemplate = Random.Range(0,4);
+        rnd2 = aux[j];
+        rnd.Add(rnd2);
+        aux.RemoveAt(j);
+        int rndTemplate = Random.Range(0,4);
+        List<string> template = templates[rndTemplate].names;
+        _nameDrawing.Add(template);
+        Debug.Log(rnd2);
+        _storeString[rnd2][0] = templates[rndTemplate].names[0];
+        _storeString[rnd2][1] = templates[rndTemplate].names[1];
+        //_storeString.Insert(rnd2, template);
+        Debug.Log("nome da imagem"); Debug.Log(templates[rndTemplate].names[0]);
+        img[rnd2].GetComponent<Image>().sprite = templates[rndTemplate].image;
+        if (aux.Count > 0) {
             j = Random.Range(0,aux.Count);
             rnd2 = aux[j];
-            List<string> template = templates[rndTemplate].names;
-            _nameDrawing.Add(template);
-            img[rnd[i]].GetComponent<Image>().sprite = templates[rndTemplate].image;
         }
     }
 
     private void Update() {
         if (_sort) {
-            n = Random.Range(1,5);
-            sortDrawing(n);
+            if (aux.Count > 0) {
+                n = Random.Range(1,aux.Count + 1);
+                sortDrawing();
+            }
         }
-        if (!time.text.Contains("00:00"))
+        if (!time.text.Contains("00:00") && !Pause.isPaused)
             Drawing();
     }
 
@@ -104,17 +117,29 @@ public class Draw : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0) && hasDrawn) {
             currentLineRenderer.positionCount = 0;
             if (pointsList.Count >= 2) {
-                bool result1 = OneDollar.Result(pointsList, _nameDrawing[0][0], 0.35f);
-                bool result2 = OneDollar.Result(pointsList, _nameDrawing[0][1], 0.35f);
-                if (result1 || result2) {
-                    text.text = "Correto";
-                    img[rnd[0]].GetComponent<Image>().sprite = null;
-                    _sort = true;
-                    _nameDrawing.Clear();
-                    rnd.Clear();
+                int i = 0;
+                for (; i < 4; i++) {
+                    if (_storeString[i][0] != "0") {
+                        bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.35f);
+                        bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.35f);
+                        if (result1 || result2) {
+                            text.text = "Correto";
+                            Debug.Log("true");
+                            img[i].GetComponent<Image>().sprite = null;
+                            _storeString[i][0] = "0";
+                            _storeString[i][1] = "0";
+                            aux.Add(i);
+                            _sort = true;
+                            _nameDrawing.Clear();
+                            rnd.Clear();
+                            break;
+                        }
+                    }
+                } 
+                if (i == 4) {
+                    Debug.Log("false");
+                    //_sort = true;
                 }
-                else 
-                    text.text = "Errado";
             }
             currentLineRenderer = null;
             pointsList.Clear();

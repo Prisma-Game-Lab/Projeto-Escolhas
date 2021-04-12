@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d131bc9ea134147bd4794063265bbd, type: 3}
   m_Name: Elf
   m_EditorClassIdentifier: 
-  name: 
+  name: Elfa
+  sprite: {fileID: 21300000, guid: 065534f6472b6be41be388bb89c91128, type: 3}
   hp: 0
   strength: 0
   defense: 0

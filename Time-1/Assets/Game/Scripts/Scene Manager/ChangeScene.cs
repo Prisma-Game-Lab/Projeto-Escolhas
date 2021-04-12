@@ -8,8 +8,7 @@ public class ChangeScene : MonoBehaviour
 
     public void Minigame1() {
         SceneManager.LoadScene("Minigame01");
-        //MinigameManager.MagicTouch();
-        //draw.Minigame();
+        
     }
 
     public void App() {

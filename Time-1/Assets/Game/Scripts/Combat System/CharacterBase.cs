@@ -5,11 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Character", menuName = "Character/Create a new character")]
 public class CharacterBase : ScriptableObject
 {
-    [SerializeField] new string name;
-    [SerializeField] Sprite sprite;
-    [SerializeField] int hp;
-    [SerializeField] int strength;
-    [SerializeField] int defense;
+    public new string name;
+    public Sprite sprite;
+    public int hp;
+    public int maxHp;
+    public int strength;
+    public int defense;
+    public int energy;
+    public int maxEnergy;
+
 
     public string Name {
         get { return name; }
@@ -30,5 +34,5 @@ public class CharacterBase : ScriptableObject
     public int Defense {
         get { return defense; }
     }
-
+    
 }

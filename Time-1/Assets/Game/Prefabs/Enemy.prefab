@@ -44,11 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475d8d7ed9646504888a5702b5d7ed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: O Careca
-  unitLevel: 3
-  damage: 5
-  maxHP: 30
-  currentHP: 25
+  Cbase: {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
 --- !u!1 &5492376629917588543
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &550875679801749208
 Transform:
   m_ObjectHideFlags: 0

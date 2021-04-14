@@ -44,11 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475d8d7ed9646504888a5702b5d7ed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: A Pedra
-  unitLevel: 5
-  damage: 10
-  maxHP: 25
-  currentHP: 20
+  Cbase: {fileID: 11400000, guid: 21b0eace4ff83df4ab4c9ccc905095b5, type: 2}
 --- !u!1 &6450721039946225802
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &758281047895446134
 Transform:
   m_ObjectHideFlags: 0

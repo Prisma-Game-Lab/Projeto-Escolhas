@@ -10,19 +10,27 @@ public class NavigationBar : MonoBehaviour
 
     private Canvas _name;
 
-    void Start() {
+    void Start()
+    {
         _name = home;
     }
-    
-    public void SetActiveCanvas(Canvas canvas) {
+
+    public void SetActiveCanvas(Canvas canvas)
+    {
         _name.gameObject.SetActive(false);
         canvas.gameObject.SetActive(true);
         _name = canvas;
-        
+
     }
 
-    public void GoToMenu() {
+    public void GoToMenu()
+    {
         SceneManager.LoadScene("MainMenu_Scene");
+    }
+
+    public void GoToCombat()
+    {
+        SceneManager.LoadScene("Combat_Scene");
     }
 
 }

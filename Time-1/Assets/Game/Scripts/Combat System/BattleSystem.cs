@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using System;
 
@@ -10,130 +11,163 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUN, ATTACK, 
 public class BattleSystem : MonoBehaviour
 {
 
-	public GameObject playerPrefab;
-	public GameObject enemyPrefab;
+    public GameObject playerPrefab;
+    public GameObject enemyPrefab;
 
-	public Transform playerBattleStation;
-	public Transform enemyBattleStation;
+    public Transform enemyBattleStation;
 
-	Unit playerUnit;
-	Unit enemyUnit;
+    Unit playerUnit;
+    Unit enemyUnit;
 
-	public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI dialogueText;
 
-	public BattleHUD playerHUD;
-	public BattleHUD enemyHUD;
+    public BattleHUD playerHUD;
+    public BattleHUD enemyHUD;
 
-	public BattleState state;
+    public GameObject DecisionPanel;
+    public GameObject DecisionAttackButton;
+    public GameObject DecisionQuitButton;
+    public GameObject CombatPanel;
+
+    public BattleState state;
 
     // Start is called before the first frame update
     void Start()
     {
-		state = BattleState.START;
-		StartCoroutine(SetupBattle());
+        state = BattleState.START;
+        CombatPanel.SetActive(false);
+        DecisionPanel.SetActive(true);
+        DecisionAttackButton.SetActive(true);
+        DecisionQuitButton.SetActive(true);
+    StartCoroutine(SetupBattle());
     }
 
-	IEnumerator SetupBattle()
-	{
-		GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
-		playerUnit = playerGO.GetComponent<Unit>();
+    IEnumerator SetupBattle()
+    {
+        GameObject playerGO = Instantiate(playerPrefab);
+        playerUnit = playerGO.GetComponent<Unit>();
 
-		GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
-		enemyUnit = enemyGO.GetComponent<Unit>();
+        GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
+        enemyUnit = enemyGO.GetComponent<Unit>();
 
-		dialogueText.text = "A wild " + enemyUnit.unitName + " approaches...";
+        dialogueText.text = enemyUnit.Cbase.name + " approaches...";
 
-		playerHUD.SetHUD(playerUnit);
-		enemyHUD.SetHUD(enemyUnit);
+        enemyUnit.Cbase.hp = enemyUnit.Cbase.maxHp;
+        playerUnit.Cbase.hp = playerUnit.Cbase.maxHp;
+        playerUnit.Cbase.energy = playerUnit.Cbase.maxEnergy;
 
-		yield return new WaitForSeconds(2f);
+        playerHUD.SetHUD(playerUnit);
+        enemyHUD.SetHUD(enemyUnit);
 
-		state = BattleState.PLAYERTURN;
-		PlayerTurn();
-	}
+        yield return new WaitForSeconds(2f);
 
-	IEnumerator PlayerAttack()
-	{
-		state = BattleState.ATTACK;
-		bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+        state = BattleState.PLAYERTURN;
+        PlayerTurn();
+    }
 
-		enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit.maxHP);
-		dialogueText.text = "The attack is successful!";
 
-		yield return new WaitForSeconds(2f);
+    IEnumerator PlayerAttack(int tipo)
+    {
+        if (playerUnit.TakeEnergy(tipo))
+        {
+            CombatPanel.SetActive(false);
+            DecisionPanel.SetActive(true);
+            playerHUD.SetEnergy(playerUnit.Cbase.energy, playerUnit.Cbase.maxEnergy);
+            state = BattleState.ATTACK;
+            bool isDead;
 
-		if(isDead)
-		{
-			state = BattleState.WON;
-			EndBattle();
-		} else
-		{
-			state = BattleState.ENEMYTURN;
-			StartCoroutine(EnemyTurn());
-		}
-	}
+            if (tipo == 1)
+                isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 1));
+            else if (tipo == 2)
+                isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 1.5));
+            else
+                isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 2));
 
-	IEnumerator EnemyTurn()
-	{
-		dialogueText.text = enemyUnit.unitName + " attacks!";
+            enemyHUD.SetHP(enemyUnit.Cbase.hp, enemyUnit.Cbase.maxHp);
+            dialogueText.text = "The attack is successful!";
 
-		yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
-		bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+            if (isDead)
+            {
+                state = BattleState.WON;
+                EndBattle();
+            }
+            else
+            {
+                state = BattleState.ENEMYTURN;
+                StartCoroutine(EnemyTurn());
+            }
+        }
+    }
 
-		playerHUD.SetHP(playerUnit.currentHP, playerUnit.maxHP);
+    IEnumerator EnemyTurn()
+    {
+        dialogueText.text = enemyUnit.Cbase.name + " attacks!";
 
-		yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);
 
-		if(isDead)
-		{
-			state = BattleState.LOST;
-			EndBattle();
-		} else
-		{
-			state = BattleState.PLAYERTURN;
-			PlayerTurn();
-		}
+        bool isDead = playerUnit.TakeDamage(enemyUnit.Cbase.strength);
 
-	}
+        playerHUD.SetHP(playerUnit.Cbase.hp, playerUnit.Cbase.maxHp);
 
-	void EndBattle()
-	{
-		if(state == BattleState.WON)
-		{
-			dialogueText.text = "You won the battle!";
-		} else if (state == BattleState.LOST)
-		{
-			dialogueText.text = "You were defeated.";
-		}
-	}
+        yield return new WaitForSeconds(1f);
 
-	void PlayerTurn()
-	{
-		dialogueText.text = "Choose an action:";
-	}
+        if (isDead)
+        {
+            state = BattleState.LOST;
+            EndBattle();
+        }
+        else
+        {
+            state = BattleState.PLAYERTURN;
+            PlayerTurn();
+        }
 
-	IEnumerator PlayerHeal()
-	{
-		state = BattleState.HEAL;
-		playerUnit.Heal(5);
+    }
 
-		playerHUD.SetHP(playerUnit.currentHP, playerUnit.maxHP);
-		dialogueText.text = "You feel renewed strength!";
+    void EndBattle()
+    {
+        if (state == BattleState.WON)
+        {
+            dialogueText.text = "You won the date! The "+enemyUnit.Cbase.name+ " is really into you now!";
+        }
+        else if (state == BattleState.LOST)
+        {
+            dialogueText.text = "You were defeated. " + enemyUnit.Cbase.name +" is going away displeased.";
+        }
+    }
 
-		yield return new WaitForSeconds(2f);
+    void PlayerTurn()
+    {
+        dialogueText.text = "Choose an action:";
+        DecisionAttackButton.SetActive(true);
+        DecisionQuitButton.SetActive(true);
+        playerUnit.GetEnergy(2);
+        playerHUD.SetEnergy(playerUnit.Cbase.energy, playerUnit.Cbase.maxEnergy);
+    }
 
-		state = BattleState.ENEMYTURN;
-		StartCoroutine(EnemyTurn());
-	}
+    IEnumerator PlayerHeal()
+    {
+        state = BattleState.HEAL;
+        playerUnit.Heal(5);
 
-	public void OnAttackButton()
-	{
-		if (state != BattleState.PLAYERTURN)
-			return;
+        playerHUD.SetHP(playerUnit.Cbase.hp, playerUnit.Cbase.maxHp);
+        dialogueText.text = "You feel renewed strength!";
 
-		StartCoroutine(PlayerAttack());
-	}
+        yield return new WaitForSeconds(2f);
+
+        state = BattleState.ENEMYTURN;
+        StartCoroutine(EnemyTurn());
+    }
+
+    public void OnAttackButton(int tipo)
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+
+        StartCoroutine(PlayerAttack(tipo));
+    }
 
     public void OnHealButton()
     {
@@ -142,20 +176,37 @@ public class BattleSystem : MonoBehaviour
 
         StartCoroutine(PlayerHeal());
     }
-	public void OnRunButton()
-	{
-		if (state != BattleState.PLAYERTURN)
-			return;
+    public void OnQuitButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
 
-		StartCoroutine(PlayerRun());
-	}
+        StartCoroutine(PlayerRun());
+    }
+    public void OnAttackPanelButton()
+    {
+        if (state != BattleState.PLAYERTURN)
+            return;
+        DecisionAttackButton.SetActive(false);
+        DecisionQuitButton.SetActive(false);
+        DecisionPanel.SetActive(false);
+        CombatPanel.SetActive(true);
+    }
+    public void OnBackButton()
+    {
+        DecisionPanel.SetActive(true);
+        DecisionAttackButton.SetActive(true);
+        DecisionQuitButton.SetActive(true);
+        CombatPanel.SetActive(false);
+    }
 
     IEnumerator PlayerRun()
     {
-		state = BattleState.RUN;
-        dialogueText.text = "You ran from the battle!";
-		//alguma animacao
-		yield return new WaitForSeconds(2f);
-		//sai do combate
-	}
+        state = BattleState.RUN;
+        dialogueText.text = "You ran from your date!";
+        //alguma animacao
+        yield return new WaitForSeconds(2f);
+        //sai do combate
+        SceneManager.LoadScene("App");
+    }
 }

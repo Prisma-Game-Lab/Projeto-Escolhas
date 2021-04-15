@@ -29,17 +29,20 @@ public class BattleSystem : MonoBehaviour
     public GameObject DecisionQuitButton;
     public GameObject CombatPanel;
 
+    public GameObject wonDatePanel;
+
     public BattleState state;
 
     // Start is called before the first frame update
     void Start()
     {
         state = BattleState.START;
+        wonDatePanel.SetActive(false);
         CombatPanel.SetActive(false);
         DecisionPanel.SetActive(true);
         DecisionAttackButton.SetActive(true);
         DecisionQuitButton.SetActive(true);
-    StartCoroutine(SetupBattle());
+        StartCoroutine(SetupBattle());
     }
 
     IEnumerator SetupBattle()
@@ -77,16 +80,25 @@ public class BattleSystem : MonoBehaviour
             bool isDead;
 
             if (tipo == 1)
+            {
                 isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 1));
+                dialogueText.text = "You punched your date!";
+            }
             else if (tipo == 2)
+            {
                 isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 1.5));
+                dialogueText.text = "You kicked your date!";
+            }
             else
+            {
+                dialogueText.text = "You special attacked your date!";
                 isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 2));
+            }
 
             enemyHUD.SetHP(enemyUnit.Cbase.hp, enemyUnit.Cbase.maxHp);
-            dialogueText.text = "The attack is successful!";
+            
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
 
             if (isDead)
             {
@@ -103,7 +115,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        dialogueText.text = enemyUnit.Cbase.name + " attacks!";
+        dialogueText.text = enemyUnit.Cbase.name + " punched you!";
 
         yield return new WaitForSeconds(1f);
 
@@ -111,7 +123,7 @@ public class BattleSystem : MonoBehaviour
 
         playerHUD.SetHP(playerUnit.Cbase.hp, playerUnit.Cbase.maxHp);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         if (isDead)
         {
@@ -130,7 +142,9 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.WON)
         {
-            dialogueText.text = "You won the date! The "+enemyUnit.Cbase.name+ " is really into you now!";
+            DecisionQuitButton.SetActive(true);
+            wonDatePanel.SetActive(true);
+            dialogueText.text = "You won the date! "+enemyUnit.Cbase.name+ " is really into you now!";
         }
         else if (state == BattleState.LOST)
         {
@@ -178,7 +192,7 @@ public class BattleSystem : MonoBehaviour
     }
     public void OnQuitButton()
     {
-        if (state != BattleState.PLAYERTURN)
+        if (state != BattleState.PLAYERTURN && state != BattleState.WON && state != BattleState.LOST)
             return;
 
         StartCoroutine(PlayerRun());
@@ -203,9 +217,9 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PlayerRun()
     {
         state = BattleState.RUN;
-        dialogueText.text = "You ran from your date!";
+        dialogueText.text = "Quitting date...";
         //alguma animacao
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         //sai do combate
         SceneManager.LoadScene("App");
     }

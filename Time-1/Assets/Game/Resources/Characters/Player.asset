@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Player
   sprite: {fileID: 0}
-  hp: 30
+  hp: 10
   maxHp: 30
   strength: 6
-  defense: 1
-  energy: 10
+  defense: 0
+  energy: 0
   maxEnergy: 10

@@ -219,7 +219,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.RUN;
         dialogueText.text = "Quitting date...";
         //alguma animacao
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
         //sai do combate
         SceneManager.LoadScene("App");
     }

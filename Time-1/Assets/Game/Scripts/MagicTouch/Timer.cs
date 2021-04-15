@@ -12,9 +12,16 @@ public class Timer : MonoBehaviour
 	public TextMeshProUGUI TimerTextTMP;
 	private bool timeStopped = false;
 
+	public CharacterBase cBase;
+	public int raise;
+	public int type;
+	private bool complete;
+
+
 	private void Start()
 	{
 	    TimerTextTMP.gameObject.SetActive(true);
+		complete = false;
 	}
 
 	void Update()
@@ -28,6 +35,35 @@ public class Timer : MonoBehaviour
 		}
 
 		DisplayTime(timeRemaining);
+
+		if(timeRemaining == 0)
+        {
+			RaiseStat();
+		}
+	}
+
+	void RaiseStat()
+    {
+		if(complete == false)
+        {
+			complete = true;
+			if(type == 1)
+            {
+				cBase.maxHp += raise;
+            }
+			else if(type == 2)
+            {
+				cBase.maxEnergy += raise;
+            }
+			else if(type == 3)
+            {
+				cBase.strength += raise;
+            }
+			else if(type == 4)
+            {
+				cBase.defense += raise;
+            }
+		}
 	}
 
 	void DisplayTime(float time)

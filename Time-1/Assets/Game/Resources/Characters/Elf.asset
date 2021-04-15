@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Elf
   sprite: {fileID: 21300000, guid: 065534f6472b6be41be388bb89c91128, type: 3}
-  hp: -2
+  hp: 40
   maxHp: 40
   strength: 5
   defense: 0

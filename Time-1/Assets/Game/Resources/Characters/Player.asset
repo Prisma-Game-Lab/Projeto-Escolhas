@@ -16,7 +16,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   hp: 30
   maxHp: 30
-  strength: 16
+  strength: 5
   defense: 0
   energy: 4
   maxEnergy: 10

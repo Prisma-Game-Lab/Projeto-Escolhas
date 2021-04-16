@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768f7502478c9f446b110839fe86cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: f43efb67bbacf04428f1178af40be468, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: cd34be9b89db7c644bdc30f8cf962167, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
 --- !u!114 &368226206
 MonoBehaviour:

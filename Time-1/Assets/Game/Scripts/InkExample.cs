@@ -10,6 +10,8 @@ public class InkExample : MonoBehaviour
     private Story story;
     public Button buttonPrefab;
 
+    private List<string> messages = new List<string>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,10 +40,12 @@ public class InkExample : MonoBehaviour
         // Add a new Text component to the new GameObject
         Text newTextObject = newGameObject.AddComponent<Text>();
         // Set the fontSize larger
-        newTextObject.fontSize = 80;
+        newTextObject.fontSize = 55;
 
         // Load the next block and save text (if any)
         string text = getNextStoryBlock();
+
+        messages.Add(text);
 
         // Get the current tags (if any)
         List<string> tags = story.currentTags;

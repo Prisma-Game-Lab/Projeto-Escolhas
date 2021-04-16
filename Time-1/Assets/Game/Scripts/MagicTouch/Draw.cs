@@ -18,7 +18,7 @@ public class Draw : MonoBehaviour
 
     public Text text;
 
-    public TextMeshProUGUI time;
+    //Timer time;
 
     [System.Serializable]
     public class Templates {
@@ -100,7 +100,7 @@ public class Draw : MonoBehaviour
                 sortDrawing();
             }
         }
-        if (!time.text.Contains("00:00") && !Pause.isPaused)
+        if (!Timer.timeStopped && !Pause.isPaused)
             Drawing();
     }
 

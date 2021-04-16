@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
 	public float timeRemaining = 10;
 
 	public TextMeshProUGUI TimerTextTMP;
-	private bool timeStopped = false;
+	public static bool timeStopped = false;
 
 	public CharacterBase cBase;
 	public int raise;

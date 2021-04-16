@@ -10,15 +10,15 @@ public class ContactInformation : MonoBehaviour
 
     public GameObject image;
 
-    public CharacterBase character;
+    public GameObject button;
 
-    public void CreateContact() {
+    public void CreateContact(CharacterBase character) {
         name.text = character.Name;
         image.GetComponent<Image>().sprite = character.Sprite;
+        button.SetActive(true);
     }
 
-    public void OpenMessage() {
-        
-
+    public void OpenMessage(GameObject panel) {
+        panel.SetActive(true);
     }
 }

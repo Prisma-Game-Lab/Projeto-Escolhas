@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1008,6 +1008,8 @@ GameObject:
   - component: {fileID: 368226202}
   - component: {fileID: 368226204}
   - component: {fileID: 368226203}
+  - component: {fileID: 368226206}
+  - component: {fileID: 368226205}
   m_Layer: 5
   m_Name: Elf Panel
   m_TagString: Untagged
@@ -1072,6 +1074,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368226201}
   m_CullTransparentMesh: 1
+--- !u!114 &368226205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368226201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 768f7502478c9f446b110839fe86cbda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inkJSONAsset: {fileID: 4900000, guid: f43efb67bbacf04428f1178af40be468, type: 3}
+  buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
+--- !u!114 &368226206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368226201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 30
+    m_Right: 30
+    m_Top: 10
+    m_Bottom: 20
+  m_ChildAlignment: 6
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &379924168
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,7 +2291,6 @@ GameObject:
   - component: {fileID: 1153138906}
   - component: {fileID: 1153138905}
   - component: {fileID: 1153138904}
-  - component: {fileID: 1153138907}
   m_Layer: 5
   m_Name: Minigame01 Button
   m_TagString: Untagged
@@ -2371,20 +2412,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153138902}
   m_CullTransparentMesh: 1
---- !u!114 &1153138907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153138902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4d88beea8265a4bb5468ed66b7de18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPressed: 0
-  description: {fileID: 1632956577}
 --- !u!1 &1158289433
 GameObject:
   m_ObjectHideFlags: 0
@@ -3525,10 +3552,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1802917327}
         m_TargetAssemblyTypeName: ContactInformation, Assembly-CSharp
         m_MethodName: CreateContact
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
+          m_ObjectArgumentAssemblyTypeName: CharacterBase, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4017,7 +4044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1802917324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4091,7 +4118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: {fileID: 591245776}
   image: {fileID: 1396597989}
-  character: {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
+  button: {fileID: 1802917323}
 --- !u!114 &1802917328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4135,7 +4162,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1802917325}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1802917327}
+        m_TargetAssemblyTypeName: ContactInformation, Assembly-CSharp
+        m_MethodName: OpenMessage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 368226201}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1964421448
 GameObject:
   m_ObjectHideFlags: 0

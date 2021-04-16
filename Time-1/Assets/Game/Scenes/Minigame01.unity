@@ -884,11 +884,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b36ba4b5a3fd042af0a3d1c8a35a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 60
+  timeRemaining: 30
   TimerTextTMP: {fileID: 868093403}
   cBase: {fileID: 11400000, guid: 21b0eace4ff83df4ab4c9ccc905095b5, type: 2}
-  raise: 10
-  type: 1
+  raise: 5
+  type: 3
 --- !u!114 &869798801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,7 +946,6 @@ MonoBehaviour:
   mainCamera: {fileID: 1982851393}
   brush: {fileID: 6227431900248306270}
   text: {fileID: 789040846}
-  time: {fileID: 868093403}
   templates:
   - names:
     - caret_left

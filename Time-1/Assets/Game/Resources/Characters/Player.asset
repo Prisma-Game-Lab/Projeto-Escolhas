@@ -18,5 +18,5 @@ MonoBehaviour:
   maxHp: 30
   strength: 5
   defense: 0
-  energy: 4
+  energy: 0
   maxEnergy: 10

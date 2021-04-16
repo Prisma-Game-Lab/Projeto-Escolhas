@@ -148,6 +148,8 @@ public class BattleSystem : MonoBehaviour
         }
         else if (state == BattleState.LOST)
         {
+            DecisionQuitButton.SetActive(true);
+            wonDatePanel.SetActive(true);
             dialogueText.text = "You were defeated. " + enemyUnit.Cbase.name +" is going away displeased.";
         }
     }

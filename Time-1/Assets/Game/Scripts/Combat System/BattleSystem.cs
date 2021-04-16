@@ -30,6 +30,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject CombatPanel;
 
     public GameObject wonDatePanel;
+    public GameObject lostDatePanel;
 
     public BattleState state;
 
@@ -38,6 +39,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.START;
         wonDatePanel.SetActive(false);
+        lostDatePanel.SetActive(false);
         CombatPanel.SetActive(false);
         DecisionPanel.SetActive(true);
         DecisionAttackButton.SetActive(true);
@@ -148,8 +150,8 @@ public class BattleSystem : MonoBehaviour
         }
         else if (state == BattleState.LOST)
         {
+            lostDatePanel.SetActive(true);
             DecisionQuitButton.SetActive(true);
-            wonDatePanel.SetActive(true);
             dialogueText.text = "You were defeated. " + enemyUnit.Cbase.name +" is going away displeased.";
         }
     }

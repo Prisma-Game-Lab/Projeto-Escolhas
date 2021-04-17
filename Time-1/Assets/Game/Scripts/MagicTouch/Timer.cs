@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
 	public float timeRemaining = 10;
 
 	public TextMeshProUGUI TimerTextTMP;
-	public static bool timeStopped = false;
+	public static bool timeStopped;
 
 	public CharacterBase cBase;
 	public int raise;
@@ -22,6 +22,7 @@ public class Timer : MonoBehaviour
 	{
 	    TimerTextTMP.gameObject.SetActive(true);
 		complete = false;
+		timeStopped = false;
 	}
 
 	void Update()

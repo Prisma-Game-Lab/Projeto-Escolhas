@@ -7,7 +7,9 @@ using Ink.Runtime;
 public class InkExample : MonoBehaviour
 {
     public TextAsset inkJSONAsset;
+
     private Story story;
+
     public Button buttonPrefab;
 
     private List<string> messages = new List<string>();
@@ -33,36 +35,60 @@ public class InkExample : MonoBehaviour
         clearUI();
 
         // Create a new GameObject
-        GameObject newGameObject = new GameObject("TextChunk");
+        //GameObject newGameObject = new GameObject("TextChunk");
         // Set its transform to the Canvas (this)
-        newGameObject.transform.SetParent(this.transform, false);
+        //newGameObject.transform.SetParent(this.transform, false);
 
         // Add a new Text component to the new GameObject
-        Text newTextObject = newGameObject.AddComponent<Text>();
+        //Text newTextObject = newGameObject.AddComponent<Text>();
         // Set the fontSize larger
-        newTextObject.fontSize = 55;
+        //newTextObject.fontSize = 55;
 
         // Load the next block and save text (if any)
-        string text = getNextStoryBlock();
+        getNextStoryBlock();
 
-        messages.Add(text);
+        List<GameObject> newGameObject1 = new List<GameObject>();
+
+        int i = 0;
+
+        foreach (var line in messages) {
+            GameObject newGameObject2 = new GameObject("yvby");
+            newGameObject1.Add(newGameObject2);
+            newGameObject1[i].AddComponent<Text>();
+            newGameObject1[i].transform.SetParent(this.transform, false);
+            newGameObject1[i].GetComponent<Text>().fontSize = 55;
+            newGameObject1[i].GetComponent<Text>().text = line;
+            newGameObject1[i].GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+            i++;
+            //newGameObject.AddComponent<Image>();
+            //if (line.Contains("Player")) {
+                //newTextObject.text = line;
+            //}
+            //else {
+                //newTextObject.text = line;
+            //}
+        }
+
+        foreach (var j in newGameObject1) {
+            Debug.Log(j.GetComponent<Text>().text);
+        }
 
         // Get the current tags (if any)
         List<string> tags = story.currentTags;
 
         // If there are tags, use the first one.
         // Otherwise, just show the text.
-        if (tags.Count > 0)
-        {
-            newTextObject.text = "<color=grey>" + tags[0] + "</color> – " + text;
-        }
-        else
-        {
-            newTextObject.text = text;
-        }
+        //if (tags.Count > 0)
+        //{
+            //newTextObject.text = "<color=grey>" + tags[0] + "</color> – " + text;
+        //}
+        //else
+        //{
+            //newTextObject.text = text;
+        //}
 
         // Load Arial from the built-in resources
-        newTextObject.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+        //newTextObject.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
 
         foreach (Choice choice in story.currentChoices)
         {
@@ -100,16 +126,16 @@ public class InkExample : MonoBehaviour
 
 
     // Load and potentially return the next story block
-    string getNextStoryBlock()
+    void getNextStoryBlock()
     {
-        string text = "";
 
-        if (story.canContinue)
+        while (story.canContinue)
         {
-            text = story.ContinueMaximally();
+            //text = story.ContinueMaximally();
+            messages.Add(story.Continue());
         }
 
-        return text;
+        //return text;
     }
 
     // Update is called once per frame

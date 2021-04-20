@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
+using TMPro;
 
 public class InkExample : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class InkExample : MonoBehaviour
     private Story story;
 
     public Button buttonPrefab;
+    public GameObject textPrefab;
+    public GameObject content;
+
+    public GameObject buttonPlace;
 
     private List<string> messages = new List<string>();
 
@@ -52,20 +57,21 @@ public class InkExample : MonoBehaviour
         int i = 0;
 
         foreach (var line in messages) {
-            GameObject newGameObject2 = new GameObject("yvby");
-            newGameObject1.Add(newGameObject2);
-            newGameObject1[i].AddComponent<Text>();
-            newGameObject1[i].transform.SetParent(this.transform, false);
-            newGameObject1[i].GetComponent<Text>().fontSize = 55;
-            newGameObject1[i].GetComponent<Text>().text = line;
-            newGameObject1[i].GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
-            i++;
+            Debug.Log(line);
+            Instantiate(textPrefab, content.transform);
+            textPrefab.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = line;
+            textPrefab.transform.SetParent(content.transform);
+            //GameObject newGameObject2 = new GameObject("line");
+            //newGameObject1.Add(newGameObject2);
+            //newGameObject1[i].AddComponent<Text>();
+            //newGameObject1[i].transform.SetParent(content.transform);
+            //newGameObject1[i].GetComponent<Text>().fontSize = 55;
+            //newGameObject1[i].GetComponent<Text>().text = line;
+            //newGameObject1[i].GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+            //i++;
             //newGameObject.AddComponent<Image>();
             //if (line.Contains("Player")) {
-                //newTextObject.text = line;
-            //}
-            //else {
-                //newTextObject.text = line;
+                //newGameObject1[i].GetComponent<Text>().text.Alignment = "right";
             //}
         }
 
@@ -92,8 +98,8 @@ public class InkExample : MonoBehaviour
 
         foreach (Choice choice in story.currentChoices)
         {
-            Button choiceButton = Instantiate(buttonPrefab) as Button;
-            choiceButton.transform.SetParent(this.transform, false);
+            Button choiceButton = Instantiate(buttonPrefab, buttonPlace.transform);
+            choiceButton.transform.SetParent(buttonPlace.transform);
 
             // Gets the text from the button prefab
             Text choiceText = choiceButton.GetComponentInChildren<Text>();
@@ -117,10 +123,17 @@ public class InkExample : MonoBehaviour
     // Clear out all of the UI, calling Destory() in reverse
     void clearUI()
     {
-        int childCount = this.transform.childCount;
+        int childCount = buttonPlace.transform.childCount;
         for (int i = childCount - 1; i >= 0; i--)
         {
-            GameObject.Destroy(this.transform.GetChild(i).gameObject);
+            //if (this.transform.GetChild(i).gameObject.tag != "Scroll") {
+            //if (this.transform.GetChild(i).gameObject.tag == "ButtonSpace") {
+                Destroy(buttonPlace.transform.GetChild(i).gameObject); 
+                //}
+                //else {
+                    //GameObject.Destroy(this.transform.GetChild(i).gameObject);
+                //}
+           //}
         }
     }
 

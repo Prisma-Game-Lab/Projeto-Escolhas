@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000030518, y: -833.05}
-  m_SizeDelta: {x: 1080, y: 1651.2}
+  m_AnchoredPosition: {x: 0.000030518, y: -829.34}
+  m_SizeDelta: {x: 1080, y: 1658.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &10145262
 MonoBehaviour:
@@ -1632,7 +1632,10 @@ MonoBehaviour:
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 989674257}
   content: {fileID: 1351233490}
+  scrollView: {fileID: 10145260}
   buttonPlace: {fileID: 588917015}
+  firstText: {fileID: 989674257}
+  topBar: {fileID: 82430061}
 --- !u!1 &379924168
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,8 +2149,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000030518, y: 206.19}
-  m_SizeDelta: {x: 1080, y: 412.32}
+  m_AnchoredPosition: {x: 0.000030518, y: 206.2}
+  m_SizeDelta: {x: 1080, y: 412.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588917017
 MonoBehaviour:
@@ -3379,7 +3382,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -540, y: 0}
-  m_SizeDelta: {x: 1080, y: 1651}
+  m_SizeDelta: {x: 1080, y: 1658.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &993311955
 MonoBehaviour:
@@ -4716,8 +4719,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -536.3319, y: 0}
-  m_SizeDelta: {x: 1072.6638, y: 1651.2}
+  m_AnchoredPosition: {x: -540, y: 0}
+  m_SizeDelta: {x: 1080, y: 1658.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1374516732
 GameObject:

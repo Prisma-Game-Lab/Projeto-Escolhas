@@ -32,7 +32,7 @@ public class InkExample : MonoBehaviour
         float posyb = buttonPlace.transform.position.y;
         float posyt = topBar.transform.position.y;
 
-        scrollView.transform.position = new Vector2(posxb, posyb * 3.7f);
+        //scrollView.transform.position = new Vector2(posxb, posyb * 3.7f);
 
         posxc = 800.0f;
         posyc = 700.0f;
@@ -52,10 +52,12 @@ public class InkExample : MonoBehaviour
             GameObject inst = Instantiate(textPrefab, content.transform);
             inst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i];
             Debug.Log(posyc);
-            inst.transform.position = new Vector2(posxc, posyc + distance);      
+            inst.transform.position = new Vector2(posxc, posyc + distance);  
+            if (messages[i].Contains("Other")) {
+                inst.GetComponent<Image>().color = new Color32(255,255,225,255);
+            }   
             posxc = inst.transform.position.x;
             posyc = inst.transform.position.y;
-            //posyc += posyc/2;
             distance = 150.0f;
             lastLine += 1;
         }

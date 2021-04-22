@@ -55,8 +55,8 @@ public class InkExample : MonoBehaviour
             inst.transform.position = new Vector2(posxc, posyc + distance);      
             posxc = inst.transform.position.x;
             posyc = inst.transform.position.y;
-            posyc += posyc/2;
-            distance = 0.01f;
+            //posyc += posyc/2;
+            distance = 150.0f;
             lastLine += 1;
         }
 

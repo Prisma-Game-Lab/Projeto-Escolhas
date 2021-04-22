@@ -15,6 +15,9 @@ public class InkExample : MonoBehaviour
     public GameObject scrollView;
     public GameObject buttonPlace;
     public GameObject topBar;
+    private GameObject lastInst;
+    private GameObject currentInst;
+    public Button combatButton;
     private float posxc;
     private float posyc;
     private int lastLine = 0;
@@ -34,7 +37,7 @@ public class InkExample : MonoBehaviour
 
         //scrollView.transform.position = new Vector2(posxb, posyb * 3.7f);
 
-        posxc = 800.0f;
+        //posxc = 800.0f;
         posyc = 700.0f;
 
         messages.Clear();
@@ -48,16 +51,26 @@ public class InkExample : MonoBehaviour
         getNextStoryBlock();
 
         for (int i = lastLine; i < messages.Count; i++) {
-            Debug.Log(messages[i]);
-            GameObject inst = Instantiate(textPrefab, content.transform);
-            inst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i];
-            Debug.Log(posyc);
-            inst.transform.position = new Vector2(posxc, posyc + distance);  
+            //if (i != 0) {
+                //lastInst = currentInst;
+                //lastInst.transform.position = new Vector2(posxc, posyc + distance); 
+            //}
+            if (messages[i].Contains("Combat")) {
+                showCombatButton(combatButton);
+                break;
+            }
+            currentInst = Instantiate(textPrefab, content.transform); 
+            currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i];
             if (messages[i].Contains("Other")) {
-                inst.GetComponent<Image>().color = new Color32(255,255,225,255);
-            }   
-            posxc = inst.transform.position.x;
-            posyc = inst.transform.position.y;
+                currentInst.GetComponent<Image>().color = new Color32(169,169,169,255);
+                posxc = 300.0f;
+            } 
+            else {
+                posxc = 800.0f;
+            }
+            currentInst.transform.position = new Vector2(posxc, posyc + distance);  
+            posxc = currentInst.transform.position.x;
+            posyc = currentInst.transform.position.y;
             distance = 150.0f;
             lastLine += 1;
         }
@@ -101,5 +114,9 @@ public class InkExample : MonoBehaviour
         {
             messages.Add(story.Continue());
         }
+    }
+
+    void showCombatButton(Button combatButton) {
+        combatButton.gameObject.SetActive(true);
     }
 }

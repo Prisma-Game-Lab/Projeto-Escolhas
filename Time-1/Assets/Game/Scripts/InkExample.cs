@@ -14,11 +14,10 @@ public class InkExample : MonoBehaviour
     public GameObject content;
     public GameObject scrollView;
     public GameObject buttonPlace;
-    public GameObject firstText;
     public GameObject topBar;
     private float posxc;
     private float posyc;
-    private int lastLine;
+    private int lastLine = 0;
     private float distance;
     private List<string> messages = new List<string>();
 
@@ -33,10 +32,12 @@ public class InkExample : MonoBehaviour
         float posyb = buttonPlace.transform.position.y;
         float posyt = topBar.transform.position.y;
 
-        scrollView.transform.position = new Vector2(posxb, posyb * 3.8f);
+        scrollView.transform.position = new Vector2(posxb, posyb * 3.7f);
 
-        posxc = firstText.transform.position.x;
-        posyc = firstText.transform.position.y;
+        posxc = 800.0f;
+        posyc = 700.0f;
+
+        messages.Clear();
 
         refresh();
     }
@@ -48,14 +49,14 @@ public class InkExample : MonoBehaviour
 
         for (int i = lastLine; i < messages.Count; i++) {
             Debug.Log(messages[i]);
-            Instantiate(textPrefab, content.transform);
-            textPrefab.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i];
-            textPrefab.transform.position = new Vector2(posxc, posyc + distance);      
-            posxc = textPrefab.transform.position.x;
-            posyc = textPrefab.transform.position.y;
+            GameObject inst = Instantiate(textPrefab, content.transform);
+            inst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i];
             Debug.Log(posyc);
+            inst.transform.position = new Vector2(posxc, posyc + distance);      
+            posxc = inst.transform.position.x;
+            posyc = inst.transform.position.y;
             posyc += posyc/2;
-            distance = 2.0f;
+            distance = 0.01f;
             lastLine += 1;
         }
 

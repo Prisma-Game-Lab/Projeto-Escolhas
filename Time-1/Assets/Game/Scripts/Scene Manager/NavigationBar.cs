@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class NavigationBar : MonoBehaviour
 {
     public Canvas home;
-
     private Canvas _name;
 
     void Start()

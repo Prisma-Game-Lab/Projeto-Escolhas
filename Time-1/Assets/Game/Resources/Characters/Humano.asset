@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14d131bc9ea134147bd4794063265bbd, type: 3}
-  m_Name: Elf
+  m_Name: Humano
   m_EditorClassIdentifier: 
-  name: Elf
-  sprite: {fileID: 21300000, guid: 065534f6472b6be41be388bb89c91128, type: 3}
-  hp: 50
-  maxHp: 50
-  strength: 7
+  name: Humano
+  sprite: {fileID: 21300000, guid: 106d579acc8eef6428793e542f23a895, type: 3}
+  zoomImage: {fileID: 944427686239929135, guid: 7e32cd23783d2a740afd0e9e1b5d5227, type: 3}
+  entireImage: {fileID: 536244174663860650, guid: 7e32cd23783d2a740afd0e9e1b5d5227, type: 3}
+  hp: 60
+  maxHp: 60
+  strength: 6
   defense: 0
   energy: 0
   maxEnergy: 0

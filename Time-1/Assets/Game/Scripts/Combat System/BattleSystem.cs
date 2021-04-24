@@ -55,7 +55,7 @@ public class BattleSystem : MonoBehaviour
         GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
         enemyUnit = enemyGO.GetComponent<Unit>();
 
-        dialogueText.text = enemyUnit.Cbase.name + " approaches...";
+        dialogueText.text = enemyUnit.Cbase.name + " se aproxima...";
 
         enemyUnit.Cbase.hp = enemyUnit.Cbase.maxHp;
         playerUnit.Cbase.hp = playerUnit.Cbase.maxHp;
@@ -84,16 +84,16 @@ public class BattleSystem : MonoBehaviour
             if (tipo == 1)
             {
                 isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 1));
-                dialogueText.text = "You punched your date!";
+                dialogueText.text = "Você socou seu date!";
             }
             else if (tipo == 2)
             {
                 isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 1.5));
-                dialogueText.text = "You kicked your date!";
+                dialogueText.text = "Você chutou seu date!";
             }
             else
             {
-                dialogueText.text = "You special attacked your date!";
+                dialogueText.text = "Você usou ataque especial no seu date!";
                 isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 2));
             }
 
@@ -117,7 +117,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        dialogueText.text = enemyUnit.Cbase.name + " punched you!";
+        dialogueText.text = enemyUnit.Cbase.name + " te socou!";
 
         yield return new WaitForSeconds(1f);
 
@@ -146,19 +146,19 @@ public class BattleSystem : MonoBehaviour
         {
             DecisionQuitButton.SetActive(true);
             wonDatePanel.SetActive(true);
-            dialogueText.text = "You won the date! "+enemyUnit.Cbase.name+ " is really into you now!";
+            dialogueText.text = "Você ganhou o encontro! "+enemyUnit.Cbase.name+ " esta totalmente na sua!";
         }
         else if (state == BattleState.LOST)
         {
             lostDatePanel.SetActive(true);
             DecisionQuitButton.SetActive(true);
-            dialogueText.text = "You were defeated. " + enemyUnit.Cbase.name +" is going away displeased.";
+            dialogueText.text = "Você foi derrotado. " + enemyUnit.Cbase.name + " esta indo embora insatisfeita.";
         }
     }
 
     void PlayerTurn()
     {
-        dialogueText.text = "Choose an action:";
+        dialogueText.text = "Escolha uma ação:";
         DecisionAttackButton.SetActive(true);
         DecisionQuitButton.SetActive(true);
         playerUnit.GetEnergy(2);
@@ -221,7 +221,9 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PlayerRun()
     {
         state = BattleState.RUN;
-        dialogueText.text = "Quitting date...";
+        DecisionAttackButton.SetActive(false);
+        DecisionQuitButton.SetActive(false);
+        dialogueText.text = "Saindo do encontro...";
         //alguma animacao
         yield return new WaitForSeconds(1.0f);
         //sai do combate

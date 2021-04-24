@@ -9,16 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14d131bc9ea134147bd4794063265bbd, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: 8303113ade3ff2e4cb49cbb1eeee2c78, type: 3}
+  m_Name: TinderManager
   m_EditorClassIdentifier: 
-  name: Player
-  sprite: {fileID: 0}
-  zoomImage: {fileID: 0}
-  entireImage: {fileID: 0}
-  hp: 16
-  maxHp: 30
-  strength: 5
-  defense: 0
-  energy: 0
-  maxEnergy: 10
+  allCharacters:
+  - {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
+  - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}
+  curIndex: 0

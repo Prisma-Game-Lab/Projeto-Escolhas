@@ -7,6 +7,8 @@ public class CharacterBase : ScriptableObject
 {
     public new string name;
     public Sprite sprite;
+    public Sprite zoomImage;
+    public Sprite entireImage;
     public int hp;
     public int maxHp;
     public int strength;

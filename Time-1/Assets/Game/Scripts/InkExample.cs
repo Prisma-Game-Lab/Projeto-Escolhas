@@ -37,8 +37,9 @@ public class InkExample : MonoBehaviour
 
         //scrollView.transform.position = new Vector2(posxb, posyb * 3.7f);
 
-        //posxc = 800.0f;
         posyc = 700.0f;
+
+        Debug.Log(Screen.currentResolution.width);
 
         messages.Clear();
 

@@ -21,4 +21,8 @@ public class ContactInformation : MonoBehaviour
     public void OpenMessage(GameObject panel) {
         panel.SetActive(true);
     }
+
+    public void CloseMessage(GameObject panel) {
+        panel.SetActive(false);
+    }
 }

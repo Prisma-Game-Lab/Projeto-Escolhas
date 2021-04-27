@@ -20,7 +20,7 @@ public class InkExample : MonoBehaviour
     public Button combatButton;
     private float posxc;
     private float posyc;
-    private int lastLine = 0;
+    private int lastLine;
     private float distance;
     private List<string> messages = new List<string>();
 
@@ -29,7 +29,7 @@ public class InkExample : MonoBehaviour
         story = new Story(inkJSONAsset.text);
 
         lastLine = 0;
-        distance = 0;
+        distance = 150.0f;;
 
         float posxb = buttonPlace.transform.position.x;
         float posyb = buttonPlace.transform.position.y;
@@ -51,21 +51,21 @@ public class InkExample : MonoBehaviour
         getNextStoryBlock();
 
         for (int i = lastLine; i < messages.Count; i++) {
-            distance = 150.0f;
             if (messages[i].Contains("Combat")) {
                 showCombatButton(combatButton);
                 break;
             }
             currentInst = Instantiate(textPrefab, content.transform); 
-            currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i];
             if (messages[i].Contains("Other")) {
+                currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
                 currentInst.GetComponent<Image>().color = new Color32(169,169,169,255);
                 posxc = 300.0f;
             } 
             else {
+                currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(7);
                 posxc = 800.0f;
             }
-            currentInst.transform.position = new Vector2(posxc, 700.0f);  
+            currentInst.transform.position = new Vector2(posxc, 550.0f);  
             if (i != 0) {
                 foreach (var message in lastInst) {
                     float posxc1 = message.transform.position.x;

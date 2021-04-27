@@ -15,7 +15,7 @@ public class InkExample : MonoBehaviour
     public GameObject scrollView;
     public GameObject buttonPlace;
     public GameObject topBar;
-    private GameObject lastInst;
+    private List<GameObject> lastInst = new List<GameObject>();
     private GameObject currentInst;
     public Button combatButton;
     private float posxc;
@@ -51,10 +51,7 @@ public class InkExample : MonoBehaviour
         getNextStoryBlock();
 
         for (int i = lastLine; i < messages.Count; i++) {
-            //if (i != 0) {
-                //lastInst = currentInst;
-                //lastInst.transform.position = new Vector2(posxc, posyc + distance); 
-            //}
+            distance = 150.0f;
             if (messages[i].Contains("Combat")) {
                 showCombatButton(combatButton);
                 break;
@@ -68,13 +65,20 @@ public class InkExample : MonoBehaviour
             else {
                 posxc = 800.0f;
             }
-            currentInst.transform.position = new Vector2(posxc, posyc + distance);  
+            currentInst.transform.position = new Vector2(posxc, 700.0f);  
+            if (i != 0) {
+                foreach (var message in lastInst) {
+                    float posxc1 = message.transform.position.x;
+                    float posyc1 = message.transform.position.y;
+                    message.transform.position = new Vector2(posxc1, posyc1 + distance); 
+                }
+            }
+            lastInst.Add(currentInst);
             posxc = currentInst.transform.position.x;
             posyc = currentInst.transform.position.y;
-            distance = 150.0f;
             lastLine += 1;
         }
-
+        
         // Get the current tags (if any)
         //List<string> tags = story.currentTags;
 

@@ -29,7 +29,7 @@ public class InkExample : MonoBehaviour
         story = new Story(inkJSONAsset.text);
 
         lastLine = 0;
-        distance = 150.0f;;
+        distance = 150.0f;
 
         float posxb = buttonPlace.transform.position.x;
         float posyb = buttonPlace.transform.position.y;
@@ -38,8 +38,6 @@ public class InkExample : MonoBehaviour
         //scrollView.transform.position = new Vector2(posxb, posyb * 3.7f);
 
         posyc = 700.0f;
-
-        Debug.Log(Screen.currentResolution.width);
 
         messages.Clear();
 
@@ -58,8 +56,19 @@ public class InkExample : MonoBehaviour
             }
             currentInst = Instantiate(textPrefab, content.transform); 
             if (messages[i].Contains("Other")) {
-                currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
-                currentInst.GetComponent<Image>().color = new Color32(169,169,169,255);
+                if (messages[i].Contains("sticker")) {
+                    int len = messages[i].Substring(6).Length;
+                    string path = "Stickers/" + messages[i].Substring(6, len-1);
+                    Sprite sprite = Resources.Load<Sprite>(path);
+                    currentInst.GetComponent<Image>().sprite = sprite;
+                    currentInst.GetComponent<Image>().color = new Color32(255,255,255,255);
+                    currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
+                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 300.0f);
+                }
+                else {
+                    currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
+                    currentInst.GetComponent<Image>().color = new Color32(169,169,169,255);
+                }
                 posxc = 300.0f;
             } 
             else {
@@ -89,7 +98,7 @@ public class InkExample : MonoBehaviour
             choiceButton.transform.SetParent(buttonPlace.transform);
 
             Text choiceText = choiceButton.GetComponentInChildren<Text>();
-            choiceText.text = choice.text;
+            choiceText.text = choice.text.Substring(7);
 
             choiceButton.onClick.AddListener(delegate {
                 OnClickChoiceButton(choice);

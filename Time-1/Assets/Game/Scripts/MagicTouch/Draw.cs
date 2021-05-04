@@ -34,8 +34,6 @@ public class Draw : MonoBehaviour
 
     bool hasDrawn = false;
 
-    private List<List<string>> _nameDrawing = new List<List<string>>();
-
     private bool _sort = false;
 
     private float _x1, _x2, _x3, _x4;
@@ -70,10 +68,6 @@ public class Draw : MonoBehaviour
         sortDrawing();
     }
 
-    public void Minigame() {
-
-    }
-
     private void sortDrawing() {
         _sort = false;
         int rnd2 = Random.Range(0,aux.Count);
@@ -83,7 +77,6 @@ public class Draw : MonoBehaviour
         aux.RemoveAt(j);
         int rndTemplate = Random.Range(0,4);
         List<string> template = templates[rndTemplate].names;
-        _nameDrawing.Add(template);
         _storeString[rnd2][0] = templates[rndTemplate].names[0];
         _storeString[rnd2][1] = templates[rndTemplate].names[1];
         img[rnd2].GetComponent<Image>().sprite = templates[rndTemplate].image;
@@ -93,10 +86,27 @@ public class Draw : MonoBehaviour
         }
     }
 
+    private void eraseDrawing(int pos) {
+        img[pos].GetComponent<Image>().sprite = null;
+        _storeString[pos][0] = "0";
+        _storeString[pos][1] = "0";
+        aux.Add(pos);
+        _sort = true;
+        rnd.Clear();
+    }
+
+    //IEnumerator sortThenErase() {
+        //for (float ft = 1f; ft >= 0; ft -= 0.1f) {
+            
+           // yield return new WaitForSeconds(.1f);
+       // }
+   // }
+
     private void Update() {
         if (_sort) {
             if (aux.Count > 0) {
-                n = Random.Range(1,aux.Count + 1);
+                n = Random.Range(1, aux.Count + 1);
+                //for (int i = 0; i <n; i++)
                 sortDrawing();
             }
         }
@@ -120,14 +130,13 @@ public class Draw : MonoBehaviour
                         bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.35f);
                         bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.35f);
                         if (result1 || result2) {
-                            Debug.Log("true");
-                            img[i].GetComponent<Image>().sprite = null;
-                            _storeString[i][0] = "0";
-                            _storeString[i][1] = "0";
-                            aux.Add(i);
-                            _sort = true;
-                            _nameDrawing.Clear();
-                            rnd.Clear();
+                            //img[i].GetComponent<Image>().sprite = null;
+                            //_storeString[i][0] = "0";
+                            //_storeString[i][1] = "0";
+                            //aux.Add(i);
+                            //_sort = true;
+                            //rnd.Clear();
+                            eraseDrawing(i);
                             break;
                         }
                     }

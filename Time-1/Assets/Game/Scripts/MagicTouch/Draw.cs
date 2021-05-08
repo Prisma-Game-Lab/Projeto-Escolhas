@@ -66,6 +66,7 @@ public class Draw : MonoBehaviour
         aux.Add(2);
         aux.Add(3);
         sortDrawing();
+        StartCoroutine(sortThenErase(1.0f));
     }
 
     private void sortDrawing() {
@@ -95,18 +96,16 @@ public class Draw : MonoBehaviour
         rnd.Clear();
     }
 
-    //IEnumerator sortThenErase() {
-        //for (float ft = 1f; ft >= 0; ft -= 0.1f) {
-            
-           // yield return new WaitForSeconds(.1f);
-       // }
-   // }
+    private IEnumerator sortThenErase(float waitTime) { 
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("oi");
+    }
 
     private void Update() {
         if (_sort) {
             if (aux.Count > 0) {
                 n = Random.Range(1, aux.Count + 1);
-                //for (int i = 0; i <n; i++)
+                //for (int i = 0; i < n; i++)
                 sortDrawing();
             }
         }

@@ -7,18 +7,11 @@ using TMPro;
 public class Draw : MonoBehaviour
 {
     public Camera mainCamera;
-
     public GameObject brush;
-
     LineRenderer currentLineRenderer;
-
     Vector2 lastPos;
-
     List<List<float>> pointsList = new List<List<float>>();
-
     public Text text;
-
-    //Timer time;
 
     [System.Serializable]
     public class Templates {
@@ -27,28 +20,19 @@ public class Draw : MonoBehaviour
     }
 
     public List<Templates> templates = new List<Templates>();
-
     public GameObject squareImg1, squareImg2, squareImg3, squareImg4;
-
     float squarePos;
-
     bool hasDrawn = false;
-
     private bool _sort = false;
-
     private float _x1, _x2, _x3, _x4;
-
     private float _y1, _y2, _y3, _y4;
-
     List<GameObject> img = new List<GameObject>();
-
     List<int> rnd = new List<int>();
-
     private List<List<string>> _storeString = new List<List<string>>();
-
     int n = 1;
-
     List<int> aux = new List<int>();
+    private int point;
+    public TextMeshProUGUI pointsText;
 
     void Start() {
         _y3 = squareImg3.gameObject.transform.position.y;
@@ -65,8 +49,9 @@ public class Draw : MonoBehaviour
         aux.Add(1);
         aux.Add(2);
         aux.Add(3);
-        sortDrawing();
-        StartCoroutine(sortThenErase(1.0f));
+        point = 0;
+        sortMany();
+        StartCoroutine(sortThenErase(4.0f));
     }
 
     private void sortDrawing() {
@@ -97,18 +82,30 @@ public class Draw : MonoBehaviour
     }
 
     private IEnumerator sortThenErase(float waitTime) { 
-        yield return new WaitForSeconds(waitTime);
-        Debug.Log("oi");
+        while (!Timer.timeStopped && !Pause.isPaused) {
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 0; i < 4; i++) {
+                if (!aux.Contains(i))
+                    eraseDrawing(i);
+            }
+            sortMany();
+        }
+    }
+
+    private void sortMany() {
+        int n = Random.Range(1, aux.Count + 1);
+        for (int i = 0; i < n; i++)
+            sortDrawing();
     }
 
     private void Update() {
-        if (_sort) {
-            if (aux.Count > 0) {
-                n = Random.Range(1, aux.Count + 1);
+        //if (_sort) {
+            //if (aux.Count > 0) {
+                //n = Random.Range(1, aux.Count + 1);
                 //for (int i = 0; i < n; i++)
-                sortDrawing();
-            }
-        }
+                //sortDrawing();
+            //}
+        //}
         if (!Timer.timeStopped && !Pause.isPaused)
             Drawing();
     }
@@ -129,6 +126,8 @@ public class Draw : MonoBehaviour
                         bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.35f);
                         bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.35f);
                         if (result1 || result2) {
+                            point++;
+                            pointsText.text = point.ToString();
                             //img[i].GetComponent<Image>().sprite = null;
                             //_storeString[i][0] = "0";
                             //_storeString[i][1] = "0";
@@ -136,14 +135,13 @@ public class Draw : MonoBehaviour
                             //_sort = true;
                             //rnd.Clear();
                             eraseDrawing(i);
+                            if (aux.Count == 4) {
+                                sortMany();
+                            }
                             break;
                         }
                     }
                 } 
-                if (i == 4) {
-                    //Debug.Log("false");
-                    //_sort = true;
-                }
             }
             currentLineRenderer = null;
             pointsList.Clear();

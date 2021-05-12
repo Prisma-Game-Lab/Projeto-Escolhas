@@ -133,10 +133,10 @@ TextureImporter:
       name: Elfa Zoom
       rect:
         serializedVersion: 2
-        x: 105
-        y: 619
-        width: 620
-        height: 900
+        x: 110
+        y: 882
+        width: 660
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

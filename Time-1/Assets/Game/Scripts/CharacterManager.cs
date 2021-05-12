@@ -6,6 +6,5 @@ using UnityEngine;
 public class CharacterManager : ScriptableObject
 {
     public List<CharacterBase> allCharacters;
-    [HideInInspector] public List<CharacterBase> tinderCharacters;
-    public int maxIndex;
+    public List<CharacterBase> tinderCharacters;
 }

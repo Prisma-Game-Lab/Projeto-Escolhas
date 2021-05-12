@@ -8,28 +8,30 @@ public class TinderManager : MonoBehaviour
     public Image tinderImage;
     public CharacterManager characters;
 
-    private List<CharacterBase> curCharacters=new List<CharacterBase>(); 
-    private int curIndex=0;
+    private int curIndex;
 
     private void Start()
     {
-        if (curCharacters.Count == 0)
-        {
-            for (int i = 0; i <= characters.maxIndex; i++)
-            {
-                curCharacters.Add(characters.allCharacters[i]);
-            }
-        }
+        curIndex = 0;
+        tinderImage.sprite = characters.tinderCharacters[curIndex].zoomImage;
     }
+
     public void OnNoButtonPressed()
     {
         curIndex++;
-        if (curIndex > characters.maxIndex)
+        if (curIndex > characters.tinderCharacters.Count - 1)
             curIndex = 0;
-        tinderImage.sprite = characters.allCharacters[curIndex].zoomImage;
+        tinderImage.sprite = characters.tinderCharacters[curIndex].zoomImage;
     }
     public void OnYesButtonPressed()
     {
-        //add personagem na conversa e remover da lista do tinder
+        characters.tinderCharacters.Remove(characters.tinderCharacters[curIndex]);
+        curIndex = 0;
+        tinderImage.sprite = characters.tinderCharacters[curIndex].zoomImage;
+        //cria e abre uma conversa com o personagem
+    }
+    public void OnBioButtonPressed()
+    {
+        //abre UI da bio
     }
 }

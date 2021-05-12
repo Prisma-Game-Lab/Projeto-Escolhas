@@ -4453,7 +4453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d84a02a35eeb9647ad95d2dcba22356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tinderImage: {fileID: 0}
+  tinderImage: {fileID: 5824171044704623516}
   characters: {fileID: 11400000, guid: 6105ee460a3325943b163ed4557666d7, type: 2}
 --- !u!4 &794474618
 Transform:
@@ -6540,7 +6540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1158289434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11128,7 +11128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2011346669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12351,13 +12351,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1802917327}
-        m_TargetAssemblyTypeName: ContactInformation, Assembly-CSharp
-        m_MethodName: CreateContact
-        m_Mode: 2
+      - m_Target: {fileID: 794474617}
+        m_TargetAssemblyTypeName: TinderManager, Assembly-CSharp
+        m_MethodName: OnNoButtonPressed
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
-          m_ObjectArgumentAssemblyTypeName: CharacterBase, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13061,13 +13061,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1802917327}
-        m_TargetAssemblyTypeName: ContactInformation, Assembly-CSharp
-        m_MethodName: CreateContact
-        m_Mode: 2
+      - m_Target: {fileID: 794474617}
+        m_TargetAssemblyTypeName: TinderManager, Assembly-CSharp
+        m_MethodName: OnYesButtonPressed
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
-          m_ObjectArgumentAssemblyTypeName: CharacterBase, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -7,6 +7,8 @@ public class TinderManager : MonoBehaviour
 {
     public Image tinderImage;
     public CharacterManager characters;
+    //public List<CharacterBase> tinderCharacters;
+    //public List<CharacterBase> allCharacters;
 
     private int curIndex;
 

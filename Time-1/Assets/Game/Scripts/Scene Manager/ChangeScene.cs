@@ -8,7 +8,15 @@ public class ChangeScene : MonoBehaviour
 
     public void Minigame1() {
         SceneManager.LoadScene("Minigame01");
-        
+    }
+
+    public void Minigame2()
+    {
+        SceneManager.LoadScene("Minigame02");
+    }
+    public void Minigame3()
+    {
+        SceneManager.LoadScene("Minigame03");
     }
 
     public void App() {

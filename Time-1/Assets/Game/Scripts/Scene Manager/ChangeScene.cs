@@ -26,5 +26,8 @@ public class ChangeScene : MonoBehaviour
         //MinigameManager.MagicTouch();
         //draw.Minigame();
     }
-
-}
+    public void GoToCombat()
+    {
+        SceneManager.LoadScene("Combat_Scene");
+    }
+   }

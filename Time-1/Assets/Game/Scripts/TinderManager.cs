@@ -6,31 +6,33 @@ using UnityEngine.UI;
 public class TinderManager : MonoBehaviour
 {
     public Image tinderImage;
-    public CharacterManager characters;
-    //public List<CharacterBase> tinderCharacters;
-    //public List<CharacterBase> allCharacters;
-
     private int curIndex;
+    TinderData tinderData;
 
     private void Start()
     {
+        tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
         curIndex = 0;
-        tinderImage.sprite = characters.tinderCharacters[curIndex].zoomImage;
+        tinderImage.sprite = tinderData.tinderCharacters[0].zoomImage;
     }
 
     public void OnNoButtonPressed()
     {
         curIndex++;
-        if (curIndex > characters.tinderCharacters.Count - 1)
+        if (curIndex > tinderData.tinderCharacters.Count - 1)
             curIndex = 0;
-        tinderImage.sprite = characters.tinderCharacters[curIndex].zoomImage;
+        tinderImage.sprite = tinderData.tinderCharacters[curIndex].zoomImage;
     }
     public void OnYesButtonPressed()
     {
-        characters.tinderCharacters.Remove(characters.tinderCharacters[curIndex]);
-        curIndex = 0;
-        tinderImage.sprite = characters.tinderCharacters[curIndex].zoomImage;
-        //cria e abre uma conversa com o personagem
+        if (tinderData.curDay > tinderData.matchesNumber)
+        {
+            tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
+            curIndex = 0;
+            tinderImage.sprite = tinderData.tinderCharacters[curIndex].zoomImage;
+            tinderData.matchesNumber += 1;
+            //cria e abre uma conversa com o personagem
+        }
     }
     public void OnBioButtonPressed()
     {

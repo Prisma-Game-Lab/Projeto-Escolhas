@@ -1579,6 +1579,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244840740}
   m_CullTransparentMesh: 1
+--- !u!1 &254342080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 254342082}
+  - component: {fileID: 254342081}
+  m_Layer: 0
+  m_Name: PersistentData
+  m_TagString: persistentData
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &254342081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254342080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90343081452f2824fb97d5af9607ead1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tinderCharacters:
+  - {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
+  - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}
+  allCharacters:
+  - {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
+  - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}
+  - {fileID: 11400000, guid: 0c4e8b4350ebc9542870552006bb6e93, type: 2}
+  curDay: 0
+  matchesNumber: 0
+--- !u!4 &254342082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254342080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 264.79565, y: 561.36334, z: -18.462109}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266465817
 GameObject:
   m_ObjectHideFlags: 0
@@ -4736,11 +4788,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 794474618}
-  - component: {fileID: 794474617}
   - component: {fileID: 794474619}
   - component: {fileID: 794474620}
+  - component: {fileID: 794474617}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: gameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4759,7 +4811,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tinderImage: {fileID: 5824171044704623516}
-  characters: {fileID: 11400000, guid: 6105ee460a3325943b163ed4557666d7, type: 2}
 --- !u!4 &794474618
 Transform:
   m_ObjectHideFlags: 0
@@ -5509,10 +5560,10 @@ RectTransform:
   m_Father: {fileID: 1584241350}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -213.94133}
-  m_SizeDelta: {x: 1080, y: 427.88266}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932518081
 MonoBehaviour:
@@ -9779,7 +9830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1601916900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11842,10 +11893,10 @@ RectTransform:
   m_Father: {fileID: 1584241350}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -1010.20667}
-  m_SizeDelta: {x: 1080, y: 427.88266}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026214671
 MonoBehaviour:
@@ -12250,10 +12301,10 @@ RectTransform:
   m_Father: {fileID: 1584241350}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 540, y: -612.074}
-  m_SizeDelta: {x: 1080, y: 427.88266}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2068026286
 MonoBehaviour:
@@ -12376,8 +12427,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 794474620}
-        m_TargetAssemblyTypeName: NavigationBar, Assembly-CSharp
+      - m_Target: {fileID: 794474619}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: GoToCombat
         m_Mode: 1
         m_Arguments:

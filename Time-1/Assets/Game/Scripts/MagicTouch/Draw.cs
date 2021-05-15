@@ -8,7 +8,7 @@ public class Draw : MonoBehaviour
 {
     public Camera mainCamera;
     public GameObject brush;
-    LineRenderer currentLineRenderer;
+    [HideInInspector] public LineRenderer currentLineRenderer;
     Vector2 lastPos;
     List<List<float>> pointsList = new List<List<float>>();
     public Text text;
@@ -72,7 +72,7 @@ public class Draw : MonoBehaviour
         }
     }
 
-    private void eraseDrawing(int pos) {
+    public void eraseDrawing(int pos) {
         img[pos].GetComponent<Image>().sprite = null;
         _storeString[pos][0] = "0";
         _storeString[pos][1] = "0";
@@ -136,7 +136,9 @@ public class Draw : MonoBehaviour
                             //rnd.Clear();
                             eraseDrawing(i);
                             if (aux.Count == 4) {
+                                StopAllCoroutines();
                                 sortMany();
+                                StartCoroutine(sortThenErase(4.0f));
                             }
                             break;
                         }

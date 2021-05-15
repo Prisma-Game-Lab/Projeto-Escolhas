@@ -15,11 +15,13 @@ public class Timer : MonoBehaviour
 	public CharacterBase cBase;
 	public int raise;
 	public int type;
-	private bool complete;
+    private bool complete;
+	private Draw draw;
 
 
 	private void Start()
 	{
+		draw = gameObject.GetComponent<Draw>();
 	    TimerTextTMP.gameObject.SetActive(true);
 		complete = false;
 		timeStopped = false;
@@ -31,6 +33,8 @@ public class Timer : MonoBehaviour
 			timeRemaining -= Time.deltaTime;
 		else
 		{
+            draw.StopAllCoroutines();
+			draw.currentLineRenderer.positionCount = 0;
 			timeRemaining = 0;
 			timeStopped = true;
 		}

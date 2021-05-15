@@ -21,15 +21,4 @@ public class NavigationBar : MonoBehaviour
         _name = canvas;
 
     }
-
-    public void GoToMenu()
-    {
-        SceneManager.LoadScene("MainMenu_Scene");
-    }
-
-    public void GoToCombat()
-    {
-        SceneManager.LoadScene("Combat_Scene");
-    }
-
 }

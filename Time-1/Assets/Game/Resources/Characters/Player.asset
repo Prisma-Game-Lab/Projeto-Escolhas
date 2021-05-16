@@ -16,9 +16,9 @@ MonoBehaviour:
   sprite: {fileID: 0}
   zoomImage: {fileID: 0}
   entireImage: {fileID: 0}
-  hp: 16
-  maxHp: 30
-  strength: 5
-  defense: 0
-  energy: 0
+  combatImage: {fileID: 0}
+  maxHealth: 30
+  attack: 5
+  defense: 2
+  velocity: 2
   maxEnergy: 10

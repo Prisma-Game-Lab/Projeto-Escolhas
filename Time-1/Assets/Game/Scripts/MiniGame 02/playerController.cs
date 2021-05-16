@@ -4,39 +4,44 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    //PARA MOBILE E WEB
     public float rotationSpeed;
     float rotationX=0;
 
+    //PARA MOBILE
     private Touch touch;
     private Quaternion Xrotation;
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        //CONTROLE PARA MOBILE
+        /*if (Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Moved)
             {
                 Xrotation = Quaternion.Euler(0f, 0f, -touch.deltaPosition.x * rotationSpeed);
                 transform.rotation = Xrotation * transform.rotation;
+
                 //rotationX += -touch.deltaPosition.x*rotationSpeed*Time.deltaTime;
                 //rotationX = normalizeAngle(rotationX);
                 //Quaternion xQuaternion = Quaternion.AngleAxis(rotationX, Vector3.forward);
                 //transform.localRotation = xQuaternion;
             }
-        }
+        }*/
 
-        //FUNCIONA PARA WEB
-        //if (Input.GetMouseButton(0))
-        //{
-        //    rotationX += Input.GetAxis("Mouse X") * rotationSpeed;
-        //    rotationX = normalizeAngle(rotationX);
-        //    Quaternion xQuaternion = Quaternion.AngleAxis(rotationX, Vector3.forward);
-        //    transform.localRotation = xQuaternion;
-        //}
+        //CONTROLE PARA WEB
+        if (Input.GetMouseButton(0))
+        {
+            rotationX += Input.GetAxis("Mouse X") * rotationSpeed;
+            rotationX = normalizeAngle(rotationX);
+            Quaternion xQuaternion = Quaternion.AngleAxis(rotationX, Vector3.forward);
+            transform.localRotation = xQuaternion;
+        }
 
     }
 
+    //PARA WEB
     private float normalizeAngle(float angle)
     {
         if (angle < -360)

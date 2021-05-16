@@ -14,11 +14,11 @@ public class BattleHUD : MonoBehaviour
 
 	public void SetHUD(Unit unit)
 	{
-		nameText.text = unit.Cbase.name;
-		healthText.text = unit.Cbase.hp.ToString();
-        hpGreenBar.fillAmount = (float)unit.Cbase.hp / unit.Cbase.maxHp;
+        nameText.text = unit.cBase.name;
+		healthText.text = unit.curHealth.ToString();
+		hpGreenBar.fillAmount = (float)unit.curHealth / unit.maxHealth;
 		if(gameObject.CompareTag("Player"))
-			energyBar.fillAmount = (float)unit.Cbase.energy / unit.Cbase.maxEnergy;
+			energyBar.fillAmount = (float)unit.curEnergy / unit.maxEnergy;
 	}
 
     public void SetHP(int hp, int maxHP)

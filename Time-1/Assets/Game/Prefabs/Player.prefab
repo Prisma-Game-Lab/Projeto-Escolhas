@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4363536997099518543}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475d8d7ed9646504888a5702b5d7ed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cbase: {fileID: 11400000, guid: 21b0eace4ff83df4ab4c9ccc905095b5, type: 2}
+  cBase: {fileID: 11400000, guid: 21b0eace4ff83df4ab4c9ccc905095b5, type: 2}
+  curHealth: 0
+  curEnergy: 0
+  maxHealth: 0
+  maxEnergy: 0
+  attack: 0
+  defense: 0
+  velocity: 0
 --- !u!1 &6450721039946225802
 GameObject:
   m_ObjectHideFlags: 0

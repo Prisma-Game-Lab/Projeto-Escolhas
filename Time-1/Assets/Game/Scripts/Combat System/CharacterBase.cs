@@ -9,11 +9,11 @@ public class CharacterBase : ScriptableObject
     public Sprite sprite;
     public Sprite zoomImage;
     public Sprite entireImage;
-    public int hp;
-    public int maxHp;
-    public int strength;
+    public Sprite combatImage;
+    public int maxHealth;
+    public int attack;
     public int defense;
-    public int energy;
+    public int velocity;
     public int maxEnergy;
 
 
@@ -25,12 +25,8 @@ public class CharacterBase : ScriptableObject
         get { return sprite; }
     }
 
-    public int HP {
-        get { return hp; }
-    }
-
     public int Strength {
-        get { return strength; }
+        get { return attack; }
     }
 
     public int Defense {

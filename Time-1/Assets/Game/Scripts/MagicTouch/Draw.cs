@@ -23,16 +23,18 @@ public class Draw : MonoBehaviour
     public GameObject squareImg1, squareImg2, squareImg3, squareImg4;
     float squarePos;
     bool hasDrawn = false;
-    private bool _sort = false;
+    //private bool _sort = false;
     private float _x1, _x2, _x3, _x4;
     private float _y1, _y2, _y3, _y4;
     List<GameObject> img = new List<GameObject>();
     List<int> rnd = new List<int>();
     private List<List<string>> _storeString = new List<List<string>>();
-    int n = 1;
+    //int n = 1;
     List<int> aux = new List<int>();
     private int point;
     public TextMeshProUGUI pointsText;
+
+    private bool finishedTime = false;
 
     void Start() {
         _y3 = squareImg3.gameObject.transform.position.y;
@@ -55,7 +57,7 @@ public class Draw : MonoBehaviour
     }
 
     private void sortDrawing() {
-        _sort = false;
+        //_sort = false;
         int rnd2 = Random.Range(0,aux.Count);
         int j = rnd2;
         rnd2 = aux[j];
@@ -77,7 +79,7 @@ public class Draw : MonoBehaviour
         _storeString[pos][0] = "0";
         _storeString[pos][1] = "0";
         aux.Add(pos);
-        _sort = true;
+        //_sort = true;
         rnd.Clear();
     }
 
@@ -108,6 +110,13 @@ public class Draw : MonoBehaviour
         //}
         if (!Timer.timeStopped && !Pause.isPaused)
             Drawing();
+        else if (!finishedTime)
+        {
+            StopAllCoroutines();
+            if (currentLineRenderer != null)
+                currentLineRenderer.positionCount = 0;
+            finishedTime = true;
+        }
     }
 
     void Drawing() {

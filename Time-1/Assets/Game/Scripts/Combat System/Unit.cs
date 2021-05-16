@@ -4,20 +4,39 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-	public CharacterBase Cbase;
-	/*public string unitName;
-	public int unitLevel;
+	public CharacterBase cBase;
+	[HideInInspector]
+	public int curHealth, curEnergy, maxHealth, maxEnergy, attack, defense, velocity;
 
-	public int damage;
+    private void Awake()
+    {
+		if (gameObject.CompareTag("Player"))
+		{
+			playerStats playerStats = GameObject.FindGameObjectWithTag("persistentData").GetComponent<playerStats>();
+			attack = playerStats.attack;
+			defense = playerStats.defense;
+			velocity = playerStats.velocity;
+			maxHealth = playerStats.maxHealth;
+			maxEnergy = playerStats.maxEnergy;
+		}
+		else
+		{
+			int curDay = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay;
+			attack = cBase.attack * (curDay + 1) / 2;
+			defense = cBase.defense * (curDay + 1) / 2;
+			velocity = cBase.velocity * (curDay + 1) / 2;
+			maxHealth = cBase.maxHealth * (curDay + 1) / 2;
+			maxEnergy = cBase.maxEnergy * (curDay + 1) / 2;
+		}
+		curHealth = maxHealth;
+		curEnergy = maxEnergy;
+	}
 
-	public int maxHP;
-	public int currentHP;
-	*/
-	public bool TakeDamage(int dmg)
+    public bool TakeDamage(int dmg)
 	{
-		Cbase.hp -= dmg;
+		curHealth -= dmg;
 
-		if (Cbase.hp <= 0)
+		if (curHealth <= 0)
 			return true;
 		else
 			return false;
@@ -32,9 +51,9 @@ public class Unit : MonoBehaviour
 			energyLoss = 4;
 		else
 			energyLoss = 6;
-		if ((Cbase.energy - energyLoss >= 0))
+		if ((curEnergy - energyLoss >= 0))
 		{
-			Cbase.energy -= energyLoss;
+			curEnergy -= energyLoss;
 			return true;
 		}
 		else
@@ -43,15 +62,15 @@ public class Unit : MonoBehaviour
 
 	public void Heal(int amount)
     {
-        Cbase.hp += amount;
-        if (Cbase.hp > Cbase.maxHp)
-            Cbase.hp = Cbase.maxHp;
+        curHealth += amount;
+        if (curHealth > maxHealth)
+            curHealth = maxHealth;
     }
 	public void GetEnergy(int amount)
 	{
-		Cbase.energy += amount;
-		if (Cbase.energy > Cbase.maxEnergy)
-			Cbase.energy = Cbase.maxEnergy;
+		curEnergy += amount;
+		if (curEnergy > maxEnergy)
+			curEnergy = maxEnergy;
 	}
 
 }

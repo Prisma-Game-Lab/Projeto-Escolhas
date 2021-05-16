@@ -14,7 +14,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
 
-    public Transform enemyBattleStation;
+    public Image enemyImage;
 
     Unit playerUnit;
     Unit enemyUnit;
@@ -34,7 +34,7 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         state = BattleState.START;
@@ -52,14 +52,12 @@ public class BattleSystem : MonoBehaviour
         GameObject playerGO = Instantiate(playerPrefab);
         playerUnit = playerGO.GetComponent<Unit>();
 
-        GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
+        GameObject enemyGO = Instantiate(enemyPrefab);
         enemyUnit = enemyGO.GetComponent<Unit>();
 
-        dialogueText.text = enemyUnit.Cbase.name + " se aproxima...";
+        enemyImage.sprite = enemyUnit.cBase.combatImage;
 
-        enemyUnit.Cbase.hp = enemyUnit.Cbase.maxHp;
-        playerUnit.Cbase.hp = playerUnit.Cbase.maxHp;
-        playerUnit.Cbase.energy = playerUnit.Cbase.maxEnergy;
+        dialogueText.text = enemyUnit.cBase.name + " se aproxima...";
 
         playerHUD.SetHUD(playerUnit);
         enemyHUD.SetHUD(enemyUnit);
@@ -77,27 +75,27 @@ public class BattleSystem : MonoBehaviour
         {
             CombatPanel.SetActive(false);
             DecisionPanel.SetActive(true);
-            playerHUD.SetEnergy(playerUnit.Cbase.energy, playerUnit.Cbase.maxEnergy);
+            playerHUD.SetEnergy(playerUnit.curEnergy, playerUnit.maxEnergy);
             state = BattleState.ATTACK;
             bool isDead;
 
             if (tipo == 1)
             {
-                isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 1));
+                isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 1));
                 dialogueText.text = "Você socou seu date!";
             }
             else if (tipo == 2)
             {
-                isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 1.5));
+                isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 1.5));
                 dialogueText.text = "Você chutou seu date!";
             }
             else
             {
                 dialogueText.text = "Você usou ataque especial no seu date!";
-                isDead = enemyUnit.TakeDamage((int)(playerUnit.Cbase.strength * 2));
+                isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 2));
             }
 
-            enemyHUD.SetHP(enemyUnit.Cbase.hp, enemyUnit.Cbase.maxHp);
+            enemyHUD.SetHP(enemyUnit.curHealth, enemyUnit.maxHealth);
             
 
             yield return new WaitForSeconds(1.5f);
@@ -117,13 +115,13 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        dialogueText.text = enemyUnit.Cbase.name + " te socou!";
+        dialogueText.text = enemyUnit.cBase.name + " te socou!";
 
         yield return new WaitForSeconds(1f);
 
-        bool isDead = playerUnit.TakeDamage(enemyUnit.Cbase.strength);
+        bool isDead = playerUnit.TakeDamage(enemyUnit.cBase.attack);
 
-        playerHUD.SetHP(playerUnit.Cbase.hp, playerUnit.Cbase.maxHp);
+        playerHUD.SetHP(playerUnit.curHealth, playerUnit.maxHealth);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -146,13 +144,14 @@ public class BattleSystem : MonoBehaviour
         {
             DecisionQuitButton.SetActive(true);
             wonDatePanel.SetActive(true);
-            dialogueText.text = "Você ganhou o encontro! "+enemyUnit.Cbase.name+ " esta totalmente na sua!";
+            dialogueText.text = "Você ganhou o encontro! "+enemyUnit.cBase.name+ " esta totalmente na sua!";
+            GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
         }
         else if (state == BattleState.LOST)
         {
             lostDatePanel.SetActive(true);
             DecisionQuitButton.SetActive(true);
-            dialogueText.text = "Você foi derrotado. " + enemyUnit.Cbase.name + " esta indo embora insatisfeita.";
+            dialogueText.text = "Você foi derrotado. " + enemyUnit.cBase.name + " esta indo embora insatisfeita.";
         }
     }
 
@@ -162,7 +161,7 @@ public class BattleSystem : MonoBehaviour
         DecisionAttackButton.SetActive(true);
         DecisionQuitButton.SetActive(true);
         playerUnit.GetEnergy(2);
-        playerHUD.SetEnergy(playerUnit.Cbase.energy, playerUnit.Cbase.maxEnergy);
+        playerHUD.SetEnergy(playerUnit.curEnergy, playerUnit.maxEnergy);
     }
 
     IEnumerator PlayerHeal()
@@ -170,7 +169,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.HEAL;
         playerUnit.Heal(5);
 
-        playerHUD.SetHP(playerUnit.Cbase.hp, playerUnit.Cbase.maxHp);
+        playerHUD.SetHP(playerUnit.curHealth, playerUnit.maxHealth);
         dialogueText.text = "You feel renewed strength!";
 
         yield return new WaitForSeconds(2f);

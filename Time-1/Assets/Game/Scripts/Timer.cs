@@ -12,63 +12,37 @@ public class Timer : MonoBehaviour
 	public TextMeshProUGUI TimerTextTMP;
 	public static bool timeStopped;
 
-	public CharacterBase cBase;
+	private bool finishedTime;
+	private playerStats playerStats;
 	public int raise;
 	public int type;
-    private bool complete;
 	private Draw draw;
 
 
 	private void Start()
 	{
-		draw = gameObject.GetComponent<Draw>();
+		playerStats = GameObject.FindGameObjectWithTag("persistentData").GetComponent<playerStats>();
+        draw = gameObject.GetComponent<Draw>();
+		if(draw!=null)
+			print("deu bom");
 	    TimerTextTMP.gameObject.SetActive(true);
-		complete = false;
 		timeStopped = false;
+		finishedTime = false;
 	}
 
 	void Update()
 	{
 		if (timeRemaining > 0)
 			timeRemaining -= Time.deltaTime;
-		else
+		else if(finishedTime==false)
 		{
-            draw.StopAllCoroutines();
-			draw.currentLineRenderer.positionCount = 0;
+			finishedTime = true;
 			timeRemaining = 0;
+			playerStats.raiseStats(type, raise);
 			timeStopped = true;
 		}
 
 		DisplayTime(timeRemaining);
-
-		if(timeRemaining == 0)
-        {
-			RaiseStat();
-		}
-	}
-
-	void RaiseStat()
-    {
-		if(complete == false)
-        {
-			complete = true;
-			if(type == 1)
-            {
-				cBase.maxHp += raise;
-            }
-			else if(type == 2)
-            {
-				cBase.maxEnergy += raise;
-            }
-			else if(type == 3)
-            {
-				cBase.strength += raise;
-            }
-			else if(type == 4)
-            {
-				cBase.defense += raise;
-            }
-		}
 	}
 
 	void DisplayTime(float time)

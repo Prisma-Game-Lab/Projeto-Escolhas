@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private GameObject player;
+    private Spawner spawner;
     private Rigidbody2D rb;
     private bool repealed;
 
@@ -15,13 +16,16 @@ public class Ball : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        spawner = player.GetComponent<Spawner>();
         rb = GetComponent<Rigidbody2D>();
         repealed = false;
     }
     private void FixedUpdate()
     {
-        if(!repealed)
+        if (!repealed)
             followPlayer();
+        if (Timer.timeStopped)
+            Destroy(gameObject);
     }
 
     private void followPlayer()
@@ -33,8 +37,11 @@ public class Ball : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
-            //perde vida
-            return;
+        {
+            spawner.impacts += 1;
+            spawner.impacts_txt.text = "Impactos: " + spawner.impacts.ToString();
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

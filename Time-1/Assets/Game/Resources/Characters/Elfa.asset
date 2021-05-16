@@ -16,9 +16,9 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 065534f6472b6be41be388bb89c91128, type: 3}
   zoomImage: {fileID: 21300000, guid: 57e3aa95d6322dc419e0f284251ea862, type: 3}
   entireImage: {fileID: -8458215046965304371, guid: f5a3a4962f27658429a0f1223b35f2a2, type: 3}
-  hp: 50
-  maxHp: 50
-  strength: 7
-  defense: 0
-  energy: 0
+  combatImage: {fileID: 21300000, guid: 39ff48f64f7ec6c4b871158dc9383530, type: 3}
+  maxHealth: 40
+  attack: 7
+  defense: 2
+  velocity: 0
   maxEnergy: 0

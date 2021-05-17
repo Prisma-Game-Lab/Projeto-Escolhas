@@ -67,8 +67,6 @@ public class BattleHUD : MonoBehaviour
 			}
 			yield return null;
 		}
-		// Make sure we got there
-		//transform.position = Gotoposition;
 		yield return null;
 	}
 

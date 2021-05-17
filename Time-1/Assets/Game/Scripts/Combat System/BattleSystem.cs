@@ -97,7 +97,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         bool isDead;
-        int playerCurHealth = enemyUnit.curHealth;
+        int playerCurHealth = playerUnit.curHealth;
 
         if (defenseOn)
         {

@@ -24,7 +24,7 @@ public class Ball : MonoBehaviour
     {
         if (!repealed)
             followPlayer();
-        if (Timer.timeStopped)
+        if (Spawner.allWavesFinished)
             Destroy(gameObject);
     }
 

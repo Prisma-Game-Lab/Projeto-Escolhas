@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TinderManager : MonoBehaviour
 {
+    public TextMeshProUGUI day_txt;
     public Image tinderImage;
     private int curIndex;
     TinderData tinderData;
@@ -14,6 +16,7 @@ public class TinderManager : MonoBehaviour
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
         curIndex = 0;
         tinderImage.sprite = tinderData.tinderCharacters[0].zoomImage;
+        day_txt.text = "Day " + tinderData.curDay;
     }
 
     public void OnNoButtonPressed()

@@ -51,6 +51,7 @@ public class Ball : MonoBehaviour
             Vector2 direction = (player.transform.position - transform.position).normalized;
             rb.AddForce(-(direction * repelForce), ForceMode2D.Impulse);
             repealed = true;
+            Destroy(gameObject, 3f);
         }
         else
             Destroy(gameObject);

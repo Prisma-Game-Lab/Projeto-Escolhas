@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 156270839}
   - component: {fileID: 156270838}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: DrawHere Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.50980395}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 714619241}
   - component: {fileID: 714619240}
   - component: {fileID: 714619239}
+  - component: {fileID: 714619244}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -533,8 +534,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeRemaining: 30
   TimerTextTMP: {fileID: 868093403}
-  raise: 5
-  type: 3
 --- !u!114 &714619242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -587,6 +586,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &714619244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714619238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2dca71804bb664fb8836230cdd0037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minigame: 0
+  statType: 3
+  raise: 8
 --- !u!1 &766218568
 GameObject:
   m_ObjectHideFlags: 0

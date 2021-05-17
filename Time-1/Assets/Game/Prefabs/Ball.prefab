@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b94b1a98a67eb04fa8ac2a672b4031f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repelForce: 5.5
+  repelForce: 8
   gravityForce: 2
 --- !u!50 &3061066242470196882
 Rigidbody2D:

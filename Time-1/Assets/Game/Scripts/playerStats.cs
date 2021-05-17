@@ -21,7 +21,10 @@ public class playerStats : MonoBehaviour
     public void raiseStats(int type, int value)
     {
         if (type == 1)
-            attack += value;
+        {
+            velocity += value;
+            maxEnergy += (int)(value / 2);
+        }
         else if (type == 2)
         {
             defense += value;
@@ -29,8 +32,7 @@ public class playerStats : MonoBehaviour
         }
         else if (type == 3)
         {
-            velocity += value;
-            maxEnergy += (int)(value/2);
+            attack += value;
         }
     }
 

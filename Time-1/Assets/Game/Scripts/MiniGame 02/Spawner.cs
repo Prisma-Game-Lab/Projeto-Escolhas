@@ -8,34 +8,32 @@ public class Spawner : MonoBehaviour
     public GameObject ball;
     public TextMeshProUGUI waves_txt;
     public TextMeshProUGUI impacts_txt;
+    public static bool allWavesFinished;
 
     [HideInInspector] public int waveNumber, impacts;
     int quantity;
     float fireRate;
     bool waveFinished;
-    bool timeFinished;
 
 
     void Start()
     {
-        fireRate = 1.5f;
-        quantity = 6;
+        fireRate = 1f;
+        quantity = 13;
         waveNumber = 1;
-        timeFinished = false;
         waveFinished = true;
-        waves_txt.text = "Dificuldade: " + waveNumber.ToString();
+        allWavesFinished = false;
+        waves_txt.text = "Nivel: " + waveNumber.ToString();
     }
 
     void Update()
     {
-        if (waveFinished && !Timer.timeStopped)
+        if (waveNumber >= 6 && !allWavesFinished)
+            allWavesFinished = true;
+        if (waveFinished && !allWavesFinished)
         {
             StartCoroutine(spawnWave());
             waveFinished = false;
-        }else if (Timer.timeStopped && !timeFinished)
-        {
-            StopAllCoroutines();
-            timeFinished = true;
         }
     }
 
@@ -43,15 +41,17 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < quantity; i++)
         {
-            Vector3 position = Random.insideUnitCircle.normalized*5f;
+            Vector3 position = Random.insideUnitCircle.normalized * 5f;
             Instantiate(ball, position, Quaternion.identity);
             yield return new WaitForSeconds(fireRate);
         }
-        waveNumber ++;
-        waves_txt.text = "Dificuldade: " + waveNumber.ToString();
-        quantity+=4;
-        fireRate *= 0.7f;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2f);
+        float escalation = 0.73f;
+        waveNumber++;
+        if(waveNumber<=5)
+            waves_txt.text = "Nivel: " + waveNumber.ToString();
+        quantity=(int)((float)quantity*(2-escalation));
+        fireRate *= escalation;
         waveFinished = true;
     }
 }

@@ -1612,6 +1612,7 @@ MonoBehaviour:
   tinderCharacters:
   - {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
   - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}
+  - {fileID: 11400000, guid: 0c4e8b4350ebc9542870552006bb6e93, type: 2}
   allCharacters:
   - {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
   - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}

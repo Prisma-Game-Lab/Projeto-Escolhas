@@ -958,7 +958,7 @@ GameObject:
   - component: {fileID: 362337771}
   - component: {fileID: 362337770}
   m_Layer: 0
-  m_Name: circulo_verde
+  m_Name: "cora\xE7\xE3o_verde"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4004,7 +4004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 213409467}
   healthText: {fileID: 242910263}
-  hpGreenBar: {fileID: 36051651}
+  healthBar: {fileID: 36051651}
   energyBar: {fileID: 0}
   shieldIcon: {fileID: 0}
 --- !u!114 &1374253982
@@ -4021,7 +4021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1766425718}
   healthText: {fileID: 797433687}
-  hpGreenBar: {fileID: 782681553}
+  healthBar: {fileID: 782681553}
   energyBar: {fileID: 4375424948984888430}
   shieldIcon: {fileID: 792720324}
 --- !u!114 &1374253983

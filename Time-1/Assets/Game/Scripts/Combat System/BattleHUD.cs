@@ -9,7 +9,7 @@ public class BattleHUD : MonoBehaviour
 
 	public TextMeshProUGUI nameText;
 	public TextMeshProUGUI healthText;
-    public Image hpGreenBar;
+    public Image healthBar;
 	public Image energyBar;
 	public Image shieldIcon;
 
@@ -17,22 +17,22 @@ public class BattleHUD : MonoBehaviour
 	{
         nameText.text = unit.cBase.name;
 		healthText.text = unit.curHealth.ToString();
-		hpGreenBar.fillAmount = (float)unit.curHealth / unit.maxHealth;
+		healthBar.fillAmount = (float)unit.curHealth / unit.maxHealth;
 		if(gameObject.CompareTag("Player"))
 			energyBar.fillAmount = (float)unit.curEnergy / unit.maxEnergy;
 	}
 
-    public void SetHP(int hp, int maxHP)
+    public void SetHP(int curHealth, Unit unit, int type)
     {
-        hpGreenBar.fillAmount = (float)hp / maxHP;
-        if (hp <= 0)
+		StartCoroutine(LerpUI(curHealth, unit, type));
+		if (unit.curHealth <= 0)
             healthText.text = "0";
 		else
-			healthText.text = hp.ToString();
+			healthText.text = unit.curHealth.ToString();
 	}
-    public void SetEnergy(int energy, int maxEnergy)
+    public void SetEnergy(int curEnergy, Unit unit, int type)
     {
-        energyBar.fillAmount = (float)energy / maxEnergy;
+		StartCoroutine(LerpUI(curEnergy, unit, type));
     }
 	public void SetShield(bool state)
     {
@@ -47,5 +47,29 @@ public class BattleHUD : MonoBehaviour
 			shieldIcon.color = black;
 		}
     }
+
+	private IEnumerator LerpUI(int curValue, Unit unit, int type)
+    {
+		float elapsedTime=0;
+		float waitTime=0.15f;
+		while (elapsedTime < waitTime)
+		{
+			elapsedTime += Time.deltaTime;
+			if (type == 1)
+			{
+				float value = Mathf.Lerp(curValue, unit.curHealth, (elapsedTime / waitTime));
+				healthBar.fillAmount = (float)value / unit.maxHealth;
+			}
+			else if (type == 2)
+			{
+				float value = Mathf.Lerp(curValue, unit.curEnergy, (elapsedTime / waitTime));
+				energyBar.fillAmount = (float)value / unit.maxEnergy;
+			}
+			yield return null;
+		}
+		// Make sure we got there
+		//transform.position = Gotoposition;
+		yield return null;
+	}
 
 }

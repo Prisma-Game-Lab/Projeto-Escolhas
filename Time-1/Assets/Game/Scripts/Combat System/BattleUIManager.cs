@@ -47,21 +47,21 @@ public class BattleUIManager : MonoBehaviour
 
     public void OnDefenseButton()
     {
+        int curEnergy = battleSystem.playerUnit.curEnergy;
         if (battleSystem.state != BattleState.PLAYERTURN)
             return;
         if (!battleSystem.defenseOn && battleSystem.playerUnit.TakeEnergy(3))
         {
             battleSystem.defenseOn = true;
             playerHUD.SetShield(true);
-            playerHUD.SetEnergy(battleSystem.playerUnit.curEnergy, battleSystem.playerUnit.maxEnergy);
         }
         else if (battleSystem.defenseOn)
         {
             battleSystem.defenseOn = false;
             playerHUD.SetShield(false);
             battleSystem.playerUnit.GiveEnergy(4);
-            playerHUD.SetEnergy(battleSystem.playerUnit.curEnergy, battleSystem.playerUnit.maxEnergy);
         }
+        playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit, 2);
     }
 
     public void OnHealButton()

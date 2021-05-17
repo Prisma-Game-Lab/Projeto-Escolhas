@@ -48,13 +48,15 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator PlayerAttack(int tipo)
     {
+        int curEnergy = playerUnit.curEnergy;
         if (playerUnit.TakeEnergy(tipo))
         {
             battleUI.CombatPanel.SetActive(false);
             battleUI.DecisionPanel.SetActive(true);
-            battleUI.playerHUD.SetEnergy(playerUnit.curEnergy, playerUnit.maxEnergy);
+            battleUI.playerHUD.SetEnergy(curEnergy, playerUnit,2);
             state = BattleState.ATTACK;
             bool isDead;
+            int enemyCurHealth = enemyUnit.curHealth;
 
             if (tipo == 1)
             {
@@ -72,7 +74,7 @@ public class BattleSystem : MonoBehaviour
                 isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 2));
             }
 
-            battleUI.enemyHUD.SetHP(enemyUnit.curHealth, enemyUnit.maxHealth);
+            battleUI.enemyHUD.SetHP(enemyCurHealth, enemyUnit, 1);
 
             yield return new WaitForSeconds(1.5f);
 
@@ -95,16 +97,18 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         bool isDead;
+        int playerCurHealth = enemyUnit.curHealth;
+
         if (defenseOn)
         {
             int damage = (int)(enemyUnit.attack - playerUnit.defense);
             damage = Mathf.Clamp(damage, 1, 9999);
             isDead = playerUnit.TakeDamage(damage);
-            battleUI.playerHUD.SetHP(playerUnit.curHealth, playerUnit.maxHealth);
+            battleUI.playerHUD.SetHP(playerCurHealth, playerUnit, 1);
         }
         else {
             isDead = playerUnit.TakeDamage(enemyUnit.attack);
-            battleUI.playerHUD.SetHP(playerUnit.curHealth, playerUnit.maxHealth);
+            battleUI.playerHUD.SetHP(playerCurHealth, playerUnit, 1);
         }
 
 
@@ -146,19 +150,21 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
+        int curEnergy = playerUnit.curEnergy;
         battleUI.dialogueText.text = "Escolha uma ação:";
         battleUI.DecisionAttackButton.SetActive(true);
         battleUI.DecisionQuitButton.SetActive(true);
         playerUnit.GiveEnergy(2);
-        battleUI.playerHUD.SetEnergy(playerUnit.curEnergy, playerUnit.maxEnergy);
+        battleUI.playerHUD.SetEnergy(curEnergy, playerUnit, 2);
     }
 
     public IEnumerator PlayerHeal()
     {
+        int playerCurHealth = enemyUnit.curHealth;
         state = BattleState.HEAL;
         playerUnit.Heal(5);
 
-        battleUI.playerHUD.SetHP(playerUnit.curHealth, playerUnit.maxHealth);
+        battleUI.playerHUD.SetHP(playerCurHealth, playerUnit, 1);
         battleUI.dialogueText.text = "You feel renewed strength!";
 
         yield return new WaitForSeconds(2f);

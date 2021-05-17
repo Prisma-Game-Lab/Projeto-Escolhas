@@ -1104,8 +1104,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1374253979}
-        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+      - m_Target: {fileID: 1374253983}
+        m_TargetAssemblyTypeName: BattleUIManager, Assembly-CSharp
         m_MethodName: OnQuitButton
         m_Mode: 1
         m_Arguments:
@@ -1379,7 +1379,7 @@ GameObject:
   - component: {fileID: 447300706}
   - component: {fileID: 447300705}
   m_Layer: 5
-  m_Name: Special_Button
+  m_Name: Defense_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1402,8 +1402,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 138, y: 26.2}
-  m_SizeDelta: {x: 54.55, y: 46.37}
+  m_AnchoredPosition: {x: 132, y: 26}
+  m_SizeDelta: {x: 45, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &447300705
 MonoBehaviour:
@@ -1449,10 +1449,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1374253979}
-        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: OnAttackButton
-        m_Mode: 3
+      - m_Target: {fileID: 1374253983}
+        m_TargetAssemblyTypeName: BattleUIManager, Assembly-CSharp
+        m_MethodName: OnDefenseButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 29a23324c36295f4aa11245ebcec0d05, type: 3}
+  m_Sprite: {fileID: 2897750769909559514, guid: 057a2e3f79708a6408d8e2372f9b73cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1598,7 +1598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &452322449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chute
+  m_text: Chutar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2057,8 +2057,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.020000458, y: -30.800001}
-  m_SizeDelta: {x: 9.14, y: -25.69}
+  m_AnchoredPosition: {x: -0.7800007, y: -32.5}
+  m_SizeDelta: {x: 31.35, y: -25.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &577060023
 MonoBehaviour:
@@ -2080,7 +2080,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Especial
+  m_text: Defender
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2107,8 +2107,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17
-  m_fontSizeBase: 17
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2608,7 +2608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 351, y: 29.6}
+  m_AnchoredPosition: {x: 343.6, y: 19}
   m_SizeDelta: {x: 41.1, y: 38.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727960267
@@ -2655,8 +2655,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1374253979}
-        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+      - m_Target: {fileID: 1374253983}
+        m_TargetAssemblyTypeName: BattleUIManager, Assembly-CSharp
         m_MethodName: OnBackButton
         m_Mode: 1
         m_Arguments:
@@ -2788,8 +2788,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1374253979}
-        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+      - m_Target: {fileID: 1374253983}
+        m_TargetAssemblyTypeName: BattleUIManager, Assembly-CSharp
         m_MethodName: OnAttackButton
         m_Mode: 3
         m_Arguments:
@@ -2912,6 +2912,96 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782681551}
+  m_CullTransparentMesh: 1
+--- !u!1 &792720321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 792720322}
+  - component: {fileID: 792720325}
+  - component: {fileID: 792720324}
+  - component: {fileID: 792720323}
+  m_Layer: 0
+  m_Name: Shield Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &792720322
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792720321}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0190274, y: 1.0190274, z: 1.0190274}
+  m_Children: []
+  m_Father: {fileID: 1896653843}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 142, y: 22}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &792720323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792720321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
+--- !u!114 &792720324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792720321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 2897750769909559514, guid: 057a2e3f79708a6408d8e2372f9b73cb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &792720325
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792720321}
   m_CullTransparentMesh: 1
 --- !u!1 &797433685
 GameObject:
@@ -3629,7 +3719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1093733525
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3860,6 +3950,7 @@ GameObject:
   - component: {fileID: 1374253979}
   - component: {fileID: 1374253982}
   - component: {fileID: 1374253981}
+  - component: {fileID: 1374253983}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3881,17 +3972,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5674484368629161613, guid: 10021f1ffb851ee42a2f9e2ce33428b7, type: 3}
   enemyPrefab: {fileID: 5046871492963100558, guid: 302bdc8dead690247957754e115acde3, type: 3}
-  enemyImage: {fileID: 1296423372}
-  dialogueText: {fileID: 429524368}
-  playerHUD: {fileID: 1374253982}
-  enemyHUD: {fileID: 1374253981}
-  DecisionPanel: {fileID: 452322448}
-  DecisionAttackButton: {fileID: 1653175159}
-  DecisionQuitButton: {fileID: 392552406}
-  CombatPanel: {fileID: 1093733524}
-  wonDatePanel: {fileID: 626372488}
-  lostDatePanel: {fileID: 1590185435}
+  playerUnit: {fileID: 0}
+  enemyUnit: {fileID: 0}
   state: 0
+  defenseOn: 0
 --- !u!4 &1374253980
 Transform:
   m_ObjectHideFlags: 0
@@ -3922,6 +4006,7 @@ MonoBehaviour:
   healthText: {fileID: 242910263}
   hpGreenBar: {fileID: 36051651}
   energyBar: {fileID: 0}
+  shieldIcon: {fileID: 0}
 --- !u!114 &1374253982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3938,6 +4023,30 @@ MonoBehaviour:
   healthText: {fileID: 797433687}
   hpGreenBar: {fileID: 782681553}
   energyBar: {fileID: 4375424948984888430}
+  shieldIcon: {fileID: 792720324}
+--- !u!114 &1374253983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374253978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd342f48d6fc1c74e930733813569a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyWhiteImage: {fileID: 109724468}
+  enemyImage: {fileID: 1296423372}
+  dialogueText: {fileID: 429524368}
+  playerHUD: {fileID: 1374253982}
+  enemyHUD: {fileID: 1374253981}
+  DecisionPanel: {fileID: 452322448}
+  DecisionAttackButton: {fileID: 1653175159}
+  DecisionQuitButton: {fileID: 392552406}
+  CombatPanel: {fileID: 1093733524}
+  wonDatePanel: {fileID: 626372488}
+  lostDatePanel: {fileID: 1590185435}
 --- !u!1 &1419335348
 GameObject:
   m_ObjectHideFlags: 0
@@ -4420,8 +4529,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1374253979}
-        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+      - m_Target: {fileID: 1374253983}
+        m_TargetAssemblyTypeName: BattleUIManager, Assembly-CSharp
         m_MethodName: OnAttackPanelButton
         m_Mode: 1
         m_Arguments:
@@ -5176,6 +5285,7 @@ RectTransform:
   - {fileID: 829808484}
   - {fileID: 8327315762754755766}
   - {fileID: 1558008324}
+  - {fileID: 792720322}
   m_Father: {fileID: 405433816}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5258,7 +5368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -333, y: 26.2}
+  m_AnchoredPosition: {x: -333, y: 24.9}
   m_SizeDelta: {x: 54.55, y: 46.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1906322872
@@ -5305,8 +5415,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1374253979}
-        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+      - m_Target: {fileID: 1374253983}
+        m_TargetAssemblyTypeName: BattleUIManager, Assembly-CSharp
         m_MethodName: OnAttackButton
         m_Mode: 3
         m_Arguments:
@@ -5601,7 +5711,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Soco
+  m_text: Socar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

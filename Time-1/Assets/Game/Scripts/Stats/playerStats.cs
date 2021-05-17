@@ -8,8 +8,7 @@ public class playerStats : MonoBehaviour
     //[HideInInspector]
     public int attack, defense, velocity, maxEnergy, maxHealth;
 
-
-    void Start()
+    private void Awake()
     {
         attack = playerBase.attack;
         defense = playerBase.defense;
@@ -23,12 +22,12 @@ public class playerStats : MonoBehaviour
         if (type == 1)
         {
             velocity += value;
-            maxEnergy += (int)(value / 2);
+            maxEnergy += value;
         }
         else if (type == 2)
         {
             defense += value;
-            maxHealth += value;
+            maxHealth += value*3;
         }
         else if (type == 3)
         {

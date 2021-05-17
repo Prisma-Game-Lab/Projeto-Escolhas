@@ -11,6 +11,7 @@ public class BattleHUD : MonoBehaviour
 	public TextMeshProUGUI healthText;
     public Image hpGreenBar;
 	public Image energyBar;
+	public Image shieldIcon;
 
 	public void SetHUD(Unit unit)
 	{
@@ -29,9 +30,22 @@ public class BattleHUD : MonoBehaviour
 		else
 			healthText.text = hp.ToString();
 	}
-	public void SetEnergy(int energy, int maxEnergy)
-	{
-		energyBar.fillAmount = (float)energy / maxEnergy;
-	}
+    public void SetEnergy(int energy, int maxEnergy)
+    {
+        energyBar.fillAmount = (float)energy / maxEnergy;
+    }
+	public void SetShield(bool state)
+    {
+		if (state)
+		{
+			Color white = new Color(255, 255, 255);
+			shieldIcon.color = white;
+		}
+        else
+        {
+			Color black = new Color(0, 0, 0);
+			shieldIcon.color = black;
+		}
+    }
 
 }

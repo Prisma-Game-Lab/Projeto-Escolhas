@@ -20,5 +20,5 @@ MonoBehaviour:
   maxHealth: 40
   attack: 7
   defense: 2
-  velocity: 0
+  velocity: 1
   maxEnergy: 0

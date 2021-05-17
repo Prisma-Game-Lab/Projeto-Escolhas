@@ -19,6 +19,6 @@ MonoBehaviour:
   combatImage: {fileID: 0}
   maxHealth: 30
   attack: 5
-  defense: 2
+  defense: 5
   velocity: 2
   maxEnergy: 10

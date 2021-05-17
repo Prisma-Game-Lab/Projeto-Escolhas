@@ -600,7 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minigame: 0
   statType: 3
-  raise: 8
+  raise: 5
 --- !u!1 &766218568
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,17 +10,22 @@ public class Spawner : MonoBehaviour
     public TextMeshProUGUI impacts_txt;
     public static bool allWavesFinished;
 
-    [HideInInspector] public int waveNumber, impacts;
-    int quantity;
-    float fireRate;
-    bool waveFinished;
+    [HideInInspector] public int waveNumber, ballImpacts, totalBallsSpawned;
+    [HideInInspector] public float spawnRate ;
+    int maxWaveNumber, ballsToSpawn, initialBallQuantity;
+    float escalation;
+    bool waveFinished; 
 
 
     void Start()
     {
-        fireRate = 1f;
-        quantity = 13;
-        waveNumber = 1;
+        maxWaveNumber = 5;
+        escalation = 0.73f;
+        spawnRate = 1f;
+        initialBallQuantity = 13;
+        ballsToSpawn = initialBallQuantity;
+        totalBallsSpawned = initialBallQuantity;
+        waveNumber = 0;
         waveFinished = true;
         allWavesFinished = false;
         waves_txt.text = "Nivel: " + waveNumber.ToString();
@@ -28,8 +33,6 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (waveNumber >= 6 && !allWavesFinished)
-            allWavesFinished = true;
         if (waveFinished && !allWavesFinished)
         {
             StartCoroutine(spawnWave());
@@ -39,19 +42,23 @@ public class Spawner : MonoBehaviour
 
     IEnumerator spawnWave()
     {
-        for (int i = 0; i < quantity; i++)
+        waveNumber++;
+        waves_txt.text = "Nivel: " + waveNumber.ToString();
+        for (int i = 0; i < ballsToSpawn; i++)
         {
             Vector3 position = Random.insideUnitCircle.normalized * 5f;
             Instantiate(ball, position, Quaternion.identity);
-            yield return new WaitForSeconds(fireRate);
+            yield return new WaitForSeconds(spawnRate);
         }
         yield return new WaitForSeconds(2f);
-        float escalation = 0.73f;
-        waveNumber++;
-        if(waveNumber<=5)
-            waves_txt.text = "Nivel: " + waveNumber.ToString();
-        quantity=(int)((float)quantity*(2-escalation));
-        fireRate *= escalation;
+        if (waveNumber < maxWaveNumber)
+        {
+            ballsToSpawn = (int)((float)ballsToSpawn * (2 - escalation));
+            spawnRate *= escalation;
+            totalBallsSpawned += ballsToSpawn;
+        }
+        else
+            allWavesFinished = true;
         waveFinished = true;
     }
 }

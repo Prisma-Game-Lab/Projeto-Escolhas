@@ -31,10 +31,15 @@ public class Draw : MonoBehaviour
     private List<List<string>> _storeString = new List<List<string>>();
     //int n = 1;
     List<int> aux = new List<int>();
-    private int point;
+    public int point;
     public TextMeshProUGUI pointsText;
 
     private bool finishedTime = false;
+
+    public float resetDrawsTime;
+    
+    public int totalDraws;
+
 
     void Start() {
         _y3 = squareImg3.gameObject.transform.position.y;
@@ -52,8 +57,10 @@ public class Draw : MonoBehaviour
         aux.Add(2);
         aux.Add(3);
         point = 0;
+        resetDrawsTime = 3.5f;
+        totalDraws = 0;
         sortMany();
-        StartCoroutine(sortThenErase(4.0f));
+        StartCoroutine(sortThenErase(resetDrawsTime));
     }
 
     private void sortDrawing() {
@@ -83,7 +90,7 @@ public class Draw : MonoBehaviour
         rnd.Clear();
     }
 
-    private IEnumerator sortThenErase(float waitTime) { 
+    private IEnumerator sortThenErase(float waitTime) {
         while (!Timer.timeStopped && !Pause.isPaused) {
             yield return new WaitForSeconds(waitTime);
             for (int i = 0; i < 4; i++) {
@@ -95,7 +102,8 @@ public class Draw : MonoBehaviour
     }
 
     private void sortMany() {
-        int n = Random.Range(1, aux.Count + 1);
+        totalDraws++;
+        int n = Random.Range(3, aux.Count + 1);
         for (int i = 0; i < n; i++)
             sortDrawing();
     }
@@ -127,7 +135,8 @@ public class Draw : MonoBehaviour
             PointToMousePos();
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0) && hasDrawn) {
-            currentLineRenderer.positionCount = 0;
+            if(currentLineRenderer!=null)
+                currentLineRenderer.positionCount = 0;
             if (pointsList.Count >= 2) {
                 int i = 0;
                 for (; i < 4; i++) {
@@ -135,8 +144,6 @@ public class Draw : MonoBehaviour
                         bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.35f);
                         bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.35f);
                         if (result1 || result2) {
-                            point++;
-                            pointsText.text = point.ToString();
                             //img[i].GetComponent<Image>().sprite = null;
                             //_storeString[i][0] = "0";
                             //_storeString[i][1] = "0";
@@ -145,9 +152,11 @@ public class Draw : MonoBehaviour
                             //rnd.Clear();
                             eraseDrawing(i);
                             if (aux.Count == 4) {
+                                point++;
+                                pointsText.text = point.ToString();
                                 StopAllCoroutines();
                                 sortMany();
-                                StartCoroutine(sortThenErase(4.0f));
+                                StartCoroutine(sortThenErase(resetDrawsTime));
                             }
                             break;
                         }
@@ -171,13 +180,17 @@ public class Draw : MonoBehaviour
             currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
             currentLineRenderer.SetPosition(0, mousePos);
             currentLineRenderer.SetPosition(1, mousePos);
+            Destroy(brushInstance, 4);
         }
     }
 
     void AddAPoint(Vector2 pointPos) {
-        currentLineRenderer.positionCount++;
-        int positionIndex = currentLineRenderer.positionCount - 1;
-        currentLineRenderer.SetPosition(positionIndex, pointPos);
+        if (currentLineRenderer != null)
+        {
+            currentLineRenderer.positionCount++;
+            int positionIndex = currentLineRenderer.positionCount - 1;
+            currentLineRenderer.SetPosition(positionIndex, pointPos);
+        }
     }
 
     void PointToMousePos() {

@@ -50,7 +50,7 @@ public class Unit : MonoBehaviour
 		else if (attackType == 2)
 			energyLoss = 4;
 		else 
-			energyLoss = 4;
+			energyLoss = 3;
 		if ((curEnergy - energyLoss >= 0))
 		{
 			curEnergy -= energyLoss;

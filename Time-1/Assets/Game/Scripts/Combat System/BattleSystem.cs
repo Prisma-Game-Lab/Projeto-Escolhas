@@ -40,7 +40,7 @@ public class BattleSystem : MonoBehaviour
         battleUI.playerHUD.SetHUD(playerUnit);
         battleUI.enemyHUD.SetHUD(enemyUnit);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         state = BattleState.PLAYERTURN;
         PlayerTurn();

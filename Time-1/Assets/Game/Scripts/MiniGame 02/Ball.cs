@@ -38,8 +38,8 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            spawner.ballImpacts += 1;
-            spawner.impacts_txt.text = "Impactos: " + spawner.ballImpacts.ToString();
+            spawner.impacts += 1;
+            spawner.impacts_txt.text = "Impactos: " + spawner.impacts.ToString();
             Destroy(gameObject);
         }
     }

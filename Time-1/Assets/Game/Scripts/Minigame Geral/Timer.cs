@@ -8,16 +8,19 @@ public class Timer : MonoBehaviour
 {
 	[Tooltip("Tempo em segundos")]
 	public float timeRemaining = 10;
-	[HideInInspector] public float totalTime;
+
 	public TextMeshProUGUI TimerTextTMP;
 	public static bool timeStopped;
 
 	private bool finishedTime;
+	private Draw draw;
 
 
 	private void Start()
 	{
-		totalTime = timeRemaining;
+        draw = gameObject.GetComponent<Draw>();
+		if(draw!=null)
+			print("deu bom");
 	    TimerTextTMP.gameObject.SetActive(true);
 		timeStopped = false;
 		finishedTime = false;

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Sereia
   m_EditorClassIdentifier: 
   name: Sereia
-  profileChatImage: {fileID: 21300000, guid: 56f10f3ab2c288f4987fc4aa6e58479c, type: 3}
-  tinderImage: {fileID: 21300000, guid: f74ed71b899d0bd449b81bc2c8aad990, type: 3}
+  sprite: {fileID: -8144870172802586764, guid: c0143d1180912874d89c7576281bcfa0, type: 3}
+  zoomImage: {fileID: -7079525441279672021, guid: c0143d1180912874d89c7576281bcfa0, type: 3}
+  entireImage: {fileID: -8144870172802586764, guid: c0143d1180912874d89c7576281bcfa0, type: 3}
   combatImage: {fileID: -8144870172802586764, guid: c0143d1180912874d89c7576281bcfa0, type: 3}
   maxHealth: 55
   attack: 4

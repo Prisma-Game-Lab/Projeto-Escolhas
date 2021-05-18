@@ -362,7 +362,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3 Energia
+  m_text: 4 Energia
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1613,12 +1613,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
   - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}
   - {fileID: 11400000, guid: 0c4e8b4350ebc9542870552006bb6e93, type: 2}
-  - {fileID: 11400000, guid: c65b73cb354bfd14395e00557c3c3551, type: 2}
   allCharacters:
   - {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
   - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}
   - {fileID: 11400000, guid: 0c4e8b4350ebc9542870552006bb6e93, type: 2}
-  - {fileID: 11400000, guid: c65b73cb354bfd14395e00557c3c3551, type: 2}
   curDay: 0
   matchesNumber: 0
 --- !u!4 &254342082
@@ -4834,7 +4832,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   day_txt: {fileID: 570065536}
-  tinderCharacterName_txt: {fileID: 980357323}
   tinderImage: {fileID: 5824171044704623516}
 --- !u!4 &794474618
 Transform:
@@ -5496,7 +5493,7 @@ GameObject:
   - component: {fileID: 932176884}
   - component: {fileID: 932176883}
   m_Layer: 5
-  m_Name: Shield
+  m_Name: Skill 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5523,10 +5520,10 @@ RectTransform:
   m_Father: {fileID: 1532856109}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -1018.6603}
+  m_SizeDelta: {x: 1080, y: 407.4641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932176883
 MonoBehaviour:
@@ -8363,15 +8360,10 @@ RectTransform:
   m_Father: {fileID: 1158289437}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.9005774}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -0.99481, y: -395.1425}
   m_SizeDelta: {x: 368.64, y: 794.2233}
-=======
-  m_AnchoredPosition: {x: 0.20007324, y: -250.91254}
-  m_SizeDelta: {x: 371.8397, y: 486.6312}
->>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389269006
 MonoBehaviour:
@@ -9668,10 +9660,10 @@ RectTransform:
   m_Father: {fileID: 1532856109}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -203.73206}
+  m_SizeDelta: {x: 1080, y: 407.4641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1596330739
 MonoBehaviour:
@@ -11176,10 +11168,10 @@ RectTransform:
   m_Father: {fileID: 1532856109}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -611.19617}
+  m_SizeDelta: {x: 1080, y: 407.4641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1868928637
 MonoBehaviour:
@@ -11809,7 +11801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2011346669
 MonoBehaviour:
   m_ObjectHideFlags: 0

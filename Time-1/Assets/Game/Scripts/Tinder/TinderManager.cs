@@ -7,7 +7,6 @@ using TMPro;
 public class TinderManager : MonoBehaviour
 {
     public TextMeshProUGUI day_txt;
-    public TextMeshProUGUI tinderCharacterName_txt;
     public Image tinderImage;
     private int curIndex;
     TinderData tinderData;
@@ -16,8 +15,7 @@ public class TinderManager : MonoBehaviour
     {
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
         curIndex = 0;
-        tinderImage.sprite = tinderData.tinderCharacters[0].tinderImage;
-        tinderCharacterName_txt.text = tinderData.tinderCharacters[0].name;
+        tinderImage.sprite = tinderData.tinderCharacters[0].zoomImage;
         day_txt.text = "Day " + tinderData.curDay;
     }
 
@@ -26,8 +24,7 @@ public class TinderManager : MonoBehaviour
         curIndex++;
         if (curIndex > tinderData.tinderCharacters.Count - 1)
             curIndex = 0;
-        tinderImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;
-        tinderCharacterName_txt.text = tinderData.tinderCharacters[curIndex].name;
+        tinderImage.sprite = tinderData.tinderCharacters[curIndex].zoomImage;
     }
     public void OnYesButtonPressed()
     {
@@ -35,8 +32,7 @@ public class TinderManager : MonoBehaviour
         {
             tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
             curIndex = 0;
-            tinderImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;
-            tinderCharacterName_txt.text = tinderData.tinderCharacters[curIndex].name;
+            tinderImage.sprite = tinderData.tinderCharacters[curIndex].zoomImage;
             tinderData.matchesNumber += 1;
             //cria e abre uma conversa com o personagem
         }

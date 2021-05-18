@@ -6,9 +6,8 @@ using UnityEngine;
 public class CharacterBase : ScriptableObject
 {
     public new string name;
-    public Sprite sprite;
-    public Sprite zoomImage;
-    public Sprite entireImage;
+    public Sprite profileChatImage;
+    public Sprite tinderImage;
     public Sprite combatImage;
     public int maxHealth;
     public int attack;
@@ -22,7 +21,7 @@ public class CharacterBase : ScriptableObject
     }
 
     public Sprite Sprite {
-        get { return sprite; }
+        get { return profileChatImage; }
     }
 
     public int Strength {

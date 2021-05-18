@@ -59,7 +59,7 @@ public class BattleUIManager : MonoBehaviour
         {
             battleSystem.defenseOn = false;
             playerHUD.SetShield(false);
-            battleSystem.playerUnit.GiveEnergy(4);
+            battleSystem.playerUnit.GiveEnergy(3);
         }
         playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit, 2);
     }

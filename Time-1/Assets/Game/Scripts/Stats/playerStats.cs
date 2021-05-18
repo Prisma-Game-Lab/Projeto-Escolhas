@@ -17,21 +17,21 @@ public class playerStats : MonoBehaviour
         maxHealth = playerBase.maxHealth;
     }
 
-    public void raiseStats(int type, int value)
+    public void raiseStats(int type, float value)
     {
         if (type == 1)
         {
-            velocity += value;
-            maxEnergy += value;
+            velocity += (int)value;
+            maxEnergy += (int)value;
         }
         else if (type == 2)
         {
-            defense += value;
-            maxHealth += value*3;
+            defense += (int)value;
+            maxHealth += (int)value *3;
         }
         else if (type == 3)
         {
-            attack += value;
+            attack += (int)value;
         }
     }
 

@@ -362,7 +362,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4 Energia
+  m_text: 3 Energia
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1613,10 +1613,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
   - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}
   - {fileID: 11400000, guid: 0c4e8b4350ebc9542870552006bb6e93, type: 2}
+  - {fileID: 11400000, guid: 2a3cdfe1c931fd1498b27c26773bff93, type: 2}
   allCharacters:
   - {fileID: 11400000, guid: 3b440b302a5f0e44d8b6e54c31fd896b, type: 2}
   - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}
   - {fileID: 11400000, guid: 0c4e8b4350ebc9542870552006bb6e93, type: 2}
+  - {fileID: 11400000, guid: 2a3cdfe1c931fd1498b27c26773bff93, type: 2}
   curDay: 0
   matchesNumber: 0
 --- !u!4 &254342082
@@ -4832,6 +4834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   day_txt: {fileID: 570065536}
+  tinderCharacterName_txt: {fileID: 980357323}
   tinderImage: {fileID: 5824171044704623516}
 --- !u!4 &794474618
 Transform:

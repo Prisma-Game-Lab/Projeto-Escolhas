@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14d131bc9ea134147bd4794063265bbd, type: 3}
-  m_Name: Sereia
+  m_Name: Orc
   m_EditorClassIdentifier: 
-  name: Sereia
-  profileChatImage: {fileID: 21300000, guid: 6cb4377ffe8e7e2409af70462c46ad26, type: 3}
-  tinderImage: {fileID: 21300000, guid: 5378c5030235ed34c94cf08a07e83360, type: 3}
-  combatImage: {fileID: -8144870172802586764, guid: c0143d1180912874d89c7576281bcfa0, type: 3}
-  maxHealth: 55
-  attack: 4
+  name: Orc
+  profileChatImage: {fileID: 21300000, guid: 65a2255421f2174499bf78b9f4e0e6f1, type: 3}
+  tinderImage: {fileID: 21300000, guid: f034612cb60a89d498720dc208282860, type: 3}
+  combatImage: {fileID: 21300000, guid: c977eadbba0089542a9ec89310fea7fc, type: 3}
+  maxHealth: 50
+  attack: 7
   defense: 2
   velocity: 0
   maxEnergy: 0

@@ -16,6 +16,7 @@ MonoBehaviour:
   profileChatImage: {fileID: 21300000, guid: 6cb4377ffe8e7e2409af70462c46ad26, type: 3}
   tinderImage: {fileID: 21300000, guid: 5378c5030235ed34c94cf08a07e83360, type: 3}
   combatImage: {fileID: -8144870172802586764, guid: c0143d1180912874d89c7576281bcfa0, type: 3}
+  combatWhiteImage: {fileID: 21300000, guid: a338a3c22fe35b941a2f691b06479721, type: 3}
   maxHealth: 55
   attack: 4
   defense: 2

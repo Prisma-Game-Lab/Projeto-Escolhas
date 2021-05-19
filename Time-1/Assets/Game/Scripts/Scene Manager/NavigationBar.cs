@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class NavigationBar : MonoBehaviour
 {
-    public Canvas home;
-    private Canvas _name;
+    public GameObject home;
+    private GameObject _name;
 
     void Start()
     {
         _name = home;
     }
 
-    public void SetActiveCanvas(Canvas canvas)
+    public void SetActiveCanvas(GameObject canvas)
     {
         _name.gameObject.SetActive(false);
         canvas.gameObject.SetActive(true);

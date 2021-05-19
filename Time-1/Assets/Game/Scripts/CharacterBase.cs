@@ -9,6 +9,7 @@ public class CharacterBase : ScriptableObject
     public Sprite profileChatImage;
     public Sprite tinderImage;
     public Sprite combatImage;
+    public Sprite combatWhiteImage;
     public int maxHealth;
     public int attack;
     public int defense;

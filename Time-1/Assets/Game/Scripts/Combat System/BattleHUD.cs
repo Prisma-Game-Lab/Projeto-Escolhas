@@ -16,21 +16,21 @@ public class BattleHUD : MonoBehaviour
 	public void SetHUD(Unit unit)
 	{
         nameText.text = unit.cBase.name;
-		healthText.text = unit.curHealth.ToString();
-		healthBar.fillAmount = (float)unit.curHealth / unit.maxHealth;
+		healthText.text = "" + (int)unit.curHealth;
+		healthBar.fillAmount = unit.curHealth / unit.maxHealth;
 		if(gameObject.CompareTag("Player"))
-			energyBar.fillAmount = (float)unit.curEnergy / unit.maxEnergy;
+			energyBar.fillAmount = unit.curEnergy / unit.maxEnergy;
 	}
 
-    public void SetHP(int curHealth, Unit unit, int type)
+    public void SetHP(float curHealth, Unit unit, int type)
     {
 		StartCoroutine(LerpUI(curHealth, unit, type));
 		if (unit.curHealth <= 0)
             healthText.text = "0";
 		else
-			healthText.text = unit.curHealth.ToString();
+			healthText.text = ""+(int)unit.curHealth;
 	}
-    public void SetEnergy(int curEnergy, Unit unit, int type)
+    public void SetEnergy(float curEnergy, Unit unit, int type)
     {
 		StartCoroutine(LerpUI(curEnergy, unit, type));
     }
@@ -48,7 +48,7 @@ public class BattleHUD : MonoBehaviour
 		}
     }
 
-	private IEnumerator LerpUI(int curValue, Unit unit, int type)
+	private IEnumerator LerpUI(float curValue, Unit unit, int type)
     {
 		float elapsedTime=0;
 		float waitTime=0.15f;

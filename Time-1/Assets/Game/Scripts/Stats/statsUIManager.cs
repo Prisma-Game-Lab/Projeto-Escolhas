@@ -20,8 +20,8 @@ public class statsUIManager : MonoBehaviour
 
     private void setPlayerStats()
     {
-        attack_txt.text = "" + playerStats.attack;
-        velocity_txt.text = "" + playerStats.velocity;
-        defense_txt.text = "" + playerStats.defense;
+        attack_txt.text = "" + (int)playerStats.attack;
+        velocity_txt.text = "" + (int)playerStats.velocity;
+        defense_txt.text = "" + (int)playerStats.defense;
     }
 }

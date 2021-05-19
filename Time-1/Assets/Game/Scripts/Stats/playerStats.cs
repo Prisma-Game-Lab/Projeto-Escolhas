@@ -6,7 +6,7 @@ public class playerStats : MonoBehaviour
 {
     public CharacterBase playerBase;
     //[HideInInspector]
-    public int attack, defense, velocity, maxEnergy, maxHealth;
+    public float attack, defense, velocity, maxEnergy, maxHealth;
 
     private void Awake()
     {
@@ -21,17 +21,17 @@ public class playerStats : MonoBehaviour
     {
         if (type == 1)
         {
-            velocity += (int)value;
-            maxEnergy += (int)value;
+            velocity += value;
+            maxEnergy += value;
         }
         else if (type == 2)
         {
-            defense += (int)value;
-            maxHealth += (int)value *3;
+            defense += value;
+            maxHealth += value *3;
         }
         else if (type == 3)
         {
-            attack += (int)value;
+            attack += value;
         }
     }
 

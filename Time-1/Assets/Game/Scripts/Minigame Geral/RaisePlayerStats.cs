@@ -5,18 +5,23 @@ using UnityEngine;
 public class RaisePlayerStats : MonoBehaviour
 {
     private playerStats playerStats;
-
+    private FinishedMinigameUI finishedMinigameUI;
     private bool raised;
 
+    
     public enum MinigameType {Minigame01,Minigame02,Minigame03};
     public MinigameType minigame;
+
+    [HideInInspector] public float performacePercentage;
     [Tooltip("1-Velocidade  2-Defesa  3-Ataque")]
     public int statType;
     public int raise;
 
-    // Start is called before the first frame update
+
+
     void Start()
     {
+        finishedMinigameUI = GetComponent<FinishedMinigameUI>();
         playerStats = GameObject.FindGameObjectWithTag("persistentData").GetComponent<playerStats>();
         raised = false;
     }
@@ -28,23 +33,25 @@ public class RaisePlayerStats : MonoBehaviour
         {
             if (Timer.timeStopped)
             {
-                float performacePercentage = minigame01Performance();
+                performacePercentage = minigame01Performance();
                 print("Performance = " + performacePercentage);
-                print(raise);
+                print("Raise = " + raise);
                 print(raise * performacePercentage);
                 playerStats.raiseStats(statType, raise * performacePercentage);
                 raised = true;
+                finishedMinigameUI.enabled = true;
             }
         }else if(minigame == MinigameType.Minigame02 && !raised)
         {
             if (Spawner.allWavesFinished == true)
             {
-                float performacePercentage = minigame02Performance();
+                performacePercentage = minigame02Performance();
                 print("Performance = "+performacePercentage);
-                print(raise);
+                print("Raise = "+raise);
                 print(raise * performacePercentage);
                 playerStats.raiseStats(statType, raise * performacePercentage);
                 raised = true;
+                finishedMinigameUI.enabled = true;
             }
         }
     }
@@ -62,6 +69,8 @@ public class RaisePlayerStats : MonoBehaviour
         Spawner spawner = GetComponent<Spawner>();
         float ballImpacts = spawner.ballImpacts * 13;
         float totalBallsSpawned = spawner.totalBallsSpawned;
+        if ((1 - (ballImpacts / totalBallsSpawned)) < 0f)
+            return 0f;
         return 1-(ballImpacts / totalBallsSpawned);
     }
 }

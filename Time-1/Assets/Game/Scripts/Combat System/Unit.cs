@@ -6,7 +6,7 @@ public class Unit : MonoBehaviour
 {
 	public CharacterBase cBase;
 	[HideInInspector]
-	public int curHealth, curEnergy, maxHealth, maxEnergy, attack, defense, velocity;
+	public float curHealth, curEnergy, maxHealth, maxEnergy, attack, defense, velocity;
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class Unit : MonoBehaviour
 		curEnergy = maxEnergy;
 	}
 
-    public bool TakeDamage(int dmg)
+    public bool TakeDamage(float dmg)
 	{
 		curHealth -= dmg;
 

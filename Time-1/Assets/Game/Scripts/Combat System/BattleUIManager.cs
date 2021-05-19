@@ -47,7 +47,7 @@ public class BattleUIManager : MonoBehaviour
 
     public void OnDefenseButton()
     {
-        int curEnergy = battleSystem.playerUnit.curEnergy;
+        float curEnergy = battleSystem.playerUnit.curEnergy;
         if (battleSystem.state != BattleState.PLAYERTURN)
             return;
         if (!battleSystem.defenseOn && battleSystem.playerUnit.TakeEnergy(3))

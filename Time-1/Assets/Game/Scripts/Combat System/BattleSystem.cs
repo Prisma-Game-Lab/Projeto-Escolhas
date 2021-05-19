@@ -48,7 +48,7 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator PlayerAttack(int tipo)
     {
-        int curEnergy = playerUnit.curEnergy;
+        float curEnergy = playerUnit.curEnergy;
         if (playerUnit.TakeEnergy(tipo))
         {
             battleUI.CombatPanel.SetActive(false);
@@ -56,7 +56,7 @@ public class BattleSystem : MonoBehaviour
             battleUI.playerHUD.SetEnergy(curEnergy, playerUnit,2);
             state = BattleState.ATTACK;
             bool isDead;
-            int enemyCurHealth = enemyUnit.curHealth;
+            float enemyCurHealth = enemyUnit.curHealth;
 
             if (tipo == 1)
             {
@@ -97,7 +97,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         bool isDead;
-        int playerCurHealth = playerUnit.curHealth;
+        float playerCurHealth = playerUnit.curHealth;
 
         if (defenseOn)
         {
@@ -150,7 +150,7 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
-        int curEnergy = playerUnit.curEnergy;
+        float curEnergy = playerUnit.curEnergy;
         battleUI.dialogueText.text = "Escolha uma ação:";
         battleUI.DecisionAttackButton.SetActive(true);
         battleUI.DecisionQuitButton.SetActive(true);
@@ -160,7 +160,7 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator PlayerHeal()
     {
-        int playerCurHealth = enemyUnit.curHealth;
+        float playerCurHealth = enemyUnit.curHealth;
         state = BattleState.HEAL;
         playerUnit.Heal(5);
 

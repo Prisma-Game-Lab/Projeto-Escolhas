@@ -8,7 +8,8 @@ public class TinderData : MonoBehaviour
     public List<CharacterBase> allCharacters;
 
     [HideInInspector] public List<CharacterBase> curContacts = new List<CharacterBase>();
-    //[HideInInspector] public List<int> curContactsIndex = new List<int>();
+
+    public CharacterBase combatCharacter;
 
     public int curDay;
     [HideInInspector] public int matchesNumber;

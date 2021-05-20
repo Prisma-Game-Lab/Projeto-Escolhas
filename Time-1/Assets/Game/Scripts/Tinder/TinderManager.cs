@@ -13,6 +13,8 @@ public class TinderManager : MonoBehaviour
     TinderData tinderData;
     public GameObject contactPrefab;
     public GameObject messagePanel;
+    public List<GameObject> messagePanelsList = new List<GameObject>();
+    private GameObject panel;
 
     private void Start()
     {
@@ -35,7 +37,7 @@ public class TinderManager : MonoBehaviour
     {
         if (tinderData.curDay > tinderData.matchesNumber)
         {
-            createMessage(tinderData.tinderCharacters[curIndex]);
+            createMessage(tinderData.tinderCharacters[curIndex], curIndex);
             tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
             curIndex = 0;
             tinderImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;
@@ -48,11 +50,17 @@ public class TinderManager : MonoBehaviour
     {
         //abre UI da bio
     }
-    private void createMessage(CharacterBase character) 
+    private void createMessage(CharacterBase character, int pos) 
     {
         GameObject cp = Instantiate(contactPrefab, messagePanel.transform); 
         cp.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = character.profileChatImage;
         cp.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = character.name;
         cp.SetActive(true);
+        panel = messagePanelsList[pos];
+        Button btn = cp.GetComponent<Button>();
+		btn.onClick.AddListener(openMessage);
+    }
+    private void openMessage() {
+        panel.SetActive(true);
     }
 }

@@ -10,7 +10,6 @@ public class CharacterBase : ScriptableObject
     public Sprite tinderImage;
     public Sprite combatImage;
     public Sprite combatWhiteImage;
-    public GameObject messagePanel;
     public int maxHealth;
     public int attack;
     public int defense;
@@ -24,10 +23,6 @@ public class CharacterBase : ScriptableObject
 
     public Sprite Sprite {
         get { return profileChatImage; }
-    }
-
-    public GameObject MessagePanel {
-        get { return messagePanel; }
     }
 
     public int Strength {

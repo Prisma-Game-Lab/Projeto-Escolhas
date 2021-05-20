@@ -10,27 +10,65 @@ public class contactsManager : MonoBehaviour
     public GameObject messagePanel;
     public List<GameObject> characterPanelList = new List<GameObject>();
 
-    private GameObject panel;
-
+    private TinderData tinderData;
 
     void Start()
     {
-        
+        tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
+        if (tinderData.curContacts.Count != 0)
+        {
+            foreach (CharacterBase contact in tinderData.curContacts)
+            {
+                createContact(contact);
+            }
+        }
     }
 
 
-    public void createMessage(CharacterBase character, int index)
+    public void createContact(CharacterBase character)
     {
         GameObject contact = Instantiate(contactPrefab, messagePanel.transform);
         contact.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().sprite = character.profileChatImage;
         contact.transform.GetChild(0).GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = character.name;
+        Image popUp = contact.transform.GetChild(0).GetChild(2).gameObject.GetComponent<Image>();
         contact.SetActive(true);
-        panel = characterPanelList[index];
+        GameObject characterPanel = getCharacterPanel(character);
         Button button = contact.transform.GetChild(0).GetComponent<Button>();
-        button.onClick.AddListener(openMessage);
+        button.onClick.AddListener(() => openMessage(characterPanel, popUp));
+        if (!tinderData.curContacts.Contains(character))
+        {
+            tinderData.curContacts.Add(character);
+        }
+        else
+            popUp.enabled = false;
     }
-    private void openMessage()
+    
+    private GameObject getCharacterPanel(CharacterBase character)
     {
+        if (character.race == CharacterBase.CharacterRace.Elfa)
+            return characterPanelList[0];
+        else if (character.race == CharacterBase.CharacterRace.Humano)
+            return characterPanelList[1];
+        else if (character.race == CharacterBase.CharacterRace.Sereia)
+            return characterPanelList[2];
+        else if (character.race == CharacterBase.CharacterRace.Orc)
+            return characterPanelList[3];
+        else if (character.race == CharacterBase.CharacterRace.Carneira)
+            return characterPanelList[4];
+        else
+            return characterPanelList[0];
+    }
+
+    private void openMessage(GameObject panel, Image popUp)
+    {
+        if (popUp.IsActive())
+            popUp.enabled = false;
         panel.SetActive(true);
     }
+
+    public void OnBackButton(GameObject canvas)
+    {
+        canvas.gameObject.SetActive(false);
+    }
+
 }

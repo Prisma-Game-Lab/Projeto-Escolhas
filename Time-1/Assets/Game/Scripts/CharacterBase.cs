@@ -16,6 +16,8 @@ public class CharacterBase : ScriptableObject
     public int velocity;
     public int maxEnergy;
 
+    public enum CharacterRace {Elfa, Humano, Sereia, Orc, Carneira};
+    public CharacterRace race;
 
     public string Name {
         get { return name; }

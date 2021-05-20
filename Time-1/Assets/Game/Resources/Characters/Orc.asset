@@ -22,3 +22,4 @@ MonoBehaviour:
   defense: 2
   velocity: 0
   maxEnergy: 0
+  race: 3

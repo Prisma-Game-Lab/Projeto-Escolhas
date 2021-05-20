@@ -33,9 +33,9 @@ public class TinderManager : MonoBehaviour
     }
     public void OnYesButtonPressed()
     {
-        if (tinderData.curDay > tinderData.matchesNumber && curIndex!=1)
+        if (tinderData.curDay > tinderData.matchesNumber && tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Humano)
         {
-            contactManager.createMessage(tinderData.tinderCharacters[curIndex], curIndex);
+            contactManager.createContact(tinderData.tinderCharacters[curIndex]);
             tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
             curIndex = 0;
             tinderImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;

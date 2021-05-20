@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1843,7 +1843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768f7502478c9f446b110839fe86cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: 8992a8599bec13041983820819bc2319, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: 6170af95e934e89438e1c4d63133a75a, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 416210267}
@@ -5055,10 +5055,9 @@ MonoBehaviour:
   messagePanel: {fileID: 982786353}
   characterPanelList:
   - {fileID: 368226201}
-  - {fileID: 0}
+  - {fileID: 368226201}
   - {fileID: 1750626832}
   - {fileID: 325071892}
-  - {fileID: 0}
 --- !u!1 &803986541
 GameObject:
   m_ObjectHideFlags: 0
@@ -9782,7 +9781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768f7502478c9f446b110839fe86cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: 0e0c3b9b52ae2d84a8eb241bb7768e91, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: 7d62d5c18a0092041bb2fa78f0ce7ac6, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 945452650}

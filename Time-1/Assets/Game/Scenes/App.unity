@@ -1393,6 +1393,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c4e8b4350ebc9542870552006bb6e93, type: 2}
   - {fileID: 11400000, guid: 2a3cdfe1c931fd1498b27c26773bff93, type: 2}
   curContacts: []
+  combatCharacter: {fileID: 0}
   curDay: 0
   matchesNumber: 0
 --- !u!4 &254342082
@@ -11254,7 +11255,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2077730265
 RectTransform:
   m_ObjectHideFlags: 0

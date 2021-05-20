@@ -34,7 +34,7 @@ public class contactsManager : MonoBehaviour
         contact.SetActive(true);
         GameObject characterPanel = getCharacterPanel(character);
         Button button = contact.transform.GetChild(0).GetComponent<Button>();
-        button.onClick.AddListener(() => openMessage(characterPanel, popUp));
+        button.onClick.AddListener(() => openMessage(characterPanel, popUp, character));
         if (!tinderData.curContacts.Contains(character))
         {
             tinderData.curContacts.Add(character);
@@ -59,11 +59,12 @@ public class contactsManager : MonoBehaviour
             return characterPanelList[0];
     }
 
-    private void openMessage(GameObject panel, Image popUp)
+    private void openMessage(GameObject panel, Image popUp, CharacterBase character)
     {
         if (popUp.IsActive())
             popUp.enabled = false;
         panel.SetActive(true);
+        tinderData.combatCharacter = character;
     }
 
     public void OnBackButton(GameObject canvas)

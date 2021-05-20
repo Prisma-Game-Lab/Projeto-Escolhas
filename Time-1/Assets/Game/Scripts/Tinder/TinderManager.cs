@@ -11,18 +11,16 @@ public class TinderManager : MonoBehaviour
     public Image tinderImage;
     private int curIndex;
     TinderData tinderData;
-    public GameObject contactPrefab;
-    public GameObject messagePanel;
-    public List<GameObject> characterPanelList = new List<GameObject>();
-    private GameObject panel;
+    private contactsManager contactManager;
 
     private void Start()
     {
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
+        contactManager = GetComponent<contactsManager>();
         curIndex = 0;
         tinderImage.sprite = tinderData.tinderCharacters[0].tinderImage;
         tinderCharacterName_txt.text = tinderData.tinderCharacters[0].name;
-        day_txt.text = "Day " + tinderData.curDay;
+        day_txt.text = "Dia " + tinderData.curDay;
     }
 
     public void OnNoButtonPressed()
@@ -35,32 +33,18 @@ public class TinderManager : MonoBehaviour
     }
     public void OnYesButtonPressed()
     {
-        if (tinderData.curDay > tinderData.matchesNumber)
+        if (tinderData.curDay > tinderData.matchesNumber && curIndex!=1)
         {
-            createMessage(tinderData.tinderCharacters[curIndex], curIndex);
+            contactManager.createMessage(tinderData.tinderCharacters[curIndex], curIndex);
             tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
             curIndex = 0;
             tinderImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;
             tinderCharacterName_txt.text = tinderData.tinderCharacters[curIndex].name;
             tinderData.matchesNumber += 1;
-            //cria e abre uma conversa com o personagem
         }
     }
     public void OnBioButtonPressed()
     {
         //abre UI da bio
-    }
-    private void createMessage(CharacterBase character, int pos) 
-    {
-        GameObject cp = Instantiate(contactPrefab, messagePanel.transform); 
-        cp.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = character.profileChatImage;
-        cp.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = character.name;
-        cp.SetActive(true);
-        panel = characterPanelList[pos];
-        Button btn = cp.GetComponent<Button>();
-		btn.onClick.AddListener(openMessage);
-    }
-    private void openMessage() {
-        panel.SetActive(true);
     }
 }

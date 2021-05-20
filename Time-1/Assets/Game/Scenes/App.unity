@@ -9448,7 +9448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768f7502478c9f446b110839fe86cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: 7d62d5c18a0092041bb2fa78f0ce7ac6, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: 6a06b7cca9609164a897e639c3d0add7, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 945452650}

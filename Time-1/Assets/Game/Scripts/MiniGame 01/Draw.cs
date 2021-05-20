@@ -23,13 +23,11 @@ public class Draw : MonoBehaviour
     public GameObject squareImg1, squareImg2, squareImg3, squareImg4;
     float squarePos;
     bool hasDrawn = false;
-    //private bool _sort = false;
     private float _x1, _x2, _x3, _x4;
     private float _y1, _y2, _y3, _y4;
     List<GameObject> img = new List<GameObject>();
     List<int> rnd = new List<int>();
     private List<List<string>> _storeString = new List<List<string>>();
-    //int n = 1;
     List<int> aux = new List<int>();
     public int point;
     public TextMeshProUGUI pointsText;
@@ -64,7 +62,6 @@ public class Draw : MonoBehaviour
     }
 
     private void sortDrawing() {
-        //_sort = false;
         int rnd2 = Random.Range(0,aux.Count);
         int j = rnd2;
         rnd2 = aux[j];
@@ -86,7 +83,6 @@ public class Draw : MonoBehaviour
         _storeString[pos][0] = "0";
         _storeString[pos][1] = "0";
         aux.Add(pos);
-        //_sort = true;
         rnd.Clear();
     }
 
@@ -109,13 +105,6 @@ public class Draw : MonoBehaviour
     }
 
     private void Update() {
-        //if (_sort) {
-            //if (aux.Count > 0) {
-                //n = Random.Range(1, aux.Count + 1);
-                //for (int i = 0; i < n; i++)
-                //sortDrawing();
-            //}
-        //}
         if (!Timer.timeStopped && !Pause.isPaused)
             Drawing();
         else if (!finishedTime)
@@ -144,12 +133,6 @@ public class Draw : MonoBehaviour
                         bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.35f);
                         bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.35f);
                         if (result1 || result2) {
-                            //img[i].GetComponent<Image>().sprite = null;
-                            //_storeString[i][0] = "0";
-                            //_storeString[i][1] = "0";
-                            //aux.Add(i);
-                            //_sort = true;
-                            //rnd.Clear();
                             eraseDrawing(i);
                             if (aux.Count == 4) {
                                 point++;

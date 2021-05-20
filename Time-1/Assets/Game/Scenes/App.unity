@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 10145263}
   - component: {fileID: 10145262}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: Messages Scroll
   m_TagString: Scroll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 295.5}
-  m_SizeDelta: {x: -826.2241, y: -1993.2241}
+  m_AnchoredPosition: {x: -0.05859375, y: 210.33002}
+  m_SizeDelta: {x: -0.10718, y: -420.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &10145262
 MonoBehaviour:
@@ -1258,7 +1258,7 @@ GameObject:
   - component: {fileID: 248873116}
   - component: {fileID: 248873115}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: Messages Scroll
   m_TagString: Scroll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3647,7 +3647,7 @@ GameObject:
   - component: {fileID: 588917016}
   - component: {fileID: 588917017}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Options Panel
   m_TagString: ButtonSpace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3669,8 +3669,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000030518, y: 206.18}
-  m_SizeDelta: {x: 1080, y: 412.36}
+  m_AnchoredPosition: {x: 0.000030518, y: 217.732}
+  m_SizeDelta: {x: 1080, y: 405.8239}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588917017
 MonoBehaviour:
@@ -3687,12 +3687,12 @@ MonoBehaviour:
   m_Padding:
     m_Left: 20
     m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
-  m_ChildAlignment: 7
-  m_Spacing: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 12
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
@@ -4765,7 +4765,7 @@ GameObject:
   - component: {fileID: 763616795}
   - component: {fileID: 763616796}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Options Panel
   m_TagString: ButtonSpace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4787,8 +4787,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000030518, y: 206.18}
-  m_SizeDelta: {x: 1080, y: 412.36}
+  m_AnchoredPosition: {x: 0.000030518, y: 220.9151}
+  m_SizeDelta: {x: 1080, y: 404.1903}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763616796
 MonoBehaviour:
@@ -4805,12 +4805,12 @@ MonoBehaviour:
   m_Padding:
     m_Left: 20
     m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
-  m_ChildAlignment: 7
-  m_Spacing: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 12
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
@@ -6110,8 +6110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -413, y: 697.26416}
-  m_SizeDelta: {x: 826, y: 1577.4916}
+  m_AnchoredPosition: {x: 0.11706543, y: -160.28363}
+  m_SizeDelta: {x: -0.11694336, y: -151.52356}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &993311955
 MonoBehaviour:
@@ -9584,16 +9584,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: messageBackground
       objectReference: {fileID: 0}
-    - target: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8060292205402035034, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
-      propertyPath: m_text
-      value: '
-
-'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
 --- !u!1 &1662176435
@@ -10110,7 +10100,7 @@ GameObject:
   - component: {fileID: 1813617096}
   - component: {fileID: 1813617095}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: Messages Scroll
   m_TagString: Scroll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10513,7 +10503,7 @@ GameObject:
   - component: {fileID: 1942435839}
   - component: {fileID: 1942435840}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Options Panel
   m_TagString: ButtonSpace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10535,8 +10525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000030518, y: 206.18}
-  m_SizeDelta: {x: 1080, y: 412.36}
+  m_AnchoredPosition: {x: 0.000030518, y: 202.91199}
+  m_SizeDelta: {x: 1080, y: 405.824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1942435840
 MonoBehaviour:
@@ -10553,12 +10543,12 @@ MonoBehaviour:
   m_Padding:
     m_Left: 20
     m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
-  m_ChildAlignment: 7
-  m_Spacing: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 12
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
@@ -11255,7 +11245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2077730265
 RectTransform:
   m_ObjectHideFlags: 0

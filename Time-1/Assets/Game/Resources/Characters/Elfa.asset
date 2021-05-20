@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d131bc9ea134147bd4794063265bbd, type: 3}
   m_Name: Elfa
   m_EditorClassIdentifier: 
-  name: Elfa
+  name: Amarillys
   profileChatImage: {fileID: 21300000, guid: 8dcd45f1ba7f3b147ae465205af79c9c, type: 3}
   tinderImage: {fileID: 21300000, guid: 57e3aa95d6322dc419e0f284251ea862, type: 3}
   combatImage: {fileID: 21300000, guid: 39ff48f64f7ec6c4b871158dc9383530, type: 3}

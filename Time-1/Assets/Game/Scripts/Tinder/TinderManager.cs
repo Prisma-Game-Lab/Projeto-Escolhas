@@ -13,7 +13,7 @@ public class TinderManager : MonoBehaviour
     TinderData tinderData;
     public GameObject contactPrefab;
     public GameObject messagePanel;
-    public List<GameObject> messagePanelsList = new List<GameObject>();
+    public List<GameObject> characterPanelList = new List<GameObject>();
     private GameObject panel;
 
     private void Start()
@@ -56,7 +56,7 @@ public class TinderManager : MonoBehaviour
         cp.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = character.profileChatImage;
         cp.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = character.name;
         cp.SetActive(true);
-        panel = messagePanelsList[pos];
+        panel = characterPanelList[pos];
         Button btn = cp.GetComponent<Button>();
 		btn.onClick.AddListener(openMessage);
     }

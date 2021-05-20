@@ -66,6 +66,7 @@ public class InkExample : MonoBehaviour
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 300.0f);
                 }
                 else {
+                    Debug.Log(messages[i]);
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
                     currentInst.GetComponent<Image>().color = new Color32(169,169,169,255);
                 }

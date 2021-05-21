@@ -56,7 +56,7 @@ public class BattleSystem : MonoBehaviour
         {
             battleUI.CombatPanel.SetActive(false);
             battleUI.DecisionPanel.SetActive(true);
-            battleUI.playerHUD.SetEnergy(curEnergy, playerUnit,2);
+            battleUI.playerHUD.SetEnergy(curEnergy, playerUnit, 2);
             state = BattleState.ATTACK;
             bool isDead;
             float enemyCurHealth = enemyUnit.curHealth;
@@ -94,6 +94,8 @@ public class BattleSystem : MonoBehaviour
                 StartCoroutine(EnemyTurn());
             }
         }
+        else
+            audioManager.Play("Click");
     }
 
     IEnumerator EnemyTurn()

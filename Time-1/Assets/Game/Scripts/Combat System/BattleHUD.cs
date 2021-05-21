@@ -25,10 +25,10 @@ public class BattleHUD : MonoBehaviour
     public void SetHP(float curHealth, Unit unit, int type)
     {
 		StartCoroutine(LerpUI(curHealth, unit, type));
-		if (unit.curHealth <= 0)
-            healthText.text = "0";
-		else
-			healthText.text = ""+(int)unit.curHealth;
+		//if (unit.curHealth <= 0)
+  //          healthText.text = "0";
+		//else
+		//	healthText.text = ""+(int)unit.curHealth;
 	}
     public void SetEnergy(float curEnergy, Unit unit, int type)
     {
@@ -59,6 +59,10 @@ public class BattleHUD : MonoBehaviour
 			{
 				float value = Mathf.Lerp(curValue, unit.curHealth, (elapsedTime / waitTime));
 				healthBar.fillAmount = (float)value / unit.maxHealth;
+				if(value>=0)
+					healthText.text = "" + (int)value;
+				else
+					healthText.text = "0";
 			}
 			else if (type == 2)
 			{

@@ -64,7 +64,8 @@ public class BattleUIManager : MonoBehaviour
             battleSystem.defenseOn = false;
             playerHUD.SetShield(false);
             battleSystem.playerUnit.GiveEnergy(3);
-        }
+        }else
+            audioManager.Play("Click");
         playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit, 2);
     }
 

@@ -1,24 +1,16 @@
-//using System;
-//using System.Text;
-//using System.IO;
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEditor;
-
-/*
- * 
- * Script responsible for the read/write to the persistent info, saved in a json file
- * Author: André Mazal Krauss
- * 
- */
-
- /*
+using System;
+using System.Text;
+using System.IO;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+ 
 public class SaveSystem : MonoBehaviour
 {
     [HideInInspector] //deve ficar escondido, só tiro enquanto programo, se eu esquecer podem por de volta pfv
-    public PointSystem pointSystem;
-    public PointSystem emptySave;
+    public AppSave appSave;
+    public AppSave emptySave;
 
     //a versão corrente do save, para podermos testar e tratar versões antigas
     public static float saveVersion = 1.0f;
@@ -41,15 +33,6 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    //usado para, a todo momento, saber o último level que foi jogado, ou está sendo jogado
-    public int currLevelPage;
-    public int currLevelNumber;
-
-    public string currLevelString;
-
-    //usado quando o countdown de um reset, quando ele não deve descarregar a cena
-    public bool CountdownDontReloadScene;
-
     private static SaveSystem instance;
     public static SaveSystem GetInstance()
     {
@@ -66,17 +49,15 @@ public class SaveSystem : MonoBehaviour
         else
         {
             instance = this;
-            //tenta loadar
+            //tenta dar load
             if(!LoadState())
             {
                 //se falhou, instancia novo save e o salva
-                pointSystem = GameObject.Instantiate(emptySave);
+                appSave = GameObject.Instantiate(emptySave);
                 SaveState();
                 string path = Path.Combine(Application.persistentDataPath, saveFileName + ".dat");
                 Debug.Log("new save on path:" + path);
 
-                currLevelPage = 0;
-                currLevelNumber = 0;
             }        
         }
         
@@ -92,7 +73,7 @@ public class SaveSystem : MonoBehaviour
     public void SaveState()
     {
         //string path = Path.Combine(Application.persistentDataPath, saveFileName + ".dat");
-        string json_ps = JsonUtility.ToJson(pointSystem);
+        string json_ps = JsonUtility.ToJson(appSave);
         byte[] buffer = Encoding.UTF8.GetBytes(json_ps);
         for(int i = 0; i < buffer.Length; i++)
         {
@@ -161,8 +142,8 @@ public class SaveSystem : MonoBehaviour
                 buffer[i] = (Byte)((~buffer[i]) & 0xFF); //faço um simples not. Não é seguro, mas é o suficiente pra ninguém editar na mão o arquivo 
             }
             string jsonString = Encoding.UTF8.GetString(buffer);
-            pointSystem = ScriptableObject.CreateInstance<PointSystem>();
-            JsonUtility.FromJsonOverwrite(jsonString, pointSystem);
+            appSave = ScriptableObject.CreateInstance<AppSave>();
+            JsonUtility.FromJsonOverwrite(jsonString, appSave);
             return true;
         }
         catch (Exception e)
@@ -173,46 +154,4 @@ public class SaveSystem : MonoBehaviour
 
     }
 
-    //função helper pra setar score do level corrente. Só pra evitar gets/sets bobos
-    public void SetScoreForCurrentLevel(int stars, bool cleared, bool[] charsSaved)
-    {
-        pointSystem.UpdateLevel(currLevelPage, currLevelNumber, stars, cleared, charsSaved);
-        SaveState();
-    }
-
-    public void ClearState()
-    {
-        pointSystem = GameObject.Instantiate(emptySave); 
-    }
-
-    //[MenuItem("OurGame/CleanSave")] por algum motivo doido isso quebra a build?
-    public static void DeleteSaveFile()
-    {
-       try
-       {
-            File.Delete(SavePath);
-            File.Delete(VersionSavePath);
-            if(instance != null)
-            {
-                instance.pointSystem = GameObject.Instantiate(instance.emptySave);
-                
-                //seto a página e level correntes para a primeira
-                instance.currLevelPage = 0;
-                instance.currLevelNumber = 0;
-
-            }
-       }
-       catch(Exception e)
-       {
-           Debug.LogWarning("Could not delete file:" + e.Message);
-       }
-    }
-
-    //ao sair do jogo, salvar estado
-    void OnApplicationQuit()
-    {
-        SaveState();
-    }
-
 }
-*/

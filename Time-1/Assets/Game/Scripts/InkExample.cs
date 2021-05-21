@@ -66,7 +66,7 @@ public class InkExample : MonoBehaviour
                     currentInst.GetComponent<Image>().sprite = sprite;
                     currentInst.GetComponent<Image>().color = new Color32(255,255,255,255);
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
-                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 300.0f);
+                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
                 }
                 else {
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);

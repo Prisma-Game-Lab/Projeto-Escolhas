@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class AppSave : ScriptableObject
 {
-    //public string navigationBar;
+    public List<GameObject> elfa;
+    public List<GameObject> humano;
+    public List<GameObject> sereia;
+    public List<GameObject> orc;
 }

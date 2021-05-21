@@ -1445,7 +1445,7 @@ MonoBehaviour:
   sounds:
   - name: TinderTheme
     clip: {fileID: 8300000, guid: 8913b0403c147704d9aa8985dbbb06d2, type: 3}
-    volume: 0.15
+    volume: 0.4
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -1454,7 +1454,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ShieldUp
     clip: {fileID: 8300000, guid: 878d72478785ed84b8aaa40ddc130ab5, type: 3}
-    volume: 0.5
+    volume: 0.55
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -1463,7 +1463,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: ShieldDown
     clip: {fileID: 8300000, guid: fa85a843b47b6464d9219b7581af0e66, type: 3}
-    volume: 0.5
+    volume: 0.55
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -1472,7 +1472,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Punch
     clip: {fileID: 8300000, guid: 89fd01c428d582642a272be58d924534, type: 3}
-    volume: 0.7
+    volume: 0.6
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -1490,7 +1490,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Click
     clip: {fileID: 8300000, guid: 060ad67b8846b254fbb613e705c74030, type: 3}
-    volume: 0.4
+    volume: 0.7
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -1544,7 +1544,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: DrawSorted
     clip: {fileID: 8300000, guid: 325112e2cc8f2784c95e615a24cf1927, type: 3}
-    volume: 0.5
+    volume: 0.6
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0

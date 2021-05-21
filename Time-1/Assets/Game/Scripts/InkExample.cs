@@ -24,8 +24,11 @@ public class InkExample : MonoBehaviour
     private float distance;
     private List<string> messages = new List<string>();
 
+    private AudioManager audioManager;
+
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         story = new Story(inkJSONAsset.text);
 
         lastLine = 0;
@@ -109,6 +112,7 @@ public class InkExample : MonoBehaviour
 
     void OnClickChoiceButton(Choice choice)
     {
+        audioManager.Play("Click");
         story.ChooseChoiceIndex(choice.index);
         refresh();
     }

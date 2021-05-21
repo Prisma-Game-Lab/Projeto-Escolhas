@@ -21,7 +21,9 @@ public class Unit : MonoBehaviour
 		}
 		else
 		{
-			int curDay = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay;
+			TinderData tinderData=GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
+			int curDay = tinderData.curDay;
+			cBase = tinderData.combatCharacter;
 			attack = cBase.attack * (curDay + 1) / 2;
 			defense = cBase.defense * (curDay + 1) / 2;
 			velocity = cBase.velocity * (curDay + 1) / 2;

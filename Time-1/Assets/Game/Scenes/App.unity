@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1967,7 +1967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768f7502478c9f446b110839fe86cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: 6170af95e934e89438e1c4d63133a75a, type: 3}
+  inkJSONAsset:
+  - {fileID: 4900000, guid: 6170af95e934e89438e1c4d63133a75a, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 416210267}
@@ -2580,7 +2581,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768f7502478c9f446b110839fe86cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: e8702c0e943b08d4792b29664d190c76, type: 3}
+  inkJSONAsset:
+  - {fileID: 4900000, guid: e8702c0e943b08d4792b29664d190c76, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 1351233490}
@@ -9670,7 +9672,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768f7502478c9f446b110839fe86cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: d0cd397c6d2ab1f4484370380234b357, type: 3}
+  inkJSONAsset:
+  - {fileID: 4900000, guid: d0cd397c6d2ab1f4484370380234b357, type: 3}
+  - {fileID: 4900000, guid: 168bb0c8b198ad54fa71f645a96db678, type: 3}
+  - {fileID: 4900000, guid: 31699790b67b84041bae07032629b59c, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 945452650}

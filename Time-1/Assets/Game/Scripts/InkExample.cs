@@ -7,7 +7,7 @@ using TMPro;
 
 public class InkExample : MonoBehaviour
 {
-    public TextAsset inkJSONAsset;
+    public List<TextAsset> inkJSONAsset = new List<TextAsset>();
     private Story story;
     public Button buttonPrefab;
     public GameObject textPrefab;
@@ -29,7 +29,7 @@ public class InkExample : MonoBehaviour
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
-        story = new Story(inkJSONAsset.text);
+        story = new Story(inkJSONAsset[0].text);
 
         lastLine = 0;
         distance = 150.0f;

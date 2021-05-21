@@ -739,7 +739,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VAPO!?
+  m_Text: COMBATE!?
 --- !u!222 &102869638
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3312,7 +3312,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VAPO!?
+  m_Text: COMBATE!?
 --- !u!222 &492992241
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11688,7 +11688,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VAPO!?
+  m_Text: COMBATE!?
 --- !u!222 &2110393183
 CanvasRenderer:
   m_ObjectHideFlags: 0

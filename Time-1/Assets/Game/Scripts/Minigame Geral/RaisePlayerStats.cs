@@ -63,7 +63,7 @@ public class RaisePlayerStats : MonoBehaviour
     {
         Draw draw = GetComponent<Draw>();
         int score = draw.point;
-        int totalDraws = draw.totalDraws;
+        int totalDraws = draw.totalDraws-1;
         return (float)score/totalDraws;
     }
 

@@ -121,6 +121,7 @@ public class BattleSystem : MonoBehaviour
 
         if (defenseOn)
         {
+            audioManager.Play("ShieldDown");
             defenseOn = false;
             battleUI.playerHUD.SetShield(false);
         }

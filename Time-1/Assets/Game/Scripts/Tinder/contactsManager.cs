@@ -42,6 +42,11 @@ public class contactsManager : MonoBehaviour
         {
             tinderData.curContacts.Add(character);
         }
+        else if (character.popUp)
+        {
+            chatButtonPopUpImage.gameObject.SetActive(true);
+            popUp.enabled = true;
+        }
         else
             popUp.enabled = false;
     }

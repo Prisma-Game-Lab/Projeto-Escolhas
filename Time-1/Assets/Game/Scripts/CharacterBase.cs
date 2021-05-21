@@ -15,6 +15,8 @@ public class CharacterBase : ScriptableObject
     public int defense;
     public int velocity;
     public int maxEnergy;
+    [HideInInspector]
+    public bool popUp;
 
     public enum CharacterRace {Elfa, Humano, Sereia, Orc, Carneira};
     public CharacterRace race;

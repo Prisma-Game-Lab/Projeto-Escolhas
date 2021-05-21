@@ -17,9 +17,11 @@ public class BattleSystem : MonoBehaviour
     [HideInInspector] public bool defenseOn;
 
     private BattleUIManager battleUI;
+    private AudioManager audioManager;
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         battleUI = GetComponent<BattleUIManager>();
         defenseOn = false;
         state = BattleState.START;
@@ -61,11 +63,13 @@ public class BattleSystem : MonoBehaviour
 
             if (tipo == 1)
             {
+                audioManager.Play("Punch");
                 isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 1));
                 battleUI.dialogueText.text = "Você socou seu date!";
             }
             else if (tipo == 2)
             {
+                audioManager.Play("Kick");
                 isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 1.5));
                 battleUI.dialogueText.text = "Você chutou seu date!";
             }
@@ -95,8 +99,8 @@ public class BattleSystem : MonoBehaviour
     IEnumerator EnemyTurn()
     {
         battleUI.dialogueText.text = enemyUnit.cBase.name + " te socou!";
-
         yield return new WaitForSeconds(1f);
+        audioManager.Play("Punch");
         bool isDead;
         float playerCurHealth = playerUnit.curHealth;
 

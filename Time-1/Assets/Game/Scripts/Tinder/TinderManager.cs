@@ -12,9 +12,11 @@ public class TinderManager : MonoBehaviour
     private int curIndex;
     TinderData tinderData;
     private contactsManager contactManager;
+    private AudioManager audioManager;
 
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
         contactManager = GetComponent<contactsManager>();
         curIndex = 0;
@@ -25,6 +27,7 @@ public class TinderManager : MonoBehaviour
 
     public void OnNoButtonPressed()
     {
+        audioManager.Play("Reject");
         curIndex++;
         if (curIndex > tinderData.tinderCharacters.Count - 1)
             curIndex = 0;
@@ -35,6 +38,7 @@ public class TinderManager : MonoBehaviour
     {
         if (tinderData.curDay > tinderData.matchesNumber && tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Humano)
         {
+            audioManager.Play("Match");
             contactManager.createContact(tinderData.tinderCharacters[curIndex]);
             tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
             curIndex = 0;
@@ -42,6 +46,9 @@ public class TinderManager : MonoBehaviour
             tinderCharacterName_txt.text = tinderData.tinderCharacters[curIndex].name;
             tinderData.matchesNumber += 1;
         }
+        else
+            audioManager.Play("Click");
+
     }
     public void OnBioButtonPressed()
     {

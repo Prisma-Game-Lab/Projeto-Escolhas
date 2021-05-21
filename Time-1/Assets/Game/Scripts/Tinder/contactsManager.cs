@@ -11,9 +11,11 @@ public class contactsManager : MonoBehaviour
     public List<GameObject> characterPanelList = new List<GameObject>();
 
     private TinderData tinderData;
+    private AudioManager audioManager;
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
         if (tinderData.curContacts.Count != 0)
         {
@@ -61,6 +63,7 @@ public class contactsManager : MonoBehaviour
 
     private void openMessage(GameObject panel, Image popUp, CharacterBase character)
     {
+        audioManager.Play("Click");
         if (popUp.IsActive())
             popUp.enabled = false;
         panel.SetActive(true);
@@ -69,6 +72,7 @@ public class contactsManager : MonoBehaviour
 
     public void OnBackButton(GameObject canvas)
     {
+        audioManager.Play("Click");
         canvas.gameObject.SetActive(false);
     }
 

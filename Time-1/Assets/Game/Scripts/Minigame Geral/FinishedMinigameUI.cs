@@ -23,7 +23,7 @@ public class FinishedMinigameUI : MonoBehaviour
     {
         stats = GetComponent<RaisePlayerStats>();
         comments.Add("Excelente!");
-        comments.Add("Muito bom!");
+        comments.Add("Ótimo");
         comments.Add("Bom!");
         comments.Add("Mais ou menos!");
         comments.Add("Ruim!");

@@ -17,10 +17,11 @@ public class RaisePlayerStats : MonoBehaviour
     public int statType;
     public int raise;
 
-
+    private AudioManager audioManager;
 
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         finishedMinigameUI = GetComponent<FinishedMinigameUI>();
         playerStats = GameObject.FindGameObjectWithTag("persistentData").GetComponent<playerStats>();
         raised = false;
@@ -33,6 +34,7 @@ public class RaisePlayerStats : MonoBehaviour
         {
             if (Timer.timeStopped)
             {
+                audioManager.Play("RaiseStats");
                 performacePercentage = minigame01Performance();
                 print("Performance = " + performacePercentage);
                 print("Raise = " + raise);
@@ -45,6 +47,7 @@ public class RaisePlayerStats : MonoBehaviour
         {
             if (Spawner.allWavesFinished == true)
             {
+                audioManager.Play("RaiseStats");
                 performacePercentage = minigame02Performance();
                 print("Performance = "+performacePercentage);
                 print("Raise = "+raise);

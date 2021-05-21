@@ -38,8 +38,11 @@ public class Draw : MonoBehaviour
     
     public int totalDraws;
 
+    private AudioManager audioManager;
+
 
     void Start() {
+        audioManager = FindObjectOfType<AudioManager>();
         _y3 = squareImg3.gameObject.transform.position.y;
         img.Add(squareImg1);
         img.Add(squareImg2);
@@ -98,6 +101,7 @@ public class Draw : MonoBehaviour
     }
 
     private void sortMany() {
+        audioManager.Play("DrawSorted");
         totalDraws++;
         int n = Random.Range(3, aux.Count + 1);
         for (int i = 0; i < n; i++)
@@ -133,6 +137,7 @@ public class Draw : MonoBehaviour
                         bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.35f);
                         bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.35f);
                         if (result1 || result2) {
+                            audioManager.Play("DrawCompleted");
                             eraseDrawing(i);
                             if (aux.Count == 4) {
                                 point++;

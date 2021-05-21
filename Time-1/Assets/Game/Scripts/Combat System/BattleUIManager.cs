@@ -23,12 +23,13 @@ public class BattleUIManager : MonoBehaviour
     public GameObject lostDatePanel;
 
     private BattleSystem battleSystem;
+    private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
         battleSystem = GetComponent<BattleSystem>();
-
+        audioManager = FindObjectOfType<AudioManager>();
         wonDatePanel.SetActive(false);
         lostDatePanel.SetActive(false);
         CombatPanel.SetActive(false);
@@ -41,7 +42,6 @@ public class BattleUIManager : MonoBehaviour
     {
         if (battleSystem.state != BattleState.PLAYERTURN)
             return;
-
         battleSystem.StartCoroutine(battleSystem.PlayerAttack(tipo));
     }
 
@@ -52,11 +52,13 @@ public class BattleUIManager : MonoBehaviour
             return;
         if (!battleSystem.defenseOn && battleSystem.playerUnit.TakeEnergy(3))
         {
+            audioManager.Play("ShieldUp");
             battleSystem.defenseOn = true;
             playerHUD.SetShield(true);
         }
         else if (battleSystem.defenseOn)
         {
+            audioManager.Play("ShieldDown");
             battleSystem.defenseOn = false;
             playerHUD.SetShield(false);
             battleSystem.playerUnit.GiveEnergy(3);
@@ -76,6 +78,7 @@ public class BattleUIManager : MonoBehaviour
     {
         if (battleSystem.state != BattleState.PLAYERTURN)
             return;
+        audioManager.Play("Click");
         DecisionAttackButton.SetActive(false);
         DecisionQuitButton.SetActive(false);
         DecisionPanel.SetActive(false);
@@ -86,12 +89,13 @@ public class BattleUIManager : MonoBehaviour
     {
         if (battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
             return;
-
+        audioManager.Play("Run");
         battleSystem.StartCoroutine(battleSystem.PlayerRun());
     }
 
     public void OnBackButton()
     {
+        audioManager.Play("Click");
         DecisionPanel.SetActive(true);
         DecisionAttackButton.SetActive(true);
         DecisionQuitButton.SetActive(true);

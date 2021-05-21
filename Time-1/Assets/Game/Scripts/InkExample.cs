@@ -23,13 +23,15 @@ public class InkExample : MonoBehaviour
     private int lastLine;
     private float distance;
     private List<string> messages = new List<string>();
+    TinderData tinderData;
 
     private AudioManager audioManager;
 
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
-        story = new Story(inkJSONAsset[0].text);
+        tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
+        story = new Story(inkJSONAsset[tinderData.curDay-1].text);
 
         lastLine = 0;
         distance = 150.0f;

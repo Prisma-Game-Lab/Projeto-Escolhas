@@ -6,7 +6,9 @@ using TMPro;
 
 public class BattleUIManager : MonoBehaviour
 {
-    public Image enemyWhiteImage;
+    public Image elfWhiteImage;
+    public Image orcWhiteImage;
+    public Image sereiaWhiteImage;
     public Image enemyImage;
 
     public TextMeshProUGUI dialogueText;

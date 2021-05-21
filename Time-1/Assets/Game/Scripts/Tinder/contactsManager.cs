@@ -8,6 +8,7 @@ public class contactsManager : MonoBehaviour
 {
     public GameObject contactPrefab;
     public GameObject messagePanel;
+    public Image chatButtonPopUpImage;
     public List<GameObject> characterPanelList = new List<GameObject>();
 
     private TinderData tinderData;
@@ -65,7 +66,10 @@ public class contactsManager : MonoBehaviour
     {
         audioManager.Play("Click");
         if (popUp.IsActive())
+        {
             popUp.enabled = false;
+            chatButtonPopUpImage.gameObject.SetActive(false);
+        }
         panel.SetActive(true);
         tinderData.combatCharacter = character;
     }

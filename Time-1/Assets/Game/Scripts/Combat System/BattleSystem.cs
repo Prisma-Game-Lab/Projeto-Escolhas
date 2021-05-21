@@ -36,8 +36,8 @@ public class BattleSystem : MonoBehaviour
         GameObject enemyGO = Instantiate(enemyPrefab);
         enemyUnit = enemyGO.GetComponent<Unit>();
         enemyUnit.cBase= GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().combatCharacter;
-
         battleUI.enemyImage.sprite = enemyUnit.cBase.combatImage;
+        adjustWhiteImage();
         battleUI.dialogueText.text = enemyUnit.cBase.name + " se aproxima...";
 
         battleUI.playerHUD.SetHUD(playerUnit);
@@ -188,5 +188,26 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         //sai do combate
         SceneManager.LoadScene("App");
+    }
+
+    void adjustWhiteImage()
+    {
+        if (enemyUnit.cBase.race == CharacterBase.CharacterRace.Elfa)
+        {
+            battleUI.elfWhiteImage.gameObject.SetActive(true);
+            battleUI.elfWhiteImage.sprite = enemyUnit.cBase.combatWhiteImage;
+        }
+        else if (enemyUnit.cBase.race == CharacterBase.CharacterRace.Orc)
+        {
+            battleUI.orcWhiteImage.gameObject.SetActive(true);
+            battleUI.orcWhiteImage.sprite = enemyUnit.cBase.combatWhiteImage;
+        }
+        else if (enemyUnit.cBase.race == CharacterBase.CharacterRace.Sereia)
+        {
+            battleUI.sereiaWhiteImage.gameObject.SetActive(true);
+            battleUI.sereiaWhiteImage.sprite = enemyUnit.cBase.combatWhiteImage;
+        }
+        else
+            return;
     }
 }

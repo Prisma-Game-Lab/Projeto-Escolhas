@@ -38,6 +38,7 @@ public class TinderManager : MonoBehaviour
     {
         if (tinderData.curDay > tinderData.matchesNumber && tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Humano)
         {
+            contactManager.chatButtonPopUpImage.gameObject.SetActive(true);
             audioManager.Play("Match");
             contactManager.createContact(tinderData.tinderCharacters[curIndex]);
             tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);

@@ -14,7 +14,6 @@ public class InkExample : MonoBehaviour
     public GameObject content;
     public GameObject scrollView;
     public GameObject buttonPlace;
-    public GameObject topBar;
     private List<GameObject> lastInst = new List<GameObject>();
     private GameObject currentInst;
     public Button combatButton;
@@ -24,7 +23,8 @@ public class InkExample : MonoBehaviour
     private float distance;
     private List<string> messages = new List<string>();
     TinderData tinderData;
-
+    public List<Sprite> playerSprite = new List<Sprite>();
+    public List<Sprite> otherSprite = new List<Sprite>();
     private AudioManager audioManager;
 
     void Start()
@@ -38,7 +38,6 @@ public class InkExample : MonoBehaviour
 
         float posxb = buttonPlace.transform.position.x;
         float posyb = buttonPlace.transform.position.y;
-        float posyt = topBar.transform.position.y;
 
         //scrollView.transform.position = new Vector2(posxb, posyb * 3.7f);
 
@@ -72,12 +71,13 @@ public class InkExample : MonoBehaviour
                 }
                 else {
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
-                    currentInst.GetComponent<Image>().color = new Color32(169,169,169,255);
+                    currentInst.GetComponent<Image>().sprite = otherSprite[0];
                 }
                 posxc = 300.0f;
             } 
             else {
                 currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(7);
+                currentInst.GetComponent<Image>().sprite = playerSprite[0];
                 posxc = 800.0f;
             }
             currentInst.transform.position = new Vector2(posxc, 550.0f);  

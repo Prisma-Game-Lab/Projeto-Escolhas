@@ -26,6 +26,7 @@ public class InkExample : MonoBehaviour
     public List<Sprite> playerSprite = new List<Sprite>();
     public List<Sprite> otherSprite = new List<Sprite>();
     private AudioManager audioManager;
+    public TextMeshProUGUI typing;
 
     void Start()
     {
@@ -45,10 +46,10 @@ public class InkExample : MonoBehaviour
 
         messages.Clear();
 
-        refresh();
+        StartCoroutine(refresh());
     }
 
-    void refresh()
+    private IEnumerator refresh()
     {
         clearUI();
         getNextStoryBlock();
@@ -58,9 +59,10 @@ public class InkExample : MonoBehaviour
                 showCombatButton(combatButton);
                 break;
             }
-            currentInst = Instantiate(textPrefab, content.transform); 
             if (messages[i].Contains("Other")) {
                 if (messages[i].Contains("sticker")) {
+                    yield return new WaitForSeconds(1.0f);
+                    currentInst = Instantiate(textPrefab, content.transform); 
                     int len = messages[i].Substring(6).Length;
                     string path = "Stickers/" + messages[i].Substring(6, len-1);
                     Sprite sprite = Resources.Load<Sprite>(path);
@@ -70,12 +72,23 @@ public class InkExample : MonoBehaviour
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
                 }
                 else {
+                    float sec = Random.Range(1.2f, 3.5f);
+                    yield return new WaitForSeconds(0.5f);
+                    typing.gameObject.SetActive(true);
+                    yield return new WaitForSeconds(sec);
+                    typing.gameObject.SetActive(false);
+                    currentInst = Instantiate(textPrefab, content.transform); 
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
+                    //if provisorio, apenas testando o tamanho do balao
+                    if (messages[i].Substring(6).Length > 37) {
+                        currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 140.0f);
+                    }
                     currentInst.GetComponent<Image>().sprite = otherSprite[0];
                 }
                 posxc = 300.0f;
             } 
             else {
+                currentInst = Instantiate(textPrefab, content.transform); 
                 currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(7);
                 currentInst.GetComponent<Image>().sprite = playerSprite[0];
                 posxc = 800.0f;
@@ -93,9 +106,6 @@ public class InkExample : MonoBehaviour
             posyc = currentInst.transform.position.y;
             lastLine += 1;
         }
-        
-        // Get the current tags (if any)
-        //List<string> tags = story.currentTags;
 
         foreach (Choice choice in story.currentChoices)
         {
@@ -116,7 +126,7 @@ public class InkExample : MonoBehaviour
     {
         audioManager.Play("Click");
         story.ChooseChoiceIndex(choice.index);
-        refresh();
+        StartCoroutine(refresh());
     }
 
     void clearUI()

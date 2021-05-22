@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerStats : MonoBehaviour
 {
     public CharacterBase playerBase;
-    //[HideInInspector]
+    [HideInInspector]
     public float attack, defense, velocity, maxEnergy, maxHealth;
 
     private void Awake()

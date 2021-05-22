@@ -12,6 +12,8 @@ public class TinderData : MonoBehaviour
     public CharacterBase combatCharacter;
 
     public int curDay;
+    //[HideInInspector]
+    public int elfaDay, humanoDay, orcDay, sereiaDay, carneiraDay;
     [HideInInspector] public int matchesNumber;
 
     void Awake()
@@ -29,5 +31,19 @@ public class TinderData : MonoBehaviour
     {
         matchesNumber = 0;
         curDay = 1;
+    }
+
+    public void advanceCharacterDay()
+    {
+        if (combatCharacter.race == CharacterBase.CharacterRace.Elfa)
+            elfaDay ++;
+        else if (combatCharacter.race == CharacterBase.CharacterRace.Humano)
+            humanoDay++;
+        else if (combatCharacter.race == CharacterBase.CharacterRace.Sereia)
+            sereiaDay++;
+        else if (combatCharacter.race == CharacterBase.CharacterRace.Orc)
+            orcDay++;
+        else if (combatCharacter.race == CharacterBase.CharacterRace.Carneira)
+            carneiraDay++;
     }
 }

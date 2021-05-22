@@ -18,9 +18,11 @@ public class InkExample : MonoBehaviour
     public Transform playerMessagePos;
     public Transform otherMessagePos;
     public ScrollRect scroll;
+
     private List<GameObject> lastInst = new List<GameObject>();
     private GameObject currentInst;
     public Button combatButton;
+    private bool buttonClicked;
     private float posxc;
     private float posyc;
     private int lastLine;
@@ -79,7 +81,7 @@ public class InkExample : MonoBehaviour
                     isSticker = true;
                 }
                 else {
-                    float sec = Random.Range(1.2f, 2.5f);
+                    float sec = Random.Range(1.0f, 2.5f);
                     yield return new WaitForSeconds(0.5f);
                     typing.gameObject.SetActive(true);
                     yield return new WaitForSeconds(sec);
@@ -92,14 +94,16 @@ public class InkExample : MonoBehaviour
                     }
                     currentInst.GetComponent<Image>().sprite = otherSprite[0];
                 }
-                //posxc = 200.0f;
                 posxc = otherMessagePos.position.x;
             } 
             else {
+                if (!buttonClicked)
+                    yield return new WaitForSeconds(1.5f);
+                else
+                    buttonClicked = false;
                 currentInst = Instantiate(textPrefab, content.transform); 
                 currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(7);
                 currentInst.GetComponent<Image>().sprite = playerSprite[0];
-                //posxc = 600.0f;
                 posxc = playerMessagePos.position.x;
             }
             if (isSticker)
@@ -140,6 +144,7 @@ public class InkExample : MonoBehaviour
 
     void OnClickChoiceButton(Choice choice)
     {
+        buttonClicked = true;
         audioManager.Play("Click");
         story.ChooseChoiceIndex(choice.index);
         StartCoroutine(refresh());

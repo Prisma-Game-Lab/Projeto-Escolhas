@@ -35,11 +35,13 @@ public class contactsManager : MonoBehaviour
         contact.transform.GetChild(0).GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = character.name;
         Image popUp = contact.transform.GetChild(0).GetChild(2).gameObject.GetComponent<Image>();
         contact.SetActive(true);
+        //setando o botao
         GameObject characterPanel = getCharacterPanel(character);
         Button button = contact.transform.GetChild(0).GetComponent<Button>();
         button.onClick.AddListener(() => openMessage(characterPanel, popUp, character));
         if (!tinderData.curContacts.Contains(character))
         {
+            character.popUp = true;
             tinderData.curContacts.Add(character);
         }
         else if (character.popUp)
@@ -72,8 +74,17 @@ public class contactsManager : MonoBehaviour
         audioManager.Play("Click");
         if (popUp.IsActive())
         {
+            character.popUp = false;
             popUp.enabled = false;
-            chatButtonPopUpImage.gameObject.SetActive(false);
+            foreach (CharacterBase contact in tinderData.curContacts)
+            {
+                if (contact.popUp)
+                {
+                    chatButtonPopUpImage.gameObject.SetActive(true);
+                }
+                else
+                    chatButtonPopUpImage.gameObject.SetActive(false);
+            }  
         }
         panel.SetActive(true);
         tinderData.combatCharacter = character;

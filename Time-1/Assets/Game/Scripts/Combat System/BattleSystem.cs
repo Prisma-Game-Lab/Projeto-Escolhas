@@ -146,7 +146,8 @@ public class BattleSystem : MonoBehaviour
             battleUI.DecisionQuitButton.SetActive(true);
             battleUI.wonDatePanel.SetActive(true);
             battleUI.dialogueText.text = "Você ganhou o encontro! "+enemyUnit.cBase.name+ " esta totalmente na sua!";
-            GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
+            GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
+            GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay+=1;
         }
         else if (state == BattleState.LOST)
         {

@@ -14,6 +14,8 @@ public class InkExample : MonoBehaviour
     public GameObject content;
     public GameObject scrollView;
     public GameObject buttonPlace;
+    public Transform playerMessagePos;
+    public Transform otherMessagePos;
     private List<GameObject> lastInst = new List<GameObject>();
     private GameObject currentInst;
     public Button combatButton;
@@ -72,7 +74,7 @@ public class InkExample : MonoBehaviour
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
                 }
                 else {
-                    float sec = Random.Range(1.2f, 3.5f);
+                    float sec = Random.Range(1.2f, 2.5f);
                     yield return new WaitForSeconds(0.5f);
                     typing.gameObject.SetActive(true);
                     yield return new WaitForSeconds(sec);
@@ -85,13 +87,15 @@ public class InkExample : MonoBehaviour
                     }
                     currentInst.GetComponent<Image>().sprite = otherSprite[0];
                 }
-                posxc = 300.0f;
+                //posxc = 200.0f;
+                posxc = playerMessagePos.position.x;
             } 
             else {
                 currentInst = Instantiate(textPrefab, content.transform); 
                 currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(7);
                 currentInst.GetComponent<Image>().sprite = playerSprite[0];
-                posxc = 800.0f;
+                //posxc = 600.0f;
+                posxc = otherMessagePos.position.x;
             }
             currentInst.transform.position = new Vector2(posxc, 550.0f);  
             if (i != 0) {

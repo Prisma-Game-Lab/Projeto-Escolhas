@@ -155,7 +155,7 @@ RectTransform:
   m_Children:
   - {fileID: 993311954}
   m_Father: {fileID: 368226202}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1213,7 +1213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 165420570}
   m_Layer: 5
-  m_Name: OtherMessagePos
+  m_Name: OtherMessagePosX
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1231,7 +1231,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368226202}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -2169,6 +2169,7 @@ MonoBehaviour:
   content: {fileID: 416210267}
   scrollView: {fileID: 248873113}
   buttonPlace: {fileID: 763616794}
+  MessagePosY: {fileID: 0}
   playerMessagePos: {fileID: 0}
   otherMessagePos: {fileID: 0}
   combatButton: {fileID: 1112931819}
@@ -2714,7 +2715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &368226202
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2727,13 +2728,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1978655902}
+  - {fileID: 10145261}
   - {fileID: 1563324071}
   - {fileID: 683437522}
   - {fileID: 1061645049}
-  - {fileID: 2121899989}
+  - {fileID: 905563972}
   - {fileID: 1368196899}
   - {fileID: 165420570}
-  - {fileID: 10145261}
+  - {fileID: 2121899989}
   - {fileID: 588917016}
   - {fileID: 2077730265}
   m_Father: {fileID: 365488884}
@@ -2802,6 +2804,7 @@ MonoBehaviour:
   content: {fileID: 1351233490}
   scrollView: {fileID: 10145260}
   buttonPlace: {fileID: 588917015}
+  MessagePosY: {fileID: 905563972}
   playerMessagePos: {fileID: 165420570}
   otherMessagePos: {fileID: 1368196899}
   combatButton: {fileID: 2077730266}
@@ -4073,7 +4076,7 @@ RectTransform:
   - {fileID: 1935522288}
   - {fileID: 1987319294}
   m_Father: {fileID: 368226202}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -4640,7 +4643,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368226202}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -6089,6 +6092,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902019176}
   m_CullTransparentMesh: 1
+--- !u!1 &905563971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 905563972}
+  m_Layer: 5
+  m_Name: MessagesPosY
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &905563972
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905563971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 368226202}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -295, y: -235}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &909610496
 GameObject:
   m_ObjectHideFlags: 0
@@ -6839,8 +6877,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.11706543, y: -298.69354}
-  m_SizeDelta: {x: -0.1169, y: -289.9333}
+  m_AnchoredPosition: {x: 0.11706543, y: -283.57208}
+  m_SizeDelta: {x: -0.1169, y: -274.812}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &993311955
 MonoBehaviour:
@@ -7229,7 +7267,7 @@ RectTransform:
   m_Children:
   - {fileID: 1255392835}
   m_Father: {fileID: 368226202}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -8526,7 +8564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1368196899}
   m_Layer: 5
-  m_Name: PlayerMessagePos
+  m_Name: PlayerMessagePosX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8544,7 +8582,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368226202}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -9526,7 +9564,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368226202}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -10632,6 +10670,7 @@ MonoBehaviour:
   content: {fileID: 945452650}
   scrollView: {fileID: 1813617093}
   buttonPlace: {fileID: 1942435838}
+  MessagePosY: {fileID: 0}
   playerMessagePos: {fileID: 0}
   otherMessagePos: {fileID: 0}
   combatButton: {fileID: 1616913738}
@@ -12306,7 +12345,7 @@ RectTransform:
   m_Children:
   - {fileID: 102869636}
   m_Father: {fileID: 368226202}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -12901,7 +12940,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368226202}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

@@ -14,6 +14,7 @@ public class InkExample : MonoBehaviour
     public GameObject content;
     public GameObject scrollView;
     public GameObject buttonPlace;
+    public Transform messageDeltaPosY;
     public Transform playerMessagePos;
     public Transform otherMessagePos;
     private List<GameObject> lastInst = new List<GameObject>();
@@ -37,7 +38,7 @@ public class InkExample : MonoBehaviour
         story = new Story(inkJSONAsset[tinderData.curDay-1].text);
 
         lastLine = 0;
-        distance = 150.0f;
+        distance = (messageDeltaPosY.position.y-playerMessagePos.position.y);
 
         float posxb = buttonPlace.transform.position.x;
         float posyb = buttonPlace.transform.position.y;
@@ -61,6 +62,7 @@ public class InkExample : MonoBehaviour
                 showCombatButton(combatButton);
                 break;
             }
+            bool isSticker = false;
             if (messages[i].Contains("Other")) {
                 if (messages[i].Contains("sticker")) {
                     yield return new WaitForSeconds(1.0f);
@@ -72,6 +74,7 @@ public class InkExample : MonoBehaviour
                     currentInst.GetComponent<Image>().color = new Color32(255,255,255,255);
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
+                    isSticker = true;
                 }
                 else {
                     float sec = Random.Range(1.2f, 2.5f);
@@ -88,21 +91,27 @@ public class InkExample : MonoBehaviour
                     currentInst.GetComponent<Image>().sprite = otherSprite[0];
                 }
                 //posxc = 200.0f;
-                posxc = playerMessagePos.position.x;
+                posxc = otherMessagePos.position.x;
             } 
             else {
                 currentInst = Instantiate(textPrefab, content.transform); 
                 currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(7);
                 currentInst.GetComponent<Image>().sprite = playerSprite[0];
                 //posxc = 600.0f;
-                posxc = otherMessagePos.position.x;
+                posxc = playerMessagePos.position.x;
             }
-            currentInst.transform.position = new Vector2(posxc, 550.0f);  
+            if (isSticker)
+                currentInst.transform.position = new Vector2(posxc*0.75f, playerMessagePos.position.y*1.1f);  
+            else
+                currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y);
             if (i != 0) {
                 foreach (var message in lastInst) {
                     float posxc1 = message.transform.position.x;
                     float posyc1 = message.transform.position.y;
-                    message.transform.position = new Vector2(posxc1, posyc1 + distance); 
+                    if (isSticker)
+                        message.transform.position = new Vector2(posxc1, posyc1 + distance*2f); 
+                    else
+                        message.transform.position = new Vector2(posxc1, posyc1 + distance);
                 }
             }
             lastInst.Add(currentInst);

@@ -17,6 +17,7 @@ public class InkExample : MonoBehaviour
     public Transform messageDeltaPosY;
     public Transform playerMessagePos;
     public Transform otherMessagePos;
+    public ScrollRect scroll;
     private List<GameObject> lastInst = new List<GameObject>();
     private GameObject currentInst;
     public Button combatButton;
@@ -54,9 +55,10 @@ public class InkExample : MonoBehaviour
 
     private IEnumerator refresh()
     {
+        scroll.verticalNormalizedPosition = 0;
+        scroll.enabled = false;
         clearUI();
         getNextStoryBlock();
-
         for (int i = lastLine; i < messages.Count; i++) {
             if (messages[i].Contains("Combat")) {
                 showCombatButton(combatButton);
@@ -133,6 +135,7 @@ public class InkExample : MonoBehaviour
             });
 
         }
+        scroll.enabled = true;
     }
 
     void OnClickChoiceButton(Choice choice)

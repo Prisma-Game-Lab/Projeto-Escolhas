@@ -1233,9 +1233,9 @@ RectTransform:
   m_Father: {fileID: 368226202}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 301, y: -443}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 301, y: 585}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &201535175
@@ -2169,7 +2169,7 @@ MonoBehaviour:
   content: {fileID: 416210267}
   scrollView: {fileID: 248873113}
   buttonPlace: {fileID: 763616794}
-  MessagePosY: {fileID: 0}
+  messageDeltaPosY: {fileID: 0}
   playerMessagePos: {fileID: 0}
   otherMessagePos: {fileID: 0}
   combatButton: {fileID: 1112931819}
@@ -2804,9 +2804,9 @@ MonoBehaviour:
   content: {fileID: 1351233490}
   scrollView: {fileID: 10145260}
   buttonPlace: {fileID: 588917015}
-  MessagePosY: {fileID: 905563972}
-  playerMessagePos: {fileID: 165420570}
-  otherMessagePos: {fileID: 1368196899}
+  messageDeltaPosY: {fileID: 905563972}
+  playerMessagePos: {fileID: 1368196899}
+  otherMessagePos: {fileID: 165420570}
   combatButton: {fileID: 2077730266}
   playerSprite:
   - {fileID: 21300000, guid: a64603c3bc5218743ba2f56b110a560d, type: 3}
@@ -4647,8 +4647,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -175, y: -225}
-  m_SizeDelta: {x: 272.2963, y: 272.2963}
+  m_AnchoredPosition: {x: -231, y: -229.3117}
+  m_SizeDelta: {x: 259.3162, y: 259.3153}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &683437523
 MonoBehaviour:
@@ -6102,7 +6102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 905563972}
   m_Layer: 5
-  m_Name: MessagesPosY
+  m_Name: MessageDeltaPosY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6122,9 +6122,9 @@ RectTransform:
   m_Father: {fileID: 368226202}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -295, y: -235}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -295, y: 793}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &909610496
@@ -6875,10 +6875,10 @@ RectTransform:
   m_Father: {fileID: 10145261}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.06583346}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.11706543, y: -283.57208}
-  m_SizeDelta: {x: -0.1169, y: -274.812}
+  m_SizeDelta: {x: -0.1169, y: -278.8391}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &993311955
 MonoBehaviour:
@@ -8584,9 +8584,9 @@ RectTransform:
   m_Father: {fileID: 368226202}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -295, y: -446}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -295, y: 645}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1389269004
@@ -10670,7 +10670,7 @@ MonoBehaviour:
   content: {fileID: 945452650}
   scrollView: {fileID: 1813617093}
   buttonPlace: {fileID: 1942435838}
-  MessagePosY: {fileID: 0}
+  messageDeltaPosY: {fileID: 0}
   playerMessagePos: {fileID: 0}
   otherMessagePos: {fileID: 0}
   combatButton: {fileID: 1616913738}

@@ -8,6 +8,10 @@ TagManager:
   - ButtonSpace
   - persistentData
   - shield
+  - Elf
+  - Orc
+  - Sereia
+  - Humano
   layers:
   - Default
   - TransparentFX

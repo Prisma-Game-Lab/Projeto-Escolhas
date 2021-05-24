@@ -19,6 +19,7 @@ public class InkExample : MonoBehaviour
     public Transform otherMessagePos;
     public ScrollRect scroll;
     private List<GameObject> lastInst = new List<GameObject>();
+    private List<GameObject> referenceInst;
     private GameObject currentInst;
     public Button combatButton;
     private bool buttonClicked;
@@ -32,9 +33,11 @@ public class InkExample : MonoBehaviour
     public List<Sprite> otherSprite = new List<Sprite>();
     private AudioManager audioManager;
     public TextMeshProUGUI typing;
+    [HideInInspector] private AppSave appSave;
 
     void Start()
     {
+        appSave = SaveSystem.GetInstance().appSave;
         audioManager = FindObjectOfType<AudioManager>();
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
         story = new Story(inkJSONAsset[0].text);
@@ -48,6 +51,16 @@ public class InkExample : MonoBehaviour
         posyc = 700.0f;
 
         messages.Clear();
+
+        if (this.gameObject.tag == "Elf")
+            referenceInst = appSave.elfa;
+        else if (this.gameObject.tag == "Orc")
+            referenceInst = appSave.orc;
+        else
+            referenceInst = appSave.sereia;
+
+        if (referenceInst.Count == 0)
+            Debug.Log("vazia");
 
         StartCoroutine(refresh());
     }

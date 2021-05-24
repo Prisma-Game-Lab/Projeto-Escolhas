@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class InkExample : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class InkExample : MonoBehaviour
     public List<Sprite> otherSprite = new List<Sprite>();
     private AudioManager audioManager;
     public TextMeshProUGUI typing;
-    [HideInInspector] private AppSave appSave;
+    private AppSave appSave;
 
     void Start()
     {
@@ -59,8 +60,14 @@ public class InkExample : MonoBehaviour
         else
             referenceInst = appSave.sereia;
 
-        if (referenceInst.Count == 0)
-            Debug.Log("vazia");
+        if (referenceInst.Count != 0) {
+            foreach (var obj in referenceInst) {
+                Instantiate(obj, content.transform); 
+                lastInst.Add(obj);
+                if (story.canContinue)
+                    story.Continue();
+            }
+        }
 
         StartCoroutine(refresh());
     }
@@ -71,6 +78,7 @@ public class InkExample : MonoBehaviour
         scroll.enabled = false;
         clearUI();
         getNextStoryBlock();
+
         for (int i = lastLine; i < messages.Count; i++) {
             if (messages[i].Contains("Combat")) {
                 showCombatButton(combatButton);
@@ -183,8 +191,25 @@ public class InkExample : MonoBehaviour
     void showCombatButton(Button combatButton) {
         combatButton.gameObject.SetActive(true);
     }
+
+    public void GoToCombat() {
+        /*
+        for (int i = referenceInst.Count-1; i < lastInst.Count; i++) {
+            referenceInst.Add(lastInst[i]);
+        }
+        SaveSystem.SaveState();
+        */
+        audioManager.Play("Click");
+        SceneManager.LoadScene("Combat_Scene");
+    }
     
     public void OnBackButton(GameObject canvas) {
+        /*
+        for (int i = referenceInst.Count-1; i < lastInst.Count; i++) {
+            referenceInst.Add(lastInst[i]);
+        }
+        SaveSystem.SaveState();
+        */
         audioManager.Play("Click");
         canvas.gameObject.SetActive(false);
     }

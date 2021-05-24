@@ -89,11 +89,4 @@ public class contactsManager : MonoBehaviour
         panel.SetActive(true);
         tinderData.combatCharacter = character;
     }
-
-    public void OnBackButton(GameObject canvas)
-    {
-        audioManager.Play("Click");
-        canvas.gameObject.SetActive(false);
-    }
-
 }

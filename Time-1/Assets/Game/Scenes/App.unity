@@ -3653,8 +3653,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 794474622}
-        m_TargetAssemblyTypeName: contactsManager, Assembly-CSharp
+      - m_Target: {fileID: 325071894}
+        m_TargetAssemblyTypeName: InkExample, Assembly-CSharp
         m_MethodName: OnBackButton
         m_Mode: 2
         m_Arguments:
@@ -6573,8 +6573,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 794474622}
-        m_TargetAssemblyTypeName: contactsManager, Assembly-CSharp
+      - m_Target: {fileID: 1750626834}
+        m_TargetAssemblyTypeName: InkExample, Assembly-CSharp
         m_MethodName: OnBackButton
         m_Mode: 2
         m_Arguments:
@@ -7324,8 +7324,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 794474622}
-        m_TargetAssemblyTypeName: contactsManager, Assembly-CSharp
+      - m_Target: {fileID: 368226205}
+        m_TargetAssemblyTypeName: InkExample, Assembly-CSharp
         m_MethodName: OnBackButton
         m_Mode: 2
         m_Arguments:

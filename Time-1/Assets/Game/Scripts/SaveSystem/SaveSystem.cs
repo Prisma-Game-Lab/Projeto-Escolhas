@@ -85,7 +85,7 @@ public class SaveSystem : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogWarning("Unable to write to savefile");
+            Debug.LogWarning("Unable to write to savefile" + e.Message);
         }
         
         //registra versão atual do save

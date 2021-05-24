@@ -18,7 +18,6 @@ public class InkExample : MonoBehaviour
     public Transform playerMessagePos;
     public Transform otherMessagePos;
     public ScrollRect scroll;
-
     private List<GameObject> lastInst = new List<GameObject>();
     private GameObject currentInst;
     public Button combatButton;
@@ -38,15 +37,13 @@ public class InkExample : MonoBehaviour
     {
         audioManager = FindObjectOfType<AudioManager>();
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
-        story = new Story(inkJSONAsset[tinderData.curDay-1].text);
+        story = new Story(inkJSONAsset[0].text);
 
         lastLine = 0;
         distance = (messageDeltaPosY.position.y-playerMessagePos.position.y);
 
         float posxb = buttonPlace.transform.position.x;
         float posyb = buttonPlace.transform.position.y;
-
-        //scrollView.transform.position = new Vector2(posxb, posyb * 3.7f);
 
         posyc = 700.0f;
 
@@ -173,4 +170,10 @@ public class InkExample : MonoBehaviour
     void showCombatButton(Button combatButton) {
         combatButton.gameObject.SetActive(true);
     }
+    
+    public void OnBackButton(GameObject canvas) {
+        audioManager.Play("Click");
+        canvas.gameObject.SetActive(false);
+    }
+
 }

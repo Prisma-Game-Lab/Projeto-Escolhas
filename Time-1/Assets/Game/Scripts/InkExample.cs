@@ -35,9 +35,11 @@ public class InkExample : MonoBehaviour
     private AudioManager audioManager;
     public TextMeshProUGUI typing;
     private AppSave appSave;
+    private bool clickedBack;
 
     void Start()
     {
+        clickedBack = false;
         appSave = SaveSystem.GetInstance().appSave;
         audioManager = FindObjectOfType<AudioManager>();
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
@@ -70,6 +72,17 @@ public class InkExample : MonoBehaviour
         }
 
         StartCoroutine(refresh());
+    }
+
+    void Update() {
+        if (clickedBack) {
+            clickedBack = false;
+            StartCoroutine(refresh());
+        }
+    }
+
+    void showOldMessages() {
+        
     }
 
     private IEnumerator refresh()
@@ -204,6 +217,8 @@ public class InkExample : MonoBehaviour
     }
     
     public void OnBackButton(GameObject canvas) {
+        clickedBack = true;
+        StopAllCoroutines();
         /*
         for (int i = referenceInst.Count-1; i < lastInst.Count; i++) {
             referenceInst.Add(lastInst[i]);

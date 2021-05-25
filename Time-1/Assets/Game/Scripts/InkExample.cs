@@ -20,7 +20,7 @@ public class InkExample : MonoBehaviour
     public Transform otherMessagePos;
     public ScrollRect scroll;
     private List<GameObject> lastInst = new List<GameObject>();
-    private List<GameObject> referenceInst;
+    private List<string> storedMessages;
     private GameObject currentInst;
     public Button combatButton;
     private bool buttonClicked;
@@ -37,13 +37,30 @@ public class InkExample : MonoBehaviour
     private AppSave appSave;
     private bool clickedBack;
 
+    void OnEnable() {
+        appSave = SaveSystem.GetInstance().appSave;
+        tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
+
+        storedMessages = new List<string>();
+
+        if (this.gameObject.tag == "Elf") {
+            story = new Story(inkJSONAsset[tinderData.elfaDay].text);
+            storedMessages = appSave.elfa;
+        }
+        else if (this.gameObject.tag == "Orc") {
+            story = new Story(inkJSONAsset[tinderData.orcDay].text);
+            storedMessages = appSave.orc;
+        }
+        else {
+            story = new Story(inkJSONAsset[tinderData.sereiaDay].text);
+            storedMessages = appSave.sereia;
+        }
+    }
+
     void Start()
     {
         clickedBack = false;
-        appSave = SaveSystem.GetInstance().appSave;
         audioManager = FindObjectOfType<AudioManager>();
-        tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
-        story = new Story(inkJSONAsset[0].text);
 
         lastLine = 0;
         distance = (messageDeltaPosY.position.y-playerMessagePos.position.y);
@@ -52,23 +69,9 @@ public class InkExample : MonoBehaviour
         float posyb = buttonPlace.transform.position.y;
 
         posyc = 700.0f;
-
-        messages.Clear();
-
-        if (this.gameObject.tag == "Elf")
-            referenceInst = appSave.elfa;
-        else if (this.gameObject.tag == "Orc")
-            referenceInst = appSave.orc;
-        else
-            referenceInst = appSave.sereia;
-
-        if (referenceInst.Count != 0) {
-            foreach (var obj in referenceInst) {
-                Instantiate(obj, content.transform); 
-                lastInst.Add(obj);
-                if (story.canContinue)
-                    story.Continue();
-            }
+        Debug.Log(storedMessages.Count);
+        for (int i = 0; i < storedMessages.Count; i++) {
+            Debug.Log(storedMessages[i]);
         }
 
         StartCoroutine(refresh());
@@ -81,8 +84,8 @@ public class InkExample : MonoBehaviour
         }
     }
 
-    void showOldMessages() {
-        
+    private void restoreMessages() {
+
     }
 
     private IEnumerator refresh()
@@ -106,7 +109,6 @@ public class InkExample : MonoBehaviour
                     string path = "Stickers/" + messages[i].Substring(6, len-1);
                     Sprite sprite = Resources.Load<Sprite>(path);
                     currentInst.GetComponent<Image>().sprite = sprite;
-                    currentInst.GetComponent<Image>().color = new Color32(255,255,255,255);
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
                     isSticker = true;
@@ -206,12 +208,10 @@ public class InkExample : MonoBehaviour
     }
 
     public void GoToCombat() {
-        /*
-        for (int i = referenceInst.Count-1; i < lastInst.Count; i++) {
-            referenceInst.Add(lastInst[i]);
+        for (int i = storedMessages.Count; i < messages.Count; i++) {
+            storedMessages.Add(messages[i]);
         }
-        SaveSystem.SaveState();
-        */
+        SaveSystem.GetInstance().SaveState();
         audioManager.Play("Click");
         SceneManager.LoadScene("Combat_Scene");
     }
@@ -219,12 +219,10 @@ public class InkExample : MonoBehaviour
     public void OnBackButton(GameObject canvas) {
         clickedBack = true;
         StopAllCoroutines();
-        /*
-        for (int i = referenceInst.Count-1; i < lastInst.Count; i++) {
-            referenceInst.Add(lastInst[i]);
+        for (int i = storedMessages.Count; i < messages.Count; i++) {
+            storedMessages.Add(messages[i]);
         }
-        SaveSystem.SaveState();
-        */
+        SaveSystem.GetInstance().SaveState();
         audioManager.Play("Click");
         canvas.gameObject.SetActive(false);
     }

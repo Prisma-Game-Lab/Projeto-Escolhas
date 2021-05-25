@@ -13,6 +13,7 @@ public class TinderManager : MonoBehaviour
     TinderData tinderData;
     private contactsManager contactManager;
     private AudioManager audioManager;
+    public TextMeshProUGUI tutorial;
 
     private void Start()
     {
@@ -23,6 +24,9 @@ public class TinderManager : MonoBehaviour
         tinderImage.sprite = tinderData.tinderCharacters[0].tinderImage;
         tinderCharacterName_txt.text = tinderData.tinderCharacters[0].name;
         day_txt.text = "Dia " + tinderData.curDay;
+        if (tinderData.tinderCharacters.Count < 4) {
+            tutorial.gameObject.SetActive(false);
+        }
     }
 
     public void OnNoButtonPressed()
@@ -36,6 +40,7 @@ public class TinderManager : MonoBehaviour
     }
     public void OnYesButtonPressed()
     {
+        tutorial.gameObject.SetActive(false);
         if (tinderData.curDay > tinderData.matchesNumber && tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Humano)
         {
             contactManager.chatButtonPopUpImage.gameObject.SetActive(true);

@@ -66,7 +66,7 @@ public class BattleUIManager : MonoBehaviour
             battleSystem.playerUnit.GiveEnergy(3);
         }else
             audioManager.Play("Click");
-        playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit, 2);
+        playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit);
     }
 
     public void OnHealButton()

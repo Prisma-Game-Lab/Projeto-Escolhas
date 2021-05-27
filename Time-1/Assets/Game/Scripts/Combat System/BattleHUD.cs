@@ -9,7 +9,8 @@ public class BattleHUD : MonoBehaviour
 
 	public TextMeshProUGUI nameText;
 	public TextMeshProUGUI healthText;
-    public Image healthBar;
+	public TextMeshProUGUI energyText;
+	public Image healthBar;
 	public Image energyBar;
 	public Image shieldIcon;
 
@@ -18,21 +19,20 @@ public class BattleHUD : MonoBehaviour
         nameText.text = unit.cBase.name;
 		healthText.text = "" + (int)unit.curHealth;
 		healthBar.fillAmount = unit.curHealth / unit.maxHealth;
-		if(gameObject.CompareTag("Player"))
+		if (gameObject.CompareTag("Player"))
+		{
 			energyBar.fillAmount = unit.curEnergy / unit.maxEnergy;
+			energyText.text = (int)unit.curEnergy + " / " + (int)unit.maxEnergy;
+		}
 	}
 
-    public void SetHP(float curHealth, Unit unit, int type)
+    public void SetHP(float curHealth, Unit unit)
     {
-		StartCoroutine(LerpUI(curHealth, unit, type));
-		//if (unit.curHealth <= 0)
-  //          healthText.text = "0";
-		//else
-		//	healthText.text = ""+(int)unit.curHealth;
+		StartCoroutine(LerpUI(curHealth, unit, healthBar, healthText, 1));
 	}
-    public void SetEnergy(float curEnergy, Unit unit, int type)
+    public void SetEnergy(float curEnergy, Unit unit)
     {
-		StartCoroutine(LerpUI(curEnergy, unit, type));
+		StartCoroutine(LerpUI(curEnergy, unit, energyBar, energyText, 2));
     }
 	public void SetShield(bool state)
     {
@@ -48,26 +48,30 @@ public class BattleHUD : MonoBehaviour
 		}
     }
 
-	private IEnumerator LerpUI(float curValue, Unit unit, int type)
-    {
-		float elapsedTime=0;
-		float waitTime=0.15f;
+	private IEnumerator LerpUI(float curValue, Unit unit, Image imageBar, TextMeshProUGUI barText, int type)
+	{
+		float elapsedTime = 0;
+		float waitTime = 0.15f;
 		while (elapsedTime < waitTime)
 		{
 			elapsedTime += Time.deltaTime;
+
 			if (type == 1)
 			{
 				float value = Mathf.Lerp(curValue, unit.curHealth, (elapsedTime / waitTime));
-				healthBar.fillAmount = (float)value / unit.maxHealth;
-				if(value>=0)
-					healthText.text = "" + (int)value;
+				imageBar.fillAmount = (float)value / unit.maxHealth;
+				if (value >= 0)
+					barText.text = "" + (int)value;
 				else
-					healthText.text = "0";
-			}
-			else if (type == 2)
-			{
+					barText.text = "0";
+			}else if (type == 2)
+            {
 				float value = Mathf.Lerp(curValue, unit.curEnergy, (elapsedTime / waitTime));
-				energyBar.fillAmount = (float)value / unit.maxEnergy;
+				imageBar.fillAmount = (float)value / unit.maxEnergy;
+				if (value >= 0)
+					barText.text = (int)unit.curEnergy + " / " + (int)unit.maxEnergy;
+				else
+					barText.text = "0 / "+ (int)unit.maxEnergy;
 			}
 			yield return null;
 		}

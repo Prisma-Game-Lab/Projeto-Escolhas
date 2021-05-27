@@ -37,7 +37,6 @@ public class BattleSystem : MonoBehaviour
         enemyUnit = enemyGO.GetComponent<Unit>();
         enemyUnit.cBase= GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().combatCharacter;
         battleUI.enemyImage.sprite = enemyUnit.cBase.combatImage;
-        adjustWhiteImage();
         battleUI.dialogueText.text = enemyUnit.cBase.name + " se aproxima...";
 
         battleUI.playerHUD.SetHUD(playerUnit);
@@ -46,7 +45,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         state = BattleState.PLAYERTURN;
-        PlayerTurn();
+        StartTurn();
     }
 
     public IEnumerator PlayerAttack(int tipo)
@@ -56,7 +55,7 @@ public class BattleSystem : MonoBehaviour
         {
             battleUI.CombatPanel.SetActive(false);
             battleUI.DecisionPanel.SetActive(true);
-            battleUI.playerHUD.SetEnergy(curEnergy, playerUnit, 2);
+            battleUI.playerHUD.SetEnergy(curEnergy, playerUnit);
             state = BattleState.ATTACK;
             bool isDead;
             float enemyCurHealth = enemyUnit.curHealth;
@@ -79,7 +78,7 @@ public class BattleSystem : MonoBehaviour
                 isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 2));
             }
 
-            battleUI.enemyHUD.SetHP(enemyCurHealth, enemyUnit, 1);
+            battleUI.enemyHUD.SetHP(enemyCurHealth, enemyUnit);
 
             yield return new WaitForSeconds(1.5f);
 
@@ -111,11 +110,11 @@ public class BattleSystem : MonoBehaviour
             int damage = (int)(enemyUnit.attack - playerUnit.defense);
             damage = Mathf.Clamp(damage, 1, 9999);
             isDead = playerUnit.TakeDamage(damage);
-            battleUI.playerHUD.SetHP(playerCurHealth, playerUnit, 1);
+            battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
         }
         else {
             isDead = playerUnit.TakeDamage(enemyUnit.attack);
-            battleUI.playerHUD.SetHP(playerCurHealth, playerUnit, 1);
+            battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
         }
 
 
@@ -157,14 +156,22 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    void PlayerTurn()
+    void StartTurn()
     {
         float curEnergy = playerUnit.curEnergy;
         battleUI.dialogueText.text = "Escolha uma ação:";
         battleUI.DecisionAttackButton.SetActive(true);
         battleUI.DecisionQuitButton.SetActive(true);
+        battleUI.playerHUD.SetEnergy(curEnergy, playerUnit);
+    }
+
+    void PlayerTurn()
+    {
         playerUnit.GiveEnergy(2);
-        battleUI.playerHUD.SetEnergy(curEnergy, playerUnit, 2);
+        battleUI.DecisionAttackButton.SetActive(false);
+        battleUI.DecisionQuitButton.SetActive(false);
+        battleUI.DecisionPanel.SetActive(false);
+        battleUI.CombatPanel.SetActive(true);
     }
 
     public IEnumerator PlayerHeal()
@@ -173,7 +180,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.HEAL;
         playerUnit.Heal(5);
 
-        battleUI.playerHUD.SetHP(playerCurHealth, playerUnit, 1);
+        battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
         battleUI.dialogueText.text = "You feel renewed strength!";
 
         yield return new WaitForSeconds(2f);
@@ -192,26 +199,5 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         //sai do combate
         SceneManager.LoadScene("App");
-    }
-
-    void adjustWhiteImage()
-    {
-        if (enemyUnit.cBase.race == CharacterBase.CharacterRace.Elfa)
-        {
-            battleUI.elfWhiteImage.gameObject.SetActive(true);
-            battleUI.elfWhiteImage.sprite = enemyUnit.cBase.combatWhiteImage;
-        }
-        else if (enemyUnit.cBase.race == CharacterBase.CharacterRace.Orc)
-        {
-            battleUI.orcWhiteImage.gameObject.SetActive(true);
-            battleUI.orcWhiteImage.sprite = enemyUnit.cBase.combatWhiteImage;
-        }
-        else if (enemyUnit.cBase.race == CharacterBase.CharacterRace.Sereia)
-        {
-            battleUI.sereiaWhiteImage.gameObject.SetActive(true);
-            battleUI.sereiaWhiteImage.sprite = enemyUnit.cBase.combatWhiteImage;
-        }
-        else
-            return;
     }
 }

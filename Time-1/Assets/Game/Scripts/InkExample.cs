@@ -114,7 +114,7 @@ public class InkExample : MonoBehaviour
                     isSticker = true;
                 }
                 else {
-                    float sec = Random.Range(1.0f, 2.5f);
+                    float sec = Random.Range(.0f, .5f);
                     yield return new WaitForSeconds(0.5f);
                     typing.gameObject.SetActive(true);
                     yield return new WaitForSeconds(sec);

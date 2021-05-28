@@ -46,12 +46,12 @@ public class Unit : MonoBehaviour
 
 	public bool TakeEnergy(int attackType)
 	{
-		int energyLoss;
+		int energyLoss=0;
 		if (attackType == 1)
 			energyLoss = 2;
 		else if (attackType == 2)
 			energyLoss = 4;
-		else 
+		else if (attackType == 3)
 			energyLoss = 3;
 		if ((curEnergy - energyLoss >= 0))
 		{
@@ -68,8 +68,19 @@ public class Unit : MonoBehaviour
         if (curHealth > maxHealth)
             curHealth = maxHealth;
     }
-	public void GiveEnergy(int amount)
+	public void GiveEnergy(int type)
 	{
+        int amount;
+		if (type == 0)
+			amount = 2;
+		else if (type == 1)
+			amount = 2;
+		else if (type == 2)
+			amount = 4;
+		else if (type == 3)
+			amount = 3;
+		else
+			amount = 5;
 		curEnergy += amount;
 		if (curEnergy > maxEnergy)
 			curEnergy = maxEnergy;

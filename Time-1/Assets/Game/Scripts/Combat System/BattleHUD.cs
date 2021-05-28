@@ -34,19 +34,19 @@ public class BattleHUD : MonoBehaviour
     {
 		StartCoroutine(LerpUI(curEnergy, unit, energyBar, energyText, 2));
     }
-	public void SetShield(bool state)
-    {
-		if (state)
-		{
-			Color white = new Color(255, 255, 255);
-			shieldIcon.color = white;
-		}
-        else
-        {
-			Color black = new Color(0, 0, 0);
-			shieldIcon.color = black;
-		}
-    }
+	//public void SetShield(bool state)
+	//   {
+	//	if (state)
+	//	{
+	//		Color white = new Color(255, 255, 255);
+	//		shieldIcon.color = white;
+	//	}
+	//       else
+	//       {
+	//		Color black = new Color(0, 0, 0);
+	//		shieldIcon.color = black;
+	//	}
+	//   }
 
 	private IEnumerator LerpUI(float curValue, Unit unit, Image imageBar, TextMeshProUGUI barText, int type)
 	{

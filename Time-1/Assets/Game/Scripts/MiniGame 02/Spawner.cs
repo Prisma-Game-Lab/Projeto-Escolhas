@@ -6,6 +6,7 @@ using TMPro;
 public class Spawner : MonoBehaviour
 {
     public GameObject ball;
+    public Sprite[] ballsSprites;
     public TextMeshProUGUI waves_txt;
     public TextMeshProUGUI impacts_txt;
     public static bool allWavesFinished;
@@ -47,7 +48,9 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < ballsToSpawn; i++)
         {
             Vector3 position = Random.insideUnitCircle.normalized * 5f;
-            Instantiate(ball, position, Quaternion.identity);
+            GameObject curBall = Instantiate(ball, position, Quaternion.identity);
+            curBall.GetComponent<SpriteRenderer>().sprite = ballsSprites[Random.Range(0, ballsSprites.Length)];
+            curBall.GetComponent<Rigidbody2D>().AddTorque(4f);
             yield return new WaitForSeconds(spawnRate);
         }
         yield return new WaitForSeconds(2f);

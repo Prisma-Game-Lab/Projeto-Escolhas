@@ -72,6 +72,7 @@ public class InkExample : MonoBehaviour
         Debug.Log(storedMessages.Count);
         for (int i = 0; i < storedMessages.Count; i++) {
             Debug.Log(storedMessages[i]);
+            restoreMessages(i);
         }
 
         StartCoroutine(refresh());
@@ -84,7 +85,69 @@ public class InkExample : MonoBehaviour
         }
     }
 
-    private void restoreMessages() {
+    private void restoreMessages(int i) {
+        //for (int i = 0; i < storedMessages.Count; i++) {
+            if (storedMessages[i].Contains("Combat")) {
+                showCombatButton(combatButton);
+            }
+            bool isSticker = false;
+            if (storedMessages[i].Contains("Other")) {
+                if (storedMessages[i].Contains("sticker")) {
+                    //yield return new WaitForSeconds(1.0f);
+                    currentInst = Instantiate(textPrefab, content.transform); 
+                    int len = storedMessages[i].Substring(6).Length;
+                    string path = "Stickers/" + storedMessages[i].Substring(6, len-1);
+                    Sprite sprite = Resources.Load<Sprite>(path);
+                    currentInst.GetComponent<Image>().sprite = sprite;
+                    currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
+                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
+                    isSticker = true;
+                }
+                else {
+                    //float sec = Random.Range(.0f, .5f);
+                    //yield return new WaitForSeconds(0.5f);
+                    //typing.gameObject.SetActive(true);
+                    //yield return new WaitForSeconds(sec);
+                    //typing.gameObject.SetActive(false);
+                    currentInst = Instantiate(textPrefab, content.transform); 
+                    currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = storedMessages[i].Substring(6);
+                    //if provisorio, apenas testando o tamanho do balao
+                    if (storedMessages[i].Substring(6).Length > 37) {
+                        currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 140.0f);
+                    }
+                    currentInst.GetComponent<Image>().sprite = otherSprite[0];
+                }
+                posxc = otherMessagePos.position.x;
+            } 
+            else {
+                //if (!buttonClicked)
+                    //yield return new WaitForSeconds(1.5f);
+                //else
+                    //buttonClicked = false;
+                currentInst = Instantiate(textPrefab, content.transform); 
+                currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = storedMessages[i].Substring(7);
+                currentInst.GetComponent<Image>().sprite = playerSprite[0];
+                posxc = playerMessagePos.position.x;
+            }
+            if (isSticker)
+                currentInst.transform.position = new Vector2(posxc*0.75f, playerMessagePos.position.y*1.1f);  
+            else
+                currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y);
+            if (i != 0) {
+                foreach (var message in lastInst) {
+                    float posxc1 = message.transform.position.x;
+                    float posyc1 = message.transform.position.y;
+                    if (isSticker)
+                        message.transform.position = new Vector2(posxc1, posyc1 + distance*2f); 
+                    else
+                        message.transform.position = new Vector2(posxc1, posyc1 + distance);
+                }
+            }
+            lastInst.Add(currentInst);
+            posxc = currentInst.transform.position.x;
+            posyc = currentInst.transform.position.y;
+            //lastLine += 1;
+        //}
 
     }
 

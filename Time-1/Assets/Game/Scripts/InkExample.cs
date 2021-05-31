@@ -44,21 +44,25 @@ public class InkExample : MonoBehaviour
         storedMessages = new List<string>();
 
         if (this.gameObject.tag == "Elf") {
-            story = new Story(inkJSONAsset[tinderData.elfaDay].text);
+            if (!clickedBack) 
+                story = new Story(inkJSONAsset[tinderData.elfaDay].text);
             storedMessages = appSave.elfa;
         }
         else if (this.gameObject.tag == "Orc") {
-            story = new Story(inkJSONAsset[tinderData.orcDay].text);
+            if (!clickedBack)
+                story = new Story(inkJSONAsset[tinderData.orcDay].text);
             storedMessages = appSave.orc;
         }
         else {
-            story = new Story(inkJSONAsset[tinderData.sereiaDay].text);
+            if (!clickedBack)
+                story = new Story(inkJSONAsset[tinderData.sereiaDay].text);
             storedMessages = appSave.sereia;
         }
     }
 
     void Start()
     {
+        combatButton.gameObject.SetActive(false);
         clickedBack = false;
         audioManager = FindObjectOfType<AudioManager>();
 
@@ -73,6 +77,15 @@ public class InkExample : MonoBehaviour
         for (int i = 0; i < storedMessages.Count; i++) {
             Debug.Log(storedMessages[i]);
             restoreMessages(i);
+            if (story.canContinue) {
+                string text = story.Continue();
+                if (text.Contains("Skip") && story.canContinue) {
+                    text = story.Continue();
+                }
+            }
+            foreach (Choice choice in story.currentChoices) {
+                Debug.Log("escolha " + choice.text.Substring(7));
+            }
         }
 
         StartCoroutine(refresh());

@@ -10,9 +10,6 @@ public class BattleUIManager : MonoBehaviour
     [HideInInspector]public List<GameObject> spawnedActionsImages = new List<GameObject>();
     public Transform actionsPanel;
 
-    public Image elfWhiteImage;
-    public Image orcWhiteImage;
-    public Image sereiaWhiteImage;
     public Image enemyImage;
 
     public TextMeshProUGUI dialogueText;
@@ -97,9 +94,13 @@ public class BattleUIManager : MonoBehaviour
                 audioManager.Play("ShieldDown");
             else
                 audioManager.Play("Reject");
+
+            if (type != 5)
+            {
+                battleSystem.playerUnit.GiveEnergy(type);
+            }
             battleSystem.actions.Remove(type);
             SetActionsHUD(battleSystem.actions);
-            battleSystem.playerUnit.GiveEnergy(type);
         }
         else
             audioManager.Play("Click");

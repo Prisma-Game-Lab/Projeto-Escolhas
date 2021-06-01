@@ -106,8 +106,10 @@ public class BattleSystem : MonoBehaviour
         int counter = actions.Count;
         for (int i = 0; i < counter; i++)
         {
+            battleUI.dialogueText.text = "Executando...";
             bool isDead = false;
             float enemyCurHealth = enemyUnit.curHealth;
+            yield return new WaitForSeconds(1f);
             if (actions[0] == 1)
             {
                 audioManager.Play("Punch");
@@ -135,13 +137,14 @@ public class BattleSystem : MonoBehaviour
                 battleUI.enemyHUD.SetHP(enemyCurHealth, enemyUnit);
                 battleUI.SetActionsHUD(actions);
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1f);
 
             if (isDead)
             {
                 state = BattleState.WON;
                 EndBattle();
             }
+            yield return new WaitForSeconds(1f);
         }
         state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());
@@ -149,7 +152,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        battleUI.dialogueText.text = enemyUnit.cBase.name + " te socou!";
+        battleUI.dialogueText.text = enemyUnit.cBase.name + " esta te dando um socou!";
         yield return new WaitForSeconds(1f);
         audioManager.Play("Punch");
         bool isDead;
@@ -191,18 +194,23 @@ public class BattleSystem : MonoBehaviour
 
     void EndBattle()
     {
+        StopAllCoroutines();
         if (state == BattleState.WON)
         {
+            battleUI.DecisionPanel.SetActive(true);
             battleUI.DecisionQuitButton.SetActive(true);
             battleUI.wonDatePanel.SetActive(true);
+            battleUI.CombatPanel.SetActive(false);
             battleUI.dialogueText.text = "Você ganhou o encontro! " + enemyUnit.cBase.name + " esta totalmente na sua!";
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
         }
         else if (state == BattleState.LOST)
         {
+            battleUI.DecisionPanel.SetActive(true);
             battleUI.lostDatePanel.SetActive(true);
             battleUI.DecisionQuitButton.SetActive(true);
+            battleUI.CombatPanel.SetActive(false);
             battleUI.dialogueText.text = "Você foi derrotado. " + enemyUnit.cBase.name + " esta indo embora insatisfeita.";
         }
     }

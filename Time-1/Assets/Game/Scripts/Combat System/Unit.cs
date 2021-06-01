@@ -80,7 +80,7 @@ public class Unit : MonoBehaviour
 		else if (type == 3)
 			amount = 3;
 		else
-			amount = 5;
+			amount = 4;
 		curEnergy += amount;
 		if (curEnergy > maxEnergy)
 			curEnergy = maxEnergy;

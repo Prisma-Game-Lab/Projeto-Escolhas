@@ -45,7 +45,8 @@ public class BattleUIManager : MonoBehaviour
     {
         if (battleSystem.state != BattleState.PLAYERTURN)
             return;
-        battleSystem.StartCoroutine(battleSystem.PlayerAttack());
+        if (battleSystem.actions.Count > 0)
+            battleSystem.StartCoroutine(battleSystem.PlayerAttack());
     }
 
     //public void OnDefenseButton()

@@ -50,19 +50,21 @@ public class InkExample : MonoBehaviour
         if (this.gameObject.tag == "Elf") {
             story = new Story(inkJSONAsset[tinderData.elfaDay].text);
             storedMessages = appSave.elfa;
-            if(appSave.elfaJson != null) 
+            if(appSave.elfaJson != "") {
+                Debug.Log("oi");
                 story.state.LoadJson(appSave.elfaJson);
+            }
         }
         else if (this.gameObject.tag == "Orc") {
             story = new Story(inkJSONAsset[tinderData.orcDay].text);
             storedMessages = appSave.orc;
-            if(appSave.orcJson != null) 
+            if(appSave.orcJson != "") 
                 story.state.LoadJson(appSave.orcJson);
         }
         else {
             story = new Story(inkJSONAsset[tinderData.sereiaDay].text);
             storedMessages = appSave.sereia;
-            if(appSave.sereiaJson != null) 
+            if(appSave.sereiaJson != "") 
                 story.state.LoadJson(appSave.sereiaJson);
         }
         clickedBack = false;
@@ -265,13 +267,13 @@ public class InkExample : MonoBehaviour
             storedMessages.Add(messages[i]);
         }
         if (this.gameObject.tag == "Elf") {
-            appSave.elfaJson = null;
+            appSave.elfaJson = "";
         }
         else if (this.gameObject.tag == "Orc") {
-            appSave.orcJson = null;
+            appSave.orcJson = "";
         }
         else {
-            appSave.sereiaJson = null;
+            appSave.sereiaJson = "";
         }
         for (int i = storedMessages.Count; i < messages.Count; i++) {
             storedMessages.Add(messages[i]);

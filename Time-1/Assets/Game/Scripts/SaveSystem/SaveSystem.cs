@@ -11,7 +11,6 @@ public class SaveSystem : MonoBehaviour
     [HideInInspector] //deve ficar escondido, só tiro enquanto programo, se eu esquecer podem por de volta pfv
     public AppSave appSave;
     public AppSave emptySave;
-    //public JsonManipulation jm;
 
     //a versão corrente do save, para podermos testar e tratar versões antigas
     public static float saveVersion = 1.0f;
@@ -56,6 +55,10 @@ public class SaveSystem : MonoBehaviour
                 //se falhou, instancia novo save e o salva
                 appSave = GameObject.Instantiate(emptySave);
                 SaveState();
+                appSave.elfaJson = "";
+                appSave.orcJson = "";
+                appSave.sereiaJson = "";
+                appSave.humanoJson = "";
                 string path = Path.Combine(Application.persistentDataPath, saveFileName + ".dat");
                 Debug.Log("new save on path:" + path);
 

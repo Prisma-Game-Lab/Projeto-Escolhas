@@ -50,7 +50,6 @@ public class SaveSystem : MonoBehaviour
         else
         {
             instance = this;
-            JsonManipulation.DuplicateJson();
             //tenta dar load
             if(!LoadState())
             {

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine.SceneManagement;
+using SimpleJSON;
 
 public class InkExample : MonoBehaviour
 {
@@ -36,32 +37,34 @@ public class InkExample : MonoBehaviour
     public TextMeshProUGUI typing;
     private AppSave appSave;
     private bool clickedBack;
+    private string savedJson;
 
     void OnEnable() {
         appSave = SaveSystem.GetInstance().appSave;
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
-
         storedMessages = new List<string>();
-
-        if (this.gameObject.tag == "Elf") {
-            if (!clickedBack) 
-                story = new Story(inkJSONAsset[tinderData.elfaDay].text);
-            storedMessages = appSave.elfa;
-        }
-        else if (this.gameObject.tag == "Orc") {
-            if (!clickedBack)
-                story = new Story(inkJSONAsset[tinderData.orcDay].text);
-            storedMessages = appSave.orc;
-        }
-        else {
-            if (!clickedBack)
-                story = new Story(inkJSONAsset[tinderData.sereiaDay].text);
-            storedMessages = appSave.sereia;
-        }
     }
 
     void Start()
     {
+        if (this.gameObject.tag == "Elf") {
+            story = new Story(inkJSONAsset[tinderData.elfaDay].text);
+            storedMessages = appSave.elfa;
+            if(storedMessages.Count != 0) 
+                story.state.LoadJson(appSave.elfaJson);
+        }
+        else if (this.gameObject.tag == "Orc") {
+            story = new Story(inkJSONAsset[tinderData.orcDay].text);
+            storedMessages = appSave.orc;
+            if(storedMessages.Count != 0) 
+                story.state.LoadJson(appSave.orcJson);
+        }
+        else {
+            story = new Story(inkJSONAsset[tinderData.sereiaDay].text);
+            storedMessages = appSave.sereia;
+            if(storedMessages.Count != 0) 
+                story.state.LoadJson(appSave.sereiaJson);
+        }
         clickedBack = false;
         audioManager = FindObjectOfType<AudioManager>();
 
@@ -72,24 +75,8 @@ public class InkExample : MonoBehaviour
         float posyb = buttonPlace.transform.position.y;
 
         posyc = 700.0f;
-        Debug.Log(storedMessages.Count);
         for (int i = 0; i < storedMessages.Count; i++) {
-            Debug.Log(storedMessages[i]);
             restoreMessages(i);
-            if (story.canContinue) {
-                string text = story.Continue();
-                if (text.Contains("Skip") && story.canContinue) {
-                    text = story.Continue();
-                }
-            }
-            foreach (Choice choice in story.currentChoices) {
-                Debug.Log("escolha " + choice.text.Substring(7));
-                Button choiceButton = Instantiate(buttonPrefab, buttonPlace.transform);
-                choiceButton.transform.SetParent(buttonPlace.transform);
-                //Text choiceText = choiceButton.GetComponentInChildren<Text>();
-                //choiceText.text = choice.text;
-            }
-            clearUI();
         }
         combatButton.gameObject.SetActive(false);
         StartCoroutine(refresh());
@@ -103,7 +90,6 @@ public class InkExample : MonoBehaviour
     }
 
     private void restoreMessages(int i) {
-        //for (int i = 0; i < storedMessages.Count; i++) {
             if (storedMessages[i].Contains("Combat")) {
                 showCombatButton(combatButton);
             }
@@ -121,11 +107,6 @@ public class InkExample : MonoBehaviour
                     isSticker = true;
                 }
                 else {
-                    //float sec = Random.Range(.0f, .5f);
-                    //yield return new WaitForSeconds(0.5f);
-                    //typing.gameObject.SetActive(true);
-                    //yield return new WaitForSeconds(sec);
-                    //typing.gameObject.SetActive(false);
                     currentInst = Instantiate(textPrefab, content.transform); 
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = storedMessages[i].Substring(6);
                     //if provisorio, apenas testando o tamanho do balao
@@ -137,10 +118,6 @@ public class InkExample : MonoBehaviour
                 posxc = otherMessagePos.position.x;
             } 
             else {
-                //if (!buttonClicked)
-                    //yield return new WaitForSeconds(1.5f);
-                //else
-                    //buttonClicked = false;
                 currentInst = Instantiate(textPrefab, content.transform); 
                 currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = storedMessages[i].Substring(7);
                 currentInst.GetComponent<Image>().sprite = playerSprite[0];
@@ -163,9 +140,6 @@ public class InkExample : MonoBehaviour
             lastInst.Add(currentInst);
             posxc = currentInst.transform.position.x;
             posyc = currentInst.transform.position.y;
-            //lastLine += 1;
-        //}
-
     }
 
     private IEnumerator refresh()
@@ -258,7 +232,6 @@ public class InkExample : MonoBehaviour
     {
         buttonClicked = true;
         audioManager.Play("Click");
-        Debug.Log(choice.index);
         story.ChooseChoiceIndex(choice.index);
         StartCoroutine(refresh());
     }
@@ -299,6 +272,15 @@ public class InkExample : MonoBehaviour
     public void OnBackButton(GameObject canvas) {
         clickedBack = true;
         StopAllCoroutines();
+        if (this.gameObject.tag == "Elf") {
+            appSave.elfaJson = story.state.ToJson();
+        }
+        else if (this.gameObject.tag == "Orc") {
+            appSave.orcJson = story.state.ToJson();
+        }
+        else {
+            appSave.sereiaJson = story.state.ToJson();
+        }
         for (int i = storedMessages.Count; i < messages.Count; i++) {
             storedMessages.Add(messages[i]);
         }

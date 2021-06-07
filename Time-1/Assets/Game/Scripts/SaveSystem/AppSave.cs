@@ -9,4 +9,8 @@ public class AppSave : ScriptableObject
     public List<string> humano = new List<string>();
     public List<string> sereia = new List<string>();
     public List<string> orc = new List<string>();
+    public string elfaJson;
+    public string humanoJson;
+    public string sereiaJson;
+    public string orcJson;
 }

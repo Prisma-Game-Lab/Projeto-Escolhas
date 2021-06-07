@@ -6,6 +6,7 @@ using UnityEngine;
 public class CharacterBase : ScriptableObject
 {
     public new string name;
+    public new string description;
     public Sprite profileChatImage;
     public Sprite tinderImage;
     public Sprite combatImage;

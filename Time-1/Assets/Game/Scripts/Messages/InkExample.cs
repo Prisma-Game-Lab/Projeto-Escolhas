@@ -62,7 +62,6 @@ public class InkExample : MonoBehaviour
 
     void Start()
     {
-        combatButton.gameObject.SetActive(false);
         clickedBack = false;
         audioManager = FindObjectOfType<AudioManager>();
 
@@ -85,9 +84,14 @@ public class InkExample : MonoBehaviour
             }
             foreach (Choice choice in story.currentChoices) {
                 Debug.Log("escolha " + choice.text.Substring(7));
+                Button choiceButton = Instantiate(buttonPrefab, buttonPlace.transform);
+                choiceButton.transform.SetParent(buttonPlace.transform);
+                //Text choiceText = choiceButton.GetComponentInChildren<Text>();
+                //choiceText.text = choice.text;
             }
+            clearUI();
         }
-
+        combatButton.gameObject.SetActive(false);
         StartCoroutine(refresh());
     }
 
@@ -246,7 +250,6 @@ public class InkExample : MonoBehaviour
             choiceButton.onClick.AddListener(delegate {
                 OnClickChoiceButton(choice);
             });
-
         }
         scroll.enabled = true;
     }
@@ -255,6 +258,7 @@ public class InkExample : MonoBehaviour
     {
         buttonClicked = true;
         audioManager.Play("Click");
+        Debug.Log(choice.index);
         story.ChooseChoiceIndex(choice.index);
         StartCoroutine(refresh());
     }

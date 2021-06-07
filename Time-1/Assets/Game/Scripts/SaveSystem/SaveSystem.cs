@@ -11,6 +11,7 @@ public class SaveSystem : MonoBehaviour
     [HideInInspector] //deve ficar escondido, só tiro enquanto programo, se eu esquecer podem por de volta pfv
     public AppSave appSave;
     public AppSave emptySave;
+    //public JsonManipulation jm;
 
     //a versão corrente do save, para podermos testar e tratar versões antigas
     public static float saveVersion = 1.0f;
@@ -49,6 +50,7 @@ public class SaveSystem : MonoBehaviour
         else
         {
             instance = this;
+            JsonManipulation.DuplicateJson();
             //tenta dar load
             if(!LoadState())
             {

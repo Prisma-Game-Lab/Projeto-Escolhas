@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Orc
   m_EditorClassIdentifier: 
   name: Bruce
-  description: 
+  bio: "Procuro porrada casual sem compromisso para me distrair\nAcha que \xE9 bom
+    o suficiente para me encarar? Manda uma mensagem \U0001F60F;) \n\nGosto de desafios
+    e n\xE3o tenho paci\xEAncia para tietes\n\n#ViciadoEmLutar #LutaLivre #N\xE3oTenteMeFazerDeTrouxa
+    #Orgulho #MeuCorpoMeuTemplo #N\xE3oPercoMeuTempo\n"
   profileChatImage: {fileID: 21300000, guid: 65a2255421f2174499bf78b9f4e0e6f1, type: 3}
   tinderImage: {fileID: 21300000, guid: f034612cb60a89d498720dc208282860, type: 3}
   combatImage: {fileID: 21300000, guid: c977eadbba0089542a9ec89310fea7fc, type: 3}

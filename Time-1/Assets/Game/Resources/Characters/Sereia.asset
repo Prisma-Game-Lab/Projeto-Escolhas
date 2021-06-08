@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Sereia
   m_EditorClassIdentifier: 
   name: Clarissa
-  description: 
+  bio: "Mais um peixe no mar ><\r\nN\xE3o sei como me descrever, e n sou boa puxando
+    assunto\u2026\r\nSigno: peixes (pfv sem piadas sobre isso...)\r\nProcuro companhia
+    para lutar. Sem prefer\xEAncias.\r\n\r\n#n\xE3ojoguemlixonomar #peixetbmsente
+    \r\n"
   profileChatImage: {fileID: 21300000, guid: 6cb4377ffe8e7e2409af70462c46ad26, type: 3}
   tinderImage: {fileID: 21300000, guid: 5378c5030235ed34c94cf08a07e83360, type: 3}
   combatImage: {fileID: -8144870172802586764, guid: c0143d1180912874d89c7576281bcfa0, type: 3}

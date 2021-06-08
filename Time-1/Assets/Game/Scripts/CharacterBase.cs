@@ -6,7 +6,8 @@ using UnityEngine;
 public class CharacterBase : ScriptableObject
 {
     public new string name;
-    public string description;
+    [TextArea]
+    public string bio;
     public Sprite profileChatImage;
     public Sprite tinderImage;
     public Sprite combatImage;
@@ -24,6 +25,10 @@ public class CharacterBase : ScriptableObject
 
     public string Name {
         get { return name; }
+    }
+
+    public string Bio {
+        get { return bio; }
     }
 
     public Sprite Sprite {

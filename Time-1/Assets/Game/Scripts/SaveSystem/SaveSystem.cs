@@ -205,6 +205,17 @@ public class SaveSystem : MonoBehaviour
                 Destroy(contact.transform.GetChild(i).gameObject); 
         }
 
+        if (GameObject.FindGameObjectWithTag("Elf").activeSelf) {
+            GameObject.FindGameObjectWithTag("Elf").SetActive(false);
+        }
+        else if(GameObject.FindGameObjectWithTag("Orc").activeSelf) {
+            GameObject.FindGameObjectWithTag("Orc").SetActive(false);
+        }
+        else if(GameObject.FindGameObjectWithTag("Sereia").activeSelf) {
+            GameObject.FindGameObjectWithTag("Sereia").SetActive(false);
+        }
+
+
     }
 
 }

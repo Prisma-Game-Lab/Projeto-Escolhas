@@ -11,7 +11,8 @@ public class SaveSystem : MonoBehaviour
     [HideInInspector] //deve ficar escondido, só tiro enquanto programo, se eu esquecer podem por de volta pfv
     public AppSave appSave;
     public AppSave emptySave;
-    public TinderData tinderData;
+    private TinderData tinderData;
+    public GameObject contact;
 
     //a versão corrente do save, para podermos testar e tratar versões antigas
     public static float saveVersion = 1.0f;
@@ -56,7 +57,6 @@ public class SaveSystem : MonoBehaviour
                 //se falhou, instancia novo save e o salva
                 appSave = GameObject.Instantiate(emptySave);
                 SaveState();
-                tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
                 appSave.elfaJson = "";
                 appSave.orcJson = "";
                 appSave.sereiaJson = "";
@@ -170,30 +170,41 @@ public class SaveSystem : MonoBehaviour
             {
                 instance.appSave = GameObject.Instantiate(instance.emptySave);
                 
-                //reiniciar tudo
-                /*
-                appSave.elfa.Clear();
-                appSave.humano.Clear();
-                appSave.sereia.Clear();
-                appSave.orc.Clear();
-
-                appSave.elfaJson = "";
-                appSave.orcJson = "";
-                appSave.sereiaJson = "";
-                appSave.humanoJson = "";
-
-                tinderData.elfaDay = 1;
-                tinderData.humanoDay = 1;
-                tinderData.orcDay = 1;
-                tinderData.sereiaDay = 1;
-                
-                */
             }
        }
        catch(Exception e)
        {
            Debug.LogWarning("Could not delete file:" + e.Message);
        }
+    }
+
+    public void NewGame() 
+    {
+        tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
+
+        appSave.elfa.Clear();
+        appSave.humano.Clear();
+        appSave.sereia.Clear();
+        appSave.orc.Clear();
+
+        appSave.elfaJson = "";
+        appSave.orcJson = "";
+        appSave.sereiaJson = "";
+        appSave.humanoJson = "";
+
+        tinderData.elfaDay = 1;
+        tinderData.humanoDay = 1;
+        tinderData.orcDay = 1;
+        tinderData.sereiaDay = 1;
+
+        int childCount = contact.transform.childCount;
+
+        for (int i = childCount - 1; i >= 0; i--)
+        {
+            if (contact.transform.GetChild(i).gameObject.tag != "ButtonSpace") 
+                Destroy(contact.transform.GetChild(i).gameObject); 
+        }
+
     }
 
 }

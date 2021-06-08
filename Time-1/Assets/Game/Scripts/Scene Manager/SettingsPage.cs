@@ -7,7 +7,7 @@ public class SettingsPage : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -27,6 +27,11 @@ public class SettingsPage : MonoBehaviour
         else
             canvas.gameObject.SetActive(false);
         
+    }
+
+    public void NewGame() {
+        SaveSystem.GetInstance().NewGame();
+        SaveSystem.DeleteSaveFile();
     }
 
 }

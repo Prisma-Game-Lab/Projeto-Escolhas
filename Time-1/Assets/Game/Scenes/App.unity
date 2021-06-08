@@ -4570,7 +4570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &570065535
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7118,7 +7118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appSave: {fileID: 0}
   emptySave: {fileID: 11400000, guid: b400ddb66c056a8409550e5c320e7780, type: 2}
-  tinderData: {fileID: 0}
+  contact: {fileID: 982786353}
 --- !u!4 &865093707
 Transform:
   m_ObjectHideFlags: 0
@@ -11211,7 +11211,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1396543884}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1704359099}
+        m_TargetAssemblyTypeName: SettingsPage, Assembly-CSharp
+        m_MethodName: NewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1396543884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18225,6 +18237,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 982786354}
     m_Modifications:
+    - target: {fileID: 424385959792551262, guid: 9d038d576bd96a948be22ea4d689fcd3, type: 3}
+      propertyPath: m_TagString
+      value: ButtonSpace
+      objectReference: {fileID: 0}
     - target: {fileID: 7205608176122727019, guid: 9d038d576bd96a948be22ea4d689fcd3, type: 3}
       propertyPath: m_Name
       value: Contact

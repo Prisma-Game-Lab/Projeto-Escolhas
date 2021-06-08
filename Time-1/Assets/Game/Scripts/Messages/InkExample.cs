@@ -51,7 +51,6 @@ public class InkExample : MonoBehaviour
             story = new Story(inkJSONAsset[tinderData.elfaDay].text);
             storedMessages = appSave.elfa;
             if(appSave.elfaJson != "") {
-                Debug.Log("oi");
                 story.state.LoadJson(appSave.elfaJson);
             }
         }
@@ -98,7 +97,6 @@ public class InkExample : MonoBehaviour
             bool isSticker = false;
             if (storedMessages[i].Contains("Other")) {
                 if (storedMessages[i].Contains("sticker")) {
-                    //yield return new WaitForSeconds(1.0f);
                     currentInst = Instantiate(textPrefab, content.transform); 
                     int len = storedMessages[i].Substring(6).Length;
                     string path = "Stickers/" + storedMessages[i].Substring(6, len-1);

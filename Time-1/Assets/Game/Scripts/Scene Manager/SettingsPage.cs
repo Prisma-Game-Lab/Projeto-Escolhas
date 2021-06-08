@@ -21,6 +21,12 @@ public class SettingsPage : MonoBehaviour
         
     }
 
+    public void CloseX(GameObject canvas) {
+        canvas.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
+        
+    }
+
     public void OpenCloseSettings(GameObject canvas) {
         if (!canvas.activeSelf)
             canvas.gameObject.SetActive(true);

@@ -301,4 +301,20 @@ public class InkExample : MonoBehaviour
         canvas.gameObject.SetActive(false);
     }
 
+    void OnApplicationQuit() {
+        if (this.gameObject.tag == "Elf") {
+            appSave.elfaJson = story.state.ToJson();
+        }
+        else if (this.gameObject.tag == "Orc") {
+            appSave.orcJson = story.state.ToJson();
+        }
+        else {
+            appSave.sereiaJson = story.state.ToJson();
+        }
+        for (int i = storedMessages.Count; i < messages.Count; i++) {
+            storedMessages.Add(messages[i]);
+        }
+        SaveSystem.GetInstance().SaveState();
+    }
+
 }

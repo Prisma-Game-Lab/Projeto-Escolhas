@@ -8,6 +8,7 @@ public class CharacterBase : ScriptableObject
     public new string name;
     [TextArea]
     public string bio;
+    public string bioWork;
     public Sprite profileChatImage;
     public Sprite tinderImage;
     public Sprite combatImage;

@@ -204,7 +204,7 @@ public class SaveSystem : MonoBehaviour
             if (contact.transform.GetChild(i).gameObject.tag != "ButtonSpace") 
                 Destroy(contact.transform.GetChild(i).gameObject); 
         }
-
+        /*
         if (GameObject.FindGameObjectWithTag("Elf").activeSelf) {
             GameObject.FindGameObjectWithTag("Elf").SetActive(false);
         }
@@ -214,7 +214,10 @@ public class SaveSystem : MonoBehaviour
         else if(GameObject.FindGameObjectWithTag("Sereia").activeSelf) {
             GameObject.FindGameObjectWithTag("Sereia").SetActive(false);
         }
-
+        else {
+            Debug.Log("não esta nas conversas");
+        }
+        */
 
     }
 

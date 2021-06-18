@@ -13,7 +13,6 @@ public class SaveSystem : MonoBehaviour
     public AppSave appSave;
     public AppSave emptySave;
     private TinderData tinderData;
-    public GameObject contact;
 
     //a versão corrente do save, para podermos testar e tratar versões antigas
     public static float saveVersion = 1.0f;
@@ -197,14 +196,6 @@ public class SaveSystem : MonoBehaviour
         tinderData.humanoDay = 0;
         tinderData.orcDay = 0;
         tinderData.sereiaDay = 0;
-
-        int childCount = contact.transform.childCount;
-
-        for (int i = childCount - 1; i >= 0; i--)
-        {
-            if (contact.transform.GetChild(i).gameObject.tag != "ButtonSpace") 
-                Destroy(contact.transform.GetChild(i).gameObject); 
-        }
 
         tinderData.tinderCharacters.Clear();
         tinderData.curContacts.Clear();

@@ -33,8 +33,6 @@ public class ChangeScene : MonoBehaviour
         Time.timeScale = 1f;
         Pause.isPaused = false;
         SceneManager.LoadScene("App");
-        //MinigameManager.MagicTouch();
-        //draw.Minigame();
     }
     
    }

@@ -193,10 +193,10 @@ public class SaveSystem : MonoBehaviour
         appSave.sereiaJson = "";
         appSave.humanoJson = "";
 
-        tinderData.elfaDay = 1;
-        tinderData.humanoDay = 1;
-        tinderData.orcDay = 1;
-        tinderData.sereiaDay = 1;
+        tinderData.elfaDay = 0;
+        tinderData.humanoDay = 0;
+        tinderData.orcDay = 0;
+        tinderData.sereiaDay = 0;
 
         int childCount = contact.transform.childCount;
 
@@ -205,6 +205,14 @@ public class SaveSystem : MonoBehaviour
             if (contact.transform.GetChild(i).gameObject.tag != "ButtonSpace") 
                 Destroy(contact.transform.GetChild(i).gameObject); 
         }
+
+        tinderData.tinderCharacters.Clear();
+        tinderData.curContacts.Clear();
+        
+        tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Elfa"));
+        tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Humano"));
+        tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Sereia"));
+        tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Orc"));
 
         SceneManager.LoadScene("MainMenu_Scene");
 

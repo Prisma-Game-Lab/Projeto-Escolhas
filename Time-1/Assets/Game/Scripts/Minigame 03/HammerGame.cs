@@ -18,7 +18,7 @@ public class HammerGame : MonoBehaviour
         ropeAnim.enabled = false;
         squareObj = bar.transform.GetChild(0).gameObject;
         point = 0;
-        StartCoroutine(ChangePosition());
+        //StartCoroutine(ChangePosition());
     }
 
    

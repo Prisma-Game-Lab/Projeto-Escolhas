@@ -13,4 +13,5 @@ public class AppSave : ScriptableObject
     public string humanoJson;
     public string sereiaJson;
     public string orcJson;
+    public List<CharacterBase> tinderMatched = new List<CharacterBase>();
 }

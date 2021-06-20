@@ -3216,7 +3216,7 @@ MonoBehaviour:
   minigame: 1
   performacePercentage: 0
   statType: 2
-  raise: 5
+  raise: 50
 --- !u!114 &1875424740
 MonoBehaviour:
   m_ObjectHideFlags: 0

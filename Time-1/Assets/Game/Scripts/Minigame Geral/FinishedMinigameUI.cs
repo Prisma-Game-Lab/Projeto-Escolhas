@@ -27,22 +27,34 @@ public class FinishedMinigameUI : MonoBehaviour
         comments.Add("Bom!");
         comments.Add("Mais ou menos!");
         comments.Add("Ruim!");
-        comments.Add("Péssimo!");
 
         finishedMinigameUI.SetActive(true);
         StartCoroutine(LerpUI(stats.performacePercentage));
         if (stats.performacePercentage >= 1f)
-            comments_txt.text = comments[0];
+        {
+            comments_txt.text = "Excelente!";
+            percentage_txt.text = "A+";
+        }
         else if (stats.performacePercentage >= 0.8f)
-            comments_txt.text = comments[1];
-        else if (stats.performacePercentage >= 0.7f)
-            comments_txt.text = comments[2];
-        else if (stats.performacePercentage >= 0.6f)
-            comments_txt.text = comments[3];
-        else if (stats.performacePercentage >= 0.4f)
-            comments_txt.text = comments[4];
+        {
+            comments_txt.text = "Ótimo!";
+            percentage_txt.text = "A";
+        }
+        else if (stats.performacePercentage >= 0.65f)
+        {
+            comments_txt.text = "Bom";
+            percentage_txt.text = "B";
+        }
+        else if (stats.performacePercentage >= 0.45f)
+        {
+            comments_txt.text = "Mais ou menos!";
+            percentage_txt.text = "C";
+        }
         else
-            comments_txt.text = comments[5];
+        {
+            comments_txt.text = "Ruim!";
+            percentage_txt.text = "D";
+        }
         Pause.isPaused = true;
     }
 
@@ -77,7 +89,7 @@ public class FinishedMinigameUI : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float value = Mathf.Lerp(0f, performanceValue, Mathf.SmoothStep(0.0f, 1.0f, (elapsedTime / waitTime)));
-            percentage_txt.text = "" + (int)(value * 100) + "%";
+            //percentage_txt.text = "" + (int)(value * 100) + "%";
             progressBar.fillAmount = value;
             yield return null;
         }

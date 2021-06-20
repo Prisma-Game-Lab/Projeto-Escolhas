@@ -8,6 +8,8 @@ public class playerStats : MonoBehaviour
     [HideInInspector]
     public float attack, defense, velocity, maxEnergy, maxHealth;
 
+    public float availableStatsPoints=100;
+
     private void Awake()
     {
         attack = playerBase.attack;
@@ -19,6 +21,13 @@ public class playerStats : MonoBehaviour
 
     public void raiseStats(int type, float value)
     {
+        availableStatsPoints -= value;
+        if (availableStatsPoints < 0)
+        {
+            value += availableStatsPoints;
+            availableStatsPoints = 0;
+        }
+
         if (type == 1)
         {
             velocity += value;

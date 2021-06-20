@@ -11,6 +11,8 @@ public class TinderData : MonoBehaviour
 
     public CharacterBase combatCharacter;
 
+    private playerStats playerStats;
+
     public int curDay;
     //[HideInInspector]
     public int elfaDay, humanoDay, orcDay, sereiaDay, carneiraDay;
@@ -29,12 +31,14 @@ public class TinderData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerStats = GameObject.FindGameObjectWithTag("persistentData").GetComponent<playerStats>();
         matchesNumber = 0;
         curDay = 1;
     }
 
     public void advanceCharacterDay()
     {
+        playerStats.availableStatsPoints = 100f;
         if (combatCharacter.race == CharacterBase.CharacterRace.Elfa)
             elfaDay ++;
         else if (combatCharacter.race == CharacterBase.CharacterRace.Humano)

@@ -39,7 +39,7 @@ public class RaisePlayerStats : MonoBehaviour
                 print("Performance = " + performacePercentage);
                 print("Raise = " + raise);
                 print(raise * performacePercentage);
-                playerStats.raiseStats(statType, raise * performacePercentage);
+                playerStats.raiseStats(statType, Mathf.Clamp(raise * performacePercentage,15,50));
                 raised = true;
                 finishedMinigameUI.enabled = true;
             }

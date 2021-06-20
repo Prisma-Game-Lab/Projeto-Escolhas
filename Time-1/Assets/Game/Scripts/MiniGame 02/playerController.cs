@@ -7,7 +7,7 @@ public class playerController : MonoBehaviour
     FloatingJoystick joyStick;
 
     public float rotationSpeed;
-    float rotationX = 0;
+    //float rotationX = 0;
 
     private void Start()
     {

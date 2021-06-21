@@ -6,7 +6,7 @@ public class Unit : MonoBehaviour
 {
 	public CharacterBase cBase;
 	[HideInInspector]
-	public float curHealth, curEnergy, maxHealth, maxEnergy, attack, defense, velocity;
+	public float curHealth, curEnergy, maxHealth, maxEnergy, attack, defense, velocity, damage;
 
     private void Awake()
     {
@@ -16,19 +16,23 @@ public class Unit : MonoBehaviour
 			attack = playerStats.attack;
 			defense = playerStats.defense;
 			velocity = playerStats.velocity;
-			maxHealth = playerStats.maxHealth;
-			maxEnergy = playerStats.maxEnergy;
+			maxHealth = attack + defense * 2 + velocity;
+			maxEnergy = playerStats.maxEnergy + Mathf.Floor(velocity / 35);
 		}
 		else
 		{
 			TinderData tinderData=GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
-			int curDay = tinderData.curDay;
 			cBase = tinderData.combatCharacter;
-			attack = cBase.attack * (curDay + 1) / 2;
-			defense = cBase.defense * (curDay + 1) / 2;
-			velocity = cBase.velocity * (curDay + 1) / 2;
-			maxHealth = cBase.maxHealth * (curDay + 1) / 2;
-			maxEnergy = cBase.maxEnergy * (curDay + 1) / 2;
+			print(cBase.race);
+			int curDay = tinderData.getCharacterDay(cBase);
+			attack = cBase.attack + curDay*20;
+			defense = cBase.defense + curDay * 20;
+            velocity = cBase.velocity + curDay * 20;
+			print(attack);
+			print(defense);
+			print(velocity);
+			maxHealth = attack + defense * 2 + velocity;
+			maxEnergy = cBase.maxEnergy + Mathf.Floor(velocity/35);
 		}
 		curHealth = maxHealth;
 		curEnergy = maxEnergy;

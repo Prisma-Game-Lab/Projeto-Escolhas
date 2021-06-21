@@ -8,6 +8,8 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUN, ATTACK, 
 
 public class BattleSystem : MonoBehaviour
 {
+    //public 
+
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
 
@@ -19,7 +21,7 @@ public class BattleSystem : MonoBehaviour
     private BattleUIManager battleUI;
     private AudioManager audioManager;
 
-    [HideInInspector] public List<int> actions;
+    [HideInInspector] public List<int> playerActions;
 
     void Start()
     {
@@ -37,7 +39,7 @@ public class BattleSystem : MonoBehaviour
 
         GameObject enemyGO = Instantiate(enemyPrefab);
         enemyUnit = enemyGO.GetComponent<Unit>();
-        enemyUnit.cBase = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().combatCharacter;
+        //enemyUnit.cBase = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().combatCharacter;
         battleUI.enemyImage.sprite = enemyUnit.cBase.combatImage;
         battleUI.dialogueText.text = enemyUnit.cBase.name + " se aproxima...";
 
@@ -103,39 +105,45 @@ public class BattleSystem : MonoBehaviour
         battleUI.CombatPanel.SetActive(false);
         battleUI.DecisionPanel.SetActive(true);
         state = BattleState.ATTACK;
-        int counter = actions.Count;
+        int counter = playerActions.Count;
         for (int i = 0; i < counter; i++)
         {
             battleUI.dialogueText.text = "Executando...";
             bool isDead = false;
             float enemyCurHealth = enemyUnit.curHealth;
             yield return new WaitForSeconds(1f);
-            if (actions[0] == 1)
+            if (playerActions[0] == 1)
             {
                 audioManager.Play("Punch");
-                isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 1));
+                print("atk "+enemyUnit.defense);
+                print("def " + playerUnit.attack);
+                print(playerUnit.attack * 2);
+                print(enemyUnit.defense * 0.5f);
+                
+                print(((playerUnit.attack * 2) / (enemyUnit.defense * 0.5f)));
+                isDead = enemyUnit.TakeDamage((playerUnit.attack * 2) / (enemyUnit.defense * 0.5f));
                 battleUI.dialogueText.text = "Você socou seu date!";
             }
-            else if (actions[0] == 2)
+            else if (playerActions[0] == 2)
             {
                 audioManager.Play("Kick");
-                isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 1.5));
+                isDead = enemyUnit.TakeDamage((1.5f * playerUnit.attack * 2) / (enemyUnit.defense * 0.5f));
                 battleUI.dialogueText.text = "Você chutou seu date!";
             }
-            else if (actions[0] == 3)
+            else if (playerActions[0] == 3)
             {
                 battleUI.dialogueText.text = "Você esta se defendendo!";
             }
-            else if (actions[0] == 5)
+            else if (playerActions[0] == 5)
             {
                 battleUI.dialogueText.text = "Você descansou e vai recuperar mais energia!";
                 playerUnit.GiveEnergy(5);
             }
-            if (actions[0] != 3)
+            if (playerActions[0] != 3)
             {
-                actions.Remove(actions[0]);
+                playerActions.Remove(playerActions[0]);
                 battleUI.enemyHUD.SetHP(enemyCurHealth, enemyUnit);
-                battleUI.SetActionsHUD(actions);
+                battleUI.SetActionsHUD(playerActions);
             }
             yield return new WaitForSeconds(1f);
 
@@ -158,27 +166,27 @@ public class BattleSystem : MonoBehaviour
         bool isDead;
         float playerCurHealth = playerUnit.curHealth;
 
-        if (actions.Contains(3))
+        if (playerActions.Contains(3))
         {
-            int damage = (int)(enemyUnit.attack - playerUnit.defense);
-            damage = Mathf.Clamp(damage, 1, 9999);
+            int damage = (int)(((2 * enemyUnit.attack) / (playerUnit.defense * 0.5f)) * 0.2f);
+            damage = Mathf.Clamp(damage, 1, 99999);
             isDead = playerUnit.TakeDamage(damage);
             battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
         }
         else
         {
-            isDead = playerUnit.TakeDamage(enemyUnit.attack);
+            isDead = playerUnit.TakeDamage((2 * enemyUnit.attack) / (playerUnit.defense * 0.5f));
             battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
         }
 
 
         yield return new WaitForSeconds(0.5f);
 
-        if (actions.Contains(3))
+        if (playerActions.Contains(3))
         {
             audioManager.Play("ShieldDown");
-            actions.Remove(3);
-            battleUI.SetActionsHUD(actions);
+            playerActions.Remove(3);
+            battleUI.SetActionsHUD(playerActions);
         }
         if (isDead)
         {
@@ -235,20 +243,20 @@ public class BattleSystem : MonoBehaviour
         battleUI.CombatPanel.SetActive(true);
     }
 
-    public IEnumerator PlayerHeal()
-    {
-        float playerCurHealth = enemyUnit.curHealth;
-        state = BattleState.HEAL;
-        playerUnit.Heal(5);
+    //public IEnumerator PlayerHeal()
+    //{
+    //    float playerCurHealth = enemyUnit.curHealth;
+    //    state = BattleState.HEAL;
+    //    playerUnit.Heal(5);
 
-        battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
-        battleUI.dialogueText.text = "You feel renewed strength!";
+    //    battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
+    //    battleUI.dialogueText.text = "You feel renewed strength!";
 
-        yield return new WaitForSeconds(2f);
+    //    yield return new WaitForSeconds(2f);
 
-        state = BattleState.ENEMYTURN;
-        StartCoroutine(EnemyTurn());
-    }
+    //    state = BattleState.ENEMYTURN;
+    //    StartCoroutine(EnemyTurn());
+    //}
 
     public IEnumerator PlayerRun()
     {

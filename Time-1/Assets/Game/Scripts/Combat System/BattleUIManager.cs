@@ -45,7 +45,7 @@ public class BattleUIManager : MonoBehaviour
     {
         if (battleSystem.state != BattleState.PLAYERTURN)
             return;
-        if (battleSystem.actions.Count > 0)
+        if (battleSystem.playerActions.Count > 0)
             battleSystem.StartCoroutine(battleSystem.PlayerAttack());
     }
 
@@ -75,21 +75,21 @@ public class BattleUIManager : MonoBehaviour
         float curEnergy = battleSystem.playerUnit.curEnergy;
         if (battleSystem.state != BattleState.PLAYERTURN)
             return;
-        if (!battleSystem.actions.Contains(3) && !battleSystem.actions.Contains(5) && !battleSystem.actions.Contains(type) && battleSystem.playerUnit.TakeEnergy(type))
+        if (!battleSystem.playerActions.Contains(3) && !battleSystem.playerActions.Contains(5) && !battleSystem.playerActions.Contains(type) && battleSystem.playerUnit.TakeEnergy(type))
         {
             if (type == 3)
                 audioManager.Play("ShieldUp");
-            else if (type == 5 && battleSystem.actions.Count > 0)
+            else if (type == 5 && battleSystem.playerActions.Count > 0)
             {
                 audioManager.Play("Click");
                 return;
             }
             else
                 audioManager.Play("Match");
-            battleSystem.actions.Add(type);
-            SetActionsHUD(battleSystem.actions);
+            battleSystem.playerActions.Add(type);
+            SetActionsHUD(battleSystem.playerActions);
         }
-        else if (battleSystem.actions.Count>0 && battleSystem.actions[battleSystem.actions.Count-1]==type)
+        else if (battleSystem.playerActions.Count>0 && battleSystem.playerActions[battleSystem.playerActions.Count-1]==type)
         {
             if (type == 3)
                 audioManager.Play("ShieldDown");
@@ -100,8 +100,8 @@ public class BattleUIManager : MonoBehaviour
             {
                 battleSystem.playerUnit.GiveEnergy(type);
             }
-            battleSystem.actions.Remove(type);
-            SetActionsHUD(battleSystem.actions);
+            battleSystem.playerActions.Remove(type);
+            SetActionsHUD(battleSystem.playerActions);
         }
         else
             audioManager.Play("Click");
@@ -133,13 +133,13 @@ public class BattleUIManager : MonoBehaviour
         }
     }
 
-    public void OnHealButton()
-    {
-        if (battleSystem.state != BattleState.PLAYERTURN)
-            return;
+    //public void OnHealButton()
+    //{
+    //    if (battleSystem.state != BattleState.PLAYERTURN)
+    //        return;
 
-        battleSystem.StartCoroutine(battleSystem.PlayerHeal());
-    }
+    //    battleSystem.StartCoroutine(battleSystem.PlayerHeal());
+    //}
 
     public void OnAttackPanelButton()
     {

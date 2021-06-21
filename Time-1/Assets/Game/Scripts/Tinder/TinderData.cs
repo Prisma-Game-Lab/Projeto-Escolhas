@@ -38,9 +38,14 @@ public class TinderData : MonoBehaviour
 
     public void advanceCharacterDay()
     {
+        print("antes");
+        print(elfaDay);
+        print(humanoDay);
+        print(sereiaDay);
+        print(orcDay);
         playerStats.availableStatsPoints = 100f;
         if (combatCharacter.race == CharacterBase.CharacterRace.Elfa)
-            elfaDay ++;
+            elfaDay++;
         else if (combatCharacter.race == CharacterBase.CharacterRace.Humano)
             humanoDay++;
         else if (combatCharacter.race == CharacterBase.CharacterRace.Sereia)
@@ -49,5 +54,24 @@ public class TinderData : MonoBehaviour
             orcDay++;
         else if (combatCharacter.race == CharacterBase.CharacterRace.Carneira)
             carneiraDay++;
+        print("depois");
+        print(elfaDay);
+        print(humanoDay);
+        print(sereiaDay);
+        print(orcDay);
+    }
+
+    public int getCharacterDay(CharacterBase character)
+    {
+        if (character.race == CharacterBase.CharacterRace.Elfa)
+            return elfaDay;
+        else if (character.race == CharacterBase.CharacterRace.Humano)
+            return humanoDay;
+        else if (character.race == CharacterBase.CharacterRace.Sereia)
+            return sereiaDay;
+        else if (character.race == CharacterBase.CharacterRace.Orc)
+            return orcDay;
+        else
+            return carneiraDay;
     }
 }

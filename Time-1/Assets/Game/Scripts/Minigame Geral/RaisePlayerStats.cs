@@ -35,11 +35,11 @@ public class RaisePlayerStats : MonoBehaviour
             if (Timer.timeStopped)
             {
                 audioManager.Play("RaiseStats");
-                performacePercentage = minigame01Performance();
+                performacePercentage = Mathf.Clamp(minigame01Performance(), 0.25f, 1f);
                 print("Performance = " + performacePercentage);
                 print("Raise = " + raise);
                 print(raise * performacePercentage);
-                playerStats.raiseStats(statType, Mathf.Clamp(raise * performacePercentage,15,50));
+                playerStats.raiseStats(statType, raise * performacePercentage);
                 raised = true;
                 finishedMinigameUI.enabled = true;
             }
@@ -48,7 +48,7 @@ public class RaisePlayerStats : MonoBehaviour
             if (Spawner.allWavesFinished == true)
             {
                 audioManager.Play("RaiseStats");
-                performacePercentage = minigame02Performance();
+                performacePercentage = Mathf.Clamp(minigame02Performance(), 0.25f, 1f);
                 print("Performance = "+performacePercentage);
                 print("Raise = "+raise);
                 print(raise * performacePercentage);

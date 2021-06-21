@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   name: Player
-  sprite: {fileID: 0}
-  zoomImage: {fileID: 0}
-  entireImage: {fileID: 0}
+  bio: 
+  bioWork: 
+  profileChatImage: {fileID: 0}
+  tinderImage: {fileID: 0}
   combatImage: {fileID: 0}
+  combatWhiteImage: {fileID: 0}
   maxHealth: 30
-  attack: 5
-  defense: 5
-  velocity: 2
+  attack: 15
+  defense: 15
+  velocity: 10
   maxEnergy: 10
+  popUp: 0
+  race: 0

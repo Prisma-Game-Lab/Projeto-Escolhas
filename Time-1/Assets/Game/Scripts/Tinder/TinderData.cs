@@ -17,6 +17,7 @@ public class TinderData : MonoBehaviour
     //[HideInInspector]
     public int elfaDay, humanoDay, orcDay, sereiaDay, carneiraDay;
     [HideInInspector] public int matchesNumber;
+    private AppSave appSave;
 
     void Awake()
     {
@@ -38,22 +39,32 @@ public class TinderData : MonoBehaviour
 
     public void advanceCharacterDay()
     {
+        appSave = SaveSystem.GetInstance().appSave;
         print("antes");
         print(elfaDay);
         print(humanoDay);
         print(sereiaDay);
         print(orcDay);
         playerStats.availableStatsPoints = 100f;
-        if (combatCharacter.race == CharacterBase.CharacterRace.Elfa)
+        if (appSave.elfaEndDay) {
             elfaDay++;
-        else if (combatCharacter.race == CharacterBase.CharacterRace.Humano)
+            appSave.elfaEndDay = false;
+        }
+        if (appSave.humanoEndDay) {
             humanoDay++;
-        else if (combatCharacter.race == CharacterBase.CharacterRace.Sereia)
+            appSave.humanoEndDay = false;
+        }
+        if (appSave.sereiaEndDay) {
             sereiaDay++;
-        else if (combatCharacter.race == CharacterBase.CharacterRace.Orc)
+            appSave.sereiaEndDay = false;
+        }
+        if (appSave.orcEndDay) {
             orcDay++;
-        else if (combatCharacter.race == CharacterBase.CharacterRace.Carneira)
-            carneiraDay++;
+            appSave.orcEndDay = false;
+        }
+        SaveSystem.GetInstance().SaveState();
+        //if (combatCharacter.race == CharacterBase.CharacterRace.Carneira)
+            //carneiraDay++;
         print("depois");
         print(elfaDay);
         print(humanoDay);

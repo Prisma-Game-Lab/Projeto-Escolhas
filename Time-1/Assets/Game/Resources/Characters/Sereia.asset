@@ -22,10 +22,10 @@ MonoBehaviour:
   tinderImage: {fileID: 21300000, guid: 5378c5030235ed34c94cf08a07e83360, type: 3}
   combatImage: {fileID: -8144870172802586764, guid: c0143d1180912874d89c7576281bcfa0, type: 3}
   combatWhiteImage: {fileID: 21300000, guid: a338a3c22fe35b941a2f691b06479721, type: 3}
-  maxHealth: 60
-  attack: 20
-  defense: 50
-  velocity: 10
-  maxEnergy: 10
+  maxHealth: 6
+  attack: 2
+  defense: 5
+  velocity: 1
+  maxEnergy: 1
   popUp: 0
   race: 2

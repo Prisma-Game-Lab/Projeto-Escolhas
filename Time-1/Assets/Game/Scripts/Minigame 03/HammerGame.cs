@@ -12,12 +12,16 @@ public class HammerGame : MonoBehaviour
     private GameObject squareObj;
     public TextMeshProUGUI pointsText;
     private int point;
+    float totalTime;
 
     void Start()
     {
         ropeAnim.enabled = false;
         squareObj = bar.transform.GetChild(0).gameObject;
         point = 0;
+        Debug.Log(Timer.totalTime);
+        //totalTime = (float)totalTime.totalTime;
+        
         //StartCoroutine(ChangePosition());
     }
 
@@ -52,8 +56,15 @@ public class HammerGame : MonoBehaviour
         yield return new WaitForSeconds(0.32f);
         ropeAnim.enabled = false;
     }
-
-    private IEnumerator ChangePosition() {
+    /*
+    private IEnumerator () {
+        float sec = Random.Range(2.0f, 3.0f);
+        float rndPos = Random.Range(-2.10f, 4.60f);
+        yield return new WaitForSeconds(sec);
+        squareObj.transform.position = new Vector2(squareObj.transform.position.x, rndPos);
+    }
+    */
+    private IEnumerator RandomPosition() {
         while (!Timer.timeStopped) {
             float sec = Random.Range(2.0f, 3.0f);
             float rndPos = Random.Range(-2.10f, 4.60f);
@@ -61,4 +72,6 @@ public class HammerGame : MonoBehaviour
             squareObj.transform.position = new Vector2(squareObj.transform.position.x, rndPos);
         }
     }
+
+
 }

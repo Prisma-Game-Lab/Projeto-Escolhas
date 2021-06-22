@@ -61,6 +61,10 @@ public class SaveSystem : MonoBehaviour
                 appSave.orcJson = "";
                 appSave.sereiaJson = "";
                 appSave.humanoJson = "";
+                appSave.elfaEndDay = false;
+                appSave.orcEndDay = false;
+                appSave.sereiaEndDay = false;
+                appSave.humanoEndDay = false;
                 string path = Path.Combine(Application.persistentDataPath, saveFileName + ".dat");
                 Debug.Log("new save on path:" + path);
 
@@ -192,6 +196,11 @@ public class SaveSystem : MonoBehaviour
         appSave.sereiaJson = "";
         appSave.humanoJson = "";
 
+        appSave.elfaEndDay = false;
+        appSave.orcEndDay = false;
+        appSave.sereiaEndDay = false;
+        appSave.humanoEndDay = false;
+
         tinderData.elfaDay = 0;
         tinderData.humanoDay = 0;
         tinderData.orcDay = 0;
@@ -199,7 +208,7 @@ public class SaveSystem : MonoBehaviour
 
         tinderData.tinderCharacters.Clear();
         tinderData.curContacts.Clear();
-        
+
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Elfa"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Humano"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Sereia"));

@@ -13,4 +13,8 @@ public class AppSave : ScriptableObject
     public string humanoJson;
     public string sereiaJson;
     public string orcJson;
+    public bool elfaEndDay;
+    public bool humanoEndDay;
+    public bool sereiaEndDay;
+    public bool orcEndDay;
 }

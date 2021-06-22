@@ -10,7 +10,6 @@ public class FinishedMinigameUI : MonoBehaviour
     public Image progressBar;
     public TextMeshProUGUI percentage_txt;
     public TextMeshProUGUI comments_txt;
-    private List<string> comments = new List<string>();
 
     private RaisePlayerStats stats;
 
@@ -22,11 +21,6 @@ public class FinishedMinigameUI : MonoBehaviour
     void Start()
     {
         stats = GetComponent<RaisePlayerStats>();
-        comments.Add("Excelente!");
-        comments.Add("Ótimo");
-        comments.Add("Bom!");
-        comments.Add("Mais ou menos!");
-        comments.Add("Ruim!");
 
         finishedMinigameUI.SetActive(true);
         StartCoroutine(LerpUI(stats.performacePercentage));
@@ -38,22 +32,37 @@ public class FinishedMinigameUI : MonoBehaviour
         else if (stats.performacePercentage >= 0.8f)
         {
             comments_txt.text = "Ótimo!";
-            percentage_txt.text = "A";
+            percentage_txt.text = "A-";
         }
-        else if (stats.performacePercentage >= 0.65f)
+        else if (stats.performacePercentage >= 0.70f)
         {
             comments_txt.text = "Bom";
-            percentage_txt.text = "B";
+            percentage_txt.text = "B+";
         }
-        else if (stats.performacePercentage >= 0.45f)
+        else if (stats.performacePercentage >= 0.60f)
+        {
+            comments_txt.text = "Bom";
+            percentage_txt.text = "B-";
+        }
+        else if (stats.performacePercentage >= 0.50f)
         {
             comments_txt.text = "Mais ou menos!";
-            percentage_txt.text = "C";
+            percentage_txt.text = "C+";
+        }
+        else if (stats.performacePercentage >= 0.40f)
+        {
+            comments_txt.text = "Mais ou menos!";
+            percentage_txt.text = "C-";
+        }
+        else if(stats.performacePercentage >= 0.30f)
+        {
+            comments_txt.text = "Ruim!";
+            percentage_txt.text = "D+";
         }
         else
         {
             comments_txt.text = "Ruim!";
-            percentage_txt.text = "D";
+            percentage_txt.text = "D-";
         }
         Pause.isPaused = true;
     }

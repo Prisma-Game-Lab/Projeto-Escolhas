@@ -6,8 +6,8 @@ using TMPro;
 
 public class BattleUIManager : MonoBehaviour
 {
-    public List<GameObject> actionsImages;
-    [HideInInspector]public List<GameObject> spawnedActionsImages = new List<GameObject>();
+    public List<GameObject> actionsButtons;
+    [HideInInspector]public List<GameObject> spawnedActionsButtons = new List<GameObject>();
     public Transform actionsPanel;
 
     public Image enemyImage;
@@ -70,12 +70,13 @@ public class BattleUIManager : MonoBehaviour
     //        audioManager.Play("Click");
     //    playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit);
     //}
+   
     public void OnActionButton(int type)
     {
         float curEnergy = battleSystem.playerUnit.curEnergy;
         if (battleSystem.state != BattleState.PLAYERTURN)
             return;
-        if (!battleSystem.playerActions.Contains(3) && !battleSystem.playerActions.Contains(5) && !battleSystem.playerActions.Contains(type) && battleSystem.playerUnit.TakeEnergy(type))
+        if (!battleSystem.playerActions.Contains(3) && !battleSystem.playerActions.Contains(5) && battleSystem.playerUnit.TakeEnergy(type))
         {
             if (type == 3)
                 audioManager.Play("ShieldUp");
@@ -89,33 +90,37 @@ public class BattleUIManager : MonoBehaviour
             battleSystem.playerActions.Add(type);
             SetActionsHUD(battleSystem.playerActions);
         }
-        else if (battleSystem.playerActions.Count>0 && battleSystem.playerActions[battleSystem.playerActions.Count-1]==type)
-        {
-            if (type == 3)
-                audioManager.Play("ShieldDown");
-            else
-                audioManager.Play("Reject");
-
-            if (type != 5)
-            {
-                battleSystem.playerUnit.GiveEnergy(type);
-            }
-            battleSystem.playerActions.Remove(type);
-            SetActionsHUD(battleSystem.playerActions);
-        }
         else
             audioManager.Play("Click");
         playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit);
     }
-    private void clearActionsHUD()
+    public void OnActionClicked(int type)
     {
-        if (spawnedActionsImages.Count>0)
+        print("clicou tpo: " + type);
+        if (type == 3)
+            audioManager.Play("ShieldDown");
+        else
+            audioManager.Play("Reject");
+
+        if (type != 5)
         {
-            for (int i = 0; i < spawnedActionsImages.Count; i++)
+            battleSystem.playerUnit.GiveEnergy(type);
+        }
+        print("clicou a");
+        battleSystem.playerActions.Remove(type);
+        SetActionsHUD(battleSystem.playerActions);
+        playerHUD.SetEnergy(battleSystem.playerUnit.curEnergy, battleSystem.playerUnit);
+        print("clicou d");
+    }
+    public void clearActionsHUD()
+    {
+        if (spawnedActionsButtons.Count>0)
+        {
+            for (int i = 0; i < spawnedActionsButtons.Count; i++)
             {
-                Destroy(spawnedActionsImages[i]);
+                Destroy(spawnedActionsButtons[i]);
             }
-            spawnedActionsImages.Clear();
+            spawnedActionsButtons.Clear();
         }
     }
     public void SetActionsHUD(List<int> actions)
@@ -123,12 +128,14 @@ public class BattleUIManager : MonoBehaviour
         clearActionsHUD();
         for (int i = 0; i < actions.Count; i++)
         {
-            GameObject actionImage = Instantiate(actionsImages[actions[i] - 1], actionsPanel);
-            spawnedActionsImages.Add(actionImage);
-            if (actions[actions.Count - 1] != actions[i])
+            GameObject actionButton = Instantiate(actionsButtons[actions[i] - 1], actionsPanel);
+            int action = actions[i];
+            actionButton.GetComponent<Button>().onClick.AddListener(()=>OnActionClicked(action));
+            spawnedActionsButtons.Add(actionButton);
+            if ((actions.Count - 1) != i)
             {
-                actionImage = Instantiate(actionsImages[3], actionsPanel);
-                spawnedActionsImages.Add(actionImage);
+                actionButton = Instantiate(actionsButtons[3], actionsPanel);
+                spawnedActionsButtons.Add(actionButton);
             }
         }
     }

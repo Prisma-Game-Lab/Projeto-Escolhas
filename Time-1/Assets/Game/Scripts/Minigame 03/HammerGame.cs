@@ -31,7 +31,7 @@ public class HammerGame : MonoBehaviour
    
     void Update()
     {
-        if (!Timer.timeStopped) {
+        if (!Timer.timeStopped && !Pause.isPaused) {
             float posy = indicator.transform.position.y;;
             if ((posy <= -2.16f) || (posy >= 4.63f))
                 speed *= -1;
@@ -46,8 +46,11 @@ public class HammerGame : MonoBehaviour
     }
 
     public void Jump() {
-        StartCoroutine(PlayAnimationOnce());
-        CheckPositionIsEqual();
+        if (!Timer.timeStopped)
+        {
+            StartCoroutine(PlayAnimationOnce());
+            CheckPositionIsEqual();
+        }
     }
 
     private void CheckPositionIsEqual() {

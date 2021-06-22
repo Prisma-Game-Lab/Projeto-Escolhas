@@ -55,6 +55,8 @@ public class InkExample : MonoBehaviour
             storedMessages = appSave.elfa;
             if(appSave.elfaJson != "") {
                 story.state.LoadJson(appSave.elfaJson);
+            }
+            else {
                 newDay = true;
             }
         }
@@ -63,6 +65,8 @@ public class InkExample : MonoBehaviour
             storedMessages = appSave.orc;
             if(appSave.orcJson != "") {
                 story.state.LoadJson(appSave.orcJson);
+            }
+            else {
                 newDay = true;
             }
         }
@@ -71,6 +75,8 @@ public class InkExample : MonoBehaviour
             storedMessages = appSave.sereia;
             if(appSave.sereiaJson != "") {
                 story.state.LoadJson(appSave.sereiaJson);
+            }
+            else {
                 newDay = true;
             }
         }

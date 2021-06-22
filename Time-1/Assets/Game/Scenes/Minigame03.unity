@@ -288,7 +288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appSave: {fileID: 0}
   emptySave: {fileID: 11400000, guid: b400ddb66c056a8409550e5c320e7780, type: 2}
-  contact: {fileID: 0}
 --- !u!4 &283863561
 Transform:
   m_ObjectHideFlags: 0
@@ -407,7 +406,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.15889303, z: 1}
   m_Children: []
   m_Father: {fileID: 472632298}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &435335473
 SpriteRenderer:
@@ -596,7 +595,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.15889303, z: 1}
   m_Children: []
   m_Father: {fileID: 472632298}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &465670002
 SpriteRenderer:
@@ -728,7 +727,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.08827722, z: 0}
   m_LocalScale: {x: 0.34411108, y: 6.790553, z: 1}
   m_Children:
-  - {fileID: 1827093281}
   - {fileID: 435335472}
   - {fileID: 465670001}
   - {fileID: 1454923735}
@@ -736,7 +734,7 @@ Transform:
   - {fileID: 1420731848}
   - {fileID: 886467574}
   m_Father: {fileID: 2056812683}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &589334324
 GameObject:
@@ -983,7 +981,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.16945161, z: 1}
   m_Children: []
   m_Father: {fileID: 472632298}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &886467575
 SpriteRenderer:
@@ -1061,11 +1059,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971744008}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1211, z: 0}
-  m_LocalScale: {x: 1, y: 0.15889303, z: 1}
+  m_LocalPosition: {x: 0, y: -0.10667, z: 0}
+  m_LocalScale: {x: 1, y: 0.18775755, z: 1}
   m_Children: []
   m_Father: {fileID: 472632298}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &971744010
 SpriteRenderer:
@@ -1250,7 +1248,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.14015116, z: 1}
   m_Children: []
   m_Father: {fileID: 472632298}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1420731849
 SpriteRenderer:
@@ -1328,11 +1326,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454923734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.092, z: 0}
-  m_LocalScale: {x: 1, y: 0.15889303, z: 1}
+  m_LocalPosition: {x: 0, y: 0.08085, z: 0}
+  m_LocalScale: {x: 1, y: 0.18119685, z: 1}
   m_Children: []
   m_Father: {fileID: 472632298}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1454923736
 SpriteRenderer:
@@ -1586,11 +1584,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827093280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.013, z: 0}
-  m_LocalScale: {x: 1, y: 0.05703, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.34411108, y: 0.38726524, z: 1}
   m_Children: []
-  m_Father: {fileID: 472632298}
-  m_RootOrder: 0
+  m_Father: {fileID: 2056812683}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1827093282
 SpriteRenderer:
@@ -1631,7 +1629,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0, g: 0.3679245, b: 0.010686757, a: 1}
   m_FlipX: 0
@@ -2010,6 +2008,7 @@ MonoBehaviour:
   bar: {fileID: 472632296}
   speed: 0.07
   ropeAnim: {fileID: 457875456}
+  squareObj: {fileID: 1827093280}
   pointsText: {fileID: 828095948}
 --- !u!4 &2056812683
 Transform:
@@ -2024,6 +2023,7 @@ Transform:
   m_Children:
   - {fileID: 457875460}
   - {fileID: 589334326}
+  - {fileID: 1827093281}
   - {fileID: 472632298}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -2041,5 +2041,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 25
-  totalTime: 0
   TimerTextTMP: {fileID: 2040708907}

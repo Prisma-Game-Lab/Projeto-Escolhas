@@ -8,31 +8,40 @@ public class HammerGame : MonoBehaviour
     public GameObject indicator;
     public GameObject bar;
     public float speed;
+    private float speedSquareObj;
     public Animator ropeAnim;
-    private GameObject squareObj;
+    public GameObject squareObj;
     public TextMeshProUGUI pointsText;
     private int point;
     float totalTime;
+    private Timer timer;
 
     void Start()
     {
         ropeAnim.enabled = false;
-        squareObj = bar.transform.GetChild(0).gameObject;
+        //squareObj = bar.transform.GetChild(0).gameObject;
         point = 0;
-        Debug.Log(Timer.totalTime);
-        //totalTime = (float)totalTime.totalTime;
-        
-        //StartCoroutine(ChangePosition());
+        //Debug.Log(Timer.totalTime);
+        totalTime = Timer.totalTime;
+        timer = this.GetComponent<Timer>();
+        speedSquareObj = 0.05f;
+        //StartCoroutine(UpAndDownPosition());
     }
 
    
     void Update()
     {
         if (!Timer.timeStopped) {
-            float posy = indicator.transform.position.y;
+            float posy = indicator.transform.position.y;;
             if ((posy <= -2.16f) || (posy >= 4.63f))
                 speed *= -1;
             indicator.transform.position = new Vector2(indicator.transform.position.x, posy - speed);
+            if (timer.timeRemaining > 10.0f && timer.timeRemaining < 20.0f) {
+                UpAndDownPosition();
+            }
+            //else if (timer.timeRemaining < 10.0f) {
+                //RandomPosition();
+            //}
         }
     }
 
@@ -56,21 +65,17 @@ public class HammerGame : MonoBehaviour
         yield return new WaitForSeconds(0.32f);
         ropeAnim.enabled = false;
     }
-    /*
-    private IEnumerator () {
-        float sec = Random.Range(2.0f, 3.0f);
-        float rndPos = Random.Range(-2.10f, 4.60f);
-        yield return new WaitForSeconds(sec);
-        squareObj.transform.position = new Vector2(squareObj.transform.position.x, rndPos);
+
+    private void UpAndDownPosition() {
+        float posy = squareObj.transform.position.y;
+        if ((posy <= -2.16f) || (posy >= 4.50f)) 
+            speedSquareObj *= -1;
+        squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy + speedSquareObj);
     }
-    */
-    private IEnumerator RandomPosition() {
-        while (!Timer.timeStopped) {
-            float sec = Random.Range(2.0f, 3.0f);
-            float rndPos = Random.Range(-2.10f, 4.60f);
-            yield return new WaitForSeconds(sec);
-            squareObj.transform.position = new Vector2(squareObj.transform.position.x, rndPos);
-        }
+    
+    private void RandomPosition() {
+        float rndPos = Random.Range(-2.10f, 4.60f);
+        squareObj.transform.position = new Vector2(squareObj.transform.position.x, rndPos);
     }
 
 

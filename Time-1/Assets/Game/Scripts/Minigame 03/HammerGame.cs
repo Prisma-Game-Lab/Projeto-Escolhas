@@ -19,13 +19,10 @@ public class HammerGame : MonoBehaviour
     void Start()
     {
         ropeAnim.enabled = false;
-        //squareObj = bar.transform.GetChild(0).gameObject;
         point = 0;
-        //Debug.Log(Timer.totalTime);
         totalTime = Timer.totalTime;
         timer = this.GetComponent<Timer>();
         speedSquareObj = 0.05f;
-        //StartCoroutine(UpAndDownPosition());
     }
 
    

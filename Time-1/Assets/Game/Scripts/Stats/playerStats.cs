@@ -31,12 +31,12 @@ public class playerStats : MonoBehaviour
         if (type == 1)
         {
             velocity += value;
-            maxEnergy += value;
+            maxEnergy = 10 + Mathf.Floor((velocity)/35);
         }
         else if (type == 2)
         {
             defense += value;
-            maxHealth += value *3;
+            //maxHealth += value *3;
         }
         else if (type == 3)
         {

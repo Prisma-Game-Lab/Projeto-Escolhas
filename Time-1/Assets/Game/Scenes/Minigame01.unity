@@ -887,7 +887,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 30
-  totalTime: 0
   TimerTextTMP: {fileID: 868093403}
 --- !u!114 &714619242
 MonoBehaviour:
@@ -958,7 +957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minigame: 0
   performacePercentage: 0
-  statType: 3
+  statType: 1
   raise: 50
 --- !u!114 &714619245
 MonoBehaviour:

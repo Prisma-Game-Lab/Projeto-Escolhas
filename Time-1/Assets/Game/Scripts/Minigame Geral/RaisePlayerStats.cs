@@ -30,33 +30,28 @@ public class RaisePlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (minigame == MinigameType.Minigame01 && !raised)
+        if (!raised && (Timer.timeStopped || Spawner.allWavesFinished == true))
         {
-            if (Timer.timeStopped)
-            {
-                audioManager.Play("RaiseStats");
-                performacePercentage = Mathf.Clamp(minigame01Performance(), 0.25f, 1f);
-                print("Performance = " + performacePercentage);
-                print("Raise = " + raise);
-                print(raise * performacePercentage);
-                playerStats.raiseStats(statType, raise * performacePercentage);
-                raised = true;
-                finishedMinigameUI.enabled = true;
-            }
-        }else if(minigame == MinigameType.Minigame02 && !raised)
-        {
-            if (Spawner.allWavesFinished == true)
-            {
-                audioManager.Play("RaiseStats");
-                performacePercentage = Mathf.Clamp(minigame02Performance(), 0.25f, 1f);
-                print("Performance = "+performacePercentage);
-                print("Raise = "+raise);
-                print(raise * performacePercentage);
-                playerStats.raiseStats(statType, raise * performacePercentage);
-                raised = true;
-                finishedMinigameUI.enabled = true;
-            }
+            raiseStats();
         }
+    }
+    private void raiseStats()
+    {
+        audioManager.Play("RaiseStats");
+
+        if (minigame == MinigameType.Minigame01)
+            performacePercentage = Mathf.Clamp(minigame01Performance(), 0.25f, 1f);
+        else if (minigame == MinigameType.Minigame02)
+            performacePercentage = Mathf.Clamp(minigame02Performance(), 0.25f, 1f);
+        else
+            performacePercentage = Mathf.Clamp(minigame03Performance(), 0.25f, 1f);
+
+        print("Performance = " + performacePercentage);
+        print("Raise = " + raise);
+        print(raise * performacePercentage);
+        playerStats.raiseStats(statType, raise * performacePercentage);
+        raised = true;
+        finishedMinigameUI.enabled = true;
     }
 
     private float minigame01Performance()
@@ -75,5 +70,10 @@ public class RaisePlayerStats : MonoBehaviour
         if ((1 - (ballImpacts / totalBallsSpawned)) < 0f)
             return 0f;
         return 1-(ballImpacts / totalBallsSpawned);
+    }
+
+    private float minigame03Performance()
+    {
+        return 0.8f;
     }
 }

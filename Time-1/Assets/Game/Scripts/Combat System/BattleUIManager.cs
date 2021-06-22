@@ -96,7 +96,7 @@ public class BattleUIManager : MonoBehaviour
     }
     public void OnActionClicked(int type)
     {
-        print("clicou tpo: " + type);
+        float curEnergy = battleSystem.playerUnit.curEnergy;
         if (type == 3)
             audioManager.Play("ShieldDown");
         else
@@ -106,11 +106,9 @@ public class BattleUIManager : MonoBehaviour
         {
             battleSystem.playerUnit.GiveEnergy(type);
         }
-        print("clicou a");
         battleSystem.playerActions.Remove(type);
         SetActionsHUD(battleSystem.playerActions);
-        playerHUD.SetEnergy(battleSystem.playerUnit.curEnergy, battleSystem.playerUnit);
-        print("clicou d");
+        playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit);
     }
     public void clearActionsHUD()
     {

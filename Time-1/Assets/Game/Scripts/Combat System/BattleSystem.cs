@@ -22,6 +22,7 @@ public class BattleSystem : MonoBehaviour
     private AudioManager audioManager;
 
     [HideInInspector] public List<int> playerActions;
+    [HideInInspector] public List<int> enemyActions;
 
     void Start()
     {
@@ -166,6 +167,8 @@ public class BattleSystem : MonoBehaviour
         bool isDead;
         float playerCurHealth = playerUnit.curHealth;
 
+        fillEnemyActions();
+
         if (playerActions.Contains(3))
         {
             int damage = (int)(((2 * enemyUnit.attack) / (playerUnit.defense * 0.5f)) * 0.2f);
@@ -221,6 +224,49 @@ public class BattleSystem : MonoBehaviour
             battleUI.CombatPanel.SetActive(false);
             battleUI.dialogueText.text = "Você foi derrotado. " + enemyUnit.cBase.name + " esta indo embora insatisfeita.";
         }
+    }
+
+    void fillEnemyActions()
+    {
+        enemyActions.Clear();
+        enemyUnit.curEnergy = Mathf.Clamp(enemyUnit.curEnergy += 2, 0, enemyUnit.maxEnergy);
+        if (enemyUnit.curEnergy <= enemyUnit.maxEnergy * 0.3)
+        {
+            enemyActions.Add(4);
+            enemyUnit.curEnergy = enemyUnit.maxEnergy;
+        }
+        else
+        {
+            bool enemyShieldOn = false;
+            int energyToSpend = UnityEngine.Random.Range(Mathf.CeilToInt(enemyUnit.curEnergy / 2), Mathf.CeilToInt(enemyUnit.curEnergy));
+            if (energyToSpend <= 2)
+                energyToSpend = 2;
+            enemyUnit.curEnergy -= energyToSpend;
+
+            if (energyToSpend >= 5 && UnityEngine.Random.Range(1, 101) <= 80)
+            {
+                enemyShieldOn = true;
+                energyToSpend -= 3;
+            }
+            while (energyToSpend >= 2)
+            {
+                int newAction = UnityEngine.Random.Range(1, 3);
+                if (newAction == 1)
+                    energyToSpend -= 2;
+                else if (newAction == 2 && energyToSpend>=4)
+                    energyToSpend -= 4;
+                enemyActions.Add(newAction);
+            }
+            if (enemyShieldOn)
+                enemyActions.Add(3);
+            enemyUnit.curEnergy += energyToSpend;
+        }
+        for (int i = 0; i < enemyActions.Count; i++)
+        {
+            print(enemyActions[i]);
+        }
+        print(enemyUnit.maxEnergy);
+        print(enemyUnit.curEnergy);
     }
 
     void StartTurn()

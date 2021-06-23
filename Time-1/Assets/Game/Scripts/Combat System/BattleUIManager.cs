@@ -94,7 +94,7 @@ public class BattleUIManager : MonoBehaviour
             audioManager.Play("Click");
         playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit);
     }
-    public void OnActionClicked(int type)
+    public void OnActionClicked(int type, int index)
     {
         float curEnergy = battleSystem.playerUnit.curEnergy;
         if (type == 3)
@@ -106,7 +106,8 @@ public class BattleUIManager : MonoBehaviour
         {
             battleSystem.playerUnit.GiveEnergy(type);
         }
-        battleSystem.playerActions.Remove(type);
+        battleSystem.playerActions.RemoveAt(index);
+
         SetActionsHUD(battleSystem.playerActions);
         playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit);
     }
@@ -128,7 +129,8 @@ public class BattleUIManager : MonoBehaviour
         {
             GameObject actionButton = Instantiate(actionsButtons[actions[i] - 1], actionsPanel);
             int action = actions[i];
-            actionButton.GetComponent<Button>().onClick.AddListener(()=>OnActionClicked(action));
+            int index = i;
+            actionButton.GetComponent<Button>().onClick.AddListener(()=>OnActionClicked(action,index));
             spawnedActionsButtons.Add(actionButton);
             if ((actions.Count - 1) != i)
             {

@@ -205,7 +205,7 @@ public class InkExample : MonoBehaviour
                     currentInst = Instantiate(textPrefab, content.transform); 
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
                     //if provisorio, apenas testando o tamanho do balao
-                    if (messages[i].Substring(6).Length > 37) {
+                    if (messages[i].Substring(6).Length > 32) {
                         currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 140.0f);
                     }
                     currentInst.GetComponent<Image>().sprite = otherSprite[0];

@@ -36,9 +36,9 @@ public class HammerGame : MonoBehaviour
             if (timer.timeRemaining > 10.0f && timer.timeRemaining < 20.0f) {
                 UpAndDownPosition();
             }
-            //else if (timer.timeRemaining < 10.0f) {
-                //RandomPosition();
-            //}
+            else if (timer.timeRemaining < 10.0f) {
+                RandomPosition();
+            }
         }
     }
 
@@ -74,8 +74,12 @@ public class HammerGame : MonoBehaviour
     }
     
     private void RandomPosition() {
-        float rndPos = Random.Range(-2.10f, 4.60f);
-        squareObj.transform.position = new Vector2(squareObj.transform.position.x, rndPos);
+        float minPos = Random.Range(-2.16f, 0.00f);
+        float maxPos = Random.Range(2.00f, 4.60f);
+        float posy = squareObj.transform.position.y;
+        if ((posy <= minPos) || (posy >= maxPos)) 
+            speedSquareObj *= -1;
+        squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy - speedSquareObj);
     }
 
 

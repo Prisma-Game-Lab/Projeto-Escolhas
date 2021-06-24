@@ -237,6 +237,8 @@ public class BattleSystem : MonoBehaviour
             battleUI.DecisionQuitButton.SetActive(true);
             battleUI.CombatPanel.SetActive(false);
             battleUI.dialogueText.text = "Você foi derrotado. " + enemyUnit.cBase.name + " esta indo embora insatisfeita.";
+            GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
+            GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
         }
     }
 

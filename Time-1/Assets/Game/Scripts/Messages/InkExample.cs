@@ -184,6 +184,7 @@ public class InkExample : MonoBehaviour
                 break;
             }
             bool isSticker = false;
+            bool isImage = false;
             if (messages[i].Contains("Other")) {
                 if (messages[i].Contains("sticker")) {
                     yield return new WaitForSeconds(1.0f);
@@ -195,6 +196,17 @@ public class InkExample : MonoBehaviour
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
                     isSticker = true;
+                }
+                else if (messages[i].Contains("picture")) {
+                    yield return new WaitForSeconds(1.0f);
+                    currentInst = Instantiate(textPrefab, content.transform); 
+                    int len = messages[i].Substring(6).Length;
+                    string path = "Images/" + messages[i].Substring(6, len-1);
+                    Sprite sprite = Resources.Load<Sprite>(path);
+                    currentInst.GetComponent<Image>().sprite = sprite;
+                    currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
+                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 300.0f);
+                    isImage = true;
                 }
                 else {
                     float sec = Random.Range(.0f, .5f);

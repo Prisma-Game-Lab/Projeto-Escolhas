@@ -254,10 +254,10 @@ public class BattleSystem : MonoBehaviour
         else
         {
             bool enemyShieldOn = false;
-            int energyToSpend = UnityEngine.Random.Range(Mathf.CeilToInt(enemyUnit.curEnergy / 2)+1, Mathf.CeilToInt(enemyUnit.curEnergy));
+            int energyToSpend = UnityEngine.Random.Range(Mathf.CeilToInt(enemyUnit.curEnergy / 2)+2, Mathf.CeilToInt(enemyUnit.curEnergy));
             print("energia para gastar: "+energyToSpend);
-            if (energyToSpend <= 2)
-                energyToSpend = 2;
+            if (energyToSpend <= 4)
+                energyToSpend = 4;
             enemyUnit.curEnergy -= energyToSpend;
 
             if (energyToSpend >= 5 && UnityEngine.Random.Range(1, 101) <= 80 && enemyUnit.shieldsAvailable>0)

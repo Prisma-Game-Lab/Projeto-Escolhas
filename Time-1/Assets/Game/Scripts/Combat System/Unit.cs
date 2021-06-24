@@ -5,8 +5,10 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
 	public CharacterBase cBase;
+    [HideInInspector]
+    public float curHealth, curEnergy, maxHealth, maxEnergy, attack, defense, velocity, damage;
 	[HideInInspector]
-	public float curHealth, curEnergy, maxHealth, maxEnergy, attack, defense, velocity, damage;
+	public int currentShieldHits, shieldsAvailable;
 
     private void Awake()
     {
@@ -16,8 +18,7 @@ public class Unit : MonoBehaviour
 			attack = playerStats.attack;
 			defense = playerStats.defense;
 			velocity = playerStats.velocity;
-			maxHealth = attack + defense * 2 + velocity;
-			maxEnergy = playerStats.maxEnergy + Mathf.Floor(velocity / 35);
+            maxEnergy = playerStats.maxEnergy + Mathf.Floor(velocity / 35);
 		}
 		else
 		{
@@ -25,15 +26,17 @@ public class Unit : MonoBehaviour
 			cBase = tinderData.combatCharacter;
 			print(cBase.race);
 			int curDay = tinderData.getCharacterDay(cBase);
-			attack = cBase.attack + curDay*20;
-			defense = cBase.defense + curDay * 20;
+			attack = cBase.attack + curDay * 30;
+			defense = cBase.defense + curDay * 25;
             velocity = cBase.velocity + curDay * 20;
-			print(attack);
-			print(defense);
-			print(velocity);
-			maxHealth = attack + defense * 2 + velocity;
+			print("Dia : " + curDay);
+			print("ini atk : " + attack);
+			print("ini def : " + defense);
+			print("ini vel : " + velocity);
 			maxEnergy = cBase.maxEnergy + Mathf.Floor(velocity/35);
 		}
+		maxHealth = attack + defense + 2*velocity;
+		shieldsAvailable = 3 + Mathf.FloorToInt(defense / 175);
 		curHealth = maxHealth;
 		curEnergy = maxEnergy;
 	}
@@ -84,7 +87,7 @@ public class Unit : MonoBehaviour
 		else if (type == 3)
 			amount = 3;
 		else
-			amount = 4;
+			amount = 5;
 		curEnergy += amount;
 		if (curEnergy > maxEnergy)
 			curEnergy = maxEnergy;

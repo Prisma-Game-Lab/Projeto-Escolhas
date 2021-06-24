@@ -75,11 +75,21 @@ public class BattleUIManager : MonoBehaviour
     {
         float curEnergy = battleSystem.playerUnit.curEnergy;
         if (battleSystem.state != BattleState.PLAYERTURN)
+        {
+            audioManager.Play("Click");
             return;
+        }
+        if(type==3 && battleSystem.playerUnit.shieldsAvailable <= 0)
+        {
+            audioManager.Play("Click");
+            return;
+        }
         if (!battleSystem.playerActions.Contains(3) && !battleSystem.playerActions.Contains(5) && battleSystem.playerUnit.TakeEnergy(type))
         {
             if (type == 3)
+            {
                 audioManager.Play("ShieldUp");
+            }
             else if (type == 5 && battleSystem.playerActions.Count > 0)
             {
                 audioManager.Play("Click");

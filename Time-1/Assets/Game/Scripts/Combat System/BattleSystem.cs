@@ -53,54 +53,6 @@ public class BattleSystem : MonoBehaviour
         StartTurn();
     }
 
-    //public IEnumerator PlayerAttack(int tipo)
-    //{
-    //    float curEnergy = playerUnit.curEnergy;
-    //    if (playerUnit.TakeEnergy(tipo))
-    //    {
-    //        battleUI.CombatPanel.SetActive(false);
-    //        battleUI.DecisionPanel.SetActive(true);
-    //        battleUI.playerHUD.SetEnergy(curEnergy, playerUnit);
-    //        state = BattleState.ATTACK;
-    //        bool isDead;
-    //        float enemyCurHealth = enemyUnit.curHealth;
-
-    //        if (tipo == 1)
-    //        {
-    //            audioManager.Play("Punch");
-    //            isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 1));
-    //            battleUI.dialogueText.text = "Você socou seu date!";
-    //        }
-    //        else if (tipo == 2)
-    //        {
-    //            audioManager.Play("Kick");
-    //            isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 1.5));
-    //            battleUI.dialogueText.text = "Você chutou seu date!";
-    //        }
-    //        else
-    //        {
-    //            battleUI.dialogueText.text = "Você usou ataque especial no seu date!";
-    //            isDead = enemyUnit.TakeDamage((int)(playerUnit.attack * 2));
-    //        }
-
-    //        battleUI.enemyHUD.SetHP(enemyCurHealth, enemyUnit);
-
-    //        yield return new WaitForSeconds(1.5f);
-
-    //        if (isDead)
-    //        {
-    //            state = BattleState.WON;
-    //            EndBattle();
-    //        }
-    //        else
-    //        {
-    //            state = BattleState.ENEMYTURN;
-    //            StartCoroutine(EnemyTurn());
-    //        }
-    //    }
-    //    else
-    //        audioManager.Play("Click");
-    //}
     public IEnumerator PlayerAttack()
     {
         battleUI.CombatPanel.SetActive(false);
@@ -111,24 +63,35 @@ public class BattleSystem : MonoBehaviour
         {
             battleUI.dialogueText.text = "Executando...";
             bool isDead = false;
+            float damageReduction = 1f;
             float enemyCurHealth = enemyUnit.curHealth;
             yield return new WaitForSeconds(1f);
+            if (enemyActions.Contains(3) && enemyUnit.currentShieldHits <= 2)
+            {
+                if (enemyUnit.currentShieldHits == 0)
+                    damageReduction = 0.2f;
+                else if (enemyUnit.currentShieldHits == 1)
+                    damageReduction = 0.4f;
+                else
+                    damageReduction = 0.6f;
+                enemyUnit.currentShieldHits += 1;
+            }
             if (playerActions[0] == 1)
             {
                 audioManager.Play("Punch");
-                print("atk "+enemyUnit.defense);
-                print("def " + playerUnit.attack);
-                print(playerUnit.attack * 2);
-                print(enemyUnit.defense * 0.5f);
+                //print("atk "+enemyUnit.defense);
+                //print("def " + playerUnit.attack);
+                //print(playerUnit.attack * 2 * damageReduction);
+                //print(enemyUnit.defense * 0.5f);
                 
-                print(((playerUnit.attack * 2) / (enemyUnit.defense * 0.5f)));
-                isDead = enemyUnit.TakeDamage((playerUnit.attack * 2) / (enemyUnit.defense * 0.5f));
+                //print(((playerUnit.attack * 2) / (enemyUnit.defense * 0.5f)) * damageReduction);
+                isDead = enemyUnit.TakeDamage(((playerUnit.attack * 2) / (enemyUnit.defense * 0.5f))*damageReduction);
                 battleUI.dialogueText.text = "Você socou seu date!";
             }
             else if (playerActions[0] == 2)
             {
                 audioManager.Play("Kick");
-                isDead = enemyUnit.TakeDamage((1.5f * playerUnit.attack * 2) / (enemyUnit.defense * 0.5f));
+                isDead = enemyUnit.TakeDamage(((1.5f * playerUnit.attack * 2) / (enemyUnit.defense * 0.5f)) * damageReduction);
                 battleUI.dialogueText.text = "Você chutou seu date!";
             }
             else if (playerActions[0] == 3)
@@ -153,7 +116,13 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.WON;
                 EndBattle();
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
+        }
+        if (enemyActions.Contains(3))
+        {
+            //audioManager.Play("ShieldDown");
+            enemyActions.Remove(3);
+            enemyUnit.currentShieldHits = 0;
         }
         state = BattleState.ENEMYTURN;
         StartCoroutine(EnemyTurn());
@@ -161,27 +130,77 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        battleUI.dialogueText.text = enemyUnit.cBase.name + " esta te dando um socou!";
-        yield return new WaitForSeconds(1f);
-        audioManager.Play("Punch");
-        bool isDead;
-        float playerCurHealth = playerUnit.curHealth;
-
+        battleUI.dialogueText.text = enemyUnit.cBase.name + " esta se preparando...";
         fillEnemyActions();
+        yield return new WaitForSeconds(1f);
 
-        if (playerActions.Contains(3))
+        int counter = enemyActions.Count;
+        for (int i = 0; i < counter; i++)
         {
-            int damage = (int)(((2 * enemyUnit.attack) / (playerUnit.defense * 0.5f)) * 0.2f);
-            damage = Mathf.Clamp(damage, 1, 99999);
-            isDead = playerUnit.TakeDamage(damage);
-            battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
-        }
-        else
-        {
-            isDead = playerUnit.TakeDamage((2 * enemyUnit.attack) / (playerUnit.defense * 0.5f));
-            battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
+            bool isDead = false;
+            float damage;
+            float damageReduction = 1f;
+            float playerCurHealth = playerUnit.curHealth;
+            if (playerActions.Contains(3) && playerUnit.currentShieldHits<=2)
+            {
+                if (playerUnit.currentShieldHits == 0)
+                    damageReduction = 0.2f;
+                else if (playerUnit.currentShieldHits == 1)
+                    damageReduction = 0.4f;
+                else
+                    damageReduction = 0.6f;
+                playerUnit.currentShieldHits += 1;
+            }
+            if (enemyActions[0] == 1)
+            {
+                battleUI.dialogueText.text = enemyUnit.cBase.name + " te deu um soco!";
+                audioManager.Play("Punch");
+                damage = (((2 * enemyUnit.attack) / (playerUnit.defense * 0.5f)) * damageReduction);
+                isDead = playerUnit.TakeDamage(damage);
+            }
+            else if (enemyActions[0] == 2)
+            {
+                battleUI.dialogueText.text = enemyUnit.cBase.name + " te deu um chute!";
+                audioManager.Play("Kick");
+                damage = (((1.5f * enemyUnit.attack * 2) / (playerUnit.defense * 0.5f)) * damageReduction);
+                isDead = playerUnit.TakeDamage(damage);
+            }
+            else if (enemyActions[0] == 3)
+            {
+                battleUI.dialogueText.text = enemyUnit.cBase.name + " esta se defendendo!";
+            }
+            else if (enemyActions[0] == 5)
+            {
+                battleUI.dialogueText.text = enemyUnit.cBase.name + " descansou e vai recuperar mais energia!";
+                enemyUnit.GiveEnergy(5);
+            }
+            if (enemyActions[0] != 3)
+            {
+                enemyActions.Remove(enemyActions[0]);
+                battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
+            }
+            yield return new WaitForSeconds(1f);
+
+            if (isDead)
+            {
+                state = BattleState.LOST;
+                EndBattle();
+            }
+            yield return new WaitForSeconds(1f);
         }
 
+        //if (playerActions.Contains(3))
+        //{
+        //    float damage = (((2 * enemyUnit.attack) / (playerUnit.defense * 0.5f)) * 0.2f);
+        //    //damage = Mathf.Clamp(damage, 1f, 99999f);
+        //    isDead = playerUnit.TakeDamage(damage);
+        //    battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
+        //}
+        //else
+        //{
+        //    isDead = playerUnit.TakeDamage((2 * enemyUnit.attack) / (playerUnit.defense * 0.5f));
+        //    battleUI.playerHUD.SetHP(playerCurHealth, playerUnit);
+        //}
 
         yield return new WaitForSeconds(0.5f);
 
@@ -190,17 +209,12 @@ public class BattleSystem : MonoBehaviour
             audioManager.Play("ShieldDown");
             playerActions.Remove(3);
             battleUI.SetActionsHUD(playerActions);
+            playerUnit.currentShieldHits = 0;
+            playerUnit.shieldsAvailable -= 1;
         }
-        if (isDead)
-        {
-            state = BattleState.LOST;
-            EndBattle();
-        }
-        else
-        {
-            state = BattleState.PLAYERTURN;
-            PlayerTurn();
-        }
+
+        state = BattleState.PLAYERTURN;
+        PlayerTurn();
     }
 
     void EndBattle()
@@ -230,32 +244,42 @@ public class BattleSystem : MonoBehaviour
     {
         enemyActions.Clear();
         enemyUnit.curEnergy = Mathf.Clamp(enemyUnit.curEnergy += 2, 0, enemyUnit.maxEnergy);
+        print("Energia agr: " + enemyUnit.curEnergy);
         if (enemyUnit.curEnergy <= enemyUnit.maxEnergy * 0.3)
         {
-            enemyActions.Add(4);
-            enemyUnit.curEnergy = enemyUnit.maxEnergy;
+            enemyActions.Add(5);
+            //enemyUnit.curEnergy = enemyUnit.maxEnergy;
+            print("inimigo descansou");
         }
         else
         {
             bool enemyShieldOn = false;
-            int energyToSpend = UnityEngine.Random.Range(Mathf.CeilToInt(enemyUnit.curEnergy / 2), Mathf.CeilToInt(enemyUnit.curEnergy));
+            int energyToSpend = UnityEngine.Random.Range(Mathf.CeilToInt(enemyUnit.curEnergy / 2)+1, Mathf.CeilToInt(enemyUnit.curEnergy));
+            print("energia para gastar: "+energyToSpend);
             if (energyToSpend <= 2)
                 energyToSpend = 2;
             enemyUnit.curEnergy -= energyToSpend;
 
-            if (energyToSpend >= 5 && UnityEngine.Random.Range(1, 101) <= 80)
+            if (energyToSpend >= 5 && UnityEngine.Random.Range(1, 101) <= 80 && enemyUnit.shieldsAvailable>0)
             {
+                enemyUnit.shieldsAvailable -= 1;
                 enemyShieldOn = true;
-                energyToSpend -= 3;
+                energyToSpend -= 2;
             }
             while (energyToSpend >= 2)
             {
+                print("energia para gastar: " + energyToSpend);
                 int newAction = UnityEngine.Random.Range(1, 3);
                 if (newAction == 1)
+                {
                     energyToSpend -= 2;
-                else if (newAction == 2 && energyToSpend>=4)
+                    enemyActions.Add(newAction);
+                }
+                else if (newAction == 2 && energyToSpend >= 4)
+                {
                     energyToSpend -= 4;
-                enemyActions.Add(newAction);
+                    enemyActions.Add(newAction);
+                }
             }
             if (enemyShieldOn)
                 enemyActions.Add(3);
@@ -263,10 +287,10 @@ public class BattleSystem : MonoBehaviour
         }
         for (int i = 0; i < enemyActions.Count; i++)
         {
-            print(enemyActions[i]);
+            print("Acao "+i+": "+enemyActions[i]);
         }
-        print(enemyUnit.maxEnergy);
-        print(enemyUnit.curEnergy);
+        print("Energia Max: "+enemyUnit.maxEnergy);
+        print("Energia Atual: " + enemyUnit.curEnergy);
     }
 
     void StartTurn()

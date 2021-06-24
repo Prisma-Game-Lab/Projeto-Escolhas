@@ -31,7 +31,7 @@ public class playerStats : MonoBehaviour
         if (type == 1)
         {
             velocity += value;
-            maxEnergy = 10 + Mathf.Floor((velocity)/35);
+            maxEnergy = 10 + Mathf.Floor(velocity/35);
         }
         else if (type == 2)
         {

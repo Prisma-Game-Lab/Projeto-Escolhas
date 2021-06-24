@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10114,7 +10114,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00024414062, y: -45.414734}
+  m_AnchoredPosition: {x: -0.00024414062, y: -45.414795}
   m_SizeDelta: {x: -0.00036621094, y: -90.92993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1025557799
@@ -15202,7 +15202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00024414062, y: -45.414734}
+  m_AnchoredPosition: {x: -0.00024414062, y: -45.414795}
   m_SizeDelta: {x: -0.00036621094, y: -90.92993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675316678
@@ -15572,7 +15572,7 @@ MonoBehaviour:
   inkJSONAsset:
   - {fileID: 4900000, guid: 4878a5a3cf2dc154d91be7476896c6cf, type: 3}
   - {fileID: 4900000, guid: 9400cf210d681c041835a39159a4c792, type: 3}
-  - {fileID: 4900000, guid: 7f54e5d7bc5503d40aa4179b8f45603f, type: 3}
+  - {fileID: 4900000, guid: 1950278b60e31dd43b88386d978bdd0d, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 945452650}
@@ -16878,7 +16878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00024414062, y: -45.414734}
+  m_AnchoredPosition: {x: -0.00024414062, y: -45.414795}
   m_SizeDelta: {x: -0.00036621094, y: -90.92993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1978655903

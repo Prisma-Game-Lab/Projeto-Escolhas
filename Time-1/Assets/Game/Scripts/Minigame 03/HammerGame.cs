@@ -15,6 +15,8 @@ public class HammerGame : MonoBehaviour
     private int point;
     float totalTime;
     private Timer timer;
+    private float minPos;
+    private float maxPos;
 
     void Start()
     {
@@ -23,6 +25,9 @@ public class HammerGame : MonoBehaviour
         totalTime = Timer.totalTime;
         timer = this.GetComponent<Timer>();
         speedSquareObj = 0.05f;
+        minPos = -2.16f;
+        maxPos =  4.50f;
+        
     }
 
    
@@ -74,11 +79,15 @@ public class HammerGame : MonoBehaviour
     }
     
     private void RandomPosition() {
-        float minPos = Random.Range(-2.16f, 0.00f);
-        float maxPos = Random.Range(2.00f, 4.60f);
         float posy = squareObj.transform.position.y;
-        if ((posy <= minPos) || (posy >= maxPos)) 
+        if (posy <= minPos) {
             speedSquareObj *= -1;
+            maxPos = Random.Range(2.00f, 4.50f);
+        }
+        if (posy >= maxPos) {
+            speedSquareObj *= -1;
+            minPos = Random.Range(-2.16f, 1.00f);
+        }
         squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy - speedSquareObj);
     }
 

@@ -12,7 +12,7 @@ public class OneDollar
         List<List<float>> result2 = RotateToZero(result);
         List<List<float>> result3 = ScaleToSquare(result2, 256.0f);
         List<List<float>> result4 = TranslateToOrigin(result3);
-        CreateTemplates(result4, "cursive_right");
+        CreateTemplates(result4, "m_right");
         float d = Recognize(result4, name);
         if (d < maxDist)
             return true;

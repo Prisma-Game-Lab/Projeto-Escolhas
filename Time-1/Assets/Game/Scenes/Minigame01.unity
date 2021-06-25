@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -904,6 +904,7 @@ MonoBehaviour:
   brush: {fileID: 6227431900248306270}
   currentLineRenderer: {fileID: 0}
   text: {fileID: 789040846}
+  templateNum: 6
   templates:
   - names:
     - caret_left
@@ -921,6 +922,14 @@ MonoBehaviour:
     - v_left
     - v_right
     image: {fileID: 21300000, guid: 565ccc1810349294c8dafb70eebb00b7, type: 3}
+  - names:
+    - c_down
+    - c_up
+    image: {fileID: 21300000, guid: d182bfdbe992ba14ba09ed4b149bb010, type: 3}
+  - names:
+    - omega_left
+    - omega_right
+    image: {fileID: 21300000, guid: 0f95ddadd09cf8e418ced4ce6e85d4cd, type: 3}
   squareImg1: {fileID: 1585566050}
   squareImg2: {fileID: 766218568}
   squareImg3: {fileID: 1384298149}

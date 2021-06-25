@@ -13,6 +13,8 @@ public class Draw : MonoBehaviour
     List<List<float>> pointsList = new List<List<float>>();
     public Text text;
 
+    public int templateNum;
+
     [System.Serializable]
     public class Templates {
         public List<string> names = new List<string>();
@@ -70,7 +72,7 @@ public class Draw : MonoBehaviour
         rnd2 = aux[j];
         rnd.Add(rnd2);
         aux.RemoveAt(j);
-        int rndTemplate = Random.Range(0,4);
+        int rndTemplate = Random.Range(0,templateNum);
         List<string> template = templates[rndTemplate].names;
         _storeString[rnd2][0] = templates[rndTemplate].names[0];
         _storeString[rnd2][1] = templates[rndTemplate].names[1];
@@ -134,8 +136,8 @@ public class Draw : MonoBehaviour
                 int i = 0;
                 for (; i < 4; i++) {
                     if (_storeString[i][0] != "0") {
-                        bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.35f);
-                        bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.35f);
+                        bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.25f);
+                        bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.25f);
                         if (result1 || result2) {
                             audioManager.Play("DrawCompleted");
                             eraseDrawing(i);

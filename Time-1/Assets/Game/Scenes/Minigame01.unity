@@ -904,7 +904,7 @@ MonoBehaviour:
   brush: {fileID: 6227431900248306270}
   currentLineRenderer: {fileID: 0}
   text: {fileID: 789040846}
-  templateNum: 8
+  templateNum: 9
   templates:
   - names:
     - caret_left
@@ -938,6 +938,10 @@ MonoBehaviour:
     - m_left
     - m_right
     image: {fileID: 21300000, guid: 091791ea2dafab7409f11a9a7a9713f4, type: 3}
+  - names:
+    - w_left
+    - w_right
+    image: {fileID: 21300000, guid: 101e762f52ff7b4409af1c903644fc38, type: 3}
   squareImg1: {fileID: 1585566050}
   squareImg2: {fileID: 766218568}
   squareImg3: {fileID: 1384298149}

@@ -115,6 +115,7 @@ public class InkExample : MonoBehaviour
                 //showCombatButton(combatButton);
             //}
             bool isSticker = false;
+            bool isImage = false;
             if (storedMessages[i].Contains("Other")) {
                 if (storedMessages[i].Contains("sticker")) {
                     currentInst = Instantiate(textPrefab, content.transform); 
@@ -125,6 +126,16 @@ public class InkExample : MonoBehaviour
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
                     isSticker = true;
+                }
+                if (storedMessages[i].Contains("picture")) {
+                    currentInst = Instantiate(textPrefab, content.transform); 
+                    int len = storedMessages[i].Substring(6).Length;
+                    string path = "Images/" + storedMessages[i].Substring(6, len-1);
+                    Sprite sprite = Resources.Load<Sprite>(path);
+                    currentInst.GetComponent<Image>().sprite = sprite;
+                    currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
+                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
+                    isImage = true;
                 }
                 else {
                     currentInst = Instantiate(textPrefab, content.transform); 
@@ -235,7 +246,9 @@ public class InkExample : MonoBehaviour
                 posxc = playerMessagePos.position.x;
             }
             if (isSticker)
-                currentInst.transform.position = new Vector2(posxc*0.75f, playerMessagePos.position.y*1.1f);  
+                currentInst.transform.position = new Vector2(posxc*0.75f, playerMessagePos.position.y*1.1f); 
+            else if (isImage) 
+                currentInst.transform.position = new Vector2(posxc*0.75f, playerMessagePos.position.y*1.1f);
             else
                 currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y);
             if (i != 0) {
@@ -243,6 +256,8 @@ public class InkExample : MonoBehaviour
                     float posxc1 = message.transform.position.x;
                     float posyc1 = message.transform.position.y;
                     if (isSticker)
+                        message.transform.position = new Vector2(posxc1, posyc1 + distance*2f); 
+                    else if (isImage) 
                         message.transform.position = new Vector2(posxc1, posyc1 + distance*2f); 
                     else
                         message.transform.position = new Vector2(posxc1, posyc1 + distance);

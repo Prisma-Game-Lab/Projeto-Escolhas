@@ -20,7 +20,7 @@ public class HammerGame : MonoBehaviour
 
     void Start()
     {
-        ropeAnim.enabled = false;
+        //ropeAnim.enabled = false;
         point = 0;
         totalTime = Timer.totalTime;
         timer = this.GetComponent<Timer>();
@@ -50,7 +50,8 @@ public class HammerGame : MonoBehaviour
     public void Jump() {
         if (!Timer.timeStopped)
         {
-            StartCoroutine(PlayAnimationOnce());
+            //StartCoroutine(PlayAnimationOnce());
+            ropeAnim.SetTrigger("Pulo");
             CheckPositionIsEqual();
         }
     }

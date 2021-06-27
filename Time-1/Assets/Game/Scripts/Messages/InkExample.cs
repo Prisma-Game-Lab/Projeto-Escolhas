@@ -279,7 +279,7 @@ public class InkExample : MonoBehaviour
             if (isSticker)
                 currentInst.transform.position = new Vector2(posxc*0.75f, playerMessagePos.position.y*1.1f); 
             else if (isImage) 
-                currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y*1.2f);
+                currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y*1.4f);
             else
                 currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y);
             if (i != 0) {

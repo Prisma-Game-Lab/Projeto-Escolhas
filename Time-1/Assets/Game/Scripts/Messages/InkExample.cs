@@ -45,7 +45,6 @@ public class InkExample : MonoBehaviour
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
         storedMessages = new List<string>();
         newDay = false;
-        combatButton.gameObject.SetActive(false);
     }
 
     void Start()

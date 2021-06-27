@@ -90,13 +90,16 @@ public class InkExample : MonoBehaviour
         float posyb = buttonPlace.transform.position.y;
 
         posyc = 700.0f;
+        if (storedMessages.Count > 0) {
+            if (storedMessages[storedMessages.Count-1].Contains("Combat") && newDay) {
+                storedMessages.RemoveAt(storedMessages.Count-1);
+            }
+        }
+
         for (int i = 0; i < storedMessages.Count; i++) {
             Debug.Log(storedMessages[i]);
-            if (storedMessages[i].Contains("Combat") && !newDay) {
+            if (storedMessages[i].Contains("Combat")) {
                 showCombatButton(combatButton);
-                break;
-            }
-            else if (storedMessages[i].Contains("Combat") && newDay) {
                 break;
             }
             restoreMessages(i);

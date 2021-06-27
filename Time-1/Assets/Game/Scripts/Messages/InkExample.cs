@@ -91,6 +91,7 @@ public class InkExample : MonoBehaviour
 
         posyc = 700.0f;
         for (int i = 0; i < storedMessages.Count; i++) {
+            Debug.Log(storedMessages[i]);
             if (storedMessages[i].Contains("Combat") && !newDay) {
                 showCombatButton(combatButton);
                 break;

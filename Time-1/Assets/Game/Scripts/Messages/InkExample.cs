@@ -116,6 +116,9 @@ public class InkExample : MonoBehaviour
             //}
             bool isSticker = false;
             bool isImage = false;
+            bool isM = false;
+            bool isG = false;
+            bool isGG = false;
             if (storedMessages[i].Contains("Other")) {
                 if (storedMessages[i].Contains("sticker")) {
                     currentInst = Instantiate(textPrefab, content.transform); 
@@ -196,6 +199,9 @@ public class InkExample : MonoBehaviour
             }
             bool isSticker = false;
             bool isImage = false;
+            bool isM = false;
+            bool isG = false;
+            bool isGG = false;
             if (messages[i].Contains("Other")) {
                 if (messages[i].Contains("sticker")) {
                     yield return new WaitForSeconds(1.0f);
@@ -216,7 +222,7 @@ public class InkExample : MonoBehaviour
                     Sprite sprite = Resources.Load<Sprite>(path);
                     currentInst.GetComponent<Image>().sprite = sprite;
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
-                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 300.0f);
+                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(460.0f, 570.0f);
                     isImage = true;
                 }
                 else {
@@ -228,8 +234,19 @@ public class InkExample : MonoBehaviour
                     currentInst = Instantiate(textPrefab, content.transform); 
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
                     //if provisorio, apenas testando o tamanho do balao
-                    if (messages[i].Substring(6).Length > 32) {
+                    int stringLength = messages[i].Substring(6).Length;
+                    Debug.Log(stringLength);
+                    if (stringLength >= 27 && stringLength <= 38) {
                         currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 140.0f);
+                        isM = true;
+                    }
+                    if (stringLength > 38 && stringLength <= 45) {
+                        currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 200.0f);
+                        isG = true;
+                    }
+                    if (stringLength > 45 && stringLength <= 70) {
+                        currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 220.0f);
+                        isGG = true;
                     }
                     currentInst.GetComponent<Image>().sprite = otherSprite[0];
                 }
@@ -242,13 +259,27 @@ public class InkExample : MonoBehaviour
                     buttonClicked = false;
                 currentInst = Instantiate(textPrefab, content.transform); 
                 currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(7);
+                int stringLength = messages[i].Substring(7).Length;
+                Debug.Log(stringLength);
+                if (stringLength >= 27 && stringLength <= 38) {
+                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 140.0f);
+                    isM = true;
+                }
+                if (stringLength > 38 && stringLength <= 45) {
+                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 200.0f);
+                    isG = true;
+                }
+                if (stringLength > 45 && stringLength <= 70) {
+                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 220.0f);
+                    isGG = true;
+                }
                 currentInst.GetComponent<Image>().sprite = playerSprite[0];
                 posxc = playerMessagePos.position.x;
             }
             if (isSticker)
                 currentInst.transform.position = new Vector2(posxc*0.75f, playerMessagePos.position.y*1.1f); 
             else if (isImage) 
-                currentInst.transform.position = new Vector2(posxc*0.75f, playerMessagePos.position.y*1.1f);
+                currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y*1.2f);
             else
                 currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y);
             if (i != 0) {
@@ -258,7 +289,13 @@ public class InkExample : MonoBehaviour
                     if (isSticker)
                         message.transform.position = new Vector2(posxc1, posyc1 + distance*2f); 
                     else if (isImage) 
-                        message.transform.position = new Vector2(posxc1, posyc1 + distance*2f); 
+                        message.transform.position = new Vector2(posxc1, posyc1 + distance*3.0f); 
+                    else if (isM) 
+                        message.transform.position = new Vector2(posxc1, posyc1 + distance*1.3f);
+                    else if (isG) 
+                        message.transform.position = new Vector2(posxc1, posyc1 + distance*1.5f);
+                    else if (isGG) 
+                        message.transform.position = new Vector2(posxc1, posyc1 + distance*1.7f);
                     else
                         message.transform.position = new Vector2(posxc1, posyc1 + distance);
                 }

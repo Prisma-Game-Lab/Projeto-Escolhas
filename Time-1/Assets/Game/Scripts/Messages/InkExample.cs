@@ -80,38 +80,7 @@ public class InkExample : MonoBehaviour
     void Start()
     {
         combatButton.gameObject.SetActive(false);
-        /*
-        if (this.gameObject.tag == "Elf") {
-            story = new Story(inkJSONAsset[tinderData.elfaDay].text);
-            storedMessages = appSave.elfa;
-            if(appSave.elfaJson != "") {
-                story.state.LoadJson(appSave.elfaJson);
-            }
-            else {
-                newDay = true;
-            }
-        }
-        else if (this.gameObject.tag == "Orc") {
-            story = new Story(inkJSONAsset[tinderData.orcDay].text);
-            storedMessages = appSave.orc;
-            if(appSave.orcJson != "") {
-                story.state.LoadJson(appSave.orcJson);
-            }
-            else {
-                newDay = true;
-            }
-        }
-        else {
-            story = new Story(inkJSONAsset[tinderData.sereiaDay].text);
-            storedMessages = appSave.sereia;
-            if(appSave.sereiaJson != "") {
-                story.state.LoadJson(appSave.sereiaJson);
-            }
-            else {
-                newDay = true;
-            }
-        }
-        */
+        
         clickedBack = false;
         audioManager = FindObjectOfType<AudioManager>();
 
@@ -147,9 +116,6 @@ public class InkExample : MonoBehaviour
     }
 
     private void restoreMessages(int i) {
-            //if (storedMessages[i].Contains("Combat")) {
-                //showCombatButton(combatButton);
-            //}
             bool isSticker = false;
             bool isImage = false;
             bool isM = false;

@@ -464,7 +464,7 @@ public class InkExample : MonoBehaviour
         else {
             appSave.sereiaJson = story.state.ToJson();
         }
-        for (int i = storedMessages.Count; i < messages.Count; i++) {
+        for (int i = 0; i < messages.Count; i++) {
             storedMessages.Add(messages[i]);
         }
         SaveSystem.GetInstance().SaveState();

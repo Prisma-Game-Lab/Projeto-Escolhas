@@ -9,8 +9,8 @@ public class BattleUIManager : MonoBehaviour
     public List<GameObject> actionsButtons;
     [HideInInspector]public List<GameObject> spawnedActionsButtons = new List<GameObject>();
     public Transform actionsPanel;
-
     public Image enemyImage;
+    public Image scenerioImage;
 
     public TextMeshProUGUI dialogueText;
 

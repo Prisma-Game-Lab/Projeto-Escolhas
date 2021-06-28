@@ -13,6 +13,7 @@ public class CharacterBase : ScriptableObject
     public Sprite tinderImage;
     public Sprite combatImage;
     public Sprite combatWhiteImage;
+    public Sprite scenerio;
     public int maxHealth;
     public int attack;
     public int defense;

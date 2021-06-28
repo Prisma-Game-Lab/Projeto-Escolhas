@@ -41,6 +41,7 @@ public class BattleSystem : MonoBehaviour
         GameObject enemyGO = Instantiate(enemyPrefab);
         enemyUnit = enemyGO.GetComponent<Unit>();
         //enemyUnit.cBase = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().combatCharacter;
+        battleUI.scenerioImage.sprite = enemyUnit.cBase.scenerio;
         battleUI.enemyImage.sprite = enemyUnit.cBase.combatImage;
         battleUI.dialogueText.text = enemyUnit.cBase.name + " se aproxima...";
 

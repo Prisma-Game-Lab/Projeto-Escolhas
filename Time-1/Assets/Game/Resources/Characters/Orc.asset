@@ -22,6 +22,7 @@ MonoBehaviour:
   tinderImage: {fileID: 21300000, guid: f034612cb60a89d498720dc208282860, type: 3}
   combatImage: {fileID: 21300000, guid: c977eadbba0089542a9ec89310fea7fc, type: 3}
   combatWhiteImage: {fileID: 21300000, guid: ac0bd25461defe94fb0c54600f705868, type: 3}
+  scenerio: {fileID: 21300000, guid: 25d3d4404db6c6843a12cbe1ef227e27, type: 3}
   maxHealth: 50
   attack: 35
   defense: 35

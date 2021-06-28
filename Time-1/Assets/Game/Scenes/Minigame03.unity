@@ -2945,7 +2945,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicator: {fileID: 589334324}
   bar: {fileID: 472632296}
-  speed: 0.07
+  speed: 2.5
+  speedSquareObj: 2
   ropeAnim: {fileID: 457875456}
   squareObj: {fileID: 1827093280}
   pointsText: {fileID: 828095948}

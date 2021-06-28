@@ -8,7 +8,7 @@ public class HammerGame : MonoBehaviour
     public GameObject indicator;
     public GameObject bar;
     public float speed;
-    private float speedSquareObj;
+    public float speedSquareObj;
     public Animator ropeAnim;
     public GameObject squareObj;
     public TextMeshProUGUI pointsText;
@@ -24,7 +24,6 @@ public class HammerGame : MonoBehaviour
         point = 0;
         totalTime = Timer.totalTime;
         timer = this.GetComponent<Timer>();
-        speedSquareObj = 0.05f;
         minPos = -1.67f;
         maxPos =  4.70f;
         
@@ -37,7 +36,7 @@ public class HammerGame : MonoBehaviour
             float posy = indicator.transform.position.y;;
             if ((posy <= -2.00f) || (posy >= 4.95f))
                 speed *= -1;
-            indicator.transform.position = new Vector2(indicator.transform.position.x, posy - speed);
+            indicator.transform.position = new Vector2(indicator.transform.position.x, posy - speed*Time.deltaTime);
             if (timer.timeRemaining > 10.0f && timer.timeRemaining < 20.0f) {
                 UpAndDownPosition();
             }
@@ -76,7 +75,7 @@ public class HammerGame : MonoBehaviour
         float posy = squareObj.transform.position.y;
         if ((posy <= -1.67f) || (posy >= 4.70f)) 
             speedSquareObj *= -1;
-        squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy + speedSquareObj);
+        squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy + speedSquareObj*Time.deltaTime);
     }
     
     private void RandomPosition() {
@@ -89,7 +88,7 @@ public class HammerGame : MonoBehaviour
             speedSquareObj *= -1;
             minPos = Random.Range(-1.67f, 2.50f);
         }
-        squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy - speedSquareObj);
+        squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy - speedSquareObj*Time.deltaTime);
     }
 
 

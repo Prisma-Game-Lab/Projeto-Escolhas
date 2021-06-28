@@ -96,6 +96,9 @@ public class InkExample : MonoBehaviour
             if (storedMessages[storedMessages.Count-1].Contains("Combat") && newDay) {
                 storedMessages.RemoveAt(storedMessages.Count-1);
             }
+            if (storedMessages[storedMessages.Count-1].Contains("Leave") && newDay) {
+                storedMessages.RemoveAt(storedMessages.Count-1);
+            }
         }
 
         for (int i = 0; i < storedMessages.Count; i++) {
@@ -244,6 +247,18 @@ public class InkExample : MonoBehaviour
                     appSave.sereiaEndDay = true;
                 }
                 showCombatButton(combatButton);
+                break;
+            }
+            if (messages[i].Contains("Leave")) {
+                if (this.gameObject.tag == "Elf") {
+                    appSave.elfaEndDay = true;
+                }
+                else if (this.gameObject.tag == "Orc") {
+                    appSave.orcEndDay = true;
+                }
+                else {
+                    appSave.sereiaEndDay = true;
+                }
                 break;
             }
             bool isSticker = false;

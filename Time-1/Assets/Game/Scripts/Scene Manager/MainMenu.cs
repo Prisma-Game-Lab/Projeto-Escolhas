@@ -11,5 +11,28 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("App");
     }
 
+    public void GoToCredits(GameObject canvas) {
+        canvas.gameObject.SetActive(true);
+    }
+    public void GoToMenu(GameObject canvas) {
+        canvas.gameObject.SetActive(false);
+    }
+
+    public void GoToItch() {
+        Application.OpenURL("https://prismagamelab.itch.io/");
+    }
+
+    public void GoToTwitter() {
+        Application.OpenURL("https://twitter.com/PrismaGameLab/");
+    }
+
+    public void GoToInstagram() {
+        Application.OpenURL("https://instagram.com/prismagamelab/");
+    }
+
+    public void GoToLinkedin() {
+        Application.OpenURL("https://www.linkedin.com/company/prismagamelab/");
+    }
+
 
 }

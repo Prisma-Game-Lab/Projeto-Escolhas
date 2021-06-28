@@ -45,11 +45,6 @@ public class InkExample : MonoBehaviour
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
         storedMessages = new List<string>();
         newDay = false;
-    }
-
-    void Start()
-    {
-        combatButton.gameObject.SetActive(false);
         if (this.gameObject.tag == "Elf") {
             story = new Story(inkJSONAsset[tinderData.elfaDay].text);
             storedMessages = appSave.elfa;
@@ -80,6 +75,43 @@ public class InkExample : MonoBehaviour
                 newDay = true;
             }
         }
+    }
+
+    void Start()
+    {
+        combatButton.gameObject.SetActive(false);
+        /*
+        if (this.gameObject.tag == "Elf") {
+            story = new Story(inkJSONAsset[tinderData.elfaDay].text);
+            storedMessages = appSave.elfa;
+            if(appSave.elfaJson != "") {
+                story.state.LoadJson(appSave.elfaJson);
+            }
+            else {
+                newDay = true;
+            }
+        }
+        else if (this.gameObject.tag == "Orc") {
+            story = new Story(inkJSONAsset[tinderData.orcDay].text);
+            storedMessages = appSave.orc;
+            if(appSave.orcJson != "") {
+                story.state.LoadJson(appSave.orcJson);
+            }
+            else {
+                newDay = true;
+            }
+        }
+        else {
+            story = new Story(inkJSONAsset[tinderData.sereiaDay].text);
+            storedMessages = appSave.sereia;
+            if(appSave.sereiaJson != "") {
+                story.state.LoadJson(appSave.sereiaJson);
+            }
+            else {
+                newDay = true;
+            }
+        }
+        */
         clickedBack = false;
         audioManager = FindObjectOfType<AudioManager>();
 
@@ -90,6 +122,7 @@ public class InkExample : MonoBehaviour
         float posyb = buttonPlace.transform.position.y;
 
         posyc = 700.0f;
+
         if (storedMessages.Count > 0) {
             if (storedMessages[storedMessages.Count-1].Contains("Combat") && newDay) {
                 storedMessages.RemoveAt(storedMessages.Count-1);
@@ -97,7 +130,6 @@ public class InkExample : MonoBehaviour
         }
 
         for (int i = 0; i < storedMessages.Count; i++) {
-            Debug.Log(storedMessages[i]);
             if (storedMessages[i].Contains("Combat")) {
                 showCombatButton(combatButton);
                 break;
@@ -448,7 +480,7 @@ public class InkExample : MonoBehaviour
         else {
             appSave.sereiaJson = story.state.ToJson();
         }
-        for (int i = storedMessages.Count; i < messages.Count; i++) {
+        for (int i = 0; i < messages.Count; i++) {
             storedMessages.Add(messages[i]);
         }
         SaveSystem.GetInstance().SaveState();

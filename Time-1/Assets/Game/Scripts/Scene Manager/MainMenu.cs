@@ -34,5 +34,9 @@ public class MainMenu : MonoBehaviour
         Application.OpenURL("https://www.linkedin.com/company/prismagamelab/");
     }
 
+    public void GoToFacebook() {
+        Application.OpenURL("https://www.facebook.com/prismagamelab/");
+    }
+
 
 }

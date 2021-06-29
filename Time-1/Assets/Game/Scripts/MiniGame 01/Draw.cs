@@ -136,8 +136,8 @@ public class Draw : MonoBehaviour
                 int i = 0;
                 for (; i < 4; i++) {
                     if (_storeString[i][0] != "0") {
-                        bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.25f);
-                        bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.25f);
+                        bool result1 = OneDollar.Result(pointsList, _storeString[i][0], 0.35f);
+                        bool result2 = OneDollar.Result(pointsList, _storeString[i][1], 0.35f);
                         if (result1 || result2) {
                             audioManager.Play("DrawCompleted");
                             eraseDrawing(i);

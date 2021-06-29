@@ -904,7 +904,7 @@ MonoBehaviour:
   brush: {fileID: 6227431900248306270}
   currentLineRenderer: {fileID: 0}
   text: {fileID: 789040846}
-  templateNum: 9
+  templateNum: 4
   templates:
   - names:
     - caret_left

@@ -89,4 +89,9 @@ public class contactsManager : MonoBehaviour
         panel.SetActive(true);
         tinderData.combatCharacter = character;
     }
+    /*
+    public void blockContact() {
+
+    }
+    */
 }

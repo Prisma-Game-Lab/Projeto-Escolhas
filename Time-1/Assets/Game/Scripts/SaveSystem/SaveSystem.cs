@@ -13,6 +13,7 @@ public class SaveSystem : MonoBehaviour
     public AppSave appSave;
     public AppSave emptySave;
     private TinderData tinderData;
+    private playerStats playerStats;
 
     //a versão corrente do save, para podermos testar e tratar versões antigas
     public static float saveVersion = 1.0f;
@@ -185,6 +186,7 @@ public class SaveSystem : MonoBehaviour
     public void NewGame() 
     {
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
+        playerStats = GameObject.FindGameObjectWithTag("persistentData").GetComponent<playerStats>();
 
         appSave.elfa.Clear();
         appSave.humano.Clear();
@@ -209,10 +211,20 @@ public class SaveSystem : MonoBehaviour
         tinderData.tinderCharacters.Clear();
         tinderData.curContacts.Clear();
 
+
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Elfa"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Humano"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Sereia"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Orc"));
+
+        CharacterBase player = Resources.Load<CharacterBase>("Characters/Player");
+
+        playerStats.attack = player.attack;
+        playerStats.defense = player.defense;
+        playerStats.velocity = player.velocity;
+        playerStats.maxEnergy = player.maxEnergy;
+        playerStats.maxHealth = player.maxHealth;
+        playerStats.availableStatsPoints = 100;
 
         SceneManager.LoadScene("MainMenu_Scene");
 

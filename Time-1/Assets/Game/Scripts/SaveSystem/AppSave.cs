@@ -17,4 +17,9 @@ public class AppSave : ScriptableObject
     public bool humanoEndDay;
     public bool sereiaEndDay;
     public bool orcEndDay;
+    public int elfaPoints;
+    public int humanoPoints;
+    public int sereiaPoints;
+    public int orcPoints;
+    
 }

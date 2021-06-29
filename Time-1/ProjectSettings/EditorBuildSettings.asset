@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/Combat_Scene.unity
     guid: 080829c84ff4e4f4d93ad1ba233b51e7
+  - enabled: 1
+    path: Assets/Game/Scenes/TheEnd.unity
+    guid: cb020f8ee8a23b24998f66eb32a87a49
   - enabled: 0
     path: Assets/Game/Scenes/Combat_Scene Antigo.unity
     guid: d2dcbd267c89cbb4582e5c8633a18c92

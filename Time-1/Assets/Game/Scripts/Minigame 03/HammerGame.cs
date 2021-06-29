@@ -49,7 +49,6 @@ public class HammerGame : MonoBehaviour
     public void Jump() {
         if (!Timer.timeStopped)
         {
-            //StartCoroutine(PlayAnimationOnce());
             ropeAnim.SetTrigger("Pulo");
             CheckPositionIsEqual();
         }
@@ -63,12 +62,6 @@ public class HammerGame : MonoBehaviour
             point++;
             pointsText.text = point.ToString();
         }
-    }
-
-    private IEnumerator PlayAnimationOnce() {
-        ropeAnim.enabled = true;
-        yield return new WaitForSeconds(0.32f);
-        ropeAnim.enabled = false;
     }
 
     private void UpAndDownPosition() {

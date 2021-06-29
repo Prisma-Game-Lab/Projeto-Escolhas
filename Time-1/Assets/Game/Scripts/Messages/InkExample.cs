@@ -39,10 +39,12 @@ public class InkExample : MonoBehaviour
     private bool clickedBack;
     private string savedJson;
     private bool newDay;
+    private contactsManager contactManager;
 
     void OnEnable() {
         appSave = SaveSystem.GetInstance().appSave;
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
+        contactManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<contactsManager>();
         storedMessages = new List<string>();
         newDay = false;
         if (this.gameObject.tag == "Elf") {
@@ -65,11 +67,21 @@ public class InkExample : MonoBehaviour
                 newDay = true;
             }
         }
-        else {
+        else if (this.gameObject.tag == "Sereia") {
             story = new Story(inkJSONAsset[tinderData.sereiaDay].text);
             storedMessages = appSave.sereia;
             if(appSave.sereiaJson != "") {
                 story.state.LoadJson(appSave.sereiaJson);
+            }
+            else {
+                newDay = true;
+            }
+        }
+        else {
+            story = new Story(inkJSONAsset[tinderData.humanoDay].text);
+            storedMessages = appSave.humano;
+            if(appSave.humanoJson != "") {
+                story.state.LoadJson(appSave.humanoJson);
             }
             else {
                 newDay = true;
@@ -240,10 +252,18 @@ public class InkExample : MonoBehaviour
                 else if (this.gameObject.tag == "Orc") {
                     appSave.orcEndDay = true;
                 }
-                else {
+                else if (this.gameObject.tag == "Sereia") {
                     appSave.sereiaEndDay = true;
                 }
+                else {
+                    appSave.humanoEndDay = true;
+                }
                 showCombatButton(combatButton);
+                break;
+            }
+            if (messages[i].Contains("Block")) {
+                contactManager.blockContact(this.gameObject.tag);
+                this.gameObject.SetActive(false);
                 break;
             }
             bool isSticker = false;
@@ -426,6 +446,8 @@ public class InkExample : MonoBehaviour
             appSave.orcJson = "";
         if (appSave.sereiaEndDay) 
             appSave.sereiaJson = "";
+        if (appSave.humanoEndDay) 
+            appSave.humanoJson = "";
         for (int i = storedMessages.Count; i < messages.Count; i++) {
             storedMessages.Add(messages[i]);
         }
@@ -443,8 +465,11 @@ public class InkExample : MonoBehaviour
         else if (this.gameObject.tag == "Orc") {
             appSave.orcJson = story.state.ToJson();
         }
-        else {
+        else if (this.gameObject.tag == "Sereia") {
             appSave.sereiaJson = story.state.ToJson();
+        }
+        else {
+            appSave.humanoJson = story.state.ToJson();
         }
         for (int i = 0; i < messages.Count; i++) {
             storedMessages.Add(messages[i]);
@@ -461,8 +486,11 @@ public class InkExample : MonoBehaviour
         else if (this.gameObject.tag == "Orc") {
             appSave.orcJson = story.state.ToJson();
         }
-        else {
+        else if (this.gameObject.tag == "Sereia") {
             appSave.sereiaJson = story.state.ToJson();
+        }
+        else {
+            appSave.humanoJson = story.state.ToJson();
         }
         for (int i = 0; i < messages.Count; i++) {
             storedMessages.Add(messages[i]);

@@ -31,6 +31,14 @@ public class contactsManager : MonoBehaviour
     public void createContact(CharacterBase character)
     {
         GameObject contact = Instantiate(contactPrefab, messagePanel.transform);
+        if (character.name == "Amarillys") 
+            contact.gameObject.tag = "Elf";
+        else if (character.name == "Bruce")
+            contact.gameObject.tag = "Orc";
+        else if (character.name == "Clarissa")
+            contact.gameObject.tag = "Sereia";
+        else
+            contact.gameObject.tag = "Humano";
         contact.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().sprite = character.profileChatImage;
         contact.transform.GetChild(0).GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = character.name;
         Image popUp = contact.transform.GetChild(0).GetChild(2).gameObject.GetComponent<Image>();
@@ -89,9 +97,15 @@ public class contactsManager : MonoBehaviour
         panel.SetActive(true);
         tinderData.combatCharacter = character;
     }
-    /*
-    public void blockContact() {
-
+    
+    public void blockContact(string tag) {
+        int childCount = messagePanel.transform.childCount;
+        for (int i = 1; i < childCount; i++) {
+            if (messagePanel.transform.GetChild(i).gameObject.tag == tag) {
+                messagePanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = false;
+                break;
+            }
+        }
     }
-    */
+    
 }

@@ -210,7 +210,7 @@ public class SaveSystem : MonoBehaviour
 
         tinderData.tinderCharacters.Clear();
         tinderData.curContacts.Clear();
-
+        tinderData.blockedCharacters.Clear();
 
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Elfa"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Humano"));

@@ -2454,7 +2454,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}
   - {fileID: 11400000, guid: 0c4e8b4350ebc9542870552006bb6e93, type: 2}
   - {fileID: 11400000, guid: 2a3cdfe1c931fd1498b27c26773bff93, type: 2}
-  blockedCharacers: []
+  blockedCharacters: []
   curContacts: []
   combatCharacter: {fileID: 0}
   curDay: 0
@@ -16513,7 +16513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inkJSONAsset:
-  - {fileID: 4900000, guid: 5d6ce7474768dd74ca3e21c1ac74760b, type: 3}
+  - {fileID: 4900000, guid: 4878a5a3cf2dc154d91be7476896c6cf, type: 3}
   - {fileID: 4900000, guid: 9400cf210d681c041835a39159a4c792, type: 3}
   - {fileID: 4900000, guid: 1950278b60e31dd43b88386d978bdd0d, type: 3}
   - {fileID: 4900000, guid: 5d6ce7474768dd74ca3e21c1ac74760b, type: 3}

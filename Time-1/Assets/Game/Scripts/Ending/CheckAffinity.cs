@@ -18,15 +18,18 @@ public class CheckAffinity : MonoBehaviour
         appSave = SaveSystem.GetInstance().appSave;
     }
 
-    public List<int> CheckIfHasAffinity() {
-        List<int> affinityNumber = new List<int>();
-        for (int i=0; i < 4; i++) {
-            affinityNumber.Add(-1);
-        }
-
-        if (appSave.elfaPoints >= minAffinity)
-            affinityNumber[0] = 1;
-
-        return affinityNumber;
+    public bool CheckIfHasAffinity(string name) {
+        int checkPoints;
+        if (name == "Amarillys") 
+            checkPoints = appSave.elfaPoints;
+        else if (name == "Bruce")
+            checkPoints = appSave.orcPoints;
+        else if (name == "Clarissa")
+            checkPoints = appSave.sereiaPoints;
+        else
+            checkPoints = appSave.humanoPoints;
+        if (checkPoints >= minAffinity)
+            return true;
+        return false;
     }
 }

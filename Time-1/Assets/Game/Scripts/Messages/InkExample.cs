@@ -307,12 +307,6 @@ public class InkExample : MonoBehaviour
                     yield return new WaitForSeconds(sec);
                     typing.gameObject.SetActive(false);
                     currentInst = Instantiate(textPrefab, content.transform); 
-                    /*
-                    if (messages[i].Contains("Good")) {
-                        messages[i] = messages[i].Substring(0,6) + messages[i].Substring(11,messages[i].Length-1);
-                        addAffinity.AddPoints(this.gameObject.tag, affinityPoints);
-                    }
-                    */
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
                     //tamanho do balao
                     int stringLength = messages[i].Substring(6).Length;
@@ -342,6 +336,10 @@ public class InkExample : MonoBehaviour
                 else
                     buttonClicked = false;
                 currentInst = Instantiate(textPrefab, content.transform); 
+                if (messages[i].Contains("Good")) {
+                    Debug.Log(messages[i]);
+                    messages[i] = messages[i].Substring(0,6) + messages[i].Substring(10);
+                }
                 currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(7);
                 //tamanho do balao
                 int stringLength = messages[i].Substring(7).Length;

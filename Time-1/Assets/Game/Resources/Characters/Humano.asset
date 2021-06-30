@@ -20,8 +20,8 @@ MonoBehaviour:
     #N\xE3oVendoArteNaPraia #Praieiro #MeuEscrit\xF3rio\xC9NaPraia #DoMundo #Mochileiro
     #CapoeristaRaiz #DeHumanas #EcoChato #Jornalista #Fot\xF3grafo\r\n"
   bioWork: 
-  profileChatImage: {fileID: 21300000, guid: da959670b83503a49a8206d145bf6b53, type: 3}
-  tinderImage: {fileID: 21300000, guid: fa67cd7f58e84e74488c89ae90de14db, type: 3}
+  profileChatImage: {fileID: 21300000, guid: f298685cc3adcab4fb88506c47e3e1d8, type: 3}
+  tinderImage: {fileID: 21300000, guid: efbca7e85d9780e4a9c51657eaa75747, type: 3}
   combatImage: {fileID: 21300000, guid: 106d579acc8eef6428793e542f23a895, type: 3}
   combatWhiteImage: {fileID: 21300000, guid: 4d1f2433e3c0369418702ba280b1741a, type: 3}
   scenerio: {fileID: 21300000, guid: ceb2614a3b2852c4e9dec2dd2986a738, type: 3}

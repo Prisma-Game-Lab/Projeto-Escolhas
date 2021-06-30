@@ -45,7 +45,6 @@ public class Draw : MonoBehaviour
     public Animator punchAnim;
 
     void Start() {
-        punchAnim.SetTrigger("Idle");
         audioManager = FindObjectOfType<AudioManager>();
         _y3 = squareImg3.gameObject.transform.position.y;
         img.Add(squareImg1);

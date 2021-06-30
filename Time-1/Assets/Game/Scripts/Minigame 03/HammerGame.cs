@@ -20,7 +20,6 @@ public class HammerGame : MonoBehaviour
 
     void Start()
     {
-        //ropeAnim.enabled = false;
         point = 0;
         totalTime = Timer.totalTime;
         timer = this.GetComponent<Timer>();

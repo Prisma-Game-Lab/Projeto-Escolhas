@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: Humano
   m_EditorClassIdentifier: 
   name: Manoel
-  bio: 
+  bio: "Quem quiser dar um rolez\xE3o s\xF3 mandar uma mensagem, amo sair e conhecer
+    gente nova. \r\nSou tagarela ent\xE3o se me der moral n\xE3o vou mais calar a
+    boca.\r\n\r\nVoc\xEA \xE9 uma pessoa que diz sim para o rol\xEA? Se sim, bora
+    fechar\r\n\r\n#FofocasEdificantes #DigaSimParaORol\xEA #Saideiro #LevantamentoDeCopo
+    #N\xE3oVendoArteNaPraia #Praieiro #MeuEscrit\xF3rio\xC9NaPraia #DoMundo #Mochileiro
+    #CapoeristaRaiz #DeHumanas #EcoChato #Jornalista #Fot\xF3grafo\r\n"
   bioWork: 
   profileChatImage: {fileID: 21300000, guid: da959670b83503a49a8206d145bf6b53, type: 3}
   tinderImage: {fileID: 21300000, guid: fa67cd7f58e84e74488c89ae90de14db, type: 3}

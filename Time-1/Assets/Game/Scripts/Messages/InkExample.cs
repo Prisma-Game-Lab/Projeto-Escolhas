@@ -42,7 +42,7 @@ public class InkExample : MonoBehaviour
     private contactsManager contactManager;
     public int affinityPoints;
     private AddAffinity addAffinity;
-    private int goodChoice;
+    private List<int> goodChoice = new List<int>();
 
     void OnEnable() {
         appSave = SaveSystem.GetInstance().appSave;
@@ -400,7 +400,10 @@ public class InkExample : MonoBehaviour
             lastLine += 1;
         }
         int curChoice = 0;
-        goodChoice = -1;
+        goodChoice.Clear();
+        for (int j = 0; j < 4; j++) {
+            goodChoice.Add(-1);
+        }
         foreach (Choice choice in story.currentChoices)
         {
             Button choiceButton = Instantiate(buttonPrefab, buttonPlace.transform);
@@ -409,7 +412,7 @@ public class InkExample : MonoBehaviour
             Text choiceText = choiceButton.GetComponentInChildren<Text>();
             if (choice.text.Contains("Good")) {
                 choice.text = choice.text.Substring(0,6) + choice.text.Substring(10);
-                goodChoice = curChoice;
+                goodChoice[curChoice] = curChoice;
             }
             choiceText.text = choice.text.Substring(7);
 
@@ -425,8 +428,11 @@ public class InkExample : MonoBehaviour
     {
         buttonClicked = true;
         audioManager.Play("Click");
-        if (goodChoice == choice.index)
-            addAffinity.AddPoints(this.gameObject.tag, 1);
+        foreach (int val in goodChoice) {
+            if (val == choice.index)
+                addAffinity.AddPoints(this.gameObject.tag, 1);
+                break;
+        }
         story.ChooseChoiceIndex(choice.index);
         StartCoroutine(refresh());
     }

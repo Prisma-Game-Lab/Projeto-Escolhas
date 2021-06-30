@@ -40,11 +40,15 @@ public class InkExample : MonoBehaviour
     private string savedJson;
     private bool newDay;
     private contactsManager contactManager;
+    public int affinityPoints;
+    private AddAffinity addAffinity;
+    private int goodChoice;
 
     void OnEnable() {
         appSave = SaveSystem.GetInstance().appSave;
         tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
         contactManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<contactsManager>();
+        addAffinity = GameObject.FindGameObjectWithTag("GameManager").GetComponent<AddAffinity>();
         storedMessages = new List<string>();
         newDay = false;
         if (this.gameObject.tag == "Elf") {
@@ -243,6 +247,7 @@ public class InkExample : MonoBehaviour
         scroll.enabled = false;
         clearUI();
         getNextStoryBlock();
+        List<string> tags = story.currentTags;
 
         for (int i = lastLine; i < messages.Count; i++) {
             if (messages[i].Contains("Combat")) {
@@ -302,6 +307,12 @@ public class InkExample : MonoBehaviour
                     yield return new WaitForSeconds(sec);
                     typing.gameObject.SetActive(false);
                     currentInst = Instantiate(textPrefab, content.transform); 
+                    /*
+                    if (messages[i].Contains("Good")) {
+                        messages[i] = messages[i].Substring(0,6) + messages[i].Substring(11,messages[i].Length-1);
+                        addAffinity.AddPoints(this.gameObject.tag, affinityPoints);
+                    }
+                    */
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
                     //tamanho do balao
                     int stringLength = messages[i].Substring(6).Length;
@@ -388,15 +399,21 @@ public class InkExample : MonoBehaviour
             posyc = currentInst.transform.position.y;
             lastLine += 1;
         }
-
+        int curChoice = 0;
+        goodChoice = -1;
         foreach (Choice choice in story.currentChoices)
         {
             Button choiceButton = Instantiate(buttonPrefab, buttonPlace.transform);
             choiceButton.transform.SetParent(buttonPlace.transform);
 
             Text choiceText = choiceButton.GetComponentInChildren<Text>();
+            if (choice.text.Contains("Good")) {
+                choice.text = choice.text.Substring(0,6) + choice.text.Substring(10);
+                goodChoice = curChoice;
+            }
             choiceText.text = choice.text.Substring(7);
 
+            curChoice++;
             choiceButton.onClick.AddListener(delegate {
                 OnClickChoiceButton(choice);
             });
@@ -408,6 +425,8 @@ public class InkExample : MonoBehaviour
     {
         buttonClicked = true;
         audioManager.Play("Click");
+        if (goodChoice == choice.index)
+            addAffinity.AddPoints(this.gameObject.tag, 1);
         story.ChooseChoiceIndex(choice.index);
         StartCoroutine(refresh());
     }

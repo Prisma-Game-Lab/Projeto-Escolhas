@@ -13,6 +13,7 @@ TagManager:
   - Sereia
   - Humano
   - GameManager
+  - BattleManager
   layers:
   - Default
   - TransparentFX

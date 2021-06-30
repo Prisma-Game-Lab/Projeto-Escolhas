@@ -221,6 +221,8 @@ public class BattleSystem : MonoBehaviour
     void EndBattle()
     {
         StopAllCoroutines();
+        AddAffinity addAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<AddAffinity>();
+        string tag = addAffinity.CharacterTag(enemyUnit.cBase.name);
         if (state == BattleState.WON)
         {
             battleUI.DecisionPanel.SetActive(true);
@@ -230,6 +232,7 @@ public class BattleSystem : MonoBehaviour
             battleUI.dialogueText.text = "Você ganhou o encontro! " + enemyUnit.cBase.name + " esta totalmente na sua!";
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
+            addAffinity.AddPoints(tag, 2);
         }
         else if (state == BattleState.LOST)
         {
@@ -240,6 +243,7 @@ public class BattleSystem : MonoBehaviour
             battleUI.dialogueText.text = "Você foi derrotado. " + enemyUnit.cBase.name + " esta indo embora insatisfeita.";
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
+            addAffinity.AddPoints(tag, 3);
         }
     }
 

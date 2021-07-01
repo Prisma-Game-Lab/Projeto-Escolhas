@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (waveFinished && !allWavesFinished)
+        if (waveFinished)
         {
             StartCoroutine(spawnWave());
             waveFinished = false;
@@ -61,7 +61,11 @@ public class Spawner : MonoBehaviour
             totalBallsSpawned += ballsToSpawn;
         }
         else
+        {
             allWavesFinished = true;
-        waveFinished = true;
+            waveFinished = false;
+        }
+        if(!allWavesFinished)
+            waveFinished = true;
     }
 }

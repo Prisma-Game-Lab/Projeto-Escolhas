@@ -30,9 +30,11 @@ public class RaisePlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!raised && (Timer.timeStopped || Spawner.allWavesFinished == true))
+        if (!raised && (Timer.timeStopped || Spawner.allWavesFinished))
         {
             raiseStats();
+            Timer.timeStopped = false;
+            Spawner.allWavesFinished = false;
         }
     }
     private void raiseStats()

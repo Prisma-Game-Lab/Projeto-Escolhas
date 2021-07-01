@@ -9,6 +9,7 @@ public class CharacterBase : ScriptableObject
     [TextArea]
     public string bio;
     public string bioWork;
+    [SerializeField]
     public Sprite MensagemImage;
     public Sprite ChatImage;
     public Sprite BioImage;
@@ -36,7 +37,7 @@ public class CharacterBase : ScriptableObject
     }
 
     public Sprite Sprite {
-        get { return profileChatImage; }
+        get { return ChatImage; }
     }
 
     public int Strength {

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d131bc9ea134147bd4794063265bbd, type: 3}
+  m_Name: Carol
+  m_EditorClassIdentifier: 
+  name: Carol
+  bio: "Sou um peixe robo que sabe nadar sem se molhar.\n#NadadeiraRob\xF3tica"
+  bioWork: 
+  MensagemImage: {fileID: 0}
+  ChatImage: {fileID: 0}
+  BioImage: {fileID: 21300000, guid: 1b15ccf2161631e47ae5f82cd290b2a4, type: 3}
+  tinderImage: {fileID: 21300000, guid: 227b291c44ff878449892dca06dd490a, type: 3}
+  combatImage: {fileID: 0}
+  combatWhiteImage: {fileID: 0}
+  scenerio: {fileID: 0}
+  maxHealth: 0
+  attack: 0
+  defense: 0
+  velocity: 0
+  maxEnergy: 0
+  popUp: 0
+  race: 5

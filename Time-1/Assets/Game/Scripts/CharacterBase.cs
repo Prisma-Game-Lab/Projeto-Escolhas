@@ -25,7 +25,7 @@ public class CharacterBase : ScriptableObject
     [HideInInspector]
     public bool popUp;
 
-    public enum CharacterRace {Elfa, Humano, Sereia, Orc, Carneira};
+    public enum CharacterRace {Elfa, Humano, Sereia, Orc, Carneira, Fake};
     public CharacterRace race;
 
     public string Name {

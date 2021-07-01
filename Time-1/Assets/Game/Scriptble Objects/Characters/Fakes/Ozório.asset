@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "Oz\xF3rio"
   bio: "Sou meio t\xEDmido e pa mas tenho 174 de QI e ja descobri 48,97 x 10^83 teorias
-    novas sobre o universo.\n#EinsteinqSeCuide"
+    novas sobre o universo.\n\n#EinsteinqSeCuide"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}

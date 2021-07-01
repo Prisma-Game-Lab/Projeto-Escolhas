@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Madu
   bio: "Uma anjinha muito bem comportada que nunca fara maldade alguma com vc =).
-    \n#S\xF3qNao"
+    \n\n#S\xF3qNao"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}

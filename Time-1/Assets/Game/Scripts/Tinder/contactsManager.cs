@@ -63,7 +63,9 @@ public class contactsManager : MonoBehaviour
             popUp.enabled = true;
         }
         else
+        {
             popUp.enabled = false;
+        }
     }
     
     private GameObject getCharacterPanel(CharacterBase character)
@@ -89,15 +91,18 @@ public class contactsManager : MonoBehaviour
         {
             character.popUp = false;
             popUp.enabled = false;
+            int counter = 0;
             foreach (CharacterBase contact in tinderData.curContacts)
             {
                 if (contact.popUp)
                 {
-                    chatButtonPopUpImage.gameObject.SetActive(true);
+                    counter += 1;
                 }
-                else
-                    chatButtonPopUpImage.gameObject.SetActive(false);
-            }  
+            }
+            if (counter > 0)
+                chatButtonPopUpImage.gameObject.SetActive(true);
+            else
+                chatButtonPopUpImage.gameObject.SetActive(false);
         }
         panel.SetActive(true);
         tinderData.combatCharacter = character;

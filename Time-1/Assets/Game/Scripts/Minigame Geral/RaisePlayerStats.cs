@@ -74,6 +74,9 @@ public class RaisePlayerStats : MonoBehaviour
 
     private float minigame03Performance()
     {
-        return 0.8f;
+        HammerGame hGame = GetComponent<HammerGame>();
+        float points = hGame.point;
+        float totalPossiblePoints = hGame.totalPossiblePoints;
+        return points/totalPossiblePoints;
     }
 }

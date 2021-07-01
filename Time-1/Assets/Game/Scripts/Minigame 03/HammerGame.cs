@@ -12,7 +12,9 @@ public class HammerGame : MonoBehaviour
     public Animator ropeAnim;
     public GameObject squareObj;
     public TextMeshProUGUI pointsText;
-    private int point;
+    [HideInInspector] public int point;
+    [HideInInspector] public int totalPossiblePoints;
+    [HideInInspector] public bool outOfSquareBounds;
     float totalTime;
     private Timer timer;
     private float minPos;
@@ -20,12 +22,13 @@ public class HammerGame : MonoBehaviour
 
     void Start()
     {
+        totalPossiblePoints = 0;
         point = 0;
         totalTime = Timer.totalTime;
         timer = this.GetComponent<Timer>();
         minPos = -1.67f;
         maxPos =  4.70f;
-        
+        outOfSquareBounds = true;
     }
 
    
@@ -57,7 +60,8 @@ public class HammerGame : MonoBehaviour
         float sqHeight = squareObj.GetComponent<SpriteRenderer>().bounds.size.y;
         float posy = indicator.transform.position.y;
         float sqPosY = squareObj.transform.position.y;
-        if ((posy < sqPosY + sqHeight*0.5f) && (posy > sqPosY - sqHeight*0.5f)) {
+        if ((posy < sqPosY + sqHeight*0.5f) && (posy > sqPosY - sqHeight*0.5f) && outOfSquareBounds) {
+            outOfSquareBounds = false;
             point++;
             pointsText.text = point.ToString();
         }

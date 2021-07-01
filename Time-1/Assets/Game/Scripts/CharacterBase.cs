@@ -9,7 +9,9 @@ public class CharacterBase : ScriptableObject
     [TextArea]
     public string bio;
     public string bioWork;
-    public Sprite profileChatImage;
+    public Sprite MensagemImage;
+    public Sprite ChatImage;
+    public Sprite BioImage;
     public Sprite tinderImage;
     public Sprite combatImage;
     public Sprite combatWhiteImage;

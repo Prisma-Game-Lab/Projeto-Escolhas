@@ -30,8 +30,8 @@ public class MainMenu : MonoBehaviour
         Application.OpenURL("https://instagram.com/prismagamelab/");
     }
 
-    public void GoToLinkedin() {
-        Application.OpenURL("https://www.linkedin.com/company/prismagamelab/");
+    public void GoToDiscord() {
+        Application.OpenURL("https://discord.com/invite/3TdQm3rEe4");
     }
 
     public void GoToFacebook() {

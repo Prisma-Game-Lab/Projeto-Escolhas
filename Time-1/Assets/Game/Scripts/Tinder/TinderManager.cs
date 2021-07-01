@@ -68,6 +68,6 @@ public class TinderManager : MonoBehaviour
         bioDescription_txt.text = tinderData.tinderCharacters[curIndex].bio;
         bioWork_txt.text = tinderData.tinderCharacters[curIndex].bioWork;
         bioName_txt.text = tinderData.tinderCharacters[curIndex].name;
-        bioProfileImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;
+        bioProfileImage.sprite = tinderData.tinderCharacters[curIndex].BioImage;
     }
 }

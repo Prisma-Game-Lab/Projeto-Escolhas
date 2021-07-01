@@ -18,7 +18,9 @@ MonoBehaviour:
     para lutar. Sem prefer\xEAncias.\r\n\r\n#n\xE3ojoguemlixonomar #peixetbmsente
     \r\n"
   bioWork: 
-  profileChatImage: {fileID: 21300000, guid: fde92ffa071acc84589adc1b810a2822, type: 3}
+  MensagemImage: {fileID: 21300000, guid: fde92ffa071acc84589adc1b810a2822, type: 3}
+  ChatImage: {fileID: 21300000, guid: 6fa2d18f7b82eb943a8f401c2cbc8146, type: 3}
+  BioImage: {fileID: 21300000, guid: 6fa2d18f7b82eb943a8f401c2cbc8146, type: 3}
   tinderImage: {fileID: 21300000, guid: 71758a38bcb28324bb1f328aecd8768f, type: 3}
   combatImage: {fileID: 21300000, guid: d395338404f0d4342b689159e5f2247d, type: 3}
   combatWhiteImage: {fileID: 21300000, guid: a338a3c22fe35b941a2f691b06479721, type: 3}

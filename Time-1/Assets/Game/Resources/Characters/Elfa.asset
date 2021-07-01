@@ -19,7 +19,9 @@ MonoBehaviour:
     ent\xE3o n\xE3o me encha de mensagem.\r\n\r\n#[insira com-certeza-n\xE3o-\xE9-supreme]
     #gratid\xE3o\r\n"
   bioWork: 
-  profileChatImage: {fileID: 21300000, guid: c7159eb394c96a24abcb5878e72e0105, type: 3}
+  MensagemImage: {fileID: 21300000, guid: c7159eb394c96a24abcb5878e72e0105, type: 3}
+  ChatImage: {fileID: 21300000, guid: 15da66e18348d4a4ea1779e95ce99934, type: 3}
+  BioImage: {fileID: 21300000, guid: 15da66e18348d4a4ea1779e95ce99934, type: 3}
   tinderImage: {fileID: 21300000, guid: 8ec6079efca24f545aa4d60741063ac3, type: 3}
   combatImage: {fileID: 21300000, guid: 39ff48f64f7ec6c4b871158dc9383530, type: 3}
   combatWhiteImage: {fileID: 21300000, guid: 2ad0c8928f84f5249bed3be1a9f5032d, type: 3}

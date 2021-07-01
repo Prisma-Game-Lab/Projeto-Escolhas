@@ -222,9 +222,13 @@ public class SaveSystem : MonoBehaviour
         tinderData.curContacts.Clear();
         tinderData.blockedCharacters.Clear();
 
+        tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Fakes/Carol"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Elfa"));
+        tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Fakes/Madu"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Humano"));
+        tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Fakes/Mark"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Sereia"));
+        tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Fakes/Ozório"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Orc"));
 
         CharacterBase player = Resources.Load<CharacterBase>("Characters/Player");

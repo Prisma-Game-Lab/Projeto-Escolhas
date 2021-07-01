@@ -171,11 +171,11 @@ public class InkExample : MonoBehaviour
                         currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 200.0f);
                         isG = true;
                     }
-                    if (stringLength > 45 && stringLength <= 75) {
+                    if (stringLength > 45 && stringLength <= 70) {
                         currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 220.0f);
                         isGG = true;
                     }
-                    if (stringLength > 70 && stringLength <= 100) {
+                    if (stringLength > 70) {
                         currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 280.0f);
                         isGGG = true;
                     }
@@ -199,7 +199,7 @@ public class InkExample : MonoBehaviour
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 220.0f);
                     isGG = true;
                 }
-                if (stringLength > 70 && stringLength <= 100) {
+                if (stringLength > 70) {
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 280.0f);
                     isGGG = true;
                 }
@@ -318,11 +318,11 @@ public class InkExample : MonoBehaviour
                         currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 200.0f);
                         isG = true;
                     }
-                    if (stringLength > 45 && stringLength <= 75) {
+                    if (stringLength > 45 && stringLength <= 70) {
                         currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 220.0f);
                         isGG = true;
                     }
-                    if (stringLength > 70 && stringLength <= 100) {
+                    if (stringLength > 70) {
                         currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 280.0f);
                         isGGG = true;
                     }
@@ -355,7 +355,7 @@ public class InkExample : MonoBehaviour
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 220.0f);
                     isGG = true;
                 }
-                if (stringLength > 70 && stringLength <= 100) {
+                if (stringLength > 70) {
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 280.0f);
                     isGGG = true;
                 }

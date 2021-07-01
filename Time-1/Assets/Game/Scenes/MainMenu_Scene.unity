@@ -473,8 +473,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 502582797}
   m_HandleRect: {fileID: 502582796}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.34694678
+  m_Value: 1
+  m_Size: 0.34694675
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2734,7 +2734,7 @@ RectTransform:
   m_Father: {fileID: 1072765246}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.6530532}
+  m_AnchorMin: {x: 0, y: 0.6530533}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -8167,7 +8167,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: 065da7c2a26191346978b80c7fa7c4b7, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 6fc84c02a0c7ec9458bd0f1a09e3d4b7, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:

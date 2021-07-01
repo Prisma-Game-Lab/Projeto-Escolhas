@@ -216,6 +216,7 @@ public class SaveSystem : MonoBehaviour
         tinderData.humanoDay = 0;
         tinderData.orcDay = 0;
         tinderData.sereiaDay = 0;
+        tinderData.curDay = 1;
 
         tinderData.tinderCharacters.Clear();
         tinderData.curContacts.Clear();

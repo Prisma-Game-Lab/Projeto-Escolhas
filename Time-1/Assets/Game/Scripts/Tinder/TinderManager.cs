@@ -47,7 +47,7 @@ public class TinderManager : MonoBehaviour
     public void OnYesButtonPressed()
     {
         tutorial.gameObject.SetActive(false);
-        if (tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Humano && tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Fake)
+        if (tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Fake)
         {
             contactManager.chatButtonPopUpImage.gameObject.SetActive(true);
             audioManager.Play("Match");

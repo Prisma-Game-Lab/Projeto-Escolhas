@@ -1343,10 +1343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inkJSONAsset:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4900000, guid: a2c79d8a8167cc340856e36004eeca0a, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 1828223274}
@@ -8306,8 +8303,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00024414062, y: 9.873535}
-  m_SizeDelta: {x: -0.0004272461, y: 19.646729}
+  m_AnchoredPosition: {x: -0.00024414062, y: 36.255875}
+  m_SizeDelta: {x: -0.0004, y: 72.4114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &878119885
 MonoBehaviour:

@@ -30,7 +30,7 @@ public class TinderManager : MonoBehaviour
         tinderImage.sprite = tinderData.tinderCharacters[0].tinderImage;
         tinderCharacterName_txt.text = tinderData.tinderCharacters[0].name;
         day_txt.text = "Dia " + tinderData.curDay;
-        if (tinderData.tinderCharacters.Count < 4) {
+        if (tinderData.tinderCharacters.Count < 8) {
             tutorial.gameObject.SetActive(false);
         }
     }
@@ -53,13 +53,14 @@ public class TinderManager : MonoBehaviour
             audioManager.Play("Match");
             contactManager.createContact(tinderData.tinderCharacters[curIndex]);
             tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
-            curIndex = 0;
+            if(curIndex>=tinderData.tinderCharacters.Count)
+                curIndex = 0;
             tinderImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;
             tinderCharacterName_txt.text = tinderData.tinderCharacters[curIndex].name;
             tinderData.matchesNumber += 1;
         }
         else
-            audioManager.Play("Click");
+            OnNoButtonPressed();
 
     }
     public void OnBioButtonPressed()

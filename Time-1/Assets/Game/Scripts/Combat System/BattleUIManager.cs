@@ -38,7 +38,7 @@ public class BattleUIManager : MonoBehaviour
         CombatPanel.SetActive(false);
         DecisionPanel.SetActive(true);
         DecisionAttackButton.SetActive(true);
-        DecisionQuitButton.SetActive(true);
+        //DecisionQuitButton.SetActive(true);
     }
 
     public void OnAttackButton()
@@ -164,7 +164,7 @@ public class BattleUIManager : MonoBehaviour
             return;
         audioManager.Play("Click");
         DecisionAttackButton.SetActive(false);
-        DecisionQuitButton.SetActive(false);
+        //DecisionQuitButton.SetActive(false);
         DecisionPanel.SetActive(false);
         CombatPanel.SetActive(true);
     }
@@ -182,7 +182,7 @@ public class BattleUIManager : MonoBehaviour
         audioManager.Play("Click");
         DecisionPanel.SetActive(true);
         DecisionAttackButton.SetActive(true);
-        DecisionQuitButton.SetActive(true);
+        //DecisionQuitButton.SetActive(true);
         CombatPanel.SetActive(false);
     }
 }

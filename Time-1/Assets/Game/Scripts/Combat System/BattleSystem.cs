@@ -60,13 +60,15 @@ public class BattleSystem : MonoBehaviour
         battleUI.DecisionPanel.SetActive(true);
         state = BattleState.ATTACK;
         int counter = playerActions.Count;
+
+        battleUI.dialogueText.text = "Executando...";
+        yield return new WaitForSeconds(1f);
+
         for (int i = 0; i < counter; i++)
         {
-            battleUI.dialogueText.text = "Executando...";
             bool isDead = false;
             float damageReduction = 1f;
             float enemyCurHealth = enemyUnit.curHealth;
-            yield return new WaitForSeconds(1f);
             if (enemyActions.Contains(3) && enemyUnit.currentShieldHits <= 2)
             {
                 if (enemyUnit.currentShieldHits == 0)
@@ -110,14 +112,14 @@ public class BattleSystem : MonoBehaviour
                 battleUI.enemyHUD.SetHP(enemyCurHealth, enemyUnit);
                 battleUI.SetActionsHUD(playerActions);
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.7f);
 
             if (isDead)
             {
                 state = BattleState.WON;
                 EndBattle();
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
         }
         if (enemyActions.Contains(3))
         {
@@ -187,7 +189,7 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.LOST;
                 EndBattle();
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
 
         //if (playerActions.Contains(3))
@@ -313,9 +315,9 @@ public class BattleSystem : MonoBehaviour
     void StartTurn()
     {
         float curEnergy = playerUnit.curEnergy;
-        battleUI.dialogueText.text = "Escolha uma ação:";
+        battleUI.dialogueText.text = "Só te resta uma opção: ";
         battleUI.DecisionAttackButton.SetActive(true);
-        battleUI.DecisionQuitButton.SetActive(true);
+        //battleUI.DecisionQuitButton.SetActive(true);
         battleUI.playerHUD.SetEnergy(curEnergy, playerUnit);
     }
 
@@ -325,7 +327,7 @@ public class BattleSystem : MonoBehaviour
         playerUnit.GiveEnergy(0);
         battleUI.playerHUD.SetEnergy(curEnergy, playerUnit);
         battleUI.DecisionAttackButton.SetActive(false);
-        battleUI.DecisionQuitButton.SetActive(false);
+        //battleUI.DecisionQuitButton.SetActive(false);
         battleUI.DecisionPanel.SetActive(false);
         battleUI.CombatPanel.SetActive(true);
     }
@@ -349,7 +351,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.RUN;
         battleUI.DecisionAttackButton.SetActive(false);
-        battleUI.DecisionQuitButton.SetActive(false);
+        //battleUI.DecisionQuitButton.SetActive(false);
         battleUI.dialogueText.text = "Saindo do encontro...";
         //alguma animacao
         yield return new WaitForSeconds(1.0f);

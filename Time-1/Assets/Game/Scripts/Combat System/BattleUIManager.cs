@@ -173,7 +173,7 @@ public class BattleUIManager : MonoBehaviour
     {
         if (battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
             return;
-        audioManager.Play("Run");
+        audioManager.Play("Click");
         battleSystem.StartCoroutine(battleSystem.PlayerRun());
     }
 

@@ -35,7 +35,7 @@ public class Unit : MonoBehaviour
 			print("ini vel : " + velocity);
 			maxEnergy = cBase.maxEnergy + Mathf.Floor(velocity/35);
 		}
-		maxHealth = attack + defense + 2*velocity;
+		maxHealth = attack/2 + defense + 3*velocity;
 		shieldsAvailable = 3 + Mathf.FloorToInt(defense / 175);
 		curHealth = maxHealth;
 		curEnergy = maxEnergy;

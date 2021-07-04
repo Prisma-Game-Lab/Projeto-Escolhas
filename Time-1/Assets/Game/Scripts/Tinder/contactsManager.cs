@@ -13,6 +13,7 @@ public class contactsManager : MonoBehaviour
 
     private TinderData tinderData;
     private AudioManager audioManager;
+    public GameObject settingsAndDay;
 
     void Start()
     {
@@ -87,6 +88,7 @@ public class contactsManager : MonoBehaviour
     private void openMessage(GameObject panel, Image popUp, CharacterBase character)
     {
         audioManager.Play("Click");
+        settingsAndDay.SetActive(false);
         if (popUp.IsActive())
         {
             character.popUp = false;

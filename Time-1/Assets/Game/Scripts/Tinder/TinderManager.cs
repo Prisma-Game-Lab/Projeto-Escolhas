@@ -20,6 +20,7 @@ public class TinderManager : MonoBehaviour
     private contactsManager contactManager;
     private AudioManager audioManager;
     public TextMeshProUGUI tutorial;
+    public GameObject settingsAndDay;
 
     private void Start()
     {
@@ -29,7 +30,8 @@ public class TinderManager : MonoBehaviour
         curIndex = 0;
         tinderImage.sprite = tinderData.tinderCharacters[0].tinderImage;
         tinderCharacterName_txt.text = tinderData.tinderCharacters[0].name;
-        day_txt.text = "Dia " + tinderData.curDay;
+        day_txt.text = "DIA " + tinderData.curDay;
+        settingsAndDay.SetActive(true);
         if (tinderData.tinderCharacters.Count < 8) {
             tutorial.gameObject.SetActive(false);
         }

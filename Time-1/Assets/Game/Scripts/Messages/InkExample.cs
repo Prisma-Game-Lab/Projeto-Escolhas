@@ -43,6 +43,7 @@ public class InkExample : MonoBehaviour
     public int affinityPoints;
     private AddAffinity addAffinity;
     private List<int> goodChoice = new List<int>();
+    public GameObject settingsAndDay;
 
     void OnEnable() {
         appSave = SaveSystem.GetInstance().appSave;
@@ -476,6 +477,7 @@ public class InkExample : MonoBehaviour
         SaveSystem.GetInstance().SaveState();
         audioManager.Play("Click");
         SceneManager.LoadScene("Combat_Scene");
+
     }
     
     public void OnBackButton(GameObject canvas) {
@@ -498,6 +500,7 @@ public class InkExample : MonoBehaviour
         }
         SaveSystem.GetInstance().SaveState();
         audioManager.Play("Click");
+        settingsAndDay.SetActive(true);
         canvas.gameObject.SetActive(false);
     }
 

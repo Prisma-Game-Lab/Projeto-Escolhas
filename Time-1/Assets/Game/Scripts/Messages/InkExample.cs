@@ -247,7 +247,6 @@ public class InkExample : MonoBehaviour
         scroll.enabled = false;
         clearUI();
         getNextStoryBlock();
-        List<string> tags = story.currentTags;
 
         for (int i = lastLine; i < messages.Count; i++) {
             if (messages[i].Contains("Combat")) {

@@ -7,7 +7,7 @@ using TMPro;
 public class BattleUIManager : MonoBehaviour
 {
     public List<GameObject> actionsButtons;
-    [HideInInspector]public List<GameObject> spawnedActionsButtons = new List<GameObject>();
+    [HideInInspector] public List<GameObject> spawnedActionsButtons = new List<GameObject>();
     public Transform actionsPanel;
     public Image enemyImage;
     public Image scenerioImage;
@@ -49,28 +49,6 @@ public class BattleUIManager : MonoBehaviour
             battleSystem.StartCoroutine(battleSystem.PlayerAttack());
     }
 
-    //public void OnDefenseButton()
-    //{
-    //    float curEnergy = battleSystem.playerUnit.curEnergy;
-    //    if (battleSystem.state != BattleState.PLAYERTURN)
-    //        return;
-    //    if (!battleSystem.defenseOn && battleSystem.playerUnit.TakeEnergy(3))
-    //    {
-    //        audioManager.Play("ShieldUp");
-    //        battleSystem.defenseOn = true;
-    //        playerHUD.SetShield(true);
-    //    }
-    //    else if (battleSystem.defenseOn)
-    //    {
-    //        audioManager.Play("ShieldDown");
-    //        battleSystem.defenseOn = false;
-    //        playerHUD.SetShield(false);
-    //        battleSystem.playerUnit.GiveEnergy(3);
-    //    }else
-    //        audioManager.Play("Click");
-    //    playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit);
-    //}
-   
     public void OnActionButton(int type)
     {
         float curEnergy = battleSystem.playerUnit.curEnergy;
@@ -79,7 +57,7 @@ public class BattleUIManager : MonoBehaviour
             audioManager.Play("Click");
             return;
         }
-        if(type==3 && battleSystem.playerUnit.shieldsAvailable <= 0)
+        if (type == 3 && battleSystem.playerUnit.shieldsAvailable <= 0)
         {
             audioManager.Play("Click");
             return;
@@ -123,7 +101,7 @@ public class BattleUIManager : MonoBehaviour
     }
     public void clearActionsHUD()
     {
-        if (spawnedActionsButtons.Count>0)
+        if (spawnedActionsButtons.Count > 0)
         {
             for (int i = 0; i < spawnedActionsButtons.Count; i++)
             {
@@ -140,7 +118,7 @@ public class BattleUIManager : MonoBehaviour
             GameObject actionButton = Instantiate(actionsButtons[actions[i] - 1], actionsPanel);
             int action = actions[i];
             int index = i;
-            actionButton.GetComponent<Button>().onClick.AddListener(()=>OnActionClicked(action,index));
+            actionButton.GetComponent<Button>().onClick.AddListener(() => OnActionClicked(action, index));
             spawnedActionsButtons.Add(actionButton);
             if ((actions.Count - 1) != i)
             {
@@ -149,14 +127,6 @@ public class BattleUIManager : MonoBehaviour
             }
         }
     }
-
-    //public void OnHealButton()
-    //{
-    //    if (battleSystem.state != BattleState.PLAYERTURN)
-    //        return;
-
-    //    battleSystem.StartCoroutine(battleSystem.PlayerHeal());
-    //}
 
     public void OnAttackPanelButton()
     {
@@ -184,5 +154,17 @@ public class BattleUIManager : MonoBehaviour
         DecisionAttackButton.SetActive(true);
         //DecisionQuitButton.SetActive(true);
         CombatPanel.SetActive(false);
+    }
+
+    public IEnumerator showText(string dialogue)
+    {
+        print("coco");
+        for (int i = 0; i < dialogue.Length + 1; i++)
+        {
+            print("foi");
+            string currentText = dialogue.Substring(0, i);
+            dialogueText.text = currentText;
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 }

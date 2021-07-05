@@ -1431,7 +1431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Atacar
+  m_text: Encontro
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab8bab6551b244e44bd89caba77990f5, type: 2}
   m_sharedMaterial: {fileID: -1889603038891512745, guid: ab8bab6551b244e44bd89caba77990f5, type: 2}
@@ -2151,8 +2151,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 56789962e770e474db70be4e8fe228ee, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10120,7 +10120,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fugir
+  m_text: Voltar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab8bab6551b244e44bd89caba77990f5, type: 2}
   m_sharedMaterial: {fileID: -1889603038891512745, guid: ab8bab6551b244e44bd89caba77990f5, type: 2}

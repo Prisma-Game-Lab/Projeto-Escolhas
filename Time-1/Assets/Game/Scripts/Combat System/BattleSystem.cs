@@ -211,7 +211,7 @@ public class BattleSystem : MonoBehaviour
         curTurn +=1;
         if (curTurn >= maxTurn)
         {
-            if(playerUnit.curHealth > enemyUnit.curHealth)
+            if(playerUnit.curHealth/playerUnit.maxHealth > enemyUnit.curHealth/enemyUnit.maxHealth)
             {
                 state = BattleState.WON;
             }

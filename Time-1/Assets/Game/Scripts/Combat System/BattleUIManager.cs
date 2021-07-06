@@ -14,7 +14,7 @@ public class BattleUIManager : MonoBehaviour
 
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI turnText;
-
+    public Slider attackSlider;
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
 
@@ -44,6 +44,8 @@ public class BattleUIManager : MonoBehaviour
 
     public void OnAttackButton()
     {
+        if (battleSystem.playerActions.Count == 0)
+            OnActionButton(5);
         if (battleSystem.state != BattleState.PLAYERTURN)
             return;
         if (battleSystem.playerActions.Count > 0)

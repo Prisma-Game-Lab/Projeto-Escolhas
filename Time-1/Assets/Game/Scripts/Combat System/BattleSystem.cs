@@ -61,6 +61,7 @@ public class BattleSystem : MonoBehaviour
     {
         battleUI.CombatPanel.SetActive(false);
         battleUI.DecisionPanel.SetActive(true);
+        battleUI.attackSlider.value = 0;
         state = BattleState.ATTACK;
         int counter = playerActions.Count;
 

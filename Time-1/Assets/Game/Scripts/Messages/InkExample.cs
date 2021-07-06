@@ -150,7 +150,7 @@ public class InkExample : MonoBehaviour
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
                     isSticker = true;
                 }
-                if (storedMessages[i].Contains("picture")) {
+                else if (storedMessages[i].Contains("picture")) {
                     currentInst = Instantiate(textPrefab, content.transform); 
                     int len = storedMessages[i].Substring(6).Length;
                     string path = "Images/" + storedMessages[i].Substring(6, len-1);
@@ -337,7 +337,6 @@ public class InkExample : MonoBehaviour
                     buttonClicked = false;
                 currentInst = Instantiate(textPrefab, content.transform); 
                 if (messages[i].Contains("Good")) {
-                    Debug.Log(messages[i]);
                     messages[i] = messages[i].Substring(0,6) + messages[i].Substring(10);
                 }
                 currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(7);

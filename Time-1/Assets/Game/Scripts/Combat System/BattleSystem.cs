@@ -12,6 +12,8 @@ public class BattleSystem : MonoBehaviour
     public GameObject enemyPrefab;
 
     [HideInInspector] public Unit playerUnit, enemyUnit;
+    private int curTurn; 
+    public int maxTurn;
 
     public BattleState state;
     [HideInInspector] public bool defenseOn;
@@ -27,6 +29,7 @@ public class BattleSystem : MonoBehaviour
     {
         audioManager = FindObjectOfType<AudioManager>();
         battleUI = GetComponent<BattleUIManager>();
+        curTurn = 1;
         defenseOn = false;
         state = BattleState.START;
         StartCoroutine(SetupBattle());
@@ -46,6 +49,7 @@ public class BattleSystem : MonoBehaviour
 
         battleUI.playerHUD.SetHUD(playerUnit);
         battleUI.enemyHUD.SetHUD(enemyUnit);
+        battleUI.turnText.text = "TURNO\n" + curTurn + "/" + maxTurn;
 
         yield return new WaitForSeconds(1.5f);
 
@@ -204,6 +208,20 @@ public class BattleSystem : MonoBehaviour
         }
 
         state = BattleState.PLAYERTURN;
+        curTurn +=1;
+        if (curTurn >= maxTurn)
+        {
+            if(playerUnit.curHealth > enemyUnit.curHealth)
+            {
+                state = BattleState.WON;
+            }
+            else
+            {
+                state = BattleState.LOST;
+            }
+            EndBattle();
+        }
+        battleUI.turnText.text = "TURNO\n" + curTurn + "/" + maxTurn;
         PlayerTurn();
     }
 

@@ -13,6 +13,7 @@ public class BattleUIManager : MonoBehaviour
     public Image scenerioImage;
 
     public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI turnText;
 
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;

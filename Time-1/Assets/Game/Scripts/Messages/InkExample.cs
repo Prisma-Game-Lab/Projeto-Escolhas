@@ -44,6 +44,10 @@ public class InkExample : MonoBehaviour
     private AddAffinity addAffinity;
     private List<int> goodChoice = new List<int>();
     public GameObject settingsAndDay;
+    public Image bioProfileImage;
+    public TextMeshProUGUI bioName_txt;
+    public TextMeshProUGUI bioWork_txt;
+    public TextMeshProUGUI bioDescription_txt;
 
     void OnEnable() {
         appSave = SaveSystem.GetInstance().appSave;
@@ -501,6 +505,27 @@ public class InkExample : MonoBehaviour
         audioManager.Play("Click");
         settingsAndDay.SetActive(true);
         canvas.gameObject.SetActive(false);
+    }
+
+    public void OpenBio(GameObject canvas) {
+        canvas.SetActive(true);
+        int curIndex;
+        if (this.gameObject.tag == "Elf") 
+            curIndex = 0;
+        else if (this.gameObject.tag == "Orc") 
+            curIndex = 3;
+        else if (this.gameObject.tag == "Sereia") 
+            curIndex = 2;
+        else
+            curIndex = 1;
+        bioDescription_txt.text = tinderData.allCharacters[curIndex].bio;
+        bioWork_txt.text = tinderData.allCharacters[curIndex].bioWork;
+        bioName_txt.text = tinderData.allCharacters[curIndex].name;
+        bioProfileImage.sprite = tinderData.allCharacters[curIndex].BioImage;
+    }
+
+    public void closeBio(GameObject canvas) {
+        canvas.SetActive(false);
     }
 
     void OnApplicationQuit() {

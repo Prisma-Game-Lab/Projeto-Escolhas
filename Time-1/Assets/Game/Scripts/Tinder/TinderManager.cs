@@ -54,7 +54,6 @@ public class TinderManager : MonoBehaviour
         tutorial.gameObject.SetActive(false);
         if (tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Fake)
         {
-            Debug.Log(curIndex);
             StartCoroutine(playAnimation(curIndex));
             contactManager.chatButtonPopUpImage.gameObject.SetActive(true);
             audioManager.Play("Match");

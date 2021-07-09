@@ -33,4 +33,5 @@ public class NavigationBar : MonoBehaviour
         else
             canvas.gameObject.SetActive(true);
     }
+
 }

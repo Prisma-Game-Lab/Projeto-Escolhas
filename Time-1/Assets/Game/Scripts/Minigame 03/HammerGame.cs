@@ -7,6 +7,8 @@ public class HammerGame : MonoBehaviour
 {
     public GameObject indicator;
     public GameObject bar;
+    public GameObject cima;
+    public GameObject baixo;
     public float speed;
     public float speedSquareObj;
     public Animator ropeAnim;
@@ -26,8 +28,8 @@ public class HammerGame : MonoBehaviour
         point = 0;
         totalTime = Timer.totalTime;
         timer = this.GetComponent<Timer>();
-        minPos = -1.67f;
-        maxPos =  4.70f;
+        minPos = baixo.transform.position.y;
+        maxPos =  cima.transform.position.y;
         outOfSquareBounds = true;
     }
 
@@ -86,6 +88,4 @@ public class HammerGame : MonoBehaviour
         }
         squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy - speedSquareObj*Time.deltaTime);
     }
-
-
 }

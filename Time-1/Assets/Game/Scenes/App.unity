@@ -3342,7 +3342,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: stickerStriste
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4444b1b53c81bb049bb6c77e0b2592a1, type: 3}
     volume: 0.6
     volumeVariance: 0
     pitch: 1
@@ -3406,6 +3406,33 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: stickerOtsundere
     clip: {fileID: 8300000, guid: cd7c4fdd3f2ae1b4d81318ba5b121654, type: 3}
+    volume: 0.6
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: stickerEcansada
+    clip: {fileID: 8300000, guid: 6fece221cbebc20459b6e3ce458f08d0, type: 3}
+    volume: 0.6
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: stickerEfacepalm
+    clip: {fileID: 8300000, guid: 140431197437ae84fa42793b8128af27, type: 3}
+    volume: 0.6
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: stickeindignada
+    clip: {fileID: 8300000, guid: 108985ba6c4734e4f9a992aae9a9a038, type: 3}
     volume: 0.6
     volumeVariance: 0
     pitch: 1

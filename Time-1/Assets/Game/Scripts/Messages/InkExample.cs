@@ -150,6 +150,7 @@ public class InkExample : MonoBehaviour
                     string path = "Stickers/" + storedMessages[i].Substring(6, len-1);
                     Sprite sprite = Resources.Load<Sprite>(path);
                     currentInst.GetComponent<Image>().sprite = sprite;
+                    currentInst.GetComponent<Image>().preserveAspect = true;
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
                     isSticker = true;
@@ -290,6 +291,7 @@ public class InkExample : MonoBehaviour
                     string path = "Stickers/" + messages[i].Substring(6, len-1);
                     Sprite sprite = Resources.Load<Sprite>(path);
                     currentInst.GetComponent<Image>().sprite = sprite;
+                    currentInst.GetComponent<Image>().preserveAspect = true;
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
                     currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
                     isSticker = true;

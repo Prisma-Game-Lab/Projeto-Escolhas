@@ -51,9 +51,10 @@ public class TinderManager : MonoBehaviour
     }
     public void OnYesButtonPressed()
     {
-        tutorial.gameObject.SetActive(false);
+        
         if (tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Fake)
         {
+            tutorial.gameObject.SetActive(false);
             int animNum;
             if (tinderData.tinderCharacters[curIndex].race == CharacterBase.CharacterRace.Elfa)
                 animNum = 0;

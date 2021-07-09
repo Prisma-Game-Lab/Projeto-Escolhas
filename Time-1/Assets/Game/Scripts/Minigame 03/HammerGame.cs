@@ -43,7 +43,7 @@ public class HammerGame : MonoBehaviour
         if (!Timer.timeStopped && !Pause.isPaused)
         {
             float posy = indicator.transform.position.y; ;
-            if ((posy <= minPos) || (posy >= maxPos))
+            if ((posy <= minPos+0.1) || (posy >= maxPos-0.1))
                 speed *= -1;
             indicator.transform.position = new Vector2(indicator.transform.position.x, posy - speed * Time.deltaTime);
             if (timer.timeRemaining > 10.0f && timer.timeRemaining < 20.0f)

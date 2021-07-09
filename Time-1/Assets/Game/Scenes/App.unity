@@ -9420,14 +9420,11 @@ MonoBehaviour:
   settingsAndDay: {fileID: 1596092107}
   matchAnimation:
   - {fileID: 121967291}
-  - {fileID: 121967291}
-  - {fileID: 121967291}
   - {fileID: 493176272}
-  - {fileID: 121967291}
   - {fileID: 222130753}
-  - {fileID: 121967291}
   - {fileID: 1298617138}
   whiteBackground: {fileID: 995874442}
+  animNum: 0
 --- !u!4 &794474618
 Transform:
   m_ObjectHideFlags: 0

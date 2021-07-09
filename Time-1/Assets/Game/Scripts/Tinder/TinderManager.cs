@@ -22,6 +22,9 @@ public class TinderManager : MonoBehaviour
     public TextMeshProUGUI tutorial;
     public GameObject settingsAndDay;
 
+    public List<GameObject> matchAnimation = new List<GameObject>();
+    public GameObject whiteBackground;
+
     private void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
@@ -51,6 +54,8 @@ public class TinderManager : MonoBehaviour
         tutorial.gameObject.SetActive(false);
         if (tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Fake)
         {
+            Debug.Log(curIndex);
+            StartCoroutine(playAnimation(curIndex));
             contactManager.chatButtonPopUpImage.gameObject.SetActive(true);
             audioManager.Play("Match");
             contactManager.createContact(tinderData.tinderCharacters[curIndex]);
@@ -73,4 +78,14 @@ public class TinderManager : MonoBehaviour
         bioName_txt.text = tinderData.tinderCharacters[curIndex].name;
         bioProfileImage.sprite = tinderData.tinderCharacters[curIndex].BioImage;
     }
+
+    private IEnumerator playAnimation(int index) {
+        whiteBackground.SetActive(true);
+        matchAnimation[index-1].SetActive(true);
+        matchAnimation[index-1].GetComponent<Animator>().SetTrigger("");
+        yield return new WaitForSeconds(2.0f);
+        whiteBackground.SetActive(false);
+        matchAnimation[index-1].SetActive(false);
+    }
+
 }

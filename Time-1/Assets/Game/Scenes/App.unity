@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3296,8 +3296,44 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: DrawSorted
-    clip: {fileID: 8300000, guid: 325112e2cc8f2784c95e615a24cf1927, type: 3}
+  - name: stickerScansada
+    clip: {fileID: 8300000, guid: b09ab65e71521ad45aac2953c804373c, type: 3}
+    volume: 0.6
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: stickerSfeliz
+    clip: {fileID: 8300000, guid: 29639c51981244a41b2ac3e4a94f8b86, type: 3}
+    volume: 0.6
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: stickerSirritada
+    clip: {fileID: 8300000, guid: 509737f2d5707284a828f2ef10cdb75f, type: 3}
+    volume: 0.6
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: stickerSshyshyshy
+    clip: {fileID: 8300000, guid: 2fe3baa83b57edc4c87b66fbbcf7c8d4, type: 3}
+    volume: 0.6
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: stickerSnervosa
+    clip: {fileID: 8300000, guid: 9e3ccbd99520775479fbf422b34c97dd, type: 3}
     volume: 0.6
     volumeVariance: 0
     pitch: 1

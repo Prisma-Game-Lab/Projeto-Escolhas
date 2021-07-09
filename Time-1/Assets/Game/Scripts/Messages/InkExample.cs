@@ -286,6 +286,7 @@ public class InkExample : MonoBehaviour
                     yield return new WaitForSeconds(1.0f);
                     currentInst = Instantiate(textPrefab, content.transform); 
                     int len = messages[i].Substring(6).Length;
+                    audioManager.Play(messages[i].Substring(6, len-1));
                     string path = "Stickers/" + messages[i].Substring(6, len-1);
                     Sprite sprite = Resources.Load<Sprite>(path);
                     currentInst.GetComponent<Image>().sprite = sprite;

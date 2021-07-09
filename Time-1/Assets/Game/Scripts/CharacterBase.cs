@@ -17,10 +17,10 @@ public class CharacterBase : ScriptableObject
     public Sprite combatImage;
     public Sprite combatWhiteImage;
     public Sprite scenerio;
-    public int maxHealth;
-    public int attack;
-    public int defense;
-    public int velocity;
+    //public int maxHealth;
+    public float attack;
+    public float defense;
+    public float velocity;
     public int maxEnergy;
     [HideInInspector]
     public bool popUp;
@@ -40,11 +40,11 @@ public class CharacterBase : ScriptableObject
         get { return ChatImage; }
     }
 
-    public int Strength {
+    public float Strength {
         get { return attack; }
     }
 
-    public int Defense {
+    public float Defense {
         get { return defense; }
     }
     

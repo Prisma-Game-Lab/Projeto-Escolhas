@@ -237,7 +237,7 @@ public class SaveSystem : MonoBehaviour
         playerStats.defense = player.defense;
         playerStats.velocity = player.velocity;
         playerStats.maxEnergy = player.maxEnergy;
-        playerStats.maxHealth = player.maxHealth;
+        //playerStats.maxHealth = player.maxHealth;
         playerStats.availableStatsPoints = 100;
 
         SceneManager.LoadScene("MainMenu_Scene");

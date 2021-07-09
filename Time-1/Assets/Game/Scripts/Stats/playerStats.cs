@@ -16,7 +16,7 @@ public class playerStats : MonoBehaviour
         defense = playerBase.defense;
         velocity = playerBase.velocity;
         maxEnergy = playerBase.maxEnergy;
-        maxHealth = playerBase.maxHealth;
+        //maxHealth = playerBase.maxHealth;
     }
 
     public void raiseStats(int type, float value)

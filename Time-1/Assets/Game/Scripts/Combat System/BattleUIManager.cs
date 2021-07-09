@@ -12,6 +12,10 @@ public class BattleUIManager : MonoBehaviour
     public Image enemyImage;
     public Image scenerioImage;
 
+    public Image sliderImage;
+    public Sprite sliderRestSprite;
+    public Sprite sliderPunchSprite;
+
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI turnText;
     public Slider attackSlider;
@@ -21,6 +25,7 @@ public class BattleUIManager : MonoBehaviour
     public GameObject DecisionPanel;
     public GameObject DecisionAttackButton;
     public GameObject DecisionQuitButton;
+    public TextMeshProUGUI DecisionQuitButton_text;
     public GameObject CombatPanel;
 
     public GameObject wonDatePanel;
@@ -38,7 +43,8 @@ public class BattleUIManager : MonoBehaviour
         lostDatePanel.SetActive(false);
         CombatPanel.SetActive(false);
         DecisionPanel.SetActive(true);
-        DecisionAttackButton.SetActive(true);
+        actionsPanel.gameObject.SetActive(false);
+        //DecisionAttackButton.SetActive(true);
         //DecisionQuitButton.SetActive(true);
     }
 
@@ -65,7 +71,7 @@ public class BattleUIManager : MonoBehaviour
             audioManager.Play("Click");
             return;
         }
-        if (!battleSystem.playerActions.Contains(3) && !battleSystem.playerActions.Contains(5) && battleSystem.playerUnit.TakeEnergy(type))
+        if (!battleSystem.playerActions.Contains(3) && battleSystem.playerUnit.TakeEnergy(type))
         {
             if (type == 3)
             {
@@ -80,6 +86,11 @@ public class BattleUIManager : MonoBehaviour
                 audioManager.Play("Match");
             battleSystem.playerActions.Add(type);
             SetActionsHUD(battleSystem.playerActions);
+        }
+        if (battleSystem.playerActions.Contains(5))
+        {
+            sliderImage.sprite = sliderPunchSprite;
+            OnActionClicked(5, 0);
         }
         else
             audioManager.Play("Click");
@@ -99,6 +110,11 @@ public class BattleUIManager : MonoBehaviour
         }
         battleSystem.playerActions.RemoveAt(index);
 
+        if (battleSystem.playerActions.Count == 0)
+        {
+            sliderImage.sprite = sliderRestSprite;
+            battleSystem.playerActions.Add(5);
+        }
         SetActionsHUD(battleSystem.playerActions);
         playerHUD.SetEnergy(curEnergy, battleSystem.playerUnit);
     }
@@ -136,8 +152,9 @@ public class BattleUIManager : MonoBehaviour
         if (battleSystem.state != BattleState.PLAYERTURN)
             return;
         audioManager.Play("Click");
+        actionsPanel.gameObject.SetActive(true);
         DecisionAttackButton.SetActive(false);
-        //DecisionQuitButton.SetActive(false);
+        DecisionQuitButton.SetActive(false);
         DecisionPanel.SetActive(false);
         CombatPanel.SetActive(true);
     }
@@ -161,10 +178,8 @@ public class BattleUIManager : MonoBehaviour
 
     public IEnumerator showText(string dialogue)
     {
-        print("coco");
         for (int i = 0; i < dialogue.Length + 1; i++)
         {
-            print("foi");
             string currentText = dialogue.Substring(0, i);
             dialogueText.text = currentText;
             yield return new WaitForSeconds(0.01f);

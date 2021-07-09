@@ -20,7 +20,6 @@ public class BattleSystem : MonoBehaviour
 
     private BattleUIManager battleUI;
     private AudioManager audioManager;
-    private IEnumerator coroutine;
 
     [HideInInspector] public List<int> playerActions;
     [HideInInspector] public List<int> enemyActions;
@@ -44,13 +43,14 @@ public class BattleSystem : MonoBehaviour
         enemyUnit = enemyGO.GetComponent<Unit>();
         battleUI.scenerioImage.sprite = enemyUnit.cBase.scenerio;
         battleUI.enemyImage.sprite = enemyUnit.cBase.combatImage;
-        
+
         battleUI.StartCoroutine(battleUI.showText(enemyUnit.cBase.name + " se aproxima..."));
 
         battleUI.playerHUD.SetHUD(playerUnit);
         battleUI.enemyHUD.SetHUD(enemyUnit);
         battleUI.turnText.text = "TURNO\n" + curTurn + "/" + maxTurn;
-
+        battleUI.DecisionAttackButton.SetActive(false);
+        battleUI.DecisionQuitButton.SetActive(false);
         yield return new WaitForSeconds(1.5f);
 
         state = BattleState.PLAYERTURN;
@@ -228,6 +228,7 @@ public class BattleSystem : MonoBehaviour
 
     void EndBattle()
     {
+        battleUI.DecisionQuitButton_text.text = "Sair";
         StopAllCoroutines();
         AddAffinity addAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<AddAffinity>();
         string tag = addAffinity.CharacterTag(enemyUnit.cBase.name);
@@ -320,19 +321,25 @@ public class BattleSystem : MonoBehaviour
     void StartTurn()
     {
         float curEnergy = playerUnit.curEnergy;
-        battleUI.StartCoroutine(battleUI.showText("Só te resta uma opção: "));
+        battleUI.StartCoroutine(battleUI.showText("Deseja iniciar encontro? "));
         battleUI.DecisionAttackButton.SetActive(true);
-        //battleUI.DecisionQuitButton.SetActive(true);
+        battleUI.DecisionQuitButton.SetActive(true);
+        battleUI.sliderImage.sprite = battleUI.sliderRestSprite;
         battleUI.playerHUD.SetEnergy(curEnergy, playerUnit);
+        playerActions.Add(5);
+        battleUI.SetActionsHUD(playerActions);
     }
 
     void PlayerTurn()
     {
         float curEnergy = playerUnit.curEnergy;
         playerUnit.GiveEnergy(0);
+        battleUI.sliderImage.sprite = battleUI.sliderRestSprite;
+        playerActions.Add(5);
+        battleUI.SetActionsHUD(playerActions);
         battleUI.playerHUD.SetEnergy(curEnergy, playerUnit);
         battleUI.DecisionAttackButton.SetActive(false);
-        //battleUI.DecisionQuitButton.SetActive(false);
+        battleUI.DecisionQuitButton.SetActive(false);
         battleUI.DecisionPanel.SetActive(false);
         battleUI.CombatPanel.SetActive(true);
     }
@@ -341,10 +348,10 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.RUN;
         battleUI.DecisionAttackButton.SetActive(false);
-        //battleUI.DecisionQuitButton.SetActive(false);
+        battleUI.DecisionQuitButton.SetActive(false);
         battleUI.StartCoroutine(battleUI.showText("Saindo do encontro..."));
         //alguma animacao
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         //sai do combate
         SceneManager.LoadScene("App");
     }

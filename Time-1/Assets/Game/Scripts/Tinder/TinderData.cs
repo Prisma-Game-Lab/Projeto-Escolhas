@@ -14,8 +14,10 @@ public class TinderData : MonoBehaviour
 
     private playerStats playerStats;
 
+    public int enemyStatsPerDay;
     public int curDay;
-    //[HideInInspector]
+
+    [HideInInspector]
     public int elfaDay, humanoDay, orcDay, sereiaDay, carneiraDay;
     [HideInInspector] public int matchesNumber;
     private AppSave appSave;

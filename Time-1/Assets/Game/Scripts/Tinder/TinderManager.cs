@@ -22,7 +22,7 @@ public class TinderManager : MonoBehaviour
     public TextMeshProUGUI tutorial;
     public GameObject settingsAndDay;
 
-    public List<GameObject> matchAnimation = new List<GameObject>();
+    public GameObject matchAnimation;
     public GameObject whiteBackground;
 
     private void Start()
@@ -55,16 +55,7 @@ public class TinderManager : MonoBehaviour
         if (tinderData.tinderCharacters[curIndex].race != CharacterBase.CharacterRace.Fake)
         {
             tutorial.gameObject.SetActive(false);
-            int animNum;
-            if (tinderData.tinderCharacters[curIndex].race == CharacterBase.CharacterRace.Elfa)
-                animNum = 0;
-            else if (tinderData.tinderCharacters[curIndex].race == CharacterBase.CharacterRace.Humano)
-                animNum = 1;
-            else if (tinderData.tinderCharacters[curIndex].race == CharacterBase.CharacterRace.Sereia)
-                animNum = 2;
-            else
-                animNum = 3;
-            StartCoroutine(playAnimation(animNum));
+            StartCoroutine(playAnimation());
             contactManager.chatButtonPopUpImage.gameObject.SetActive(true);
             audioManager.Play("Match");
             contactManager.createContact(tinderData.tinderCharacters[curIndex]);
@@ -88,12 +79,12 @@ public class TinderManager : MonoBehaviour
         bioProfileImage.sprite = tinderData.tinderCharacters[curIndex].BioImage;
     }
 
-    private IEnumerator playAnimation(int index) {
+    private IEnumerator playAnimation() {
         whiteBackground.SetActive(true);
-        matchAnimation[index].SetActive(true);
+        matchAnimation.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         whiteBackground.SetActive(false);
-        matchAnimation[index].SetActive(false);
+        matchAnimation.SetActive(false);
     }
 
 }

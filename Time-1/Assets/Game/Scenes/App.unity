@@ -3345,6 +3345,15 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: DrawSorted
+    clip: {fileID: 8300000, guid: 325112e2cc8f2784c95e615a24cf1927, type: 3}
+    volume: 0.6
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &264335473
 GameObject:
   m_ObjectHideFlags: 0

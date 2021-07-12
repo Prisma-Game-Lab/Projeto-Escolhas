@@ -3012,6 +3012,7 @@ GameObject:
   - component: {fileID: 254342081}
   - component: {fileID: 254342083}
   - component: {fileID: 254342084}
+  - component: {fileID: 254342085}
   m_Layer: 0
   m_Name: PersistentData
   m_TagString: persistentData
@@ -3109,7 +3110,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 1
-    mixerGroup: {fileID: 0}
+    mixerGroup: {fileID: -640244133603842484, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
     source: {fileID: 0}
   - name: ShieldUp
     clip: {fileID: 8300000, guid: 878d72478785ed84b8aaa40ddc130ab5, type: 3}
@@ -3354,6 +3355,20 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+--- !u!114 &254342085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254342080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df4678275e9768419cd11bf673dfab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
+  musicVolume: {fileID: 2070916154}
 --- !u!1 &264335473
 GameObject:
   m_ObjectHideFlags: 0
@@ -20232,13 +20247,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1443609382}
   m_HandleRect: {fileID: 1149141825}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 254342085}
+        m_TargetAssemblyTypeName: SoundVolume, Assembly-CSharp
+        m_MethodName: SetSoundtrackVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2076145091
 GameObject:
   m_ObjectHideFlags: 0

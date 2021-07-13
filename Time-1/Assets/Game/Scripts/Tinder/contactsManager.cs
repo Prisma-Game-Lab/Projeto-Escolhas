@@ -49,8 +49,10 @@ public class contactsManager : MonoBehaviour
         Button button = contact.transform.GetChild(0).GetComponent<Button>();
         button.onClick.AddListener(() => openMessage(characterPanel, popUp, character));
         foreach (CharacterBase blocked in tinderData.blockedCharacters) {
-            if (character.name == blocked.name)
+            if (character.name == blocked.name) {
+                contact.transform.GetChild(0).GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = "BLOQUEADO";
                 button.interactable = false;
+            }
         }
         if (!tinderData.curContacts.Contains(character))
         {
@@ -59,7 +61,6 @@ public class contactsManager : MonoBehaviour
         }
         else if (character.popUp)
         {
-            Debug.Log(character.name);
             chatButtonPopUpImage.gameObject.SetActive(true);
             popUp.enabled = true;
         }
@@ -115,6 +116,7 @@ public class contactsManager : MonoBehaviour
         for (int i = 1; i < childCount; i++) {
             if (messagePanel.transform.GetChild(i).gameObject.tag == tag) {
                 messagePanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = false;
+                messagePanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "BLOQUEADO";
                 CharacterBase curContact = tinderData.curContacts[i-1];
                 tinderData.blockedCharacters.Add(curContact);
                 break;

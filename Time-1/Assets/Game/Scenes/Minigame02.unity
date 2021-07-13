@@ -2381,6 +2381,7 @@ MonoBehaviour:
   performacePercentage: 0
   statType: 2
   raise: 50
+  multiplier: 2
 --- !u!114 &1875424740
 MonoBehaviour:
   m_ObjectHideFlags: 0

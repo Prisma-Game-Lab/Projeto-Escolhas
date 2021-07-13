@@ -17,6 +17,9 @@ public class RaisePlayerStats : MonoBehaviour
     public int statType;
     public int raise;
 
+    [Tooltip("Modificador do minigame 2")]
+    public float multiplier;
+
     private AudioManager audioManager;
 
     void Start()
@@ -67,8 +70,9 @@ public class RaisePlayerStats : MonoBehaviour
     private float minigame02Performance()
     {
         Spawner spawner = GetComponent<Spawner>();
-        float ballImpacts = spawner.ballImpacts * 13;
+        float ballImpacts = spawner.ballImpacts * multiplier;
         float totalBallsSpawned = spawner.totalBallsSpawned;
+        Debug.Log(totalBallsSpawned);
         if ((1 - (ballImpacts / totalBallsSpawned)) < 0f)
             return 0f;
         return 1-(ballImpacts / totalBallsSpawned);

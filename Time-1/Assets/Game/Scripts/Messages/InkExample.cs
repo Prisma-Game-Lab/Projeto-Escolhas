@@ -433,9 +433,10 @@ public class InkExample : MonoBehaviour
         buttonClicked = true;
         audioManager.Play("Click");
         foreach (int val in goodChoice) {
-            if (val == choice.index)
+            if (val == choice.index) {
                 addAffinity.AddPoints(this.gameObject.tag, 1);
                 break;
+            }
         }
         story.ChooseChoiceIndex(choice.index);
         StartCoroutine(refresh());
@@ -466,9 +467,6 @@ public class InkExample : MonoBehaviour
     }
 
     public void GoToCombat() {
-        for (int i = storedMessages.Count; i < messages.Count; i++) {
-            storedMessages.Add(messages[i]);
-        }
         if (appSave.elfaEndDay)
             appSave.elfaJson = "";
         if (appSave.orcEndDay) 
@@ -477,7 +475,7 @@ public class InkExample : MonoBehaviour
             appSave.sereiaJson = "";
         if (appSave.humanoEndDay) 
             appSave.humanoJson = "";
-        for (int i = storedMessages.Count; i < messages.Count; i++) {
+        for (int i = 0; i < messages.Count; i++) {
             storedMessages.Add(messages[i]);
         }
         SaveSystem.GetInstance().SaveState();

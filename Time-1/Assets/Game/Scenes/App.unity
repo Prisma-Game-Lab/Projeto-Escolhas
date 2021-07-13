@@ -3258,7 +3258,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: stickerOaff
     clip: {fileID: 8300000, guid: a89eeb09dafc36b41ac60bf778280da2, type: 3}
-    volume: 0.6
+    volume: 0.724
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -3267,7 +3267,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: stickerOconstrangido
     clip: {fileID: 8300000, guid: b29d15483be9920408f6c10f51d03952, type: 3}
-    volume: 0.6
+    volume: 0.737
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -3276,7 +3276,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: stickerOmusculos
     clip: {fileID: 0}
-    volume: 0.6
+    volume: 0.763
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -3285,7 +3285,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: stickerOpiscadinha
     clip: {fileID: 8300000, guid: 3395c5af4e26f524188256c34c50083e, type: 3}
-    volume: 0.6
+    volume: 0.741
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -3294,7 +3294,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: stickerOprovocador
     clip: {fileID: 8300000, guid: 007166d7d72ac9f4ab757872009aeee2, type: 3}
-    volume: 0.6
+    volume: 0.763
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -3303,7 +3303,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: stickerOtriste
     clip: {fileID: 8300000, guid: cb572db6e737b7247ad500e52adbc713, type: 3}
-    volume: 0.6
+    volume: 0.758
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -3312,7 +3312,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: stickerOtsundere
     clip: {fileID: 8300000, guid: cd7c4fdd3f2ae1b4d81318ba5b121654, type: 3}
-    volume: 0.6
+    volume: 0.746
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -3337,7 +3337,7 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: stickeindignada
+  - name: stickerEindignada
     clip: {fileID: 8300000, guid: 108985ba6c4734e4f9a992aae9a9a038, type: 3}
     volume: 0.6
     volumeVariance: 0

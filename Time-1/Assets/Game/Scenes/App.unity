@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1392,7 +1392,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 254342085}
+      - m_Target: {fileID: 794474625}
         m_TargetAssemblyTypeName: SoundVolume, Assembly-CSharp
         m_MethodName: SetMusictrackVolume
         m_Mode: 1
@@ -3159,7 +3159,6 @@ GameObject:
   - component: {fileID: 254342081}
   - component: {fileID: 254342083}
   - component: {fileID: 254342084}
-  - component: {fileID: 254342085}
   m_Layer: 0
   m_Name: PersistentData
   m_TagString: persistentData
@@ -3502,22 +3501,6 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: -4479530366512811753, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
     source: {fileID: 0}
---- !u!114 &254342085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254342080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df4678275e9768419cd11bf673dfab0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
-  musicVolume: {fileID: 95748314}
-  overallVolume: {fileID: 2070916154}
-  sfxVolume: {fileID: 359280281}
 --- !u!1 &264335473
 GameObject:
   m_ObjectHideFlags: 0
@@ -5348,7 +5331,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 254342085}
+      - m_Target: {fileID: 794474625}
         m_TargetAssemblyTypeName: SoundVolume, Assembly-CSharp
         m_MethodName: SetsfxtrackVolume
         m_Mode: 1
@@ -10057,6 +10040,7 @@ GameObject:
   - component: {fileID: 794474622}
   - component: {fileID: 794474624}
   - component: {fileID: 794474623}
+  - component: {fileID: 794474625}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -10273,6 +10257,22 @@ MonoBehaviour:
   battleLostAffinity: 16
   battleWonAffinity: 18
   messageAffinity: 4
+--- !u!114 &794474625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794474616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df4678275e9768419cd11bf673dfab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
+  musicVolume: {fileID: 95748314}
+  overallVolume: {fileID: 2070916154}
+  sfxVolume: {fileID: 359280281}
 --- !u!1 &796869986
 GameObject:
   m_ObjectHideFlags: 0
@@ -22380,7 +22380,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 254342085}
+      - m_Target: {fileID: 794474625}
         m_TargetAssemblyTypeName: SoundVolume, Assembly-CSharp
         m_MethodName: SetoveralltrackVolume
         m_Mode: 1

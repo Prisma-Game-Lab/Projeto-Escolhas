@@ -18,6 +18,7 @@ public class BattleUIManager : MonoBehaviour
 
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI turnText;
+    public TextMeshProUGUI playerShieldsText;
     public Slider attackSlider;
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
@@ -33,6 +34,7 @@ public class BattleUIManager : MonoBehaviour
 
     private BattleSystem battleSystem;
     private AudioManager audioManager;
+    private object battlesystem;
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +77,7 @@ public class BattleUIManager : MonoBehaviour
         {
             if (type == 3)
             {
+                playerShieldsText.text = "Usos: " + (battleSystem.playerUnit.shieldsAvailable - 1);
                 audioManager.Play("ShieldUp");
             }
             else if (type == 5 && battleSystem.playerActions.Count > 0)
@@ -100,8 +103,11 @@ public class BattleUIManager : MonoBehaviour
     {
         float curEnergy = battleSystem.playerUnit.curEnergy;
         if (type == 3)
+        {
             audioManager.Play("ShieldDown");
-        else
+            playerShieldsText.text = "Usos: " + battleSystem.playerUnit.shieldsAvailable;
+        }
+        else if (!battleSystem.playerActions.Contains(5))
             audioManager.Play("Reject");
 
         if (type != 5)

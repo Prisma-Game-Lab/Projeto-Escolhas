@@ -23,17 +23,17 @@ public class SoundVolume : MonoBehaviour
     public void SetMusictrackVolume()
     {
         PlayerPrefs.SetFloat("musicVol", musicVolume.value);
-        mixer.SetFloat("musicVol", Mathf.Log10(0.999f - musicVolume.value) * 25);
+        mixer.SetFloat("musicVol", Mathf.Log10(0.9999f - musicVolume.value) * 25);
     }
     public void SetoveralltrackVolume()
     {
         PlayerPrefs.SetFloat("overallVol", overallVolume.value);
-        mixer.SetFloat("overallVol", Mathf.Log10(0.999f - overallVolume.value) * 25);
+        mixer.SetFloat("overallVol", Mathf.Log10(0.9999f - overallVolume.value) * 25);
     }
     public void SetsfxtrackVolume()
     {
         PlayerPrefs.SetFloat("sfxVol", sfxVolume.value);
-        mixer.SetFloat("sfxVol", Mathf.Log10(0.999f - sfxVolume.value) * 25);
+        mixer.SetFloat("sfxVol", Mathf.Log10(0.9999f - sfxVolume.value) * 25);
     }
 
 }

@@ -9,6 +9,7 @@ public class FinishedMinigameUI : MonoBehaviour
     public GameObject finishedMinigameUI;
     public Image progressBar;
     public TextMeshProUGUI percentage_txt;
+    public TextMeshProUGUI statsGained_txt;
     public TextMeshProUGUI comments_txt;
 
     private RaisePlayerStats stats;
@@ -98,7 +99,13 @@ public class FinishedMinigameUI : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float value = Mathf.Lerp(0f, performanceValue, Mathf.SmoothStep(0.0f, 1.0f, (elapsedTime / waitTime)));
-            //percentage_txt.text = "" + (int)(value * 100) + "%";
+            if (stats.minigame == RaisePlayerStats.MinigameType.Minigame01)
+                statsGained_txt.text = "Ataque + " + (int)(value * stats.raise);
+            else if (stats.minigame == RaisePlayerStats.MinigameType.Minigame02)
+                statsGained_txt.text = "Defesa + " + (int)(value * stats.raise);
+            else
+                statsGained_txt.text = "Velocidade + " + (int)(value * stats.raise);
+
             progressBar.fillAmount = value;
             yield return null;
         }

@@ -85,7 +85,9 @@ public class Draw : MonoBehaviour
     }
 
     public void eraseDrawing(int pos) {
-        img[pos].GetComponent<Image>().sprite = null;
+        string path = "Art/botão pequeno";
+        Sprite sprite = Resources.Load<Sprite>(path);
+        img[pos].GetComponent<Image>().sprite = sprite;
         _storeString[pos][0] = "0";
         _storeString[pos][1] = "0";
         aux.Add(pos);

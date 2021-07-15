@@ -15,14 +15,16 @@ MonoBehaviour:
   name: Player
   bio: 
   bioWork: 
-  profileChatImage: {fileID: 0}
+  MensagemImage: {fileID: 0}
+  ChatImage: {fileID: 0}
+  BioImage: {fileID: 0}
   tinderImage: {fileID: 0}
   combatImage: {fileID: 0}
   combatWhiteImage: {fileID: 0}
-  maxHealth: 30
-  attack: 15
-  defense: 15
-  velocity: 10
+  scenerio: {fileID: 0}
+  attack: 30
+  defense: 30
+  velocity: 30
   maxEnergy: 10
   popUp: 0
   race: 0

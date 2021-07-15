@@ -25,19 +25,25 @@ public class TinderManager : MonoBehaviour
     public GameObject matchAnimation;
     public GameObject whiteBackground;
 
+    public GameObject tinderTutorial;
+
     private void Start()
     {
+        GameObject persistentData = GameObject.FindGameObjectWithTag("persistentData");
         audioManager = FindObjectOfType<AudioManager>();
-        tinderData = GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
+        tinderData = persistentData.GetComponent<TinderData>();
         contactManager = GetComponent<contactsManager>();
         curIndex = 0;
         tinderImage.sprite = tinderData.tinderCharacters[0].tinderImage;
         tinderCharacterName_txt.text = tinderData.tinderCharacters[0].name;
         day_txt.text = "DIA " + tinderData.curDay;
         settingsAndDay.SetActive(true);
-        if (tinderData.tinderCharacters.Count < 8) {
+        if (tinderData.tinderCharacters.Count < 8)
+        {
             tutorial.gameObject.SetActive(false);
         }
+        if (persistentData.GetComponent<Tutorial>().tutorialOn)
+            tinderTutorial.SetActive(true);
     }
 
     public void OnNoButtonPressed()
@@ -56,19 +62,12 @@ public class TinderManager : MonoBehaviour
         {
             tutorial.gameObject.SetActive(false);
             StartCoroutine(playAnimation());
-            contactManager.chatButtonPopUpImage.gameObject.SetActive(true);
             audioManager.Play("Match");
             contactManager.createContact(tinderData.tinderCharacters[curIndex]);
-            tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
-            if(curIndex>=tinderData.tinderCharacters.Count)
-                curIndex = 0;
-            tinderImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;
-            tinderCharacterName_txt.text = tinderData.tinderCharacters[curIndex].name;
-            tinderData.matchesNumber += 1;
+            StartCoroutine(nextTinderCharacter());
         }
         else
             OnNoButtonPressed();
-
     }
     public void OnBioButtonPressed()
     {
@@ -77,6 +76,18 @@ public class TinderManager : MonoBehaviour
         bioWork_txt.text = tinderData.tinderCharacters[curIndex].bioWork;
         bioName_txt.text = tinderData.tinderCharacters[curIndex].name;
         bioProfileImage.sprite = tinderData.tinderCharacters[curIndex].BioImage;
+    }
+
+    private IEnumerator nextTinderCharacter()
+    {
+        yield return new WaitForSeconds(1.5f);
+        contactManager.chatButtonPopUpImage.gameObject.SetActive(true);
+        tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
+        if (curIndex >= tinderData.tinderCharacters.Count)
+            curIndex = 0;
+        tinderImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;
+        tinderCharacterName_txt.text = tinderData.tinderCharacters[curIndex].name;
+        tinderData.matchesNumber += 1;
     }
 
     private IEnumerator playAnimation() {

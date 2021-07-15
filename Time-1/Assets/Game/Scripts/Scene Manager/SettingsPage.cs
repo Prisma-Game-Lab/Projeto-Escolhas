@@ -38,6 +38,7 @@ public class SettingsPage : MonoBehaviour
     public void NewGame() {
         SaveSystem.GetInstance().NewGame();
         SaveSystem.DeleteSaveFile();
+        Destroy(GameObject.FindGameObjectWithTag("persistentData"));
     }
 
 }

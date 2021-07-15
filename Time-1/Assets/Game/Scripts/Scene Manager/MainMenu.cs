@@ -13,9 +13,23 @@ public class MainMenu : MonoBehaviour
         audioManager = GetComponent<AudioManager>();
     }
 
-    public void GoToApp() {
+    public void GoToApp()
+    {
         audioManager.Play("Click");
         SceneManager.LoadScene("App");
+    }
+
+    public void TutorialOn(GameObject canvas)
+    {
+        audioManager.Play("Click");
+        canvas.SetActive(true);
+    }
+
+    public void StartAppTutorial(bool tutorialOn)
+    {
+        audioManager.Play("Click");
+        GameObject.FindGameObjectWithTag("tutorialOnOff").GetComponent<tutorialOnOff>().tutorialOn = tutorialOn;
+        SceneManager.LoadSceneAsync("App");
     }
 
     public void GoToCredits(GameObject canvas) {

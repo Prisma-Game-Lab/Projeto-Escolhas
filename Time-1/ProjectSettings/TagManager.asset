@@ -15,6 +15,7 @@ TagManager:
   - GameManager
   - BattleManager
   - GreenSquare
+  - tutorialOnOff
   layers:
   - Default
   - TransparentFX

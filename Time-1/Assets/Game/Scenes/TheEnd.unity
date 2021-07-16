@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1227,6 +1227,7 @@ GameObject:
   - component: {fileID: 1961198164}
   - component: {fileID: 1961198165}
   - component: {fileID: 1961198166}
+  - component: {fileID: 1961198167}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1283,3 +1284,115 @@ MonoBehaviour:
   - {fileID: 1168793185}
   - {fileID: 732515670}
   - {fileID: 26650549}
+--- !u!114 &1961198167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961198163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295aee180be231a4ca330292994c3e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: elfa_1
+    clip: {fileID: 8300000, guid: 44f6271177ae3044a8de2fe8af460741, type: 3}
+    volume: 0.506
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: elfa_2
+    clip: {fileID: 8300000, guid: 9a242ce74d9614645969e6d33dc061fd, type: 3}
+    volume: 0.467
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: elfa_3
+    clip: {fileID: 8300000, guid: 2b93eda4f7898684fb26ee662978b05b, type: 3}
+    volume: 0.407
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: elfa_4
+    clip: {fileID: 8300000, guid: 445d62e7b1eef734c97fe39e2f74d689, type: 3}
+    volume: 0.48
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: elfa_5
+    clip: {fileID: 8300000, guid: 030d724907347124dbf7bdba7625f5be, type: 3}
+    volume: 0.447
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: elfa_6
+    clip: {fileID: 8300000, guid: 77ae231a808760f46b3598cbd1ddb5b2, type: 3}
+    volume: 0.48
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: elfa_7
+    clip: {fileID: 8300000, guid: fe67b64d36e738b4583cd65734038eba, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: elfa_8
+    clip: {fileID: 8300000, guid: d07ea3534488e8f46b1c54b1f6002e33, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: elfa_9
+    clip: {fileID: 8300000, guid: cd9d95fc1f893d84e9c9f840accc9053, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: elfa_10
+    clip: {fileID: 8300000, guid: dd135ccf4155d004995431ccbedd562c, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: elfa_11
+    clip: {fileID: 8300000, guid: 708644797325ba24d9c525c6dc74455f, type: 3}
+    volume: 0
+    volumeVariance: 0
+    pitch: 0
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}

@@ -260,7 +260,7 @@ public class BattleSystem : MonoBehaviour
             addAffinity.AddPoints(tag, 3);
         }
 
-        if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 6) {
+        if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 2) {
             CheckAffinity checkAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<CheckAffinity>();
             if(checkAffinity.CheckIfHasAffinity(enemyUnit.cBase.name)) {
                 checkAffinity.ListNumber(enemyUnit.cBase.name);

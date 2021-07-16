@@ -18,7 +18,4 @@ public class Tutorial : MonoBehaviour
         canvas.gameObject.SetActive(true);
     }
 
-    public void CloseTutorial(GameObject canvas) {
-        canvas.gameObject.SetActive(false);
-    }
 }

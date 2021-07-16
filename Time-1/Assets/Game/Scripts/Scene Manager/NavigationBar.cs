@@ -25,6 +25,11 @@ public class NavigationBar : MonoBehaviour
 
     }
 
+    public void CloseCanvas(GameObject canvas)
+    {
+        canvas.gameObject.SetActive(false);
+    }
+
     public void openCloseSettings(GameObject canvas)
     {
         audioManager.Play("Click");

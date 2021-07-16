@@ -17,7 +17,7 @@ public class LoveConfession : MonoBehaviour
     private string path;
 
     void Start() {
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = GetComponent<AudioManager>();
         appSave = SaveSystem.GetInstance().appSave;
         int c;
         c = appSave.love;

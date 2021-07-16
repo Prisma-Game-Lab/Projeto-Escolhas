@@ -13,6 +13,7 @@ public class TinderData : MonoBehaviour
     public CharacterBase combatCharacter;
 
     private playerStats playerStats;
+    private AppSave appSave;
 
     public int enemyStatsPerDay;
     public int curDay;
@@ -20,7 +21,6 @@ public class TinderData : MonoBehaviour
     [HideInInspector]
     public int elfaDay, humanoDay, orcDay, sereiaDay, carneiraDay;
     [HideInInspector] public int matchesNumber;
-    private AppSave appSave;
 
     void Awake()
     {
@@ -30,16 +30,35 @@ public class TinderData : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
+        appSave = SaveSystem.GetInstance().appSave;
+        if (appSave.matchesNumber > 0)
+        {
+            tinderCharacters.Clear();
+            foreach (CharacterBase character in appSave.tinderCharacters)
+            {
+                tinderCharacters.Add(character);
+            }
+            curContacts.Clear();
+            foreach (CharacterBase contact in appSave.curContacts)
+            {
+                curContacts.Add(contact);
+            }
+        }
+        else
+        {
+            foreach (CharacterBase character in tinderCharacters)
+            {
+                appSave.tinderCharacters.Add(character);
+            }
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        appSave = SaveSystem.GetInstance().appSave;
         playerStats = GameObject.FindGameObjectWithTag("persistentData").GetComponent<playerStats>();
         matchesNumber = appSave.matchesNumber;
         curDay = 1;
-        print(matchesNumber);
     }
 
     public void advanceCharacterDay()

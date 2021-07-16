@@ -58,6 +58,8 @@ public class contactsManager : MonoBehaviour
         {
             character.popUp = true;
             tinderData.curContacts.Add(character);
+            SaveSystem.GetInstance().appSave.curContacts.Add(character);
+            SaveSystem.GetInstance().SaveState();
         }
         else if (character.popUp)
         {

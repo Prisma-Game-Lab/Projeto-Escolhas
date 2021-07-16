@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Save", menuName = "Save/Scriptable Obj")]
 public class AppSave : ScriptableObject
 {
+    public List<CharacterBase> tinderCharacters = new List<CharacterBase>();
+    public List<CharacterBase> curContacts = new List<CharacterBase>();
     public List<string> elfa = new List<string>();
     public List<string> humano = new List<string>();
     public List<string> sereia = new List<string>();

@@ -43,8 +43,6 @@ public class TinderManager : MonoBehaviour
             tutorial.gameObject.SetActive(false);
         }
         StartCoroutine(tutorialOn());
-        //if (persistentData.GetComponent<Tutorial>().tutorialOn)
-        //    tinderTutorial.SetActive(true);
     }
 
     public void OnNoButtonPressed()
@@ -83,6 +81,7 @@ public class TinderManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         contactManager.chatButtonPopUpImage.gameObject.SetActive(true);
+        SaveSystem.GetInstance().appSave.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
         tinderData.tinderCharacters.Remove(tinderData.tinderCharacters[curIndex]);
         if (curIndex >= tinderData.tinderCharacters.Count)
             curIndex = 0;

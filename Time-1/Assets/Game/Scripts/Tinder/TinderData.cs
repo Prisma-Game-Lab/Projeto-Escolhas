@@ -35,19 +35,15 @@ public class TinderData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        appSave = SaveSystem.GetInstance().appSave;
         playerStats = GameObject.FindGameObjectWithTag("persistentData").GetComponent<playerStats>();
-        matchesNumber = 0;
+        matchesNumber = appSave.matchesNumber;
         curDay = 1;
+        print(matchesNumber);
     }
 
     public void advanceCharacterDay()
     {
-        appSave = SaveSystem.GetInstance().appSave;
-        print("antes");
-        print(elfaDay);
-        print(humanoDay);
-        print(sereiaDay);
-        print(orcDay);
         playerStats.availableStatsPoints = 100f;
         if (appSave.elfaEndDay) {
             elfaDay++;
@@ -66,13 +62,6 @@ public class TinderData : MonoBehaviour
             appSave.orcEndDay = false;
         }
         SaveSystem.GetInstance().SaveState();
-        //if (combatCharacter.race == CharacterBase.CharacterRace.Carneira)
-            //carneiraDay++;
-        print("depois");
-        print(elfaDay);
-        print(humanoDay);
-        print(sereiaDay);
-        print(orcDay);
     }
 
     public int getCharacterDay(CharacterBase character)

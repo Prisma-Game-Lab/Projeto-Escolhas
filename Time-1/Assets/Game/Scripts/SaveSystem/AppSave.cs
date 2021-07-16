@@ -28,5 +28,6 @@ public class AppSave : ScriptableObject
     public bool askTutorialOn;
     public int curDay;
     public int love;
+    public int matchesNumber;
     
 }

@@ -38,7 +38,7 @@ public class TinderManager : MonoBehaviour
         tinderCharacterName_txt.text = tinderData.tinderCharacters[0].name;
         day_txt.text = "DIA " + tinderData.curDay;
         settingsAndDay.SetActive(true);
-        if (tinderData.tinderCharacters.Count < 8)
+        if (tinderData.matchesNumber > 0)
         {
             tutorial.gameObject.SetActive(false);
         }
@@ -89,6 +89,8 @@ public class TinderManager : MonoBehaviour
         tinderImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;
         tinderCharacterName_txt.text = tinderData.tinderCharacters[curIndex].name;
         tinderData.matchesNumber += 1;
+        SaveSystem.GetInstance().appSave.matchesNumber = tinderData.matchesNumber;
+        SaveSystem.GetInstance().SaveState();
     }
 
     private IEnumerator tutorialOn()

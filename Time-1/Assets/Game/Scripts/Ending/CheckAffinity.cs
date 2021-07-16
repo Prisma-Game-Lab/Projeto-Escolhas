@@ -5,7 +5,6 @@ using UnityEngine;
 public class CheckAffinity : MonoBehaviour
 {
     private AppSave appSave;
-
     public int minAffinityElfa;
     public int minAffinityOrc;
     public int minAffinitySereia;
@@ -37,5 +36,17 @@ public class CheckAffinity : MonoBehaviour
         if (checkPoints >= minAffinity)
             return true;
         return false;
+    }
+
+    public void ListNumber(string name) {
+        if (name == "Amarillys") 
+            appSave.love = 0;
+        else if (name == "Bruce")
+            appSave.love = 1;
+        else if (name == "Clarissa")
+            appSave.love = 2;
+        else
+            appSave.love = 3;
+        SaveSystem.GetInstance().SaveState();
     }
 }

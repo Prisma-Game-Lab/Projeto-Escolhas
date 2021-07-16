@@ -23,6 +23,7 @@ public class TinderManager : MonoBehaviour
     public GameObject settingsAndDay;
 
     public GameObject matchAnimation;
+    public GameObject whiteBackground;
 
     public GameObject tinderTutorial;
 
@@ -90,8 +91,10 @@ public class TinderManager : MonoBehaviour
     }
 
     private IEnumerator playAnimation() {
+        whiteBackground.SetActive(true);
         matchAnimation.SetActive(true);
         yield return new WaitForSeconds(1.5f);
+        whiteBackground.SetActive(false);
         matchAnimation.SetActive(false);
     }
 

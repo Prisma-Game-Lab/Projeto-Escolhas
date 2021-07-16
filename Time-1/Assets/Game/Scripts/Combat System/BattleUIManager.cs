@@ -46,6 +46,7 @@ public class BattleUIManager : MonoBehaviour
         CombatPanel.SetActive(false);
         DecisionPanel.SetActive(true);
         actionsPanel.gameObject.SetActive(false);
+        playerShieldsText.text = "Usos: " + battleSystem.playerUnit.shieldsAvailable;
         //DecisionAttackButton.SetActive(true);
         //DecisionQuitButton.SetActive(true);
     }

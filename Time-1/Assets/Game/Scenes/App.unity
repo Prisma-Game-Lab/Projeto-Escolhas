@@ -7044,7 +7044,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 189.85
+  m_fontSize: 182.5
   m_fontSizeBase: 282.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -20410,7 +20410,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 189.85
+  m_fontSize: 182.5
   m_fontSizeBase: 282.1
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -20932,7 +20932,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 167
+  m_fontSize: 160.05
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -24219,7 +24219,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "4 s\xEDmbolos aparecem nos cantos do saco de pancadas.\r\n\r\nDesenhe
-    os s\xEDmbolos conforme aparecem para socar.\r\n\r\nDesenhe todos os 4 s\xEDmbolos
+    os s\xEDmbolos conforme aparecem nos quadros.\r\n\r\nDesenhe todos os 4 s\xEDmbolos
     antes que mudem para marcar pontos.\r\n\r\nMarque o m\xE1ximo de pontos antes
     que o tempo acabe.\r"
   m_isRightToLeft: 0
@@ -24248,7 +24248,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 101.45
+  m_fontSize: 97.5
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -24525,7 +24525,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 167
+  m_fontSize: 160.05
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -25289,7 +25289,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 97.1
+  m_fontSize: 92.15
   m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 1

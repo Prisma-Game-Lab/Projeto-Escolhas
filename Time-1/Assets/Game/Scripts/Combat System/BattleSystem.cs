@@ -221,6 +221,7 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.LOST;
             }
             EndBattle();
+            yield return new WaitForSeconds(0.5f);
         }
         battleUI.turnText.text = "TURNO\n" + curTurn + "/" + maxTurn;
         PlayerTurn();
@@ -258,9 +259,7 @@ public class BattleSystem : MonoBehaviour
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
             addAffinity.AddPoints(tag, 3);
         }
-        if (curTurn >= maxTurn) {
-            StartCoroutine(PlayerRun());
-        }
+
         if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 6) {
             CheckAffinity checkAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<CheckAffinity>();
             if(checkAffinity.CheckIfHasAffinity(enemyUnit.cBase.name)) {

@@ -1273,7 +1273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confessions:
+  - {fileID: 4900000, guid: 8dfc9be3d0afa0b4e8b4ffb9045db04b, type: 3}
+  - {fileID: 4900000, guid: 188ccd77dab3ddf42a0c38b753e4232a, type: 3}
   - {fileID: 4900000, guid: ff9d524c65550ec43a795fb8ad84552e, type: 3}
+  - {fileID: 4900000, guid: e90d6f21163075c43be22af635859d48, type: 3}
   sentenceText: {fileID: 142880521}
   loveImage:
   - {fileID: 1235496309}

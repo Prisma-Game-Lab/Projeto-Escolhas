@@ -40,6 +40,13 @@ public class HammerGame : MonoBehaviour
 
     void Update()
     {
+
+        if(Input.GetMouseButtonDown(0) && Input.mousePosition.y < 400) 
+        {
+            Jump();
+        }
+        Debug.LogWarning(Input.mousePosition.y);
+
         if (!Timer.timeStopped && !Pause.isPaused)
         {
             float posy = indicator.transform.position.y; ;

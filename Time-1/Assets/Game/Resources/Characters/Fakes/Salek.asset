@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14d131bc9ea134147bd4794063265bbd, type: 3}
-  m_Name: Tati
+  m_Name: Salek
   m_EditorClassIdentifier: 
-  name: Tati
-  bio: "Maga da programa\xE7\xE3o, fa\xE7o qualquer bug sumir.\r\n\r\n#Witchcraft
-    #Emo #Astrologia #Fanfiqueira #GameDev\r\n"
+  name: Salek
+  bio: "Comandei a guerra contra os bugs infinitos, alguns sobreviveram mas levamos
+    bastante. Agora a fim de renova\xE7\xE3o. Se souber cavalgar podemos ter filhos.
+    Para ambientalistas, minha carona n\xE3o gasta combust\xEDvel.\r\n\r\n#CavalgandoNaVelocidadeDaLuz
+    #Emiss\xE3o0 #MorteAosBugs #GameDev\r\n"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}
-  BioImage: {fileID: 21300000, guid: bc1b282d8ef76584ba365b65047a5392, type: 3}
-  tinderImage: {fileID: 21300000, guid: b8c011d49039b6f4bbb3ee90393076c0, type: 3}
+  BioImage: {fileID: 21300000, guid: 7c327360950be2141a847492fe5fa3a0, type: 3}
+  tinderImage: {fileID: 21300000, guid: 967fdf17b242a384abc9ee2ecc8e0df6, type: 3}
   combatImage: {fileID: 0}
   combatWhiteImage: {fileID: 0}
   scenerio: {fileID: 0}

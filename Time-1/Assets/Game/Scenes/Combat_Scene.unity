@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5881,7 +5881,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0976e483b54ab49ad5f95eeb110837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAffinity: 1
+  minAffinityElfa: 0
+  minAffinityOrc: 0
+  minAffinitySereia: 0
+  minAffinityHumano: 0
 --- !u!1 &1383598841
 GameObject:
   m_ObjectHideFlags: 0
@@ -6223,9 +6226,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -640244133603842484, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
-  m_audioClip: {fileID: 8300000, guid: e3bfdc1c2ee08ab45bb27db9e83ad3a2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a71b120887a880c439a6d1509ff51620, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.092
   m_Pitch: 1
   Loop: 1
   Mute: 0

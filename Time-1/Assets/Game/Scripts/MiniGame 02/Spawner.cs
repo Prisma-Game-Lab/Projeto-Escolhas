@@ -13,17 +13,18 @@ public class Spawner : MonoBehaviour
 
     [HideInInspector] public int waveNumber, ballImpacts, totalBallsSpawned;
     [HideInInspector] public float spawnRate ;
-    int maxWaveNumber, ballsToSpawn, initialBallQuantity;
-    float escalation;
+    public int maxWaveNumber, initialBallQuantity;
+    int  ballsToSpawn;
+    public float escalation;
     bool waveFinished; 
 
 
     void Start()
     {
-        maxWaveNumber = 5;
-        escalation = 0.73f;
+        //maxWaveNumber = 5;
+        //escalation = 0.73f;
         spawnRate = 1f;
-        initialBallQuantity = 13;
+        //initialBallQuantity = 13;
         ballsToSpawn = initialBallQuantity;
         totalBallsSpawned = initialBallQuantity;
         waveNumber = 0;

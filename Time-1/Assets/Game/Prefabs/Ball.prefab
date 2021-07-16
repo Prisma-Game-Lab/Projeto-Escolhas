@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repelForce: 8
-  gravityForce: 2
+  gravityForce: 1.4
 --- !u!50 &3061066242470196882
 Rigidbody2D:
   serializedVersion: 4

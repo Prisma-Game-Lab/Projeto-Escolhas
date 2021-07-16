@@ -39,14 +39,20 @@ public class Draw : MonoBehaviour
     private AudioManager audioManager;
     public Animator punchAnim;
     private AppSave appSave;
-    //public GameObject tutorial;
+    public GameObject tutorial;
 
     void Start() {
         appSave = SaveSystem.GetInstance().appSave;
-        //if (appSave.tutorial && curDay == 1) {
-            //tutorial.SetActive(true);
 
-        //}
+        if (appSave.tutorialMinigame1)
+        {
+            appSave.tutorialMinigame1 = false;
+            SaveSystem.GetInstance().SaveState();
+            tutorial.SetActive(true);
+            Time.timeScale = 0f;
+            Pause.isPaused = true;
+        }
+
         audioManager = FindObjectOfType<AudioManager>();
         _y3 = squareImg3.gameObject.transform.position.y;
         img.Add(squareImg1);

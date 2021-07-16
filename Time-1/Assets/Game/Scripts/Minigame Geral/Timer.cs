@@ -25,25 +25,34 @@ public class Timer : MonoBehaviour
 	void Update()
 	{
 		if (timeRemaining > 0)
-			timeRemaining -= Time.deltaTime;
-		else if(finishedTime==false)
+		{
+            timeRemaining -= Time.deltaTime;
+		}
+		else if (finishedTime == false)
 		{
 			finishedTime = true;
 			timeRemaining = 0;
 			timeStopped = true;
 		}
-
 		DisplayTime(timeRemaining);
 	}
 
 	void DisplayTime(float time)
 	{
-		if (!timeStopped)
-			time += 1;
-
-		float min = Mathf.FloorToInt(time / 60);
-		float sec = Mathf.FloorToInt(time % 60);
-
+		//if (!timeStopped)
+		//	time += 1;
+		float min;
+		float sec;
+		if (time > 0)
+		{
+			min = Mathf.FloorToInt(time / 60);
+			sec = Mathf.FloorToInt(time % 60);
+        }
+        else
+        {
+            min = 0;
+			sec = 0;
+        }
 		TimerTextTMP.text = string.Format("{00:00}:{1:00}", min, sec);
 	}
 }

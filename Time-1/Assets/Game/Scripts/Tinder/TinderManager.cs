@@ -42,8 +42,9 @@ public class TinderManager : MonoBehaviour
         {
             tutorial.gameObject.SetActive(false);
         }
-        if (persistentData.GetComponent<Tutorial>().tutorialOn)
-            tinderTutorial.SetActive(true);
+        StartCoroutine(tutorialOn());
+        //if (persistentData.GetComponent<Tutorial>().tutorialOn)
+        //    tinderTutorial.SetActive(true);
     }
 
     public void OnNoButtonPressed()
@@ -88,6 +89,18 @@ public class TinderManager : MonoBehaviour
         tinderImage.sprite = tinderData.tinderCharacters[curIndex].tinderImage;
         tinderCharacterName_txt.text = tinderData.tinderCharacters[curIndex].name;
         tinderData.matchesNumber += 1;
+    }
+
+    private IEnumerator tutorialOn()
+    {
+        AppSave appsave = SaveSystem.GetInstance().appSave;
+        if (appsave.tutorialTinder)
+        {
+            yield return new WaitForSeconds(0.3f);
+            tinderTutorial.SetActive(true);
+            appsave.tutorialTinder = false;
+            SaveSystem.GetInstance().SaveState();
+        }
     }
 
     private IEnumerator playAnimation() {

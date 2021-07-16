@@ -16,3 +16,22 @@ MonoBehaviour:
   humano: []
   sereia: []
   orc: []
+  elfaJson: 
+  humanoJson: 
+  sereiaJson: 
+  orcJson: 
+  elfaEndDay: 0
+  humanoEndDay: 0
+  sereiaEndDay: 0
+  orcEndDay: 0
+  elfaPoints: 0
+  humanoPoints: 0
+  sereiaPoints: 0
+  orcPoints: 0
+  tutorialTinder: 0
+  tutorialMinigame1: 0
+  tutorialMinigame2: 0
+  tutorialMinigame3: 0
+  askTutorialOn: 1
+  curDay: 0
+  love: 0

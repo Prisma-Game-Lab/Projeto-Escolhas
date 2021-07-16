@@ -5,6 +5,7 @@ using TMPro;
 
 public class HammerGame : MonoBehaviour
 {
+    public GameObject tutorial;
     public GameObject indicator;
     public GameObject bar;
     public GameObject cima;
@@ -35,6 +36,16 @@ public class HammerGame : MonoBehaviour
         randomMaxPos = maxPos;
         randomMinPos = minPos;
         outOfSquareBounds = true;
+
+        AppSave appSave = SaveSystem.GetInstance().appSave;
+        if (appSave.tutorialMinigame3)
+        {
+            appSave.tutorialMinigame3 = false;
+            SaveSystem.GetInstance().SaveState();
+            tutorial.SetActive(true);
+            Time.timeScale = 0f;
+            Pause.isPaused = true;
+        }
     }
 
 

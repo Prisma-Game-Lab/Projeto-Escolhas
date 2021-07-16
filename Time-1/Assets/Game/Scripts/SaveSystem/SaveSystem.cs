@@ -66,6 +66,7 @@ public class SaveSystem : MonoBehaviour
                 appSave.orcEndDay = false;
                 appSave.sereiaEndDay = false;
                 appSave.humanoEndDay = false;
+                appSave.askTutorialOn = true;
                 appSave.elfaPoints = 0;
                 appSave.humanoPoints = 0;
                 appSave.sereiaPoints = 0;
@@ -179,7 +180,6 @@ public class SaveSystem : MonoBehaviour
             if(instance != null)
             {
                 instance.appSave = GameObject.Instantiate(instance.emptySave);
-                
             }
        }
        catch(Exception e)
@@ -207,6 +207,8 @@ public class SaveSystem : MonoBehaviour
         appSave.orcEndDay = false;
         appSave.sereiaEndDay = false;
         appSave.humanoEndDay = false;
+
+        appSave.askTutorialOn = true;
 
         appSave.elfaPoints = 0;
         appSave.humanoPoints = 0;

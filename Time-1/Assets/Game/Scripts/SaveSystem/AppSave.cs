@@ -21,7 +21,11 @@ public class AppSave : ScriptableObject
     public int humanoPoints;
     public int sereiaPoints;
     public int orcPoints;
-    public bool tutorial;
+    public bool tutorialTinder;
+    public bool tutorialMinigame1;
+    public bool tutorialMinigame2;
+    public bool tutorialMinigame3;
+    public bool askTutorialOn;
     public int curDay;
     public int love;
     

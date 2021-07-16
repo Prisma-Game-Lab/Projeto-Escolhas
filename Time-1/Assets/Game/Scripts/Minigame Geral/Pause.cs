@@ -14,19 +14,28 @@ public class Pause : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
     }
 
-    public void PauseResume() {
+    public void PauseResume()
+    {
         audioManager.Play("Click");
-        if (!isPaused) {
+        if (!isPaused)
+        {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
             isPaused = true;
         }
-        else {
+        else
+        {
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
             isPaused = false;
         }
     }
-
+    public void TutorialResume(GameObject tutorial)
+    {
+        audioManager.Play("Click");
+        Time.timeScale = 1f;
+        isPaused = false;
+        tutorial.SetActive(false);
+    }
 
 }

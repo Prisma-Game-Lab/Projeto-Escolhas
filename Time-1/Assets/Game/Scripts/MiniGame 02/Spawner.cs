@@ -5,11 +5,14 @@ using TMPro;
 
 public class Spawner : MonoBehaviour
 {
+    public GameObject tutorial;
     public GameObject ball;
     public Sprite[] ballsSprites;
     public TextMeshProUGUI waves_txt;
     public TextMeshProUGUI impacts_txt;
     public static bool allWavesFinished;
+
+    
 
     [HideInInspector] public int waveNumber, ballImpacts, totalBallsSpawned;
     [HideInInspector] public float spawnRate ;
@@ -17,7 +20,6 @@ public class Spawner : MonoBehaviour
     int  ballsToSpawn;
     public float escalation;
     bool waveFinished; 
-
 
     void Start()
     {
@@ -31,6 +33,15 @@ public class Spawner : MonoBehaviour
         waveFinished = true;
         allWavesFinished = false;
         waves_txt.text = "Nivel: " + waveNumber.ToString();
+        AppSave appsave = SaveSystem.GetInstance().appSave;
+        if (appsave.tutorialMinigame2)
+        {
+            appsave.tutorialMinigame2 = false;
+            SaveSystem.GetInstance().SaveState();
+            tutorial.SetActive(true);
+            Time.timeScale = 0f;
+            Pause.isPaused = true;
+        }
     }
 
     void Update()

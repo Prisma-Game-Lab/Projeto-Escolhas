@@ -27,12 +27,37 @@ public class MainMenu : MonoBehaviour
         canvas.SetActive(true);
     }
 
+    public void AskTutorialOn(GameObject canvas)
+    {
+        audioManager.Play("Click");
+        if (appSave.askTutorialOn)
+        {
+            canvas.SetActive(true);
+            appSave.askTutorialOn = false;
+            SaveSystem.GetInstance().SaveState();
+        }
+        else
+            SceneManager.LoadSceneAsync("App");
+    }
+
     public void StartAppTutorial(bool tutorialOn)
     {
         if (tutorialOn)
-            appSave.tutorial = true;
+        {
+            appSave.tutorialMinigame1 = true;
+            appSave.tutorialMinigame2 = true;
+            appSave.tutorialMinigame3 = true;
+            appSave.tutorialTinder = true;
+        }
+        else
+        {
+            appSave.tutorialMinigame1 = false;
+            appSave.tutorialMinigame2 = false;
+            appSave.tutorialMinigame3 = false;
+            appSave.tutorialTinder = false;
+        }
         audioManager.Play("Click");
-        GameObject.FindGameObjectWithTag("tutorialOnOff").GetComponent<tutorialOnOff>().tutorialOn = tutorialOn;
+        //GameObject.FindGameObjectWithTag("tutorialOnOff").GetComponent<tutorialOnOff>().tutorialOn = tutorialOn;
         SaveSystem.GetInstance().SaveState();
         SceneManager.LoadSceneAsync("App");
     }

@@ -40,6 +40,8 @@ public class LoveConfession : MonoBehaviour
         int pos = 1;
         foreach(JSONNode sentence in text) {
             fullText = sentence;
+            string oi = path + pos;
+            Debug.Log(oi.Length);
             audioManager.Play(path + pos);
             for (int i=0; i <= fullText.Length; i++) {
                 currentText = fullText.Substring(0,i);

@@ -42,7 +42,7 @@ public class TinderManager : MonoBehaviour
         {
             tutorial.gameObject.SetActive(false);
         }
-        StartCoroutine(tutorialOn());
+        tutorialOn();
     }
 
     public void OnNoButtonPressed()
@@ -92,12 +92,12 @@ public class TinderManager : MonoBehaviour
         SaveSystem.GetInstance().SaveState();
     }
 
-    private IEnumerator tutorialOn()
+    private void tutorialOn()
     {
         AppSave appsave = SaveSystem.GetInstance().appSave;
         if (appsave.tutorialTinder)
         {
-            yield return new WaitForSeconds(0.3f);
+            //yield return new WaitForSeconds(0.3f);
             tinderTutorial.SetActive(true);
             appsave.tutorialTinder = false;
             SaveSystem.GetInstance().SaveState();

@@ -63,12 +63,12 @@ public class BattleUIManager : MonoBehaviour
 
     public void OnActionButton(int type)
     {
-        float curEnergy = battleSystem.playerUnit.curEnergy;
         if (battleSystem.state != BattleState.PLAYERTURN)
         {
             audioManager.Play("Click");
             return;
         }
+        float curEnergy = battleSystem.playerUnit.curEnergy;
         if (type == 3 && battleSystem.playerUnit.shieldsAvailable <= 0)
         {
             audioManager.Play("Click");
@@ -102,6 +102,8 @@ public class BattleUIManager : MonoBehaviour
     }
     public void OnActionClicked(int type, int index)
     {
+        if (battleSystem.state != BattleState.PLAYERTURN)
+            return;
         float curEnergy = battleSystem.playerUnit.curEnergy;
         if (type == 3)
         {

@@ -39,8 +39,8 @@ public class HammerGame : MonoBehaviour
         timer = this.GetComponent<Timer>();
         minPos = baixo.transform.position.y;
         maxPos = cima.transform.position.y;
-        randomMaxPos = maxPos;
-        randomMinPos = minPos;
+        randomMaxPos = maxPos-0.35f;
+        randomMinPos = minPos+0.35f;
         outOfSquareBounds = true;
 
         AppSave appSave = SaveSystem.GetInstance().appSave;
@@ -58,7 +58,7 @@ public class HammerGame : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetMouseButtonDown(0) && Input.mousePosition.y < 400 && canJump) 
+        if(Input.GetMouseButtonDown(0) && Input.mousePosition.y < 400 && canJump && !Timer.timeStopped && !Pause.isPaused) 
         {
             canJump = false;
             StartCoroutine(Jump());
@@ -67,9 +67,16 @@ public class HammerGame : MonoBehaviour
 
         if (!Timer.timeStopped && !Pause.isPaused)
         {
-            float posy = indicator.transform.position.y; ;
-            if ((posy <= minPos+0.1) || (posy >= maxPos-0.1))
+            float posy = indicator.transform.position.y;
+            if ((posy <= minPos))
+            {
                 speed *= -1;
+                indicator.transform.position = new Vector2(indicator.transform.position.x, minPos+0.05f);
+            }else if(posy >= maxPos)
+            {
+                speed *= -1;
+                indicator.transform.position = new Vector2(indicator.transform.position.x, maxPos-0.05f);
+            }
             indicator.transform.position = new Vector2(indicator.transform.position.x, posy - speed * Time.deltaTime);
             if (timer.timeRemaining > 10.0f && timer.timeRemaining < 20.0f)
             {
@@ -96,7 +103,7 @@ public class HammerGame : MonoBehaviour
                 audioManager.Play("WrongJump");
             //CheckPositionIsEqual();
         }
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(0.4f);
         canJump = true;
     }
 
@@ -116,8 +123,16 @@ public class HammerGame : MonoBehaviour
     private void UpAndDownPosition()
     {
         float posy = squareObj.transform.position.y;
-        if ((posy <= minPos + 0.3f) || (posy >= maxPos - 0.3f))
+        if ((posy <= minPos + 0.35f))
+        {
             speedSquareObj *= -1;
+            squareObj.transform.position = new Vector2(squareObj.transform.position.x, minPos + 0.4f);
+        }
+        else if ((posy >= maxPos - 0.35f))
+        {
+            speedSquareObj *= -1;
+            squareObj.transform.position = new Vector2(squareObj.transform.position.x, maxPos - 0.4f);
+        }
         squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy + speedSquareObj * Time.deltaTime);
     }
 
@@ -127,12 +142,14 @@ public class HammerGame : MonoBehaviour
         if (posy <= randomMinPos)
         {
             speedSquareObj *= -1;
-            randomMaxPos = Random.Range(2.80f, maxPos-0.3f);
+            randomMaxPos = Random.Range(2.80f, maxPos - 0.35f);
+            squareObj.transform.position = new Vector2(squareObj.transform.position.x, randomMinPos+0.05f);
         }
-        if (posy >= randomMaxPos)
+        else if (posy >= randomMaxPos)
         {
             speedSquareObj *= -1;
-            randomMinPos = Random.Range(minPos+0.3f, 2.50f);
+            randomMinPos = Random.Range(minPos+0.35f, 2.50f);
+            squareObj.transform.position = new Vector2(squareObj.transform.position.x, randomMaxPos-0.05f);
         }
         squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy - speedSquareObj * Time.deltaTime);
     }

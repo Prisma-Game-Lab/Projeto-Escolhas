@@ -233,7 +233,7 @@ public class InkExample : MonoBehaviour
         else if (isG)
             currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y * 1.1f);
         else if (isGG)
-            currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y * 1.1f);
+            currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y * 1.05f);
         else
             currentInst.transform.position = new Vector2(posxc, playerMessagePos.position.y);
         if (lastInst.Count > 0)

@@ -6,16 +6,22 @@ public class CheckAffinity : MonoBehaviour
 {
     private AppSave appSave;
 
-    public int minAffinity;
-
-    //1 - Elfa
-    //2 - Orc
-    //3 - Sereia
-    //4 - Humano
-    //5 - Ninguem
+    public int minAffinityElfa;
+    public int minAffinityOrc;
+    public int minAffinitySereia;
+    public int minAffinityHumano;
+    private int minAffinity;
 
     void Start() {
         appSave = SaveSystem.GetInstance().appSave;
+        if (name == "Amarillys") 
+            minAffinity = minAffinityElfa;
+        else if (name == "Bruce")
+            minAffinity = minAffinityOrc;
+        else if (name == "Clarissa")
+            minAffinity = minAffinitySereia;
+        else
+            minAffinity = minAffinityHumano;
     }
 
     public bool CheckIfHasAffinity(string name) {

@@ -21,5 +21,6 @@ public class AppSave : ScriptableObject
     public int humanoPoints;
     public int sereiaPoints;
     public int orcPoints;
+    public bool tutorial;
     
 }

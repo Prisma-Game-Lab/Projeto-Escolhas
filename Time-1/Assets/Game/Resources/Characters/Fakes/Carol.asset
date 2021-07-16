@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Carol
   m_EditorClassIdentifier: 
   name: Carol
-  bio: "Sou um peixe robo que sabe nadar sem se molhar.\n\n#NadadeiraRob\xF3tica"
+  bio: "Sou um peixe rob\xF4 que sabe nadar sem se molhar.\n\n#NadadeiraRob\xF3tica"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}
@@ -22,7 +22,6 @@ MonoBehaviour:
   combatImage: {fileID: 0}
   combatWhiteImage: {fileID: 0}
   scenerio: {fileID: 0}
-  maxHealth: 0
   attack: 0
   defense: 0
   velocity: 0

@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     public GameObject tutorial;
     public GameObject ball;
     public Sprite[] ballsSprites;
+    public Sprite[] ballFragmentsSprites;
     public TextMeshProUGUI waves_txt;
     public TextMeshProUGUI impacts_txt;
     public static bool allWavesFinished;
@@ -62,8 +63,11 @@ public class Spawner : MonoBehaviour
         {
             Vector3 position = Random.insideUnitCircle.normalized * 5f;
             GameObject curBall = Instantiate(ball, position, Quaternion.identity);
-            curBall.GetComponent<SpriteRenderer>().sprite = ballsSprites[Random.Range(0, ballsSprites.Length)];
+            int spriteIndex = Random.Range(0, ballsSprites.Length);
+            curBall.GetComponent<SpriteRenderer>().sprite = ballsSprites[spriteIndex];
             curBall.GetComponent<Rigidbody2D>().AddTorque(4f);
+            curBall.GetComponent<Ball>().ballFragmentSprites[0] = ballFragmentsSprites[2*spriteIndex];
+            curBall.GetComponent<Ball>().ballFragmentSprites[1] = ballFragmentsSprites[2*spriteIndex+1];
             yield return new WaitForSeconds(spawnRate);
         }
         yield return new WaitForSeconds(2f);

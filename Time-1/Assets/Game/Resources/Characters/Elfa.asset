@@ -25,6 +25,7 @@ MonoBehaviour:
   combatImage: {fileID: 21300000, guid: 39ff48f64f7ec6c4b871158dc9383530, type: 3}
   combatWhiteImage: {fileID: 21300000, guid: 2ad0c8928f84f5249bed3be1a9f5032d, type: 3}
   scenerio: {fileID: 21300000, guid: e9066cf667bc8ca4ab6d1ec1e2f95a2a, type: 3}
+  lovePicture: {fileID: 21300000, guid: 1117efbf120adae46be572d5020b904f, type: 3}
   attack: 60
   defense: 30
   velocity: 60

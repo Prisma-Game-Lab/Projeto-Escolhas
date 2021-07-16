@@ -70,6 +70,7 @@ public class SaveSystem : MonoBehaviour
                 appSave.humanoPoints = 0;
                 appSave.sereiaPoints = 0;
                 appSave.orcPoints = 0;
+                appSave.love = 0;
                 string path = Path.Combine(Application.persistentDataPath, saveFileName + ".dat");
                 Debug.Log("new save on path:" + path);
 

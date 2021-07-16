@@ -23,5 +23,6 @@ public class AppSave : ScriptableObject
     public int orcPoints;
     public bool tutorial;
     public int curDay;
+    public int love;
     
 }

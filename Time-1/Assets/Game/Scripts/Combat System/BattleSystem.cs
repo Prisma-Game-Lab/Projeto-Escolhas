@@ -263,6 +263,7 @@ public class BattleSystem : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 6) {
             CheckAffinity checkAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<CheckAffinity>();
             if(checkAffinity.CheckIfHasAffinity(enemyUnit.cBase.name)) {
+                checkAffinity.ListNumber(enemyUnit.cBase.name);
                 SceneManager.LoadScene("TheEnd");
             }
             else {

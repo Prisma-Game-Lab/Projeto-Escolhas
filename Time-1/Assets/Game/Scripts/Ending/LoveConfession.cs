@@ -11,13 +11,18 @@ public class LoveConfession : MonoBehaviour
     public TextMeshProUGUI sentenceText;
     private string currentText;
     private string fullText;
+    public List<Image> loveImage = new List<Image>();
+    private AppSave appSave;
 
     void Start() {
-        
-        StartCoroutine(TypingEffect());
+        appSave = SaveSystem.GetInstance().appSave;
+        int c;
+        c = appSave.love;
+        loveImage[c].enabled = true;
+        StartCoroutine(TypingEffect(c));
     }
 
-    IEnumerator TypingEffect() {
+    IEnumerator TypingEffect(int c) {
         TextAsset confession = confessions[0];
         string jsonString = confession.ToString();
         JSONNode text = JSON.Parse(jsonString);

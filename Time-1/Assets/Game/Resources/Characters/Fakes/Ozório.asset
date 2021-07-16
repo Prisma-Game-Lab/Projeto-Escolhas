@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: "Oz\xF3rio"
   m_EditorClassIdentifier: 
   name: "Oz\xF3rio"
-  bio: "Sou meio t\xEDmido e pa mas tenho 174 de QI e ja descobri 48,97 x 10^83 teorias
-    novas sobre o universo.\n\n#EinsteinqSeCuide"
+  bio: "Estar comigo \xE9 como estar com uma pessoa nova todo dia\u2026 literalmente.
+    N\xE3o gosto de quem finge ser o que n\xE3o \xE9. Vim aqui para conhecer rostos
+    novos e me divertir com pessoas diferentes.\r\n\r\n\r\n#Changeling #GameDev #RPG
+    #Programador\r\n"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}
@@ -23,7 +25,6 @@ MonoBehaviour:
   combatImage: {fileID: 0}
   combatWhiteImage: {fileID: 0}
   scenerio: {fileID: 0}
-  maxHealth: 0
   attack: 0
   defense: 0
   velocity: 0

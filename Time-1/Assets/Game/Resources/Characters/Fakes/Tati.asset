@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14d131bc9ea134147bd4794063265bbd, type: 3}
-  m_Name: Mark
+  m_Name: Tati
   m_EditorClassIdentifier: 
-  name: Mark
-  bio: "Sou um \xF3timo namorado, s\xF3 falta algu\xE9m para namorar.\r\nEu nunca
-    namorei, mas eu aprendo observando o namoro dos outros.\r\n\r\n#Cin\xE9filo #DavidBowie
-    #Engenheiro #GameDev\r\n"
+  name: Tati
+  bio: "Maga da programa\xE7\xE3o, fa\xE7o qualquer bug sumir.\r\n\r\n#Witchcraft
+    #Emo #Astrologia #Fanfiqueira #GameDev\r\n"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}
-  BioImage: {fileID: 21300000, guid: 2299b4818d6fdfe4fb569eea3baa1e7a, type: 3}
-  tinderImage: {fileID: 21300000, guid: cb1790aea82fa674e8d5aefc49b157bb, type: 3}
+  BioImage: {fileID: 21300000, guid: bc1b282d8ef76584ba365b65047a5392, type: 3}
+  tinderImage: {fileID: 21300000, guid: b8c011d49039b6f4bbb3ee90393076c0, type: 3}
   combatImage: {fileID: 0}
   combatWhiteImage: {fileID: 0}
   scenerio: {fileID: 0}
@@ -29,4 +28,4 @@ MonoBehaviour:
   velocity: 0
   maxEnergy: 0
   popUp: 0
-  race: 5
+  race: 0

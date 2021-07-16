@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Madu
   m_EditorClassIdentifier: 
   name: Madu
-  bio: "Uma anjinha muito bem comportada que nunca fara maldade alguma com vc =).
-    \n\n#S\xF3qNao"
+  bio: "Sim, eu ca\xED do c\xE9u.\r\nE sim, doeu.\r\n\r\n#MoonChild #M\xE3eDePlanta
+    #99%Anjo #GameDev\r\n"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}
@@ -23,7 +23,6 @@ MonoBehaviour:
   combatImage: {fileID: 0}
   combatWhiteImage: {fileID: 0}
   scenerio: {fileID: 0}
-  maxHealth: 0
   attack: 0
   defense: 0
   velocity: 0

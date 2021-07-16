@@ -108,7 +108,7 @@ public class BattleSystem : MonoBehaviour
             }
             else if (playerActions[0] == 5)
             {
-                battleUI.StartCoroutine(battleUI.showText("Você vai recuperar mais energia!"));
+                battleUI.StartCoroutine(battleUI.showText("Você vai recuperar 7 de energia!"));
                 playerUnit.GiveEnergy(5);
             }
             if (playerActions[0] != 3)
@@ -124,7 +124,7 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.WON;
                 EndBattle();
             }
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(1f);
         }
         if (enemyActions.Contains(3))
         {
@@ -194,7 +194,7 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.LOST;
                 EndBattle();
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
         }
 
         yield return new WaitForSeconds(0.5f);

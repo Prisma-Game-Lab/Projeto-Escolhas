@@ -237,7 +237,9 @@ public class BattleSystem : MonoBehaviour
             battleUI.DecisionPanel.SetActive(true);
             battleUI.DecisionQuitButton.SetActive(true);
             battleUI.wonDatePanel.SetActive(true);
+            Debug.Log("won date");
             battleUI.CombatPanel.SetActive(false);
+            Debug.Log("combat");
             battleUI.StartCoroutine(battleUI.showText("Você ganhou o encontro! " + enemyUnit.cBase.name + " esta totalmente na sua!"));
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
@@ -247,12 +249,17 @@ public class BattleSystem : MonoBehaviour
         {
             battleUI.DecisionPanel.SetActive(true);
             battleUI.lostDatePanel.SetActive(true);
+            Debug.Log("lost date");
             battleUI.DecisionQuitButton.SetActive(true);
             battleUI.CombatPanel.SetActive(false);
+            Debug.Log("combat");
             battleUI.StartCoroutine(battleUI.showText("Você foi derrotado. " + enemyUnit.cBase.name + " esta indo embora insatisfeita."));
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
             addAffinity.AddPoints(tag, 3);
+        }
+        if (curTurn >= maxTurn) {
+            StartCoroutine(PlayerRun());
         }
         if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 6) {
             CheckAffinity checkAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<CheckAffinity>();
@@ -355,4 +362,5 @@ public class BattleSystem : MonoBehaviour
         //sai do combate
         SceneManager.LoadScene("App");
     }
+
 }

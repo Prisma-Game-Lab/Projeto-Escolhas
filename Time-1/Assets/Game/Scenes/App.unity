@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1858,6 +1858,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inkJSONAsset:
   - {fileID: 4900000, guid: a2c79d8a8167cc340856e36004eeca0a, type: 3}
+  - {fileID: 4900000, guid: 4a469401cffc5424896f9e1595c3017b, type: 3}
+  - {fileID: 4900000, guid: eb16e5300506fcc498008fb736f3a01a, type: 3}
+  - {fileID: 4900000, guid: 529087ec4df3c084f8d2f1ee73e1cc1e, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 1828223274}
@@ -23533,7 +23536,7 @@ PrefabInstance:
     - target: {fileID: 4538968302765562066, guid: 3e71dd89eb572ea42a829b51099eab89, type: 3}
       propertyPath: m_text
       value: "Bem vindo ao sweet punch, onde voc\xEA pode encontrar seu novo rival
-        e sua nova paix\xE3o de uma vez s\xF3.\r\n\r"
+        e sua nova paix\xE3o de uma s\xF3 vez.\r\n\r"
       objectReference: {fileID: 0}
     - target: {fileID: 4538968302765562066, guid: 3e71dd89eb572ea42a829b51099eab89, type: 3}
       propertyPath: m_fontSize

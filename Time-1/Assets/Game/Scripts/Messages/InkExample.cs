@@ -308,7 +308,8 @@ public class InkExample : MonoBehaviour
                     isImage = true;
                 }
                 else {
-                    float sec = Random.Range(.0f, .5f);
+                    int stringLength = messages[i].Substring(6).Length;
+                    float sec = (stringLength/5) * 0.25f;
                     yield return new WaitForSeconds(0.5f);
                     typing.gameObject.SetActive(true);
                     yield return new WaitForSeconds(sec);
@@ -316,7 +317,6 @@ public class InkExample : MonoBehaviour
                     currentInst = Instantiate(textPrefab, content.transform); 
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = messages[i].Substring(6);
                     //tamanho do balao
-                    int stringLength = messages[i].Substring(6).Length;
                     if (stringLength >= 24 && stringLength <= 38) {
                         currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(518.3558f, 140.0f);
                         isM = true;

@@ -3314,6 +3314,7 @@ MonoBehaviour:
   point: 0
   totalPossiblePoints: 0
   outOfSquareBounds: 0
+  canMakePoint: 0
 --- !u!4 &2056812683
 Transform:
   m_ObjectHideFlags: 0
@@ -3419,7 +3420,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -640244133603842484, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
   m_audioClip: {fileID: 8300000, guid: 135ddceadd80ab04d82d9fb34262b027, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0

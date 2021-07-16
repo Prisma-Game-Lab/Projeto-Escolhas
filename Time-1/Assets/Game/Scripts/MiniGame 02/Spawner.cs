@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     public TextMeshProUGUI impacts_txt;
     public static bool allWavesFinished;
 
-    
+    [HideInInspector]public AudioManager audioManager;
 
     [HideInInspector] public int waveNumber, ballImpacts, totalBallsSpawned;
     [HideInInspector] public float spawnRate ;
@@ -23,6 +23,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("persistentData").GetComponent<AudioManager>();
         //maxWaveNumber = 5;
         //escalation = 0.73f;
         spawnRate = 1f;

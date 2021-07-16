@@ -16,6 +16,7 @@ public class IndicatorCollision : MonoBehaviour
         if (collision.gameObject.transform.CompareTag("GreenSquare"))
         {
             hGame.totalPossiblePoints += 1;
+            hGame.outOfSquareBounds = false;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -23,6 +24,7 @@ public class IndicatorCollision : MonoBehaviour
         if (collision.gameObject.transform.CompareTag("GreenSquare"))
         {
             hGame.outOfSquareBounds = true;
+            hGame.canMakePoint = true;
         }
     }
 }

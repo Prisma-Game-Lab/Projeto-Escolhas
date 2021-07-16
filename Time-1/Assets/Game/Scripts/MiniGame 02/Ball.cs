@@ -38,6 +38,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            spawner.audioManager.Play("BallHitPlayer");
             spawner.ballImpacts += 1;
             spawner.impacts_txt.text = "Impactos: " + spawner.ballImpacts.ToString();
             Destroy(gameObject);
@@ -48,6 +49,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.tag == "shield")
         {
+            spawner.audioManager.Play("BallReflected");
             Vector2 direction = (player.transform.position - transform.position).normalized;
             rb.AddForce(-(direction * repelForce), ForceMode2D.Impulse);
             repealed = true;

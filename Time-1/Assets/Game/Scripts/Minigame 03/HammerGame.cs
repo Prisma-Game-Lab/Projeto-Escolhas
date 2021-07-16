@@ -24,9 +24,15 @@ public class HammerGame : MonoBehaviour
     private float maxPos;
     private float randomMaxPos;
     private float randomMinPos;
+    private bool canJump;
+    [HideInInspector] public bool canMakePoint;
+    AudioManager audioManager;
 
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("persistentData").GetComponent<AudioManager>();
+        canJump = true;
+        canMakePoint = true;
         totalPossiblePoints = 0;
         point = 0;
         totalTime = Timer.totalTime;
@@ -52,9 +58,10 @@ public class HammerGame : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetMouseButtonDown(0) && Input.mousePosition.y < 400) 
+        if(Input.GetMouseButtonDown(0) && Input.mousePosition.y < 400 && canJump) 
         {
-            Jump();
+            canJump = false;
+            StartCoroutine(Jump());
         }
         Debug.LogWarning(Input.mousePosition.y);
 
@@ -75,27 +82,36 @@ public class HammerGame : MonoBehaviour
         }
     }
 
-    public void Jump()
+    public IEnumerator Jump()
     {
         if (!Timer.timeStopped)
         {
             ropeAnim.SetTrigger("Pulo");
-            CheckPositionIsEqual();
+            if (!outOfSquareBounds && canMakePoint) {
+                audioManager.Play("RightJump");
+                point++;
+                pointsText.text = point.ToString();
+                canMakePoint = false;
+            }else
+                audioManager.Play("WrongJump");
+            //CheckPositionIsEqual();
         }
+        yield return new WaitForSeconds(0.35f);
+        canJump = true;
     }
 
-    private void CheckPositionIsEqual()
-    {
-        float sqHeight = squareObj.GetComponent<SpriteRenderer>().bounds.size.y;
-        float posy = indicator.transform.position.y;
-        float sqPosY = squareObj.transform.position.y;
-        if ((posy < sqPosY + sqHeight * 0.5f) && (posy > sqPosY - sqHeight * 0.5f) && outOfSquareBounds)
-        {
-            outOfSquareBounds = false;
-            point++;
-            pointsText.text = point.ToString();
-        }
-    }
+    //private void CheckPositionIsEqual()
+    //{
+    //    float sqHeight = squareObj.GetComponent<SpriteRenderer>().bounds.size.y;
+    //    float posy = indicator.transform.position.y;
+    //    float sqPosY = squareObj.transform.position.y;
+    //    if ((posy < sqPosY + sqHeight * 0.5f) && (posy > sqPosY - sqHeight * 0.5f) && outOfSquareBounds)
+    //    {
+    //        outOfSquareBounds = false;
+    //        point++;
+    //        pointsText.text = point.ToString();
+    //    }
+    //}
 
     private void UpAndDownPosition()
     {

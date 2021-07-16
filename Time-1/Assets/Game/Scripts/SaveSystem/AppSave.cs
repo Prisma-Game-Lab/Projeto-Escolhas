@@ -22,5 +22,6 @@ public class AppSave : ScriptableObject
     public int sereiaPoints;
     public int orcPoints;
     public bool tutorial;
+    public int curDay;
     
 }

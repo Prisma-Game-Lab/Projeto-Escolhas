@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     private AudioManager audioManager;
+    private AppSave appSave;
 
     private void Start()
     {
         audioManager = GetComponent<AudioManager>();
+        appSave = SaveSystem.GetInstance().appSave;
     }
 
     public void GoToApp()
@@ -27,8 +29,11 @@ public class MainMenu : MonoBehaviour
 
     public void StartAppTutorial(bool tutorialOn)
     {
+        if (tutorialOn)
+            appSave.tutorial = true;
         audioManager.Play("Click");
         GameObject.FindGameObjectWithTag("tutorialOnOff").GetComponent<tutorialOnOff>().tutorialOn = tutorialOn;
+        SaveSystem.GetInstance().SaveState();
         SceneManager.LoadSceneAsync("App");
     }
 

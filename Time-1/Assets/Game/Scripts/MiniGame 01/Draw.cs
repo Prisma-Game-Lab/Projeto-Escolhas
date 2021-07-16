@@ -33,18 +33,20 @@ public class Draw : MonoBehaviour
     List<int> aux = new List<int>();
     public int point;
     public TextMeshProUGUI pointsText;
-
     private bool finishedTime = false;
-
     public float resetDrawsTime;
-    
     public int totalDraws;
-
     private AudioManager audioManager;
-
     public Animator punchAnim;
+    private AppSave appSave;
+    //public GameObject tutorial;
 
     void Start() {
+        appSave = SaveSystem.GetInstance().appSave;
+        //if (appSave.tutorial && curDay == 1) {
+            //tutorial.SetActive(true);
+
+        //}
         audioManager = FindObjectOfType<AudioManager>();
         _y3 = squareImg3.gameObject.transform.position.y;
         img.Add(squareImg1);

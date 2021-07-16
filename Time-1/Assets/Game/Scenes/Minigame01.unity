@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 714619244}
   - component: {fileID: 714619245}
   - component: {fileID: 714619246}
+  - component: {fileID: 714619247}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -740,6 +741,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &714619247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714619238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae212202e78fcf14e82218b0b68116ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  home: {fileID: 0}
 --- !u!1 &766218568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,23 +2229,23 @@ PrefabInstance:
     - target: {fileID: 1484858238, guid: d6579d9c464b3704cbf0dbbdee122c13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 714619247}
     - target: {fileID: 1484858238, guid: d6579d9c464b3704cbf0dbbdee122c13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1484858238, guid: d6579d9c464b3704cbf0dbbdee122c13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseTutorial
+      value: CloseCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1484858238, guid: d6579d9c464b3704cbf0dbbdee122c13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Tutorial, Assembly-CSharp
+      value: NavigationBar, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1484858238, guid: d6579d9c464b3704cbf0dbbdee122c13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1972863089}
     - target: {fileID: 1484858238, guid: d6579d9c464b3704cbf0dbbdee122c13, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
@@ -2290,6 +2304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6579d9c464b3704cbf0dbbdee122c13, type: 3}
+--- !u!1 &1972863089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5377817646225514758, guid: d6579d9c464b3704cbf0dbbdee122c13, type: 3}
+  m_PrefabInstance: {fileID: 1972863088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1982851391
 GameObject:
   m_ObjectHideFlags: 0

@@ -23866,6 +23866,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 965358864, guid: 3e71dd89eb572ea42a829b51099eab89, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103691057, guid: 3e71dd89eb572ea42a829b51099eab89, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 35820932293161568, guid: 3e71dd89eb572ea42a829b51099eab89, type: 3}
       propertyPath: m_SizeDelta.y
       value: 222.8

@@ -26,6 +26,8 @@ public class TinderManager : MonoBehaviour
     public GameObject whiteBackground;
 
     public GameObject tinderTutorial;
+    
+    private List<string> matchSound = new List<string>();
 
     private void Start()
     {
@@ -37,6 +39,10 @@ public class TinderManager : MonoBehaviour
         tinderImage.sprite = tinderData.tinderCharacters[0].tinderImage;
         tinderCharacterName_txt.text = tinderData.tinderCharacters[0].name;
         day_txt.text = "DIA " + tinderData.curDay;
+        matchSound.Add("match3");
+        matchSound.Add("match4");
+        matchSound.Add("match5");
+        matchSound.Add("match6");
         settingsAndDay.SetActive(true);
         if (tinderData.matchesNumber > 0)
         {
@@ -105,6 +111,8 @@ public class TinderManager : MonoBehaviour
     }
 
     private IEnumerator playAnimation() {
+        int rnd = Random.Range(0,3);
+        audioManager.Play(matchSound[rnd]);
         whiteBackground.SetActive(true);
         matchAnimation.SetActive(true);
         yield return new WaitForSeconds(1.5f);

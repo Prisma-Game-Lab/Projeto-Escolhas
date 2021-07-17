@@ -27,6 +27,7 @@ public class NavigationBar : MonoBehaviour
 
     public void CloseCanvas(GameObject canvas)
     {
+        audioManager.Play("Click");
         canvas.gameObject.SetActive(false);
     }
 

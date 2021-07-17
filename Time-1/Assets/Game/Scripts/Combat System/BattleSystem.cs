@@ -104,7 +104,7 @@ public class BattleSystem : MonoBehaviour
             }
             else if (playerActions[0] == 3)
             {
-                battleUI.StartCoroutine(battleUI.showText("Você esta se defendendo!"));
+                battleUI.StartCoroutine(battleUI.showText("Você está se defendendo!"));
             }
             else if (playerActions[0] == 5)
             {
@@ -328,9 +328,9 @@ public class BattleSystem : MonoBehaviour
     void StartTurn()
     {
         float curEnergy = playerUnit.curEnergy;
-        battleUI.StartCoroutine(battleUI.showText("Deseja iniciar encontro? "));
+        battleUI.StartCoroutine(battleUI.showText("Tomara que você tenha treinado!"));
         battleUI.DecisionAttackButton.SetActive(true);
-        battleUI.DecisionQuitButton.SetActive(true);
+        //battleUI.DecisionQuitButton.SetActive(true);
         battleUI.sliderImage.sprite = battleUI.sliderRestSprite;
         battleUI.playerHUD.SetEnergy(curEnergy, playerUnit);
         playerActions.Add(5);

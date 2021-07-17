@@ -138,7 +138,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        battleUI.StartCoroutine(battleUI.showText(enemyUnit.cBase.name + " esta se preparando..."));
+        battleUI.StartCoroutine(battleUI.showText(enemyUnit.cBase.name + " está se preparando..."));
         fillEnemyActions();
         yield return new WaitForSeconds(2f);
 

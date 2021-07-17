@@ -155,7 +155,7 @@ public class InkExample : MonoBehaviour
                 currentInst.GetComponent<Image>().sprite = sprite;
                 currentInst.GetComponent<Image>().preserveAspect = true;
                 currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
-                currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
+                currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(350.0f, 300.0f);
                 isSticker = true;
             }
             else if (storedMessages[i].Contains("picture"))
@@ -311,7 +311,7 @@ public class InkExample : MonoBehaviour
                     currentInst.GetComponent<Image>().sprite = sprite;
                     currentInst.GetComponent<Image>().preserveAspect = true;
                     currentInst.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = null;
-                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300.0f, 250.0f);
+                    currentInst.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(350.0f, 300.0f);
                     isSticker = true;
                 }
                 else if (messages[i].Contains("picture")) {

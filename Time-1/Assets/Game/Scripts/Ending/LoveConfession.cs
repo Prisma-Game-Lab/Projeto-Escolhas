@@ -21,6 +21,7 @@ public class LoveConfession : MonoBehaviour
         appSave = SaveSystem.GetInstance().appSave;
         int c;
         c = appSave.love;
+        loveImage[c].enabled = true;
         if (c == 0)
             path = "elfa_";
         else if(c == 1)
@@ -29,19 +30,17 @@ public class LoveConfession : MonoBehaviour
             path = "sereia_";
         else
             path = "humano_";
-        loveImage[c].enabled = true;
         StartCoroutine(TypingEffect(c));
     }
 
     IEnumerator TypingEffect(int c) {
-        TextAsset confession = confessions[0];
+        TextAsset confession = confessions[c];
         string jsonString = confession.ToString();
         JSONNode text = JSON.Parse(jsonString);
         int pos = 1;
         foreach(JSONNode sentence in text) {
             fullText = sentence;
             string oi = path + pos;
-            Debug.Log(oi.Length);
             audioManager.Play(path + pos);
             for (int i=0; i <= fullText.Length; i++) {
                 currentText = fullText.Substring(0,i);

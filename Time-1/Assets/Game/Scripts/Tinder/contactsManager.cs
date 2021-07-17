@@ -40,7 +40,7 @@ public class contactsManager : MonoBehaviour
             contact.gameObject.tag = "Sereia";
         else
             contact.gameObject.tag = "Humano";
-        contact.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().sprite = character.ChatImage;
+        contact.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().sprite = character.MensagemImage;
         contact.transform.GetChild(0).GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = character.name;
         Image popUp = contact.transform.GetChild(0).GetChild(2).gameObject.GetComponent<Image>();
         contact.SetActive(true);

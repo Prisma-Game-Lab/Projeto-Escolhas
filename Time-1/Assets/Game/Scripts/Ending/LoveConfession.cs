@@ -15,13 +15,14 @@ public class LoveConfession : MonoBehaviour
     private AppSave appSave;
     private AudioManager audioManager;
     private string path;
+    public Canvas newGame;
 
     void Start() {
         audioManager = GetComponent<AudioManager>();
         appSave = SaveSystem.GetInstance().appSave;
         int c;
         c = appSave.love;
-        loveImage[c].enabled = true;
+        loveImage[c].gameObject.SetActive(true);
         if (c == 0)
             path = "elfa_";
         else if(c == 1)
@@ -50,6 +51,12 @@ public class LoveConfession : MonoBehaviour
             pos ++;
             yield return new WaitForSeconds(1.0f);
         }
+        NewGameCanvas();
+    }
+
+    private void NewGameCanvas() {
+        newGame.gameObject.SetActive(true);
+
     }
 
 }

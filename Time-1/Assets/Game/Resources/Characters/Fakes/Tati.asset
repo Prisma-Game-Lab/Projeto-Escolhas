@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Tati
   m_EditorClassIdentifier: 
   name: Tati
-  bio: "Maga da programa\xE7\xE3o, fa\xE7o qualquer bug sumir.\r\n\r\n#Witchcraft
-    #Emo #Astrologia #Fanfiqueira #GameDev\r\n"
+  bio: "Maga da programa\xE7\xE3o, fa\xE7o qualquer bug sumir.\r\nSou muito t\xEDmida
+    >< se der match, puxe assunto.\r\n\r\n#Witchcraft #Emo #Astrologia #Fanfiqueira
+    #BruxinhaNatural #GameDev\r"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}

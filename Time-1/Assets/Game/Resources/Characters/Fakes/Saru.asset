@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Saru
   m_EditorClassIdentifier: 
   name: Saru
-  bio: 
+  bio: "Solteiro? Eu estou. Novas aventuras busco.\r\nUm parceiro eu procuro. Dormir
+    de conchinha eu quero.\r\n\r\n#Goblin #UmAmorzinho #Abra\xE7\xE1vel #SempreEsfomeado
+    #GameDev\r"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}

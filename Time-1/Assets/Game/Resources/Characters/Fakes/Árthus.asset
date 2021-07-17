@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: "\xC1rthus"
   m_EditorClassIdentifier: 
   name: "\xC1rthus"
-  bio: 
+  bio: "N\xE3o gosto de personalidades rasas. Vim procurar sentimentos mais profundos
+    mas pouca gente aguenta a press\xE3o. Conhecer gente nova \xE9 meio embara\xE7oso,
+    mas n\xE3o fa\xE7o tempestade em copo d'\xE1gua.\r\n\r\n#MultiTask #PaposFilos\xF3ficos
+    #F\xE3DeTeoriasDaConspira\xE7\xE3o #Tranquil\xE3o #Cthulhu #GameDev\r"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Mark
   bio: "Sou um \xF3timo namorado, s\xF3 falta algu\xE9m para namorar.\r\nEu nunca
-    namorei, mas eu aprendo observando o namoro dos outros.\r\n\r\n#Cin\xE9filo #DavidBowie
-    #Engenheiro #GameDev\r\n"
+    namorei, mas eu aprendo observando o namoro dos outros.\r\n\r\n#Cin\xE9filo #MaiorF\xE3DeDavidBowie
+    #OdeioEngenheiros #GameDev\r"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}

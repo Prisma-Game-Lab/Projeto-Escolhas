@@ -16,7 +16,7 @@ MonoBehaviour:
   bio: "Comandei a guerra contra os bugs infinitos, alguns sobreviveram mas levamos
     bastante. Agora a fim de renova\xE7\xE3o. Se souber cavalgar podemos ter filhos.
     Para ambientalistas, minha carona n\xE3o gasta combust\xEDvel.\r\n\r\n#CavalgandoNaVelocidadeDaLuz
-    #Emiss\xE3o0 #MorteAosBugs #GameDev\r\n"
+    #Emiss\xE3o0 #MorteAosBugs #GameDev\r"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}

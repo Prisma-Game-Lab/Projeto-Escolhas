@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Carol
   m_EditorClassIdentifier: 
   name: Carol
-  bio: "Sou um peixe rob\xF4 que sabe nadar sem se molhar.\n\n#NadadeiraRob\xF3tica"
+  bio: "Sou metaleira! Sou guerreira! T\xF4 solteira! Tenho um bra\xE7o rob\xF4!
+    Quero mais o que???\r\n\r\n#Bra\xE7oMec\xE2nicoIrado #Metaleira #FilmesDeTerror
+    #GameDev\r\n"
   bioWork: 
   MensagemImage: {fileID: 0}
   ChatImage: {fileID: 0}

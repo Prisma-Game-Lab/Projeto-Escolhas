@@ -3491,6 +3491,42 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: -4479530366512811753, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
     source: {fileID: 0}
+  - name: stickerHconstrangido
+    clip: {fileID: 8300000, guid: 5e4b3039f21ca464e9aa29935223256d, type: 3}
+    volume: 0.8
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4479530366512811753, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
+    source: {fileID: 0}
+  - name: stickerHrindo
+    clip: {fileID: 8300000, guid: 139e82e3d109fbc44ae99b3e4c7d774c, type: 3}
+    volume: 0.8
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4479530366512811753, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
+    source: {fileID: 0}
+  - name: stickerHtriste
+    clip: {fileID: 8300000, guid: e59d5376f7a07424390a88438043c861, type: 3}
+    volume: 0.8
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4479530366512811753, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
+    source: {fileID: 0}
+  - name: stickerHolhinho
+    clip: {fileID: 8300000, guid: 2a385e9b6d6e7244c8e7d1b137f3e44c, type: 3}
+    volume: 0.8
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4479530366512811753, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
+    source: {fileID: 0}
 --- !u!1 &264335473
 GameObject:
   m_ObjectHideFlags: 0

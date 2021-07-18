@@ -63,7 +63,10 @@ public class InkExample : MonoBehaviour
                 story.state.LoadJson(appSave.elfaJson);
             }
             else {
-                newDay = true;
+                if (appSave.elfaBattle)
+                    newDay = false;
+                else
+                    newDay = true;
             }
         }
         else if (this.gameObject.tag == "Orc") {
@@ -73,7 +76,10 @@ public class InkExample : MonoBehaviour
                 story.state.LoadJson(appSave.orcJson);
             }
             else {
-                newDay = true;
+                if (appSave.orcBattle)
+                    newDay = false;
+                else
+                    newDay = true;
             }
         }
         else if (this.gameObject.tag == "Sereia") {
@@ -83,7 +89,10 @@ public class InkExample : MonoBehaviour
                 story.state.LoadJson(appSave.sereiaJson);
             }
             else {
-                newDay = true;
+                if (appSave.sereiaBattle)
+                    newDay = false;
+                else
+                    newDay = true;
             }
         }
         else {
@@ -93,7 +102,10 @@ public class InkExample : MonoBehaviour
                 story.state.LoadJson(appSave.humanoJson);
             }
             else {
-                newDay = true;
+                if (appSave.humanoBattle)
+                    newDay = false;
+                else
+                    newDay = true;
             }
         }
     }
@@ -126,7 +138,27 @@ public class InkExample : MonoBehaviour
             }
             restoreMessages(i);
         }
-        StartCoroutine(refresh());
+        
+        bool coroutine = true;
+        if (this.gameObject.tag == "Elf") {
+            if (appSave.elfaBattle)
+                coroutine = false;
+        }
+        else if (this.gameObject.tag == "Orc") {
+            if (appSave.orcBattle)
+                coroutine = false;
+        }
+        else if (this.gameObject.tag == "Sereia") {
+            if (appSave.sereiaBattle)
+                coroutine = false;
+        }
+        else {
+            if (appSave.humanoBattle) 
+                coroutine = false;
+        }
+
+        if (coroutine) 
+            StartCoroutine(refresh());
     }
 
     void Update() {
@@ -485,18 +517,9 @@ public class InkExample : MonoBehaviour
     }
 
     public void GoToCombat() {
-        if (appSave.elfaEndDay)
-            appSave.elfaJson = "";
-        if (appSave.orcEndDay) 
-            appSave.orcJson = "";
-        if (appSave.sereiaEndDay) 
-            appSave.sereiaJson = "";
-        if (appSave.humanoEndDay) 
-            appSave.humanoJson = "";
         for (int i = 0; i < messages.Count; i++) {
             storedMessages.Add(messages[i]);
         }
-        SaveSystem.GetInstance().SaveState();
         audioManager.Play("Click");
         SceneManager.LoadScene("Combat_Scene");
 

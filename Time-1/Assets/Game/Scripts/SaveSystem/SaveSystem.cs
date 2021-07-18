@@ -72,6 +72,11 @@ public class SaveSystem : MonoBehaviour
                 appSave.sereiaPoints = 0;
                 appSave.orcPoints = 0;
                 appSave.love = 0;
+                appSave.elfaBattle = false;
+                appSave.orcBattle = false;
+                appSave.sereiaBattle = false;
+                appSave.humanoBattle = false;
+                appSave.matchesNumber = 0;
                 string path = Path.Combine(Application.persistentDataPath, saveFileName + ".dat");
                 Debug.Log("new save on path:" + path);
 
@@ -235,6 +240,11 @@ public class SaveSystem : MonoBehaviour
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Orc"));
 
         CharacterBase player = Resources.Load<CharacterBase>("Characters/Player");
+
+        appSave.elfaBattle = false;
+        appSave.orcBattle = false;
+        appSave.sereiaBattle = false;
+        appSave.humanoBattle = false;
 
         playerStats.attack = player.attack;
         playerStats.defense = player.defense;

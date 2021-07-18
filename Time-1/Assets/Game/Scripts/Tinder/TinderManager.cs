@@ -111,7 +111,7 @@ public class TinderManager : MonoBehaviour
     }
 
     private IEnumerator playAnimation() {
-        int rnd = Random.Range(0,3);
+        int rnd = Random.Range(0,4);
         audioManager.Play(matchSound[rnd]);
         whiteBackground.SetActive(true);
         matchAnimation.SetActive(true);

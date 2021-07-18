@@ -23,9 +23,20 @@ public class BattleSystem : MonoBehaviour
 
     [HideInInspector] public List<int> playerActions;
     [HideInInspector] public List<int> enemyActions;
+    private AppSave appSave;
 
     void Start()
     {
+        appSave = SaveSystem.GetInstance().appSave;
+        if (appSave.elfaEndDay)
+            appSave.elfaBattle = true;
+        if (appSave.orcEndDay)
+            appSave.orcBattle = true;
+        if (appSave.sereiaEndDay)
+            appSave.sereiaBattle = true;
+        if (appSave.humanoEndDay)
+            appSave.humanoBattle = true;
+        SaveSystem.GetInstance().SaveState();
         audioManager = FindObjectOfType<AudioManager>();
         battleUI = GetComponent<BattleUIManager>();
         curTurn = 1;
@@ -260,7 +271,7 @@ public class BattleSystem : MonoBehaviour
             addAffinity.AddPoints(tag, 3);
         }
 
-        if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 2) {
+        if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 6) {
             CheckAffinity checkAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<CheckAffinity>();
             if(checkAffinity.CheckIfHasAffinity(enemyUnit.cBase.name)) {
                 checkAffinity.ListNumber(enemyUnit.cBase.name);
@@ -328,9 +339,9 @@ public class BattleSystem : MonoBehaviour
     void StartTurn()
     {
         float curEnergy = playerUnit.curEnergy;
-        battleUI.StartCoroutine(battleUI.showText("Tomara que você tenha treinado!"));
+        battleUI.StartCoroutine(battleUI.showText("Deseja iniciar o encontro?"));
         battleUI.DecisionAttackButton.SetActive(true);
-        //battleUI.DecisionQuitButton.SetActive(true);
+        battleUI.DecisionQuitButton.SetActive(true);
         battleUI.sliderImage.sprite = battleUI.sliderRestSprite;
         battleUI.playerHUD.SetEnergy(curEnergy, playerUnit);
         playerActions.Add(5);

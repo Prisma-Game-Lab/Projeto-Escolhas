@@ -67,18 +67,26 @@ public class TinderData : MonoBehaviour
         if (appSave.elfaEndDay) {
             elfaDay++;
             appSave.elfaEndDay = false;
+            appSave.elfaBattle = false;
+            appSave.elfaJson = "";
         }
         if (appSave.humanoEndDay) {
             humanoDay++;
             appSave.humanoEndDay = false;
+            appSave.humanoBattle = false;
+            appSave.humanoJson = "";
         }
         if (appSave.sereiaEndDay) {
             sereiaDay++;
             appSave.sereiaEndDay = false;
+            appSave.sereiaBattle = false;
+            appSave.sereiaJson = "";
         }
         if (appSave.orcEndDay) {
             orcDay++;
             appSave.orcEndDay = false;
+            appSave.orcBattle = false;
+            appSave.orcJson = "";
         }
         SaveSystem.GetInstance().SaveState();
     }

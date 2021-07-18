@@ -31,5 +31,9 @@ public class AppSave : ScriptableObject
     public int curDay;
     public int love;
     public int matchesNumber;
+    public bool elfaBattle;
+    public bool orcBattle;
+    public bool sereiaBattle;
+    public bool humanoBattle;
     
 }

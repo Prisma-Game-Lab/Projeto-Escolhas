@@ -14,11 +14,17 @@ public class LoveConfession : MonoBehaviour
     public List<Image> loveImage = new List<Image>();
     private AppSave appSave;
     private AudioManager audioManager;
+    private SettingsPage settingsPage;
     private string path;
     public Canvas newGame;
 
+    public Image fade;
+
     void Start() {
+        fade.canvasRenderer.SetAlpha(1.0f);
+        FadeIn();
         audioManager = GetComponent<AudioManager>();
+        settingsPage = GetComponent<SettingsPage>();
         appSave = SaveSystem.GetInstance().appSave;
         int c;
         c = appSave.love;
@@ -51,12 +57,11 @@ public class LoveConfession : MonoBehaviour
             pos ++;
             yield return new WaitForSeconds(1.0f);
         }
-        NewGameCanvas();
+        settingsPage.NewGame();
     }
 
-    private void NewGameCanvas() {
-        newGame.gameObject.SetActive(true);
-
+    private void FadeIn() {
+        fade.CrossFadeAlpha(0, 2, false);
     }
 
 }

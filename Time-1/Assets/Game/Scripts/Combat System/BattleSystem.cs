@@ -244,6 +244,17 @@ public class BattleSystem : MonoBehaviour
         StopAllCoroutines();
         AddAffinity addAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<AddAffinity>();
         string tag = addAffinity.CharacterTag(enemyUnit.cBase.name);
+
+        if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 5) {
+            CheckAffinity checkAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<CheckAffinity>();
+            if(checkAffinity.CheckIfHasAffinity(enemyUnit.cBase.name)) {
+                checkAffinity.ListNumber(enemyUnit.cBase.name);
+                SceneManager.LoadScene("TheEnd");
+            }
+            else {
+                SceneManager.LoadScene("TheEnd");
+            }
+        }
         if (state == BattleState.WON)
         {
             battleUI.DecisionPanel.SetActive(true);
@@ -252,7 +263,7 @@ public class BattleSystem : MonoBehaviour
             Debug.Log("won date");
             battleUI.CombatPanel.SetActive(false);
             Debug.Log("combat");
-            battleUI.StartCoroutine(battleUI.showText("Você ganhou o encontro! " + enemyUnit.cBase.name + " esta totalmente na sua!"));
+            battleUI.StartCoroutine(battleUI.showText("Você ganhou o encontro! " + enemyUnit.cBase.name + " está totalmente na sua!"));
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
             addAffinity.AddPoints(tag, 2);
@@ -265,22 +276,13 @@ public class BattleSystem : MonoBehaviour
             battleUI.DecisionQuitButton.SetActive(true);
             battleUI.CombatPanel.SetActive(false);
             Debug.Log("combat");
-            battleUI.StartCoroutine(battleUI.showText("Você foi derrotado. " + enemyUnit.cBase.name + " esta indo embora insatisfeita."));
+            battleUI.StartCoroutine(battleUI.showText("Você foi derrotado. " + enemyUnit.cBase.name + " está indo embora insatisfeita."));
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
             GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
             addAffinity.AddPoints(tag, 3);
         }
 
-        if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 6) {
-            CheckAffinity checkAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<CheckAffinity>();
-            if(checkAffinity.CheckIfHasAffinity(enemyUnit.cBase.name)) {
-                checkAffinity.ListNumber(enemyUnit.cBase.name);
-                SceneManager.LoadScene("TheEnd");
-            }
-            else {
-                SceneManager.LoadScene("TheEnd");
-            }
-        }
+
 
     }
 

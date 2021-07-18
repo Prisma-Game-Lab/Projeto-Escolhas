@@ -625,7 +625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &599820145
 RectTransform:
   m_ObjectHideFlags: 0
@@ -916,7 +916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1235496308
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1700,6 +1700,132 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: orc_10
     clip: {fileID: 8300000, guid: 011c6a6a7d754d44a8ab3e76fd15e6df, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_1
+    clip: {fileID: 8300000, guid: 95dec5307a71aed47b8a2349b1389433, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_2
+    clip: {fileID: 8300000, guid: aebe04bb96e61494a8113770707668ea, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_3
+    clip: {fileID: 8300000, guid: 0207bdbfdac1b0a4e98cca26935377da, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_4
+    clip: {fileID: 8300000, guid: 6795ed68a40f999429487aef16adc34f, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_5
+    clip: {fileID: 8300000, guid: cdbf3936c9f4b2f43aec96b1e72d3359, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_6
+    clip: {fileID: 8300000, guid: 71d26240c9858f9429a5dd11b201d343, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_7
+    clip: {fileID: 8300000, guid: 377fdb031c209be4db32a11b77168e49, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_8
+    clip: {fileID: 8300000, guid: 3810cd8267afa9c4a8438b7bc052fe99, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_9
+    clip: {fileID: 8300000, guid: 88d96396fe3f63f49a523f3481d39cb6, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_10
+    clip: {fileID: 8300000, guid: 22bc8dd70569b924b94e0dd33e47ccd0, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_11
+    clip: {fileID: 8300000, guid: 2a579f8a93dd22a4f87eeab6e398c7dd, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_12
+    clip: {fileID: 8300000, guid: b1df2f76ba0018d4883b4735eac9218a, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_13
+    clip: {fileID: 8300000, guid: 76780a5a7471a174dbdaf3040f9cdcd5, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: humano_14
+    clip: {fileID: 8300000, guid: cdc33d365cf7d1a409d4abdff75169d2, type: 3}
     volume: 1
     volumeVariance: 0
     pitch: 1

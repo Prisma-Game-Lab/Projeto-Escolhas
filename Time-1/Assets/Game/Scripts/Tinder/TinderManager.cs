@@ -39,6 +39,7 @@ public class TinderManager : MonoBehaviour
         tinderImage.sprite = tinderData.tinderCharacters[0].tinderImage;
         tinderCharacterName_txt.text = tinderData.tinderCharacters[0].name;
         day_txt.text = "DIA " + tinderData.curDay;
+        matchSound.Clear();
         matchSound.Add("match3");
         matchSound.Add("match4");
         matchSound.Add("match5");

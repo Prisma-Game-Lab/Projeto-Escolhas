@@ -15,8 +15,9 @@ public class CharacterBase : ScriptableObject
     public Sprite BioImage;
     public Sprite tinderImage;
     public Sprite combatImage;
-    public Sprite combatWhiteImage;
-    public Sprite scenerio;
+    //public Sprite combatWhiteImage;
+    public Sprite scenario;
+
     //public int maxHealth;
     public float attack;
     public float defense;

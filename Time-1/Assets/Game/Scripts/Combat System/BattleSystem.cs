@@ -12,6 +12,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject enemyPrefab;
 
     [HideInInspector] public Unit playerUnit, enemyUnit;
+    private Animator combatAnim;
     private int curTurn; 
     public int maxTurn;
 
@@ -52,8 +53,46 @@ public class BattleSystem : MonoBehaviour
 
         GameObject enemyGO = Instantiate(enemyPrefab);
         enemyUnit = enemyGO.GetComponent<Unit>();
-        battleUI.scenerioImage.sprite = enemyUnit.cBase.scenerio;
+        battleUI.scenarioImage.sprite = enemyUnit.cBase.scenario;
         battleUI.enemyImage.sprite = enemyUnit.cBase.combatImage;
+        RectTransform enemyImageTransform = battleUI.enemyImage.GetComponent<RectTransform>();
+
+        combatAnim = battleUI.enemyImage.GetComponent<Animator>();
+
+        string path;
+        if (enemyUnit.cBase.race == CharacterBase.CharacterRace.Elfa)
+        {
+            RectTransform enemyImageTransformTo = battleUI.ElfaPos.GetComponent<RectTransform>();
+            battleUI.enemyImage.transform.position = battleUI.ElfaPos.position;
+            battleUI.enemyImage.transform.rotation = battleUI.ElfaPos.rotation;
+            enemyImageTransform.sizeDelta = enemyImageTransformTo.sizeDelta;
+            path = "ElfaController";
+        }
+        else if (enemyUnit.cBase.race == CharacterBase.CharacterRace.Humano)
+        {
+            RectTransform enemyImageTransformTo = battleUI.HumPos.GetComponent<RectTransform>();
+            battleUI.enemyImage.transform.position = battleUI.HumPos.position;
+            battleUI.enemyImage.transform.rotation = battleUI.HumPos.rotation;
+            enemyImageTransform.sizeDelta = enemyImageTransformTo.sizeDelta;
+            path = "HumanoController";
+        }
+        else if (enemyUnit.cBase.race == CharacterBase.CharacterRace.Sereia)
+        {
+            RectTransform enemyImageTransformTo = battleUI.SereiaPos.GetComponent<RectTransform>();
+            battleUI.enemyImage.transform.position = battleUI.SereiaPos.position;
+            battleUI.enemyImage.transform.rotation = battleUI.SereiaPos.rotation;
+            enemyImageTransform.sizeDelta = enemyImageTransformTo.sizeDelta;
+            path = "SereiaController";
+        }
+        else
+        {
+            RectTransform enemyImageTransformTo = battleUI.orcPos.GetComponent<RectTransform>();
+            battleUI.enemyImage.transform.position = battleUI.orcPos.position;
+            battleUI.enemyImage.transform.rotation = battleUI.orcPos.rotation;
+            enemyImageTransform.sizeDelta = enemyImageTransformTo.sizeDelta;
+            path = "OrcController";
+        }
+        combatAnim.runtimeAnimatorController = Resources.Load(path) as RuntimeAnimatorController;
 
         battleUI.StartCoroutine(battleUI.showText(enemyUnit.cBase.name + " se aproxima..."));
 
@@ -76,10 +115,6 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.ATTACK;
         int counter = playerActions.Count;
 
-        //battleUI.StartCoroutine(battleUI.showText("Executando..."));
-
-        //yield return new WaitForSeconds(1f);
-
         for (int i = 0; i < counter; i++)
         {
             bool isDead = false;
@@ -98,18 +133,14 @@ public class BattleSystem : MonoBehaviour
             if (playerActions[0] == 1)
             {
                 audioManager.Play("Punch");
-                //print("atk "+enemyUnit.defense);
-                //print("def " + playerUnit.attack);
-                //print(playerUnit.attack * 2 * damageReduction);
-                //print(enemyUnit.defense * 0.5f);
-                
-                //print(((playerUnit.attack * 2) / (enemyUnit.defense * 0.5f)) * damageReduction);
+                combatAnim.SetTrigger("soco");
                 isDead = enemyUnit.TakeDamage(((playerUnit.attack * 2) / (enemyUnit.defense * 0.5f))*damageReduction);
                 battleUI.StartCoroutine(battleUI.showText("Você socou seu date!"));
             }
             else if (playerActions[0] == 2)
             {
                 audioManager.Play("Kick");
+                combatAnim.SetTrigger("chute");
                 isDead = enemyUnit.TakeDamage(((1.5f * playerUnit.attack * 2) / (enemyUnit.defense * 0.5f)) * damageReduction);
                 battleUI.StartCoroutine(battleUI.showText("Você chutou seu date!"));
             }

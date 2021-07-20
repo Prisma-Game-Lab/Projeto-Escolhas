@@ -24,24 +24,11 @@ public class Unit : MonoBehaviour
 		{
 			TinderData tinderData=GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>();
 			cBase = tinderData.combatCharacter;
-			print(cBase.race);
             int curDay = tinderData.curDay - 1;
 			float totalStats = cBase.attack + cBase.defense + cBase.velocity;
 			attack = cBase.attack + (cBase.attack / totalStats) * curDay * tinderData.enemyStatsPerDay;
 			defense = cBase.defense + (cBase.defense / totalStats) * curDay * tinderData.enemyStatsPerDay;
 			velocity = cBase.velocity + (cBase.velocity / totalStats) * curDay * tinderData.enemyStatsPerDay;
-
-			print("Stats somado: " + totalStats);
-            print("Dia : " + curDay);
-            print("Percentagem atk : " + (cBase.attack / totalStats));
-            print("Percentagem def : " + (cBase.defense / totalStats));
-			print("Percentagem vel : " + (cBase.velocity / totalStats));
-            print("incrementado atk : " + (cBase.attack / totalStats) * curDay * tinderData.enemyStatsPerDay);
-            print("incrementado def : " + (cBase.defense / totalStats) * curDay * tinderData.enemyStatsPerDay);
-			print("incrementado vel : " + (cBase.velocity / totalStats) * curDay * tinderData.enemyStatsPerDay);
-			print("ini atk : " + attack);
-			print("ini def : " + defense);
-			print("ini vel : " + velocity);
 			maxEnergy = cBase.maxEnergy + Mathf.Floor(velocity/35);
 		}
 		maxHealth = attack/4 + defense/2 + 2*velocity;

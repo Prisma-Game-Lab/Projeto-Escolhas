@@ -25,9 +25,7 @@ MonoBehaviour:
   BioImage: {fileID: 21300000, guid: f298685cc3adcab4fb88506c47e3e1d8, type: 3}
   tinderImage: {fileID: 21300000, guid: efbca7e85d9780e4a9c51657eaa75747, type: 3}
   combatImage: {fileID: 21300000, guid: 106d579acc8eef6428793e542f23a895, type: 3}
-  combatWhiteImage: {fileID: 21300000, guid: 4d1f2433e3c0369418702ba280b1741a, type: 3}
-  scenerio: {fileID: 21300000, guid: ceb2614a3b2852c4e9dec2dd2986a738, type: 3}
-  lovePicture: {fileID: 21300000, guid: e0632dfc43d861e45966bf20a0923467, type: 3}
+  scenario: {fileID: 21300000, guid: ceb2614a3b2852c4e9dec2dd2986a738, type: 3}
   attack: 30
   defense: 30
   velocity: 90

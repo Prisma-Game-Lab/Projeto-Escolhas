@@ -10,7 +10,12 @@ public class BattleUIManager : MonoBehaviour
     [HideInInspector] public List<GameObject> spawnedActionsButtons = new List<GameObject>();
     public Transform actionsPanel;
     public Image enemyImage;
-    public Image scenerioImage;
+    public Image scenarioImage;
+
+    public Transform orcPos;
+    public Transform HumPos;
+    public Transform ElfaPos;
+    public Transform SereiaPos;
 
     public Image sliderImage;
     public Sprite sliderRestSprite;

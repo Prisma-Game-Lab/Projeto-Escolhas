@@ -290,8 +290,6 @@ public class InkExample : MonoBehaviour
                     message.transform.position = new Vector2(posxc1, posyc1 + distance);
             }
         }
-        //print(lastInst.Count);
-        //print("dd");
         lastInst.Add(currentInst);
         posxc = currentInst.transform.position.x;
         posyc = currentInst.transform.position.y;

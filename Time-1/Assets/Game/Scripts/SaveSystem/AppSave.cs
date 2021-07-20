@@ -35,5 +35,8 @@ public class AppSave : ScriptableObject
     public bool orcBattle;
     public bool sereiaBattle;
     public bool humanoBattle;
-    
+    public float playerAtk;
+    public float playerDef;
+    public float playerVel;
+
 }

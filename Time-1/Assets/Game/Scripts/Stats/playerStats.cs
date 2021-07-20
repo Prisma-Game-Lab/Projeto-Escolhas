@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerStats : MonoBehaviour
 {
     public CharacterBase playerBase;
+    private AppSave appsave;
     [HideInInspector]
     public float attack, defense, velocity, maxEnergy, maxHealth;
 
@@ -12,10 +13,21 @@ public class playerStats : MonoBehaviour
 
     private void Awake()
     {
-        attack = playerBase.attack;
-        defense = playerBase.defense;
-        velocity = playerBase.velocity;
-        maxEnergy = playerBase.maxEnergy;
+        appsave = SaveSystem.GetInstance().appSave;
+        if (appsave.playerAtk == 0)
+        {
+            attack = playerBase.attack;
+            defense = playerBase.defense;
+            velocity = playerBase.velocity;
+            maxEnergy = 10 + Mathf.Floor(velocity / 35);
+        }
+        else
+        {
+            attack = appsave.playerAtk;
+            defense = appsave.playerDef;
+            velocity = appsave.playerVel;
+            maxEnergy = 10 + Mathf.Floor(velocity / 35);
+        }
         //maxHealth = playerBase.maxHealth;
     }
 
@@ -42,6 +54,10 @@ public class playerStats : MonoBehaviour
         {
             attack += value;
         }
+        appsave.playerAtk = attack;
+        appsave.playerDef = defense;
+        appsave.playerVel = velocity;
+        SaveSystem.GetInstance().SaveState();
     }
 
 }

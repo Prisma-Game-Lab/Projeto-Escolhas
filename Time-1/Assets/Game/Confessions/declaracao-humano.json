@@ -1,16 +1,58 @@
 {
-    "1":"Eu quero que você entenda de onde eu venho,",
-    "2":"porque o que eu tenho para te dizer coloca um ponto final nisso tudo.",
-    "3":"Isso aqui era pra ser só mais... uma forma de não ficar em casa.",
-    "4":"Sentir que tô fazendo algo, que tô vivendo.",
-    "5":"Que meu tempo no mundo tá... sendo bem aproveitado.", 
-    "6":"Eu sei que eu não vou viver pra sempre.", 
-    "7":"É estranho, porque ninguém vai, mas isso era muito mais importante para mim do que devia ser – e eu só percebi isso agora.", 
-    "8":"E percebi porque… depois desse tempo todo sentindo o tempo passar, eu finalmente consegui silenciar o ponteiro do relógio;", 
-    "9":"e foi quando eu passei tempo do seu lado.", 
-    "10":"Eu não preciso mais procurar o que fazer, porque já estou fazendo o que eu quero.",
-    "11":"E não preciso mais procurar por um lugar, porque já sei onde quero estar também.", 
-    "12":"Eu vim até aqui pra poder fugir de casa, mas nunca, nunca antes me senti tão em casa. ", 
-    "13":"Descobri o sentido da palavra “lar”: é onde quer que você esteja.", 
-    "14":"Quer ficar comigo?"
+    "1":{
+        "sentence":"Eu quero que você entenda de onde eu venho,",
+        "time":0.02
+    },
+    "2":{
+        "sentence":"porque o que eu tenho para te dizer coloca um ponto final nisso tudo.",
+        "time":0.035
+    },
+    "3":{
+        "sentence":"Isso aqui era pra ser só mais... uma forma de não ficar em casa.",
+        "time":0.045
+    },
+    "4":{
+        "sentence":"Sentir que tô fazendo algo, que tô vivendo.",
+        "time":0.045
+    },
+    "5":{
+        "sentence":"Que meu tempo no mundo tá... sendo bem aproveitado.", 
+        "time":0.045
+    },
+    "6":{
+        "sentence":"Eu sei que eu não vou viver pra sempre.", 
+        "time":0.045
+    },
+    "7":{
+        "sentence":"É estranho, porque ninguém vai, mas isso era muito mais importante para mim do que devia ser – e eu só percebi isso agora.", 
+        "time":0.045
+    },
+    "8":{
+        "sentence":"E percebi porque… depois desse tempo todo sentindo o tempo passar, eu finalmente consegui silenciar o ponteiro do relógio;", 
+        "time":0.045
+    },
+    "9":{
+        "sentence":"e foi quando eu passei tempo do seu lado.", 
+        "time":0.045
+    },
+    "10":{
+        "sentence":"Eu não preciso mais procurar o que fazer, porque já estou fazendo o que eu quero.",
+        "time":0.035
+    },
+    "11":{
+        "sentence":"E não preciso mais procurar por um lugar, porque já sei onde quero estar também.", 
+        "time":0.04
+    },
+    "12":{
+        "sentence":"Eu vim até aqui pra poder fugir de casa, mas nunca, nunca antes me senti tão em casa. ", 
+        "time":0.045
+    },
+    "13":{
+        "sentence":"Descobri o sentido da palavra “lar”: é onde quer que você esteja.", 
+        "time":0.045
+    },
+    "14":{
+        "sentence":"Quer ficar comigo?",
+        "time":0.045
+    }
 }

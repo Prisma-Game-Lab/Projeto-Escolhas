@@ -28,7 +28,7 @@ public class LoveConfession : MonoBehaviour
         appSave = SaveSystem.GetInstance().appSave;
         int c;
         //c = appSave.love;
-        c = 1;
+        c = 3;
         loveImage[c].gameObject.SetActive(true);
         if (c == 0)
             path = "elfa_";

@@ -1,39 +1,150 @@
 {
-	"1":"Oi...",
-	"2":"Então...",
-	"3":"Eu... Eu preciso te dizer uma coisa",
-	"4":"mas",
-	"5":"mas eu não consigo pensar nas palavras certas",
-	"6":"e você sabe que eu não sou muito boa falando com outras pessoas",
-	"7":"ou puxando assunto",
-	"8":"ou continuando um assunto",
-	"9":"ou entendendo alguns assuntos",
-	"10":"ou... ou",
-	"11":"enfim, não é sobre isso que eu queria falar com você",
-	"12":"oqueeuqueriadizer",
-	"13":"...",
-	"14":"Quer dizer",
-	"15":"o que eu queria dizer",
-	"16":"é que... bem",
-	"17":"você definitivamente me deixa MUITO nervosa",
-	"18":"e eu claramente não sou boa nesse tal de ‘flerte’",
-	"19":"mas eu queria que você soubesse que",
-	"20":"Você é uma das pessoas mais doces que eu já conheci",
-	"21":"Eu sinto que você realmente me entende",
-	"22":"Você é gentil... e me faz rir...",
-	"23":"E quando você fala comigo,",
-	"24":"as escamas da minha cauda se arrepiam do mesmo jeito que eu fico antes de lutar",
-	"25":"minha barbatana começa a se mexer por contra própria",
-	"26":"e meu coração simplesmente parece que vai explodir de alegria",
-	"27":"Eu entendo se você não gostar de mim desse jeito",
-	"28":"Quer dizer,", 
-	"29":"...",
-	"30":"Eu descobri que gosto muito de você",
-	"31":"Mais do que eu achei que seria possível gostar de alguém",
-	"32":"Então ‘gosto’ não é bem a palavra certa...",
-	"33":"é um pouco embaraçoso dizer em voz alta,", 
-	"34":"mas como é para você, eu não me importo",
-	"35":"maseusóvoufalarumavez",
-	"36":"então escute bem!",
-	"37":"Eu te amo"
+	"1":{
+		"sentence":"Oi...",
+		"time":0.1
+	},
+	"2":{
+		"sentence":"Então...",
+		"time":0.1
+	},
+	"3":{
+		"sentence":"Eu... Eu preciso te dizer uma coisa",
+		"time":0.045
+	},
+	"4":{
+		"sentence":"mas",
+		"time":0.045
+	},
+	"5":{
+		"sentence":"mas eu não consigo pensar nas palavras certas",
+		"time":0.045
+	},
+	"6":{
+		"sentence":"e você sabe que eu não sou muito boa falando com outras pessoas",
+		"time":0.045
+	},
+	"7":{
+		"sentence":"ou puxando assunto",
+		"time":0.045
+	},
+	"8":{
+		"sentence":"ou continuando um assunto",
+		"time":0.045
+	},
+	"9":{
+		"sentence":"ou entendendo alguns assuntos",
+		"time":0.045
+	},
+	"10":{
+		"sentence":"ou... ou",
+		"time":0.045
+	},
+	"11":{
+		"sentence":"enfim, não é sobre isso que eu queria falar com você",
+		"time":0.045
+	},
+	"12":{
+		"sentence":"oqueeuqueriadizer",
+		"time":0.045
+	},
+	"13":{
+		"sentence":"...",
+		"time":0.01
+	},
+	"14":{
+		"sentence":"Quer dizer",
+		"time":0.045
+	},
+	"15":{
+		"sentence":"o que eu queria dizer",
+		"time":0.045
+	},
+	"16":{
+		"sentence":"é que... bem",
+		"time":0.045
+	},
+	"17":{
+		"sentence":"você definitivamente me deixa MUITO nervosa",
+		"time":0.045
+	},
+	"18":{
+		"sentence":"e eu claramente não sou boa nesse tal de ‘flerte’",
+		"time":0.045
+	},
+	"19":{
+		"sentence":"mas eu queria que você soubesse que",
+		"time":0.045
+	},
+	"20":{
+		"sentence":"Você é uma das pessoas mais doces que eu já conheci",
+		"time":0.045
+	},
+	"21":{
+		"sentence":"Eu sinto que você realmente me entende",
+		"time":0.045
+	},
+	"22":{
+		"sentence":"Você é gentil... e me faz rir...",
+		"time":0.045
+	},
+	"23":{
+		"sentence":"E quando você fala comigo,",
+		"time":0.045
+	},
+	"24":{
+		"sentence":"as escamas da minha cauda se arrepiam do mesmo jeito que eu fico antes de lutar",
+		"time":0.045
+	},
+	"25":{
+		"sentence":"minha barbatana começa a se mexer por contra própria",
+		"time":0.045
+	},
+	"26":{
+		"sentence":"e meu coração simplesmente parece que vai explodir de alegria",
+		"time":0.045
+	},
+	"27":{
+		"sentence":"Eu entendo se você não gostar de mim desse jeito",
+		"time":0.045
+	},
+	"28":{
+		"sentence":"Quer dizer,", 
+		"time":0.045
+	},
+	"29":{
+		"sentence":"...",
+		"time":0.01
+	},
+	"30":{
+		"sentence":"Eu descobri que gosto muito de você",
+		"time":0.045
+	},
+	"31":{
+		"sentence":"Mais do que eu achei que seria possível gostar de alguém",
+		"time":0.045
+	},
+	"32":{
+		"sentence":"Então ‘gosto’ não é bem a palavra certa...",
+		"time":0.045
+	},
+	"33":{
+		"sentence":"é um pouco embaraçoso dizer em voz alta,", 
+		"time":0.045
+	},
+	"34":{
+		"sentence":"mas como é para você, eu não me importo",
+		"time":0.045
+	},
+	"35":{
+		"sentence":"maseusóvoufalarumavez",
+		"time":0.045
+	},
+	"36":{
+		"sentence":"então escute bem!",
+		"time":0.045
+	},
+	"37":{
+		"sentence":"Eu te amo",
+		"time":0.045
+	}
 }

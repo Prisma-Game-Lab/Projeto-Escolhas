@@ -1,13 +1,46 @@
 {
-    "1":"Quem diria que você não seria uma total perda de tempo...",
-    "2":"Nestes últimos dias você conseguiu, de alguma forma, conquistar a minha atenção.",
-    "3":"Suas maneiras são minimamente adequadas e",
-    "4":"sua técnica de luta é razoável.",
-    "5":"E posso considerar sua presença... tolerável.",
-    "6":"Seria bem... conveniente ter ao meu lado alguém que não se intimide tão fácil, e cuja companhia não me desagrade...",
-    "7":"Eternidade é muito tempo para se viver sozinha, e acredito finalmente ter encontrado um bom investimento.",
-    "8": "Por isso decidi que quero você.",
-    "9": "Só. Pra. Mim.",
-    "10":"Estou interessada em propor a você uma parceria vitalícia, e fazer você totalmente meu.", 
-    "11": "Quanto a mim? Acho que vou gostar de ser sua, também."
+    "1":{
+        "sentence":"Quem diria que você não seria uma total perda de tempo...",
+        "time":0.045
+    },
+    "2":{
+        "sentence":"Nestes últimos dias você conseguiu, de alguma forma, conquistar a minha atenção.",
+        "time":0.07
+    },
+    "3":{
+        "sentence":"Suas maneiras são minimamente adequadas e",
+        "time":0.045
+    },
+    "4":{
+        "sentence":"sua técnica de luta é razoável.",
+        "time":0.07
+    },
+    "5":{
+        "sentence":"E posso considerar sua presença... tolerável.",
+        "time":0.08
+    },
+    "6":{
+        "sentence":"Seria bem... conveniente ter ao meu lado alguém que não se intimide tão fácil, e cuja companhia não me desagrade...",
+        "time":0.07
+    },
+    "7":{
+        "sentence":"Eternidade é muito tempo para se viver sozinha, e acredito finalmente ter encontrado um bom investimento.",
+        "time":0.045
+    },
+    "8":{
+        "sentence":"Por isso decidi que quero você.",
+        "time":0.045
+    },
+    "9":{
+        "sentence":"Só. Pra. Mim.",
+        "time":0.1
+    },
+    "10":{
+        "sentence":"Estou interessada em propor a você uma parceria vitalícia, e fazer você totalmente meu.", 
+        "time":0.045
+    },
+    "11":{
+        "sentence":"Quanto a mim? Acho que vou gostar de ser sua, também.",
+        "time":0.045
+    }
 }

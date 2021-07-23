@@ -45,14 +45,13 @@ public class LoveConfession : MonoBehaviour
         string jsonString = confession.ToString();
         JSONNode text = JSON.Parse(jsonString);
         int pos = 1;
-        foreach(JSONNode sentence in text) {
-            fullText = sentence;
-            string oi = path + pos;
+        foreach(KeyValuePair<string, JSONNode> sentence in (JSONObject)text) {
+            fullText = sentence.Value["sentence"];
             audioManager.Play(path + pos);
             for (int i=0; i <= fullText.Length; i++) {
                 currentText = fullText.Substring(0,i);
                 sentenceText.text = currentText;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(sentence.Value["time"]);
             }
             pos ++;
             yield return new WaitForSeconds(1.0f);

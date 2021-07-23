@@ -1,12 +1,42 @@
 {
-    "1":"Você quer que eu seja sincero?",
-    "2":"Cara, eu to de saco cheio de tudo!",
-    "3":"Minha vida é um saco. Ser um campeão é um saco.",
-    "4":"Tipo, mais nada me motiva.",
-    "5":"Ou pelo menos é o que eu pensava. Até... Até eu conhecer você.",
-    "6":"Cara você... Você é um desafio!",
-    "7":"Tipo, por muito tempo, eu sei lá, tive medo de me envolver, me apaixonar e acabar me machucando. E pra falar a verdade, eu ainda to com medo.",
-    "8":"Mas eu não me importo mais.",
-    "9":"Se você quiser, você pode pisotear meu coração o quanto quiser. Ele já é todo seu.",
-    "10":"Porque eu sou todo seu."
+    "1":{
+        "sentence":"Você quer que eu seja sincero?",
+        "time":0.01
+    },
+    "2":{
+        "sentence":"Cara, eu to de saco cheio de tudo!",
+        "time":0.045
+    },
+    "3":{
+        "sentence":"Minha vida é um saco. Ser um campeão é um saco.",
+        "time":0.05
+    },
+    "4":{
+        "sentence":"Tipo, mais nada me motiva.",
+        "time":0.045
+    },
+    "5":{
+        "sentence":"Ou pelo menos é o que eu pensava. Até... Até eu conhecer você.",
+        "time":0.095
+    },
+    "6":{
+        "sentence":"Cara você... Você é um desafio!",
+        "time":0.045
+    },
+    "7":{
+        "sentence":"Tipo, por muito tempo, eu sei lá, tive medo de me envolver, me apaixonar e acabar me machucando. E pra falar a verdade, eu ainda to com medo.",
+        "time":0.05
+    },
+    "8":{
+        "sentence":"Mas eu não me importo mais.",
+        "time":0.045
+    },
+    "9":{
+        "sentence":"Se você quiser, você pode pisotear meu coração o quanto quiser. Ele já é todo seu.",
+        "time":0.045
+    },
+    "10":{
+        "sentence":"Porque eu sou todo seu.",
+        "time":0.045
+    }
 }

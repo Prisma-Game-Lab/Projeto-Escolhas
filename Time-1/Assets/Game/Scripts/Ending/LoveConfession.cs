@@ -27,8 +27,7 @@ public class LoveConfession : MonoBehaviour
         settingsPage = GetComponent<SettingsPage>();
         appSave = SaveSystem.GetInstance().appSave;
         int c;
-        //c = appSave.love;
-        c = 3;
+        c = appSave.love;
         loveImage[c].gameObject.SetActive(true);
         if (c == 0)
             path = "elfa_";
@@ -45,16 +44,14 @@ public class LoveConfession : MonoBehaviour
         TextAsset confession = confessions[c];
         string jsonString = confession.ToString();
         JSONNode text = JSON.Parse(jsonString);
-        int pos = 1;
         foreach(KeyValuePair<string, JSONNode> sentence in (JSONObject)text) {
             fullText = sentence.Value["sentence"];
-            audioManager.Play(path + pos);
+            audioManager.Play(path + sentence.Key);
             for (int i=0; i <= fullText.Length; i++) {
                 currentText = fullText.Substring(0,i);
                 sentenceText.text = currentText;
                 yield return new WaitForSeconds(sentence.Value["time"]);
             }
-            pos ++;
             yield return new WaitForSeconds(1.0f);
         }
         settingsPage.NewGame();

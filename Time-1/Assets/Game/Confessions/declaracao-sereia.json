@@ -9,78 +9,78 @@
 	},
 	"3":{
 		"sentence":"Eu... Eu preciso te dizer uma coisa",
-		"time":0.045
+		"time":0.06
 	},
 	"4":{
-		"sentence":"mas",
-		"time":0.045
+		"sentence":"...",
+		"time":0.1
 	},
 	"5":{
-		"sentence":"mas eu não consigo pensar nas palavras certas",
+		"sentence":"Mas eu não consigo pensar nas palavras certas.",
 		"time":0.045
 	},
 	"6":{
-		"sentence":"e você sabe que eu não sou muito boa falando com outras pessoas",
+		"sentence":"E você sabe que eu não sou muito boa falando com outras pessoas,",
 		"time":0.045
 	},
 	"7":{
-		"sentence":"ou puxando assunto",
+		"sentence":"ou puxando assunto,",
 		"time":0.045
 	},
 	"8":{
-		"sentence":"ou continuando um assunto",
+		"sentence":"ou continuando um assunto,",
 		"time":0.045
 	},
 	"9":{
-		"sentence":"ou entendendo alguns assuntos",
+		"sentence":"ou entendendo alguns assuntos,",
 		"time":0.045
 	},
 	"10":{
-		"sentence":"ou... ou",
-		"time":0.045
+		"sentence":"ou... ou.",
+		"time":0.07
 	},
 	"11":{
-		"sentence":"enfim, não é sobre isso que eu queria falar com você",
+		"sentence":"Enfim, não é sobre isso que eu queria falar com você,",
 		"time":0.045
 	},
 	"12":{
 		"sentence":"oqueeuqueriadizer",
-		"time":0.045
+		"time":0.01
 	},
 	"13":{
 		"sentence":"...",
-		"time":0.01
+		"time":0.1
 	},
 	"14":{
-		"sentence":"Quer dizer",
+		"sentence":"Quer dizer,",
 		"time":0.045
 	},
 	"15":{
-		"sentence":"o que eu queria dizer",
+		"sentence":"o que eu queria dizer.",
 		"time":0.045
 	},
 	"16":{
-		"sentence":"é que... bem",
-		"time":0.045
+		"sentence":"É que... bem,",
+		"time":0.1
 	},
 	"17":{
-		"sentence":"você definitivamente me deixa MUITO nervosa",
+		"sentence":"Você definitivamente me deixa MUITO nervosa,",
 		"time":0.045
 	},
 	"18":{
-		"sentence":"e eu claramente não sou boa nesse tal de ‘flerte’",
+		"sentence":"e eu claramente não sou boa nesse tal de ‘flerte’.",
 		"time":0.045
 	},
 	"19":{
-		"sentence":"mas eu queria que você soubesse que",
+		"sentence":"Mas eu queria que você soubesse que",
 		"time":0.045
 	},
 	"20":{
-		"sentence":"Você é uma das pessoas mais doces que eu já conheci",
+		"sentence":"você é uma das pessoas mais doces que eu já conheci.",
 		"time":0.045
 	},
 	"21":{
-		"sentence":"Eu sinto que você realmente me entende",
+		"sentence":"Eu sinto que você realmente me entende.",
 		"time":0.045
 	},
 	"22":{
@@ -92,19 +92,23 @@
 		"time":0.045
 	},
 	"24":{
-		"sentence":"as escamas da minha cauda se arrepiam do mesmo jeito que eu fico antes de lutar",
-		"time":0.045
+		"sentence":"as escamas da minha cauda se arrepiam do mesmo jeito que eu fico antes de lutar.",
+		"time":0.035
 	},
 	"25":{
-		"sentence":"minha barbatana começa a se mexer por contra própria",
+		"sentence":"Minha barbatana começa a se mexer por contra própria,",
 		"time":0.045
 	},
 	"26":{
-		"sentence":"e meu coração simplesmente parece que vai explodir de alegria",
+		"sentence":"e meu coração simplesmente parece que vai explodir de alegria.",
 		"time":0.045
 	},
+	"25-5":{
+		"sentence":"...",
+		"time":0.1
+	},
 	"27":{
-		"sentence":"Eu entendo se você não gostar de mim desse jeito",
+		"sentence":"Eu entendo se você não gostar de mim desse jeito.",
 		"time":0.045
 	},
 	"28":{
@@ -116,11 +120,11 @@
 		"time":0.01
 	},
 	"30":{
-		"sentence":"Eu descobri que gosto muito de você",
+		"sentence":"Eu descobri que gosto muito de você,",
 		"time":0.045
 	},
 	"31":{
-		"sentence":"Mais do que eu achei que seria possível gostar de alguém",
+		"sentence":"mais do que eu achei que seria possível gostar de alguém.",
 		"time":0.045
 	},
 	"32":{
@@ -128,20 +132,20 @@
 		"time":0.045
 	},
 	"33":{
-		"sentence":"é um pouco embaraçoso dizer em voz alta,", 
+		"sentence":"É um pouco embaraçoso dizer em voz alta,", 
 		"time":0.045
 	},
 	"34":{
-		"sentence":"mas como é para você, eu não me importo",
+		"sentence":"mas como é para você, eu não me importo.",
 		"time":0.045
 	},
 	"35":{
-		"sentence":"maseusóvoufalarumavez",
-		"time":0.045
+		"sentence":"Maseusóvoufalarumavez.",
+		"time":0.035
 	},
 	"36":{
 		"sentence":"então escute bem!",
-		"time":0.045
+		"time":0.05
 	},
 	"37":{
 		"sentence":"Eu te amo",

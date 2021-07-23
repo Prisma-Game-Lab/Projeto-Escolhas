@@ -3321,7 +3321,7 @@ MonoBehaviour:
     mixerGroup: {fileID: -4479530366512811753, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
     source: {fileID: 0}
   - name: stickerOmusculos
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: a4d48c92ff4f83f43b17d78405581242, type: 3}
     volume: 0.763
     volumeVariance: 0
     pitch: 1
@@ -3520,6 +3520,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: stickerHolhinho
     clip: {fileID: 8300000, guid: 2a385e9b6d6e7244c8e7d1b137f3e44c, type: 3}
+    volume: 0.8
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: -4479530366512811753, guid: 05123a7de185a4e45b8645f78536ec51, type: 2}
+    source: {fileID: 0}
+  - name: stickerEorgulhosa
+    clip: {fileID: 8300000, guid: 9d372ddf1c1ccd3498313a0e11f7ece9, type: 3}
     volume: 0.8
     volumeVariance: 0
     pitch: 1

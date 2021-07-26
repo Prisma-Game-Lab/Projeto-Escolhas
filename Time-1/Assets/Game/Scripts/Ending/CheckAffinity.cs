@@ -72,4 +72,8 @@ public class CheckAffinity : MonoBehaviour
         return false;
     }
 
+    public void RenewDay() {
+        
+    }
+
 }

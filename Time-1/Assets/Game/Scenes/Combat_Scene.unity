@@ -6055,6 +6055,10 @@ MonoBehaviour:
   defenseOn: 0
   playerActions: 
   enemyActions: 
+  affinityCanvas: {fileID: 1327972954}
+  hasAffinity: {fileID: 1520384714}
+  doesntHaveAffinity: {fileID: 1989291295}
+  renewDay: {fileID: 1372669796}
 --- !u!4 &1374253980
 Transform:
   m_ObjectHideFlags: 0

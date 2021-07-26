@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using TMPro;
+using UnityEngine.UI;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUN, ATTACK, HEAL }
 
@@ -25,6 +27,11 @@ public class BattleSystem : MonoBehaviour
     [HideInInspector] public List<int> playerActions;
     [HideInInspector] public List<int> enemyActions;
     private AppSave appSave;
+
+    public Canvas affinityCanvas;
+    public TextMeshProUGUI hasAffinity;
+    public TextMeshProUGUI doesntHaveAffinity;
+    public Button renewDay;
 
     void Start()
     {
@@ -275,17 +282,6 @@ public class BattleSystem : MonoBehaviour
         StopAllCoroutines();
         AddAffinity addAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<AddAffinity>();
         string tag = addAffinity.CharacterTag(enemyUnit.cBase.name);
-
-        if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 5) {
-            CheckAffinity checkAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<CheckAffinity>();
-            if(checkAffinity.CheckIfHasAffinity(enemyUnit.cBase.name)) {
-                checkAffinity.ListNumber(enemyUnit.cBase.name);
-                SceneManager.LoadScene("TheEnd");
-            }
-            else {
-                SceneManager.LoadScene("TheEnd");
-            }
-        }
         if (state == BattleState.WON)
         {
             battleUI.DecisionPanel.SetActive(true);
@@ -294,9 +290,11 @@ public class BattleSystem : MonoBehaviour
             Debug.Log("won date");
             battleUI.CombatPanel.SetActive(false);
             Debug.Log("combat");
-            battleUI.StartCoroutine(battleUI.showText("Você ganhou o encontro! " + enemyUnit.cBase.name + " está totalmente na sua!"));
-            GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
-            GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
+            battleUI.StartCoroutine(battleUI.showText("Você ganhou o encontro! "));
+            if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay < 5) {
+                GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
+                GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
+            }
             addAffinity.AddPoints(tag, 2);
         }
         else if (state == BattleState.LOST)
@@ -307,13 +305,30 @@ public class BattleSystem : MonoBehaviour
             battleUI.DecisionQuitButton.SetActive(true);
             battleUI.CombatPanel.SetActive(false);
             Debug.Log("combat");
-            battleUI.StartCoroutine(battleUI.showText("Você foi derrotado. " + enemyUnit.cBase.name + " está indo embora insatisfeita."));
-            GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
-            GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
+            battleUI.StartCoroutine(battleUI.showText("Você foi derrotado. "));
+            if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay < 5) {
+                GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().advanceCharacterDay();
+                GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay += 1;
+            }
             addAffinity.AddPoints(tag, 3);
         }
-
-
+        if (GameObject.FindGameObjectWithTag("persistentData").GetComponent<TinderData>().curDay == 5) {
+            CheckAffinity checkAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<CheckAffinity>();
+            if(checkAffinity.CheckIfHasAffinity(enemyUnit.cBase.name)) {
+                checkAffinity.ListNumber(enemyUnit.cBase.name);
+                SceneManager.LoadScene("TheEnd");
+            }
+            else {
+                affinityCanvas.gameObject.SetActive(true);
+                if (checkAffinity.HasAffinityWithSomeone(enemyUnit.cBase.name)){
+                    hasAffinity.gameObject.SetActive(true);
+                    renewDay.gameObject.SetActive(true);
+                }
+                else {
+                    doesntHaveAffinity.gameObject.SetActive(true);
+                }
+            }
+        }
 
     }
 

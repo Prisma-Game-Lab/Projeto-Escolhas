@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckAffinity : MonoBehaviour
 {
@@ -73,7 +74,14 @@ public class CheckAffinity : MonoBehaviour
     }
 
     public void RenewDay() {
-        
+        SceneManager.LoadScene("App");
+    }
+
+    public void NewGame() {
+        SaveSystem.GetInstance().NewGame();
+        SaveSystem.DeleteSaveFile();
+        Destroy(GameObject.FindGameObjectWithTag("persistentData"));
+        SceneManager.LoadScene("MainMenu_Scene", LoadSceneMode.Single);
     }
 
 }

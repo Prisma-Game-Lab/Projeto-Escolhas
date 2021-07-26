@@ -568,7 +568,7 @@ public class InkExample : MonoBehaviour
         canvas.SetActive(false);
     }
 
-    void OnApplicationQuit() {
+    void OnApplicationPause() {
         if (this.gameObject.tag == "Elf") {
             appSave.elfaJson = story.state.ToJson();
         }

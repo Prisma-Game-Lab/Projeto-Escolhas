@@ -51,6 +51,10 @@ public class TinderData : MonoBehaviour
                 appSave.tinderCharacters.Add(character);
             }
         }
+        if (appSave.curDay == 0)
+            curDay = 1;
+        else
+            curDay = appSave.curDay;
     }
 
     // Start is called before the first frame update
@@ -58,7 +62,6 @@ public class TinderData : MonoBehaviour
     {
         playerStats = GameObject.FindGameObjectWithTag("persistentData").GetComponent<playerStats>();
         matchesNumber = appSave.matchesNumber;
-        curDay = 1;
     }
 
     public void advanceCharacterDay()

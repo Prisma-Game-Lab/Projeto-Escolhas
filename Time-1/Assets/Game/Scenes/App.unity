@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3092,7 +3092,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e28bf185e9405e44682352c2096e9da1, type: 2}
   - {fileID: 11400000, guid: 0c4e8b4350ebc9542870552006bb6e93, type: 2}
   - {fileID: 11400000, guid: 2a3cdfe1c931fd1498b27c26773bff93, type: 2}
-  blockedCharacters: []
   curContacts: []
   combatCharacter: {fileID: 0}
   enemyStatsPerDay: 60
@@ -19599,6 +19598,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 9400cf210d681c041835a39159a4c792, type: 3}
   - {fileID: 4900000, guid: 1950278b60e31dd43b88386d978bdd0d, type: 3}
   - {fileID: 4900000, guid: 5d6ce7474768dd74ca3e21c1ac74760b, type: 3}
+  - {fileID: 4900000, guid: 0b4dcf9e03738d240ac8993d500ba32d, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 1927780967}

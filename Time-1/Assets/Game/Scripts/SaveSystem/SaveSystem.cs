@@ -77,6 +77,7 @@ public class SaveSystem : MonoBehaviour
                 appSave.sereiaBattle = false;
                 appSave.humanoBattle = false;
                 appSave.matchesNumber = 0;
+                appSave.blockedCharacters.Clear();
                 string path = Path.Combine(Application.persistentDataPath, saveFileName + ".dat");
                 Debug.Log("new save on path:" + path);
 
@@ -228,7 +229,8 @@ public class SaveSystem : MonoBehaviour
 
         tinderData.tinderCharacters.Clear();
         tinderData.curContacts.Clear();
-        tinderData.blockedCharacters.Clear();
+
+        appSave.blockedCharacters.Clear();
 
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Fakes/Carol"));
         tinderData.tinderCharacters.Add(Resources.Load<CharacterBase>("Characters/Elfa"));

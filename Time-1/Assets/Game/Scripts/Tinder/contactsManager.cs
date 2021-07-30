@@ -14,6 +14,7 @@ public class contactsManager : MonoBehaviour
     private TinderData tinderData;
     private AudioManager audioManager;
     public GameObject settingsAndDay;
+    private AppSave appSave;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class contactsManager : MonoBehaviour
 
     public void createContact(CharacterBase character)
     {
+        appSave = SaveSystem.GetInstance().appSave;
         GameObject contact = Instantiate(contactPrefab, messagePanel.transform);
         if (character.name == "Amarillys") 
             contact.gameObject.tag = "Elf";
@@ -48,7 +50,7 @@ public class contactsManager : MonoBehaviour
         GameObject characterPanel = getCharacterPanel(character);
         Button button = contact.transform.GetChild(0).GetComponent<Button>();
         button.onClick.AddListener(() => openMessage(characterPanel, popUp, character));
-        foreach (CharacterBase blocked in tinderData.blockedCharacters) {
+        foreach (CharacterBase blocked in appSave.blockedCharacters) {
             if (character.name == blocked.name) {
                 contact.transform.GetChild(0).GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = "BLOQUEADO";
                 button.interactable = false;
@@ -115,12 +117,14 @@ public class contactsManager : MonoBehaviour
     
     public void blockContact(string tag) {
         int childCount = messagePanel.transform.childCount;
+        appSave = SaveSystem.GetInstance().appSave;
         for (int i = 1; i < childCount; i++) {
             if (messagePanel.transform.GetChild(i).gameObject.tag == tag) {
                 messagePanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = false;
                 messagePanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "BLOQUEADO";
                 CharacterBase curContact = tinderData.curContacts[i-1];
-                tinderData.blockedCharacters.Add(curContact);
+                appSave.blockedCharacters.Add(curContact);
+                SaveSystem.GetInstance().SaveState();
                 break;
             }
         }

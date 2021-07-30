@@ -38,5 +38,6 @@ public class AppSave : ScriptableObject
     public float playerAtk;
     public float playerDef;
     public float playerVel;
+    public List<CharacterBase> blockedCharacters;
 
 }

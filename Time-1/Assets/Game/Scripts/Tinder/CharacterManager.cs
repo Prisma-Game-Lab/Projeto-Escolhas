@@ -7,5 +7,4 @@ public class CharacterManager : ScriptableObject
 {
     public List<CharacterBase> allCharacters;
     public List<CharacterBase> tinderCharacters;
-    public List<CharacterBase> blockedCharacters;
 }

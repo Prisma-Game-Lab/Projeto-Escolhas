@@ -6,7 +6,6 @@ public class TinderData : MonoBehaviour
 {
     public List<CharacterBase> tinderCharacters;
     public List<CharacterBase> allCharacters;
-    [HideInInspector] public List<CharacterBase> blockedCharacters;
 
     [HideInInspector] public List<CharacterBase> curContacts = new List<CharacterBase>();
 

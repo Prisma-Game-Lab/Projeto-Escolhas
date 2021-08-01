@@ -6190,10 +6190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0976e483b54ab49ad5f95eeb110837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAffinityElfa: 64
-  minAffinityOrc: 150
+  minAffinityElfa: 135
+  minAffinityOrc: 170
   minAffinitySereia: 110
-  minAffinityHumano: 140
+  minAffinityHumano: 160
 --- !u!1 &1383598841
 GameObject:
   m_ObjectHideFlags: 0

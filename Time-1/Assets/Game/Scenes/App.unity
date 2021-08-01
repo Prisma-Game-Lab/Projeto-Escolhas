@@ -5522,6 +5522,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: e8702c0e943b08d4792b29664d190c76, type: 3}
   - {fileID: 4900000, guid: 41191cd32e950de42b267637b98368a1, type: 3}
   - {fileID: 4900000, guid: 486cb3f75836dfa499d905693b261cd2, type: 3}
+  - {fileID: 4900000, guid: 758d08e23febd404e9ee14f6ad9b514e, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 1351233490}

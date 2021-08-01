@@ -6190,7 +6190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0976e483b54ab49ad5f95eeb110837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAffinityElfa: 100
+  minAffinityElfa: 64
   minAffinityOrc: 150
   minAffinitySereia: 110
   minAffinityHumano: 140

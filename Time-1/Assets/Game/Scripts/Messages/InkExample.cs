@@ -108,6 +108,9 @@ public class InkExample : MonoBehaviour
                     newDay = true;
             }
         }
+        if (appSave.renewDay) {
+            newDay = true;
+        }
     }
 
     void Start()

@@ -326,6 +326,13 @@ public class BattleSystem : MonoBehaviour
                     renewDay.gameObject.SetActive(true);
                 }
                 else {
+                    if (state == BattleState.LOST) {
+                        checkAffinity.SubtractPoints(tag, 16);
+                    }
+                    else if (state == BattleState.WON) {
+                        checkAffinity.SubtractPoints(tag, 18);
+                    }
+                    appSave.renewDay = true;
                     doesntHaveAffinity.gameObject.SetActive(true);
                 }
             }

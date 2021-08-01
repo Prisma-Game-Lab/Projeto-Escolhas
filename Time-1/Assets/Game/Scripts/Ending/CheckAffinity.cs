@@ -44,6 +44,18 @@ public class CheckAffinity : MonoBehaviour
         return false;
     }
 
+    public void SubtractPoints(string name, int points) {
+         if (name == "Amarillys") 
+            appSave.elfaPoints -= points;
+        else if (name == "Bruce")
+            appSave.orcPoints -= points;
+        else if (name == "Clarissa")
+            appSave.sereiaPoints -= points;
+        else
+            appSave.humanoPoints -= points;
+        SaveSystem.GetInstance().SaveState();
+    }
+
     public void ListNumber(string name) {
         if (name == "Amarillys") 
             appSave.love = 0;

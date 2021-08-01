@@ -39,5 +39,6 @@ public class AppSave : ScriptableObject
     public float playerDef;
     public float playerVel;
     public List<CharacterBase> blockedCharacters;
+    public bool renewDay;
 
 }

@@ -78,6 +78,7 @@ public class SaveSystem : MonoBehaviour
                 appSave.humanoBattle = false;
                 appSave.matchesNumber = 0;
                 appSave.blockedCharacters.Clear();
+                appSave.renewDay = false;
                 string path = Path.Combine(Application.persistentDataPath, saveFileName + ".dat");
                 Debug.Log("new save on path:" + path);
 
@@ -247,6 +248,8 @@ public class SaveSystem : MonoBehaviour
         appSave.orcBattle = false;
         appSave.sereiaBattle = false;
         appSave.humanoBattle = false;
+
+        appSave.renewDay = false;
 
         playerStats.attack = player.attack;
         playerStats.defense = player.defense;

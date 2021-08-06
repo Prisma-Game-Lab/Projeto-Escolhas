@@ -1859,8 +1859,9 @@ MonoBehaviour:
   inkJSONAsset:
   - {fileID: 4900000, guid: a2c79d8a8167cc340856e36004eeca0a, type: 3}
   - {fileID: 4900000, guid: 4a469401cffc5424896f9e1595c3017b, type: 3}
-  - {fileID: 4900000, guid: eb16e5300506fcc498008fb736f3a01a, type: 3}
-  - {fileID: 4900000, guid: 529087ec4df3c084f8d2f1ee73e1cc1e, type: 3}
+  - {fileID: 4900000, guid: b66a73b00b75d2b498ee734d125c466e, type: 3}
+  - {fileID: 4900000, guid: 8b0e45ea6f526a646909ac75b41ee82d, type: 3}
+  - {fileID: 4900000, guid: f6dc813e23910b04b8796ad812ebbaee, type: 3}
   buttonPrefab: {fileID: 5682476968955439165, guid: 63a85e494fd35d94da6d855367569941, type: 3}
   textPrefab: {fileID: 5081655093088935182, guid: 9c8c8a469e9193a47bd433c4b39633bc, type: 3}
   content: {fileID: 2035472192}

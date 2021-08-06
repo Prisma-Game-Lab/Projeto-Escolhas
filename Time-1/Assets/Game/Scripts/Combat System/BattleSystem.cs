@@ -259,7 +259,7 @@ public class BattleSystem : MonoBehaviour
 
         state = BattleState.PLAYERTURN;
         curTurn +=1;
-        if (curTurn >= maxTurn)
+        if (curTurn > maxTurn)
         {
             if(playerUnit.curHealth/playerUnit.maxHealth > enemyUnit.curHealth/enemyUnit.maxHealth)
             {

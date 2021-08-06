@@ -67,25 +67,29 @@ public class TinderData : MonoBehaviour
     {
         playerStats.availableStatsPoints = 100f;
         if (appSave.elfaEndDay) {
-            elfaDay++;
+            if (appSave.curDay < 6)
+                elfaDay++;
             appSave.elfaEndDay = false;
             appSave.elfaBattle = false;
             appSave.elfaJson = "";
         }
         if (appSave.humanoEndDay) {
-            humanoDay++;
+            if (appSave.curDay < 6)
+                humanoDay++;
             appSave.humanoEndDay = false;
             appSave.humanoBattle = false;
             appSave.humanoJson = "";
         }
         if (appSave.sereiaEndDay) {
-            sereiaDay++;
+            if (appSave.curDay < 6)
+                sereiaDay++;
             appSave.sereiaEndDay = false;
             appSave.sereiaBattle = false;
             appSave.sereiaJson = "";
         }
         if (appSave.orcEndDay) {
-            orcDay++;
+            if (appSave.curDay < 6)
+                orcDay++;
             appSave.orcEndDay = false;
             appSave.orcBattle = false;
             appSave.orcJson = "";

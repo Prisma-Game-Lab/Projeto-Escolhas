@@ -292,10 +292,8 @@ public class BattleSystem : MonoBehaviour
             battleUI.CombatPanel.SetActive(false);
             Debug.Log("combat");
             battleUI.StartCoroutine(battleUI.showText("Você ganhou o encontro! "));
-            if (tinderData.curDay < 5) {
-                tinderData.advanceCharacterDay();
-                tinderData.curDay += 1;
-            }
+            tinderData.advanceCharacterDay();
+            tinderData.curDay += 1;
             addAffinity.AddPoints(tag, 2);
         }
         else if (state == BattleState.LOST)
@@ -307,13 +305,14 @@ public class BattleSystem : MonoBehaviour
             battleUI.CombatPanel.SetActive(false);
             Debug.Log("combat");
             battleUI.StartCoroutine(battleUI.showText("Você foi derrotado. "));
-            if (tinderData.curDay < 5) {
-                tinderData.advanceCharacterDay();
-                tinderData.curDay += 1;
-            }
+            tinderData.curDay += 1;
+            tinderData.advanceCharacterDay();
             addAffinity.AddPoints(tag, 3);
         }
-        if (tinderData.curDay == 5) {
+        if (tinderData.curDay == 6) {
+            tinderData.curDay -= 1;
+            appSave.curDay = tinderData.curDay;
+            SaveSystem.GetInstance().SaveState();
             CheckAffinity checkAffinity = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<CheckAffinity>();
             if(checkAffinity.CheckIfHasAffinity(enemyUnit.cBase.name)) {
                 checkAffinity.ListNumber(enemyUnit.cBase.name);

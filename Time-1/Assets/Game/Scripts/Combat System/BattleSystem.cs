@@ -320,7 +320,7 @@ public class BattleSystem : MonoBehaviour
             }
             else {
                 affinityCanvas.gameObject.SetActive(true);
-                if (checkAffinity.HasAffinityWithSomeone(enemyUnit.cBase.name)){
+                if (checkAffinity.HasAffinityWithSomeone()){
                     hasAffinity.gameObject.SetActive(true);
                     renewDay.gameObject.SetActive(true);
                 }
@@ -332,6 +332,7 @@ public class BattleSystem : MonoBehaviour
                         checkAffinity.SubtractPoints(tag, 18);
                     }
                     appSave.renewDay = true;
+                    SaveSystem.GetInstance().SaveState();
                     doesntHaveAffinity.gameObject.SetActive(true);
                 }
             }

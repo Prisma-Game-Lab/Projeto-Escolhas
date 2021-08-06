@@ -68,19 +68,17 @@ public class CheckAffinity : MonoBehaviour
         SaveSystem.GetInstance().SaveState();
     }
 
-    public bool HasAffinityWithSomeone(string name) {
-        int checkPoints;
-        if (name == "Amarillys") 
-            checkPoints = appSave.elfaPoints;
-        else if (name == "Bruce")
-            checkPoints = appSave.orcPoints;
-        else if (name == "Clarissa")
-            checkPoints = appSave.sereiaPoints;
-        else
-            checkPoints = appSave.humanoPoints;
+    public bool HasAffinityWithSomeone() {
+        List<int> checkPoints = new List<int>();
+        checkPoints.Add(appSave.elfaPoints);
+        checkPoints.Add(appSave.orcPoints);
+        checkPoints.Add(appSave.sereiaPoints);
+        checkPoints.Add(appSave.humanoPoints);
+        int j = 0;
         foreach (int i in min) {
-            if (checkPoints >= i)
+            if (checkPoints[j] >= i)
                 return true;
+            j++;
         }
         return false;
     }

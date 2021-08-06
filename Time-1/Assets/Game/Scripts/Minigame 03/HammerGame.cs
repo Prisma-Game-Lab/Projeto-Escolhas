@@ -63,21 +63,28 @@ public class HammerGame : MonoBehaviour
             canJump = false;
             StartCoroutine(Jump());
         }
-        Debug.LogWarning(Input.mousePosition.y);
+        //Debug.LogWarning(Input.mousePosition.y);
 
         if (!Timer.timeStopped && !Pause.isPaused)
         {
             float posy = indicator.transform.position.y;
             if ((posy <= minPos))
             {
+                //print("vai pra cima");
                 speed *= -1;
-                indicator.transform.position = new Vector2(indicator.transform.position.x, minPos+0.05f);
-            }else if(posy >= maxPos)
-            {
-                speed *= -1;
-                indicator.transform.position = new Vector2(indicator.transform.position.x, maxPos-0.05f);
+                //print(indicator.transform.position.y);
+                indicator.transform.position = new Vector2(indicator.transform.position.x, minPos+0.10f);
+                //print(indicator.transform.position.y);
             }
-            indicator.transform.position = new Vector2(indicator.transform.position.x, posy - speed * Time.deltaTime);
+            else if(posy >= maxPos)
+            {
+                //print("vai pra baixo");
+                speed *= -1;
+                //print(indicator.transform.position.y);
+                indicator.transform.position = new Vector2(indicator.transform.position.x, maxPos-0.10f);
+                //print(indicator.transform.position.y);
+            }
+            indicator.transform.Translate(0,speed * Time.deltaTime,0);
             if (timer.timeRemaining > 10.0f && timer.timeRemaining < 20.0f)
             {
                 UpAndDownPosition();
@@ -86,6 +93,7 @@ public class HammerGame : MonoBehaviour
             {
                 RandomPosition();
             }
+            //print(indicator.transform.position.y);
         }
     }
 
@@ -133,7 +141,7 @@ public class HammerGame : MonoBehaviour
             speedSquareObj *= -1;
             squareObj.transform.position = new Vector2(squareObj.transform.position.x, maxPos - 0.4f);
         }
-        squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy + speedSquareObj * Time.deltaTime);
+        squareObj.transform.Translate(0, speedSquareObj * Time.deltaTime,0);
     }
 
     private void RandomPosition()
@@ -151,7 +159,7 @@ public class HammerGame : MonoBehaviour
             randomMinPos = Random.Range(minPos+0.35f, 2.50f);
             squareObj.transform.position = new Vector2(squareObj.transform.position.x, randomMaxPos-0.05f);
         }
-        squareObj.transform.position = new Vector2(squareObj.transform.position.x, posy - speedSquareObj * Time.deltaTime);
+        squareObj.transform.Translate(0, speedSquareObj * Time.deltaTime, 0);
     }
 
     //private void RandomPosition()

@@ -325,6 +325,7 @@ public class InkExample : MonoBehaviour
             if (messages[i].Contains("Block")) {
                 contactManager.blockContact(this.gameObject.tag);
                 this.gameObject.SetActive(false);
+                settingsAndDay.SetActive(true);
                 break;
             }
             bool isSticker = false;
